@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
@@ -19,41 +18,67 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -80,7 +105,187 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -97,37 +302,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <!-- ds4psy logo 1: -->
-<p><a href="https://bookdown.org/hneth/ds4psy/"> <img src="data:image/png;base64,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" alt="ds4psy" width="125px" align="right" style="width: 125px; float: right; border:11;" /> </a></p>
+<p><a href="https://bookdown.org/hneth/ds4psy/"> <img src="data:image/png;base64,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" alt="ds4psy" width="150px" align="right" style="width: 150px; float: right; border:11;" /> </a></p>
 <p><strong>Welcome</strong> to the R package <strong>ds4psy</strong> — a software companion to the book and course<br /> <a href="https://bookdown.org/hneth/ds4psy/">Data Science for Psychologists</a>.</p>
-<p>This R package provides datasets and functions used in the book and course.</p>
-<p>The book and course introduce the principles and methods of data science for students of psychology and other biological or social sciences.</p>
-<p>The source code of the corresponding <a href="https://bookdown.org/hneth/ds4psy/">ds4psy book</a> is hosted at <a href="https://github.com/hneth/ds4psy_book" class="uri">https://github.com/hneth/ds4psy_book</a>.</p>
+<p>This R package provides datasets and functions used in the book and course. Its source code is hosted at <a href="https://github.com/hneth/ds4psy" class="uri">https://github.com/hneth/ds4psy</a>.</p>
+<p>The book and course introduce the principles and methods of data science for students of psychology and other biological or social sciences. The book is available at <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.</p>
 <div id="description" class="section level2">
 <h2>Description</h2>
 <p>The <strong>ds4psy</strong> book and course provide an introduction to data science that is tailored to the needs of psychologists, but is also suitable for students of the humanities and other biological or social sciences. This audience typically has some knowledge of statistics, but rarely an idea how data is prepared and shaped to allow for statistical testing. By using various data types and working with many examples, we teach tools for transforming, summarizing, and visualizing data. By keeping our eyes open for the perils of misleading representations, the book fosters fundamental skills of data literacy and cultivates reproducible research practices that enable and precede any practical use of statistics.</p>
+<p>The R package <strong>ds4psy</strong> primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in <strong>ds4psy</strong> are designed to be instructive and entertaining, rather than elegant or efficient.</p>
 </div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>The current release of <strong>ds4psy</strong> is available from <a href="https://CRAN.R-project.org/">CRAN</a> at <a href="https://CRAN.R-project.org/package=ds4psy" class="uri">https://CRAN.R-project.org/package=ds4psy</a>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">'ds4psy'</span>)  <span class="co"># install ds4psy from CRAN client</span>
-<span class="kw">library</span>(<span class="st">'ds4psy'</span>)           <span class="co"># load to use the package</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">'ds4psy'</span>)  <span class="co"># install ds4psy from CRAN client</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(<span class="st">'ds4psy'</span>)           <span class="co"># load to use the package</span></a></code></pre></div>
 <p>The current development version can be installed from its <a href="https://github.com">GitHub</a> repository at <a href="https://github.com/hneth/ds4psy/" class="uri">https://github.com/hneth/ds4psy/</a>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages('devtools')  # (if not installed yet)</span>
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'hneth/ds4psy'</span>)
-<span class="kw">library</span>(<span class="st">'ds4psy'</span>)  <span class="co"># load to use the package</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages('devtools')  # (if not installed yet)</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'hneth/ds4psy'</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">library</span>(<span class="st">'ds4psy'</span>)  <span class="co"># load to use the package</span></a></code></pre></div>
 </div>
 <div id="resources" class="section level2">
 <h2>Resources</h2>
 <p>This package and the corresponding book are still being developed and are updated as new materials become available.</p>
 <ul>
 <li><p>A current version of the book is available at <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.</p></li>
-<li><p>There are 2 GitHub repositories to be distinguished:</p>
+<li><p>The current R package is available at <a href="https://CRAN.R-project.org/package=ds4psy" class="uri">https://CRAN.R-project.org/package=ds4psy</a>.</p></li>
+<li><p>For source versions, there are 2 GitHub repositories to be distinguished:</p>
 <ul>
-<li><p>The repository for the <a href="https://bookdown.org/hneth/ds4psy/">ds4psy book</a> is <a href="https://github.com/hneth/ds4psy_book" class="uri">https://github.com/hneth/ds4psy_book</a>.</p></li>
+<li><p>The repository for the <a href="https://bookdown.org/hneth/ds4psy/">ds4psy book</a> is <a href="https://github.com/hneth/ds4psy" class="uri">https://github.com/hneth/ds4psy</a> (with an additional suffix <code>_book</code>).</p></li>
 <li><p>The repository for the <a href="https://github.com/hneth/ds4psy/">ds4psy package</a> is <a href="https://github.com/hneth/ds4psy" class="uri">https://github.com/hneth/ds4psy</a>.</p></li>
 </ul></li>
-<li><p>The current course syllabus and raw versions of all data files used in examples and exercises are available at <a href="http://rpository.com/ds4psy/" class="uri">http://rpository.com/ds4psy/</a>.</p></li>
 </ul>
+<!-- - The current course syllabus is available at <http://rpository.com/ds4psy/>.    -->
 </div>
 <div id="about" class="section level2">
 <h2>About</h2>
@@ -136,28 +342,31 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <h3>Citation</h3>
 <p>To cite <strong>ds4psy</strong> in derivations and publications, please use:</p>
 <ul>
-<li>Neth, H. (2019). ds4psy: Data Science for Psychologists.<br />
+<li>Neth, H. (2020). ds4psy: Data Science for Psychologists.<br />
 Social Psychology and Decision Sciences, University of Konstanz, Germany.<br />
-Textbook and computer software (R package version 0.1.0, August 8, 2019).<br />
+Textbook and R package (version 0.2.0, April 20, 2020).<br />
 Retrieved from <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.</li>
 </ul>
 <p>A <strong>BibTeX</strong> entry for LaTeX users is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">@</span>Manual{ds4psy,
-  title =<span class="st"> </span>{ds4psy<span class="op">:</span><span class="st"> </span>Data Science <span class="cf">for</span> Psychologists},
-  author =<span class="st"> </span>{Hansjörg Neth},
-  year =<span class="st"> </span>{<span class="dv">2019</span>},
-  organization =<span class="st"> </span>{Social Psychology and Decision Sciences, University of Konstanz},
-  address =<span class="st"> </span>{Konstanz, Germany},
-  note =<span class="st"> </span>{Textbook and R <span class="kw">package</span> (version <span class="fl">0.1</span>.<span class="dv">0</span>, August <span class="dv">8</span>, <span class="dv">2019</span>)},
-  url =<span class="st"> </span>{https<span class="op">:</span><span class="er">//</span>bookdown.org<span class="op">/</span>hneth<span class="op">/</span>ds4psy<span class="op">/</span>},
-}</code></pre></div>
+<pre class="text"><code>@Manual{ds4psy,
+  title = {ds4psy: Data Science for Psychologists},
+  author = {Hansjörg Neth},
+  year = {2020},
+  organization = {Social Psychology and Decision Sciences, University of Konstanz},
+  address = {Konstanz, Germany},
+  note = {Textbook and R package (version 0.2.0, April 20, 2020)},
+  url = {https://bookdown.org/hneth/ds4psy/}
+}</code></pre>
 </div>
 <div id="license" class="section level3">
 <h3>License</h3>
+<!-- (a) online image: -->
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="data:image/png;base64,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" /></a></p>
+<!-- (b) local image: -->
+<!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src = "./../inst/images/CC_BY_NC_SA.png" /></a> -->
 <p><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><strong>Data science for psychologists</strong> (<strong>ds4psy</strong>)</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://neth.de" property="cc:attributionName" rel="cc:attributionURL">Hansjörg Neth</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
 <!-- Update: -->
-<p>[Updated 2019-08-09 by <a href="https://neth.de">hn</a>.]</p>
+<p>[Updated 2020-04-19 by <a href="https://neth.de">hn</a>.]</p>
 <!-- eof. -->
 </div>
 </div>

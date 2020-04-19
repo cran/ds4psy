@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{transl33t}
 \alias{transl33t}
-\title{transl33t text into leet slang (using stringr).}
+\title{transl33t text into leet slang.}
 \usage{
 transl33t(txt, rules = l33t_rul35, in_case = "no", out_case = "no")
 }
@@ -10,7 +10,7 @@ transl33t(txt, rules = l33t_rul35, in_case = "no", out_case = "no")
 \item{txt}{The text (character string) to translate.}
 
 \item{rules}{Rules which existing character in \code{txt} 
-is to be replaced by which new character (as named character vector). 
+is to be replaced by which new character (as a named character vector). 
 Default: \code{rules = \link{l33t_rul35}}.}
 
 \item{in_case}{Change case of input string \code{txt}. 
@@ -23,7 +23,11 @@ Set to \code{"lo"} or \code{"up"} for lower or uppercase, respectively.}
 }
 \description{
 \code{transl33t} translates text into leet (or l33t) slang 
-given a set of rules and the \bold{stringr} package.
+given a set of rules.
+}
+\details{
+The current version of \code{transl33t} only uses \code{base R} commands, 
+rather than the \bold{stringr} package.
 }
 \examples{
 # Use defaults:
@@ -37,14 +41,19 @@ transl33t(txt = "hello world",
 
 # Set input and output case:
 transl33t(txt = "hello world", in_case = "up", 
-          rules = c("e" = "3", "l" = "1", "o" = "0"))
-transl33t(txt = "hello world", out_case = "up", 
-          rules = c("e" = "3", "l" = "1", "o" = "0"))
+          rules = c("e" = "3", "l" = "1", "o" = "0"))  # e only capitalized
+transl33t(txt = "hEllo world", in_case = "lo", out_case = "up", 
+          rules = c("e" = "3", "l" = "1", "o" = "0"))  # e transl33ted
 
 }
 \seealso{
 \code{\link{l33t_rul35}} for default rules.
 
-Other text functions: \code{\link{l33t_rul35}}
+Other text functions: 
+\code{\link{capitalize}()},
+\code{\link{caseflip}()},
+\code{\link{count_char}()},
+\code{\link{l33t_rul35}},
+\code{\link{read_ascii}()}
 }
 \concept{text functions}

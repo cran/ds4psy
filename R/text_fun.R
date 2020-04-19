@@ -1,35 +1,54 @@
 ## text_fun.R | ds4psy
-## hn | uni.kn | 2019 08 07
+## hn | uni.kn | 2020 04 13
 ## ---------------------------
 
-## Functions for text and string objects. 
+## Functions for text/string objects. 
 
 ## (0) Define text labels: ---------- 
 
-course_title     <- paste0("Data science for psychologists")
-course_title_abb <- paste0("ds4psy")
-# psi <- expression(psi)
-name_hn <- "Hansjoerg Neth"
-name_course <- paste0(course_title, " (", course_title_abb, "), by ", name_hn, "")
-# name_course
+# course_title     <- paste0("Data science for psychologists")
+# course_title_abb <- paste0("ds4psy")
+# # psi <- expression(psi)
+# name_hn <- "Hansjoerg Neth"
+# name_course <- paste0(course_title, " (", course_title_abb, "), by ", name_hn, "")
+
+# # Table of contents (ToC):
+# toc <- tribble(
+#   ~nr, ~lbl,                 ~val,  ~part,   
+#    0,  "Introduction",          2,  0,
+#    1,  "R basics",             10,  0, # was: "Basic R concepts and commands",
+#    2,  "Visualizing data",      8,  1, 
+#    3,  "Transforming data",     9,  1, 
+#    4,  "Exploring data",       10,  1, # was: "Exploring data (EDA)"
+#    5,  "Tibbles",               6,  2, 
+#    6,  "Importing data",        5,  2,  
+#    7,  "Tidying data",          7,  2,  
+#    8,  "Joining data",          6,  2,  
+#    9,  "Text data",             8,  2, 
+#   10,  "Time data",             6,  2,   
+#   11,  "Functions",            10,  3, 
+#   12,  "Iteration",             8,  3)
+# 
+# # toc  # to be used in plot_tbar() and plot_tclock()
+
 
 ## (1) L33t slang: ---------- 
 
 # Using leet / l33t slang: ------
 
-# l33t rul35: 
-n4me <- "h4n5j03Rg n3+h"     # e:3, a:4, s:5, o:0, t:+, r:R
-d5   <- "d4+4 5c13nc3"       # i:1 
-fp   <- "f0R p5ych0l0g15+5"
-course_l33t <- paste0(n4me, ":", " ", d5, " ", fp)
-# course_l33t
+# # l33t rul35: 
+# n4me <- "h4n5j03Rg n3+h"     # e:3, a:4, s:5, o:0, t:+, r:R
+# d5   <- "d4+4 5c13nc3"       # i:1 
+# fp   <- "f0R p5ych0l0g15+5"
+# course_l33t <- paste0(n4me, ":", " ", d5, " ", fp)
+# # course_l33t
 
 
 # Automation: ----- 
 
 # txt1 <- "This is a short test string with some text to leetify."
-# txt2 <- "Data science is both a craft and an art. This course introduces fundamental data types, 
-#          basic concepts and commands of the R programming language, and explores key packages of the so-called tidyverse. 
+# txt2 <- "Data science is both a craft and an art. This course introduces fundamental data types,
+#          basic concepts and commands of the R programming language, and explores key packages of the so-called tidyverse.
 #          Regular exercises will help you to make your first steps from R novice to user."
 
 # Write functions to:  
@@ -54,7 +73,16 @@ my_l33t <- c("t" = "+",
 #' l33t_rul35 provides rules for translating into leet/l33t slang. 
 #' 
 #' \code{l33t_rul35} specifies rules for translating characters 
-#' into leet/l33t slang (as a character vector).
+#' into other characters (typically symbols) to mimic 
+#' leet/l33t slang (as a named character vector).
+#' 
+#' Old (i.e., to be replaced) characters are 
+#' \code{paste(names(l33t_rul35), collapse = "")}.
+#' 
+#' New (i.e., replaced) characters are 
+#' \code{paste(l33t_rul35, collapse = "")}.
+#' 
+#' See \url{https://en.wikipedia.org/wiki/Leet} for details. 
 #' 
 #' @family text functions
 #' 
@@ -72,15 +100,18 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 
 ## (b) as function: 
 
-#' transl33t text into leet slang (using stringr).
+#' transl33t text into leet slang.
 #'
 #' \code{transl33t} translates text into leet (or l33t) slang 
-#' given a set of rules and the \bold{stringr} package.
+#' given a set of rules.
+#' 
+#' The current version of \code{transl33t} only uses \code{base R} commands, 
+#' rather than the \bold{stringr} package.
 #' 
 #' @param txt The text (character string) to translate.
 #' 
 #' @param rules Rules which existing character in \code{txt} 
-#' is to be replaced by which new character (as named character vector). 
+#' is to be replaced by which new character (as a named character vector). 
 #' Default: \code{rules = \link{l33t_rul35}}. 
 #' 
 #' @param in_case Change case of input string \code{txt}. 
@@ -103,16 +134,14 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 #' 
 #' # Set input and output case:
 #' transl33t(txt = "hello world", in_case = "up", 
-#'           rules = c("e" = "3", "l" = "1", "o" = "0"))
-#' transl33t(txt = "hello world", out_case = "up", 
-#'           rules = c("e" = "3", "l" = "1", "o" = "0"))
+#'           rules = c("e" = "3", "l" = "1", "o" = "0"))  # e only capitalized
+#' transl33t(txt = "hEllo world", in_case = "lo", out_case = "up", 
+#'           rules = c("e" = "3", "l" = "1", "o" = "0"))  # e transl33ted
 #' 
 #' @family text functions
 #'
 #' @seealso
 #' \code{\link{l33t_rul35}} for default rules. 
-#' 
-#' @importFrom stringr str_replace_all
 #' 
 #' @export
 
@@ -131,7 +160,17 @@ transl33t <- function(txt, rules = l33t_rul35,
   }
   
   # transl33t based on rules:   
-  out <- stringr::str_replace_all(txt, rules)
+  
+  ## (a) using stringr pkg: 
+  # out <- stringr::str_replace_all(txt, rules)
+  ## If used, ADD:  
+  ## @importFrom stringr str_replace_all
+  ## to documentation!
+  
+  # (b) only base R commands:
+  old_chars <- paste(names(rules), collapse = "")
+  new_chars <- paste(rules, collapse = "")
+  out <- chartr(old_chars, new_chars, x = txt)
   
   # handle out_case: 
   if (out_case == "lo") {
@@ -142,13 +181,15 @@ transl33t <- function(txt, rules = l33t_rul35,
   
   return(out)
   
-}
+} # transl33t. 
 
-# ## Check: 
-# transl33t(txt1, rules = c("a" = "4"))
-# transl33t(txt1)
-# transl33t(txt1 = c(txt, txt2))
-# transl33t(txt1 = c(letters, LETTERS))
+# ## Check:
+# transl33t(txt1)  # default rules
+# transl33t(txt1, rules = c("a" = "4"))  # manual rules
+# 
+# # multiple strings:
+# transl33t(txt = c(letters, LETTERS))
+# transl33t(txt = c(txt1, txt2))
 # 
 # # 9 variants:
 # transl33t(txt1)  # leave in_case and out_case as is.
@@ -161,13 +202,451 @@ transl33t <- function(txt, rules = l33t_rul35,
 # transl33t(txt1,  in_case = "up", out_case = "lo")
 # transl33t(txt1,  in_case = "up", out_case = "up")
 # 
-# # Check: 
+# # Check:
 # all.equal(transl33t(txt = c(letters), in_case = "up"),
 #           transl33t(txt = c(LETTERS)))
 # 
 # all.equal(transl33t(txt = c(LETTERS), in_case = "lo"),
 #           transl33t(txt = c(letters)))
 
+
+## (2) Read ascii art into a tibble: ---------- 
+
+#' read_ascii parses text (from a file) into a tibble.
+#'
+#' \code{read_ascii} parses text 
+#' (from a file or from user input in Console) 
+#' into a tibble that contains a row for each character. 
+#' 
+#' \code{read_ascii} creates a tibble with 3 variables: 
+#' Each character's \code{x}- and \code{y}-coordinates (from top to bottom)  
+#' and a variable \code{char} for the character at this coordinate. 
+#' 
+#' The \bold{here} package is used to determine 
+#' the (absolute) file path. 
+#' 
+#' @param file The text file to read (or its path). 
+#' If \code{file = ""} (the default), \code{scan} is used 
+#' to read user input from the Console. 
+#' If a text file is stored in a sub-directory, 
+#' enter its path and name here (without any leading or 
+#' trailing "." or "/"). 
+#' Default: \code{file = ""}. 
+#' 
+#' @param flip_y Boolean: Should y-coordinates be flipped, 
+#' so that the lowest line in the text file becomes \code{y = 1}, 
+#' and the top line in the text file becomes \code{y = n_lines}? 
+#' Default: \code{flip_y = FALSE}. 
+#' 
+#' @examples
+#' ## Create a temporary file "test.txt":
+#' # cat("Hello world!", "This is a test.", 
+#' #     "Can you see this text?", 
+#' #     "Good! Please carry on...", 
+#' #     file = "test.txt", sep = "\n")
+#' 
+#' ## (a) Read text (from file): 
+#' # read_ascii("test.txt")
+#' # read_ascii("test.txt", flip_y = TRUE)  # y flipped
+#' 
+#' # unlink("test.txt")  # clean up (by deleting file).
+#'  
+#' \donttest{
+#' ## (b) Read text (from file in subdir):
+#' # read_ascii("data-raw/txt/ascii.txt")  # requires txt file
+#' 
+#' ## (c) Scan user input (from console):
+#' # read_ascii()
+#' }
+#' 
+#' @family text functions
+#'
+#' @seealso
+#' \code{\link{plot_text}} for a corresponding plot function. 
+#' 
+#' @import here
+#' @import tibble
+#' 
+#' @export
+
+read_ascii <- function(file = "", flip_y = FALSE){ 
+  
+  ## (0) Default file/path:
+  # file <- "test.txt"
+  
+  # (1) Path to file:
+  if (!is.na(file) && (file != "")){
+    
+    # (a) File path: Remove leading "." and/or "/" characters:
+    if (substr(file, 1, 1) == ".") {file <- substr(file, 2, nchar(file))}
+    if (substr(file, 1, 1) == "/") {file <- substr(file, 2, nchar(file))}
+    # ToDo: Use regex to do this more efficiently!
+    
+    cur_file <- here::here(file)  # absolute path to text file
+    
+  } else {  # no file path given:
+    
+    cur_file <- ""  # use "" (to scan from Console)
+    
+  }
+  
+  # (2) Read txt: 
+  # txt <- readLines(con = cur_file)                # (a) read from file
+  txt <- scan(file = cur_file, what = "character",  # (b) from file or user console
+              sep = "\n",     # i.e., keep " " as a space!     
+              quiet = FALSE   # provide user feedback? 
+  )
+  # writeLines(txt)  # debugging
+  
+  # (3) Initialize lengths and a counter:
+  n_lines <- length(txt)
+  n_chars <- sum(nchar(txt))
+  ct <- 0  # initialize character counter
+  
+  # (4) Data structure (for results): 
+  # # Initialize a matrix (to store all characters in place):
+  # m <- matrix(data = NA, nrow = n_lines, ncol = max(nchar(txt)))
+  
+  # # Initialize a tibble (to store all characters as rows):
+  # # options(warn = -1) # ignore all warnings
+  # tb <- tibble::tibble(x = rep(NA, n_chars),
+  #                      y = rep(NA, n_chars),
+  #                      char = rep("", n_chars))
+  
+  # # Initialize a data frame (to store all characters as rows):  
+  # tb <- data.frame(x = rep(NA, n_chars),
+  #                  y = rep(NA, n_chars),
+  #                  c = rep("", n_chars))
+  
+  # Initialize 3 vectors:
+  x <- rep(NA, n_chars)
+  y <- rep(NA, n_chars)
+  char <- rep("", n_chars)
+  
+  # (5a) Loop through all i lines of txt:  
+  for (i in 1:n_lines){ 
+    
+    line <- txt[i]  # i-th line of txt
+    
+    # (5b) Loop through each char j of each line:
+    for (j in 1:nchar(line)) { 
+      
+      cur_char <- substr(line, j, j)  # current char      
+      ct <- ct + 1  # increase count of current char 
+      
+      # fill count-th row of tb:
+      # tb$x[ct] <- j               # x: current pos nr
+      x[ct] <- j                    # x: current pos nr
+      
+      if (flip_y){ # flip y values:    # y: 
+        # tb$y[ct] <- n_lines - (i - 1)  # 1st line on top (of n_lines)  
+        y[ct] <- n_lines - (i - 1)  # 1st line on top (of n_lines)  
+      } else {
+        # tb$y[ct] <- i             # current line 
+        y[ct] <- i                  # current line 
+      }
+      
+      # tb$char[ct] <- cur_char     # char: cur_char
+      char[ct] <- cur_char          # char: cur_char
+      
+    } # for j.
+  } # for i.
+  
+  # (6) Check that ct matches n_chars:
+  if (ct != n_chars){
+    message("read_ascii: Count ct differs from n_chars!")
+  }
+  
+  # # (7) Adjust data types:
+  # tb$x <- as.integer(tb$x)
+  # tb$y <- as.integer(tb$y)
+  # tb$char <- as.character(tb$char)  
+  
+  # options(warn = 0)  # back to default
+  
+  # # Initialize a data frame (to store all characters as rows):  
+  # df <- data.frame(x, y, char)
+  tb <- tibble::tibble(x, y, char)
+  
+  # (8) Return: 
+  return(tb)
+  
+} # read_ascii.
+
+# ## Check: 
+# # Create a temporary file "test.txt":
+# cat("Hello world!",
+#     "This is a test.",
+#     "Can you see this text?", 
+#     "Good! Please carry on...",
+#     file = "test.txt", sep = "\n")
+# read_ascii("test.txt")
+# plot_txt("test.txt")
+#
+# unlink("test.txt")  # clean up (by deleting file).
+
+# # (2) Read other text files: 
+# read_ascii("./data-raw/txt/ascii.txt")  # Note: "\" became "\\"
+# read_ascii("./data-raw/txt/ascii.txt", flip_y = TRUE)
+# 
+# read_ascii("./data-raw/txt/ascii2.txt")
+# 
+# t <- read_ascii("./data-raw/txt/hello.txt")
+# t
+# tail(t)
+
+
+# (3) Read user input from console: ---------- 
+# read_ascii()
+
+
+## count_char: Count the frequency of characters in a string: -------- 
+
+#' count_char counts the frequency of characters 
+#' in a string of text \code{x}.
+#'
+#' @param x A string of text (required).
+#' 
+#' @param case_sense Boolean: Distinguish lower- vs. uppercase characters? 
+#' Default: \code{case_sense = TRUE}. 
+#' 
+#' @param rm_specials Boolean: Remove special characters? 
+#' Default: \code{rm_specials = TRUE}. 
+#' 
+#' @param sort_freq Boolean: Sort output by character frequency? 
+#' Default: \code{sort_freq = TRUE}. 
+#' 
+#' @examples
+#' # Default: 
+#' x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
+#' count_char(x)
+#' 
+#' # Options: 
+#' count_char(x, case_sense = FALSE)
+#' count_char(x, rm_specials = FALSE)
+#' count_char(x, sort_freq = FALSE)
+#'  
+#' @family text functions
+#'
+#' @seealso
+#' \code{\link{plot_text}} for a corresponding plot function. 
+#' 
+#' @export
+
+count_char <- function(x, # string of text to count
+                       case_sense = TRUE, 
+                       rm_specials = TRUE, 
+                       sort_freq = TRUE
+){
+  
+  freq <- NA  # initialize
+  
+  v0 <- as.character(x)  # read input (as character)
+  
+  if (case_sense){
+    v1 <- v0  # as is
+  } else {
+    v1 <- tolower(v0)  # lowercase
+  }
+  
+  v2 <- paste(v1, collapse = "")  # combine all into 1 string
+  v3 <- strsplit(v2, split = "")  # individual characters (in 1 list)
+  v4 <- unlist(v3)  # individual characters (in vector)
+  
+  if (rm_specials){
+    
+    # Define special char: 
+    space <- c("", " ")
+    hyphens <- c("-", "--", "---")
+    punct <- c(",", ";", ":", ".", "!", "?")  # punctuation 
+    parents <- c("(", ")", "[", "]", "{", "}", "<", ">")  # parentheses
+    spec_char <- c(punct, space, hyphens, parents)
+    
+    # Remove special characters:
+    char_s <- v4[!(v4 %in% spec_char)]
+    
+  } else {
+    
+    char_s <- v4  # as is 
+    
+  }
+  
+  if (sort_freq){
+    
+    freq <- sort(table(char_s), decreasing = TRUE)
+    
+  } else { # no sorting:
+    
+    freq <- table(char_s)    
+    
+  } # if (sort_freq).
+  
+  return(freq)
+  
+} # count_char. 
+
+# ## Check:
+# x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
+# 
+# count_char(x)
+# count_char(x, case_sense = FALSE)
+# count_char(x, rm_specials = FALSE)
+# count_char(x, sort_freq = FALSE)
+# 
+# # Note: count_char returns a named vector of type integer:
+# freq <- count_char(x)
+# typeof(freq)
+# freq["e"]
+
+
+# (4) Capitalization ---------- 
+
+## caseflip: Flip lower to upper case and vice versa: --------  
+
+#' caseflip flips the case of characters 
+#' in a string of text \code{x}.
+#'
+#' @param x A string of text (required).
+#' 
+#' @examples
+#' x <- c("Hello world!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
+#' caseflip(x)
+#'  
+#' @family text functions
+#'
+#' @seealso
+#' \code{\link{capitalize}} for converting the case of initial letters. 
+#' 
+#' @export
+
+caseflip <- function(x){
+  
+  out <- NA  # initialize  
+  
+  # Rules: 
+  from <- paste0(c(letters, LETTERS), collapse = "")
+  to   <- paste0(c(LETTERS, letters), collapse = "")  
+  
+  out <- chartr(old = from, new = to, x = x)
+  
+  return(out)
+  
+}
+
+## Check:
+# caseflip("Hello World! Hope all is well?")
+# caseflip(c("Hi there", "Does this work as well?"))
+# caseflip(NA)
+
+
+## Text helper functions: ------- 
+
+text_to_words <- function(s, split = " "){
+  
+  unlist(strsplit(s, split = split))  
+  
+}
+
+words_to_text <- function(w, collapse = " "){
+  
+  paste(w, collapse = collapse)
+  
+}
+
+
+## capitalize the first n letters of words (with exception): -------- 
+
+#' capitalize converts the case of 
+#' each word's \code{n} initial characters 
+#' (typically to \code{upper}) 
+#' in a string of text \code{x}.
+#'
+#' @param x A string of text (required).
+#' 
+#' @param n Number of initial characters to convert.
+#' Default: \code{n = 1}. 
+#' 
+#' @param upper Convert to uppercase?
+#' Default: \code{upper = TRUE}. 
+#' 
+#' @param as_text Return word vector as text 
+#' (i.e., one character string)? 
+#' Default: \code{as_text = TRUE}.
+#' 
+#' @examples
+#' x <- c("Hello world! This is a 1st TEST sentence. The end.")
+#' capitalize(x)
+#' capitalize(x, n = 3)
+#' capitalize(x, n = 2, upper = FALSE)
+#' capitalize(x, as_text = FALSE)
+#' 
+#' # Note: A vector of character strings returns the same results: 
+#' x <- c("Hello world!", "This is a 1st TEST sentence.", "The end.")
+#' capitalize(x)
+#' capitalize(x, n = 3)
+#' capitalize(x, n = 2, upper = FALSE)
+#' capitalize(x, as_text = FALSE)
+#' 
+#' @family text functions
+#'
+#' @seealso
+#' \code{\link{caseflip}} for converting the case of all letters. 
+#' 
+#' @export
+
+capitalize <- function(x, # string of text to capitalize
+                       n = 1,  # number of initial letters to capitalize in each word
+                       upper = TRUE,   # convert to uppercase?
+                       as_text = TRUE  # return words as text (1 character string)? 
+                       # except = c("a", "the", "is", "do", "does", "done", "did")
+                       # rm_specials = TRUE
+){
+  
+  out <- NA  # initialize 
+  
+  # (1) Convert text x to vector of words:
+  words <- text_to_words(x)
+  
+  # (2) Capitalize words:
+  first <- substr(words, 1, n)      # first character of each word 
+  rest  <- substr(words, n + 1, nchar(words))  # rest of each word
+  rest  <- substring(words, n + 1)  # rest of each word (with default end)
+  
+  if (upper) {
+    Words <- paste0(toupper(first), rest) # capitalize first and paste with rest
+  } else {
+    Words <- paste0(tolower(first), rest) # lowercase first and paste with rest
+  }
+  
+  # (3) Convert vector of Words to text x:
+  if (as_text){
+    out <- words_to_text(Words)
+  } else {
+    out <- Words
+  }
+  
+  return(out)
+  
+}
+
+# ## Check:
+x <- c("Hello world! This is a 1st TEST sentence. The end.")
+# capitalize(x)
+# capitalize(x, n = 3)
+# capitalize(x, n = 2, upper = FALSE)
+# capitalize(x, as_text = FALSE)
+# 
+# # Note: Vector of character strings is merged into one string:
+# x <- c("Hello world!", "This is a 1st TEST sentence.", "The end.")
+# capitalize(x)
+# capitalize(x, n = 3)
+# capitalize(x, n = 2, upper = FALSE)
+# capitalize(x, as_text = FALSE)
+
 ## ToDo: ----------
+
+# - Add exception argument except to capitalize() function 
+#   (to exclude all words matching an exception argument).
+# - improve read_ascii (with regex and more efficient text wrangling)
 
 ## eof. ----------------------

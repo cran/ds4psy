@@ -6,20 +6,25 @@
 \title{Positive Psychology: All corrected data (in wide format).}
 \format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 295 rows and 294 columns.}
 \source{
-Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
+\strong{Articles}
+
+\itemize{
+
+\item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
 Web-based positive psychology interventions: A reexamination of effectiveness. 
-\emph{Journal of Clinical Psychology}, \emph{73}(3), 218-232. 
+\emph{Journal of Clinical Psychology}, \emph{73}(3), 218--232. 
 doi: \code{10.1002/jclp.22328} 
 
-Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
+\item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
 Data from, ‘Web-based positive psychology interventions: A reexamination of effectiveness’. 
 \emph{Journal of Open Psychology Data}, \emph{6}(1). 
 doi: \code{10.5334/jopd.35}
-
-Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+}
 
 See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
-and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset.
+and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
+
+Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
 }
 \usage{
 posPsy_wide
@@ -38,17 +43,29 @@ This dataset is based on \code{\link{posPsy_AHI_CESD}} and
 \code{\link{posPsy_AHI_CESD}} for the source of this file, 
 \code{\link{posPsy_long}} for a version of this file (in long format).
 
-Other datasets: \code{\link{data_1}}, \code{\link{data_2}},
-  \code{\link{data_t1_de}}, \code{\link{data_t1_tab}},
-  \code{\link{data_t1}}, \code{\link{data_t2}},
-  \code{\link{data_t3}}, \code{\link{data_t4}},
-  \code{\link{exp_wide}}, \code{\link{falsePosPsy_all}},
-  \code{\link{outliers}}, \code{\link{pi_100k}},
-  \code{\link{posPsy_AHI_CESD}}, \code{\link{posPsy_long}},
-  \code{\link{posPsy_p_info}}, \code{\link{t3}},
-  \code{\link{t4}}, \code{\link{table6}},
-  \code{\link{table7}}, \code{\link{table8}},
-  \code{\link{tb}}
+Other datasets: 
+\code{\link{data_1}},
+\code{\link{data_2}},
+\code{\link{data_t1_de}},
+\code{\link{data_t1_tab}},
+\code{\link{data_t1}},
+\code{\link{data_t2}},
+\code{\link{data_t3}},
+\code{\link{data_t4}},
+\code{\link{exp_wide}},
+\code{\link{falsePosPsy_all}},
+\code{\link{fame}},
+\code{\link{outliers}},
+\code{\link{pi_100k}},
+\code{\link{posPsy_AHI_CESD}},
+\code{\link{posPsy_long}},
+\code{\link{posPsy_p_info}},
+\code{\link{t3}},
+\code{\link{t4}},
+\code{\link{table6}},
+\code{\link{table7}},
+\code{\link{table8}},
+\code{\link{tb}}
 }
 \concept{datasets}
 \keyword{datasets}

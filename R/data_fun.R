@@ -1,8 +1,9 @@
 ## data_fun.R | ds4psy
-## hn | uni.kn | 2019 08 08
+## hn | uni.kn | 2020 01 19
 ## ---------------------------
 
 ## Functions for creating and manipulating data. 
+
 
 ## (1) Generate random datasets: ---------- 
 
@@ -11,16 +12,502 @@
 random_bin_value <- function(x = c(0, 1), n = 1, replace = TRUE) {
   
   if (length(x) != 2) {
-    warning("x should be binary.")
+    message("random_bin_value: x should be binary.")
   }
   
   sample(x = x, size = n, replace = replace)  
   
-}
+} # random_bin_value end. 
 
 ## Check: 
 # random_bin_value(n = 10)
 # random_bin_value(x = c("m", "f"), n = 100)
+
+
+
+# Coin flip: Flip a fair coin n times (with events): ------ 
+
+#' Flip a fair coin (with 2 sides "H" and "T") n times. 
+#'
+#' \code{coin} generates a sequence of events that 
+#' represent the results of flipping a fair coin \code{n} times. 
+#' 
+#' By default, the 2 possible \code{events} for each flip 
+#' are "H" (for "heads") and "T" (for "tails"). 
+#' 
+#' @param n Number of coin flips.
+#' Default: \code{n = 1}. 
+#' 
+#' @param events Possible outcomes (as a vector). 
+#' Default: \code{events = c("H", "T")}. 
+#'
+#' @examples
+#' # Basics: 
+#' coin()
+#' table(coin(n = 100))
+#' table(coin(n = 100, events = LETTERS[1:3]))
+#' 
+#' #' Note an oddity:
+#' coin(10, events = 8:9)  # works as expected, but 
+#' coin(10, events = 9:9)  # odd: see sample() for an explanation.
+#' 
+#' # Limits:
+#' coin(2:3)
+#' coin(NA)
+#' coin(0)
+#' coin(1/2)
+#' coin(3, events = "X")
+#' coin(3, events = NA)
+#' coin(NULL, NULL)
+#' 
+#' @family random functions
+#'
+#' @export 
+
+coin <- function(n = 1, events = c("H", "T")){
+  
+  # check inputs: 
+  if (is.null(n)){
+    message("coin: n must not be NULL. Using n = 1:") 
+    n <- 1
+  }
+  if (is.null(events)){
+    message("coin: events must not be NULL. Using events = c('H', 'T':)") 
+    events <- c("H", "T")
+  }
+  
+  if (length(n) > 1) {  # n is a vector: 
+    message(paste0("coin: n must be a scalar. Using n[1] = ", n[1], ":"))
+    n <- n[1]
+  }
+  
+  if ( (length(n) == 1) && ( is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+    message("coin: n must be a positive integer. Using n = 1:") 
+    n <- 1
+  }
+  
+  # sample n outcomes: 
+  sample(x = events, size = n, replace = TRUE)
+  
+} # coin end. 
+
+# ## Check:
+# # Basics:
+# coin()
+# table(coin(n = 1000))
+# 
+# # Limits:
+# coin(2:3)
+# coin(NA)
+# coin("_")
+# coin(0)
+# coin(1/2)
+# coin(10, NA)
+# coin(NULL, NULL)
+
+## Note:
+# table(coin(1000, 9:9))  # does NOT draw only 9...
+
+
+# Random values from a normal distribution: ------ 
+
+# r_n <- rnorm(n = 10000, mean = 100, sd = 10)
+# table(round(r_n, 0))
+# hist(r_n)
+
+
+# Random values from a uniform distribution: ------ 
+
+# r_u <- runif(n = 10000, min = .500, max = 6.499)
+# table(round(r_u, 0))
+# hist(r_u)
+
+
+# Random draws from a sample: ------ 
+
+# r_s <- sample(x = 1:10, size = 1000, replace = TRUE)
+# table(r_s)
+# hist(r_s, right = TRUE)
+# hist(r_s, right = FALSE)
+
+# Sample random dates (from a given range): ------
+
+#' Draw a sample of n random dates (from a given range). 
+#'
+#' \code{sample_dates} draws a sample of  
+#' \code{n} random dates from a given range.
+#' 
+#' By default, \code{sample_dates} draws \code{n = 1} 
+#' random date in the range 
+#' \code{from = "1970-01-01"} 
+#' \code{to = Sys.Date()} (current date).
+#' 
+#' @param n Number dates to draw. 
+#' Default: \code{n = 1}. 
+#' 
+#' @param from Earliest date (as string). 
+#' Default: \code{from = "1970-01-01"}. 
+#' 
+#' @param to Latest date (as string). 
+#' Default: \code{to = Sys.Date()}. 
+#' 
+#' @examples
+#' sample_dates()
+#' sort(sample_dates(n = 10))
+#' sort(sample_dates(n = 10, from = "2020-02-28", to = "2020-03-01"))  # 2020 is a leap year
+#' 
+#' # Note: Oddity with sample():
+#' sort(sample_dates(n = 10, from = "2020-01-01", to = "2020-01-01"))  # range of 0!
+#' # see sample(9:9, size = 10, replace = TRUE)
+#' 
+#' @family random functions
+#'
+#' @export 
+
+sample_dates <- function(n = 1, from = "1970-01-01", to = Sys.Date()){
+  
+  # set.seed(1984)  # for reproducible randomness
+  d1 <- as.Date(from)  
+  d2 <- as.Date(to)   
+  
+  as.Date(sample(as.numeric(d1):as.numeric(d2), size = n, 
+                 replace = TRUE), origin = '1970-01-01')
+  
+}
+
+## Check:
+# sample_dates()
+# sort(sample_dates(n = 10))
+# sort(sample_dates(n = 10, from = "2020-02-28", to = "2020-03-01"))  # 2020 is a leap year
+# 
+# # Note: Oddity with sample():
+# sort(sample_dates(n = 10, from = "2020-01-01", to = "2020-01-01"))  # range of 0!
+# # see sample(9:9, size = 10, replace = TRUE)
+
+
+# Sample random times (from a given range): ------
+
+#' Draw a sample of n random times (from a given range). 
+#'
+#' \code{sample_times} draws a sample of  
+#' \code{n} random times from a given range.
+#' 
+#' By default, \code{sample_times} draws \code{n = 1} 
+#' random time in the range 
+#' \code{from = "1970-01-01 00:00:00"} 
+#' \code{to = Sys.time()} (current time).
+#' 
+#' @param n Number dates to draw. 
+#' Default: \code{n = 1}. 
+#' 
+#' @param from Earliest date (as string). 
+#' Default: \code{from = "1970-01-01 00:00:00"}. 
+#' 
+#' @param to Latest date (as string). 
+#' Default: \code{to = Sys.time()}. 
+#' 
+#' @examples
+#' # Basics:
+#' sample_times()
+#' sample_times(n = 10)
+#' 
+#' # Specific ranges:
+#' sort(sample_times(n = 10, from = (Sys.time() - 60)))  # within the last minute
+#' sort(sample_times(n = 10, from = (Sys.time() - 1 * 60 * 60)))  # within the last hour
+#' sort(sample_times(n = 10, from = Sys.time(), 
+#'                             to = (Sys.time() + 1 * 60 * 60)))  # within the next hour
+#' sort(sample_times(n = 10, from = "2020-01-01 00:00:00 CET", 
+#'                             to = "2020-01-01 00:00:01 CET"))  # within 1 sec range
+#'  
+#' # Note: Oddity with sample(): 
+#' sort(sample_times(n = 10, from = "2020-01-01 00:00:00 CET", 
+#'                             to = "2020-01-01 00:00:00 CET"))  # range of 0!
+#' # see sample(9:9, size = 10, replace = TRUE)
+#' 
+#' @family random functions
+#'
+#' @export
+
+sample_times <- function(n = 1, from = "1970-01-01 00:00:00", to = Sys.time()){
+  
+  t1 <- as.POSIXlt(from)
+  t2 <- as.POSIXlt(to)
+  
+  as.POSIXlt(sample(as.numeric(t1):as.numeric(t2), size = n, 
+                    replace = TRUE), origin = '1970-01-01')
+  
+}
+
+# ## Check:
+# # Basics:
+# sample_times()
+# sample_times(n = 10)
+# 
+# # Specific ranges:
+# sort(sample_times(n = 10, from = (Sys.time() - 60)))  # within the last minute
+# sort(sample_times(n = 10, from = (Sys.time() - 1 * 60 * 60)))  # within the last hour
+# sort(sample_times(n = 10, from = Sys.time(), to = (Sys.time() + 1 * 60 * 60)))  # within the next hour
+# sort(sample_times(n = 10, from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:01 CET"))  # within 1 sec range
+# 
+# # Note: Oddity with sample():
+# sort(sample_times(n = 10, from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:00 CET"))  # range of 0!
+# # see sample(9:9, size = 10, replace = TRUE)
+
+## Note: Sampling normally distributed times:
+# now <- Sys.time()
+# hist(as.POSIXlt(now) + rnorm(n = 1000, mean = 0, sd = 60*60), breaks = 10)
+# t1 <- as.POSIXlt(Sys.time())
+# t2 <- as.POSIXlt(Sys.time() + 1 * 60 * 60)  # 1 hour later
+# as.POSIXlt(sample(as.numeric(t1):as.numeric(t2), size = 10, replace = TRUE), origin = '1970-01-01')
+
+
+# dice: n random draws from a sample (from events): ------ 
+
+#' Throw a fair dice (with a given number of sides) n times. 
+#'
+#' \code{dice} generates a sequence of events that 
+#' represent the results of throwing a fair dice 
+#' (with a given number of \code{events} or number of sides) 
+#' \code{n} times.
+#' 
+#' By default, the 6 possible \code{events} for each throw of the dice  
+#' are the numbers from 1 to 6. 
+#' 
+#' @param n Number of dice throws. 
+#' Default: \code{n = 1}. 
+#' 
+#' @param events Events to draw from (or number of sides).
+#' Default: \code{events = 1:6}. 
+#'
+#' @examples
+#' # Basics:
+#' dice()
+#' table(dice(10^4))
+#' 
+#' # 5-sided dice:
+#' dice(events = 1:5)
+#' table(dice(100, events = 5))
+#' 
+#' # Strange dice:
+#' dice(5, events = 8:9)
+#' table(dice(100, LETTERS[1:3]))
+#' 
+#' # Note:
+#' dice(10, 1)
+#' table(dice(100, 2))
+#' 
+#' # Note an oddity:
+#' dice(10, events = 8:9)  # works as expected, but 
+#' dice(10, events = 9:9)  # odd: see sample() for an explanation.
+#' 
+#' # Limits:
+#' dice(NA)
+#' dice(0)
+#' dice(1/2)
+#' dice(2:3)
+#' dice(5, events = NA)
+#' dice(5, events = 1/2)
+#' dice(NULL, NULL)
+#' 
+#' @family random functions
+#'
+#' @export 
+
+dice <- function(n = 1, events = 1:6){
+  
+  # (a) verify n: 
+  if (is.null(n)){
+    message("dice: n must not be NULL. Using n = 1:") 
+    n <- 1
+  }
+  if (length(n) > 1) {  # n is a vector: 
+    message(paste0("dice: n must be scalar. Using n[1] = ", n[1], ":"))
+    n <- n[1]
+  }
+  # Verify that n is a numeric integer > 1:  
+  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+    message("dice: n must be a positive integer. Using n = 1:") 
+    n <- 1
+  }
+  
+  # (b) verify events: 
+  if (is.null(events)){
+    message("dice: events must not be NULL. Using events = 1:6:") 
+    events <- 1:6
+  }
+  
+  if (length(events) > 1) {  # events is a vector: 
+    
+    # message(paste0("dice: sides is a set. Using it:"))
+    
+    set_of_events <- events
+    
+  } else {  # sides is a scalar: length(sides) <= 1:
+    
+    # Verify that events is a numeric integer > 1:
+    if ( is.na(events) || !is.numeric(events) || !is.wholenumber(events) || (events < 1) ) { 
+      message("dice: events must be an integer or a set. Using events = 6:") 
+      events <- 6
+    }
+    
+    set_of_events <- 1:events  # default set
+    
+  }
+  
+  # Sample n times from set_of_events: 
+  sample(x = set_of_events, size = n, replace = TRUE)
+  
+} # dice end.
+
+# ## Check:
+# # Basics:
+# dice()
+# table(dice(10^4))
+# 
+# # 5-sided dice:
+# dice(sides = 5)
+# table(dice(10^5, sides = 5))
+# 
+# # Set dice:
+# dice(5, sides = 2:3)
+# dice(5, sides = c(2, 4, 6))
+# 
+# # Note:
+# dice(10, 1)  # always yields 1
+# table(dice(1000, 2))
+# 
+# # Limits:
+# dice(NA)
+# dice(0)
+# dice(1/2)
+# dice(2:3)
+# dice(10, sides = NA)
+# dice(10, sides = 1/2)
+# 
+# # Note an oddity:
+# dice(n = 10, sides = 3:4)  # works, but 
+# dice(n = 10, sides = 4:4)  # odd: see sample() for an explanation.
+
+# dice(NULL, NULL)
+
+# dice_2: n non-random draws from a sample (from 1 to sides): ------ 
+
+#' Throw a questionable dice (with a given number of sides) n times. 
+#'
+#' \code{dice_2} is a variant of \code{\link{dice}} that 
+#' generates a sequence of events that 
+#' represent the results of throwing a dice 
+#' (with a given number of \code{sides}) \code{n} times.
+#' 
+#' Something is wrong with this dice. 
+#' Can you examine it and measure its problems 
+#' in a quantitative fashion?
+#' 
+#' @param n Number of dice throws.
+#' Default: \code{n = 1}. 
+#' 
+#' @param sides Number of sides.
+#' Default: \code{sides = 6}. 
+#'
+#' @examples 
+#' # Basics:
+#' dice_2()
+#' table(dice_2(100))
+#' 
+#' # 10-sided dice:
+#' dice_2(sides = 10)
+#' table(dice_2(100, sides = 10))
+#' 
+#' # Note:
+#' dice_2(10, 1)
+#' table(dice_2(5000, sides = 5))
+#' 
+#' # Note an oddity:
+#' dice_2(n = 10, sides = 8:9)  # works, but 
+#' dice_2(n = 10, sides = 9:9)  # odd: see sample() for an explanation.
+#' 
+#' 
+#' @family random functions
+#'
+#' @export 
+
+dice_2 <- function(n = 1, sides = 6){
+  
+  # (a) verify n:
+  if (is.null(n)){
+    message("dice_2: n must not be NULL. Using n = 1:") 
+    n <- 1
+  }
+  if (length(n) > 1) {  # n is a vector: 
+    message(paste0("dice_2: n must be scalar. Using n[1] = ", n[1], ":"))
+    n <- n[1]
+  }
+  
+  # Verify that n is a numeric integer > 1:  
+  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+    message("dice_2: n must be a positive integer. Using n = 1:") 
+    n <- 1
+  }
+  
+  # (b) verify sides: 
+  if (is.null(sides)){
+    message("dice_2: sides must not be NULL. Using sides = 6:") 
+    sides <- 6
+  }
+  
+  if (length(sides) > 1) {  # sides is a vector: 
+    
+    # message(paste0("dice_2: sides is a set. Using it:"))
+    
+    set_of_sides <- sides
+    
+  } else {  # sides is a scalar: length(sides) <= 1:
+    
+    # Verify that sides is a numeric integer > 1:
+    if ( is.na(sides) || !is.numeric(sides) || !is.wholenumber(n) || (sides < 1) ) { 
+      message("dice_2: sides must be an integer or a set. Using sides = 6:") 
+      sides <- 6
+    }
+    
+    set_of_sides <- 1:sides  # default set
+    
+  }
+  
+  n_sides <- length(set_of_sides)  # number of sides
+  
+  ## Weigh events by some probability density distribution:
+  # pfac <- # loading factor (0: fair, 1: always final side)
+  
+  ## Bias for 1 side:
+  ptru <- 1/n_sides    # p-values of a fair dice
+  bias <- ptru * .075  # (additional) bias of 1 side 
+  p_hi <- ptru + bias  # higher p of biased side
+  p_lo <- ptru - (bias/(n_sides - 1))  # lower p of all other sides
+  pset <- c(rep(p_lo, (n_sides - 1)), p_hi)  # p-values of all sides
+  
+  sample(x = set_of_sides, size = n, replace = TRUE, prob = pset)
+  
+} # dice_2 end.
+
+# ## Check:
+# # Basics:
+# dice_2()
+# table(dice_2(10^5))
+# 
+# # 10-sided dice:
+# dice_2(sides = 10)
+# table(dice_2(10^6, sides = 10))
+# 
+# # Set dice:
+# table(dice_2(300000, sides = c("A", "B", "C")))
+# 
+# # Note:
+# dice_2(10, 1)
+# table(dice_2(2000, 2))
+# 
+# # Note an oddity:
+# dice_2(n = 10, sides = 3:4)  # works, but
+# dice_2(n = 10, sides = 4:4)  # odd: see sample() for an explanation.
 
 
 # Permutations: List all permutations of a set: ----------
@@ -60,7 +547,7 @@ all_combinations <- function(set, length){
   
   return(out)
   
-}
+} # all_combinations end. 
 
 ## Check:
 # all_combinations(set = 1:3, length = 4)  # ERROR: n < m
@@ -91,8 +578,10 @@ random_symbols <- function(n = 1, set = letters, len = 1, sep = "") {
     out[i] <- i_th
     
   }
+  
   return(out)
-}
+  
+} # random_symbols end. 
 
 ## Check:
 # random_symbols(n = 10, len = 4)
@@ -121,7 +610,7 @@ add_NAs <- function(vec, amount){
   
   return(out)
   
-}
+} # add_NAs end. 
 
 ## Check:
 # add_NAs(1:10, 0)
@@ -148,12 +637,14 @@ add_whats <- function(vec, amount, what = NA){
   
   return(out)
   
-}
+}  # add_whats end. 
 
 ## Check:
 # add_whats(1:10, 3) # default: what = NA
 # add_whats(1:10, 3, what = 99)
 # add_whats(1:10, .5, what = "ABC")
+
+
 
 
 ## (2) Make tables for plots: ----------
@@ -213,6 +704,7 @@ make_tb <- function(n = NA, rseed = NA){
 # make_tb(n = 5, rseed = 1)  # check rseed
 # make_tb(n = 5, rseed = 1)
 
+
 # make_tbs: Create simpler (1 x n) table tbs for plots: --------
 
 make_tbs <- function(n = NA, rseed = NA){
@@ -269,6 +761,84 @@ make_tbs <- function(n = NA, rseed = NA){
 # make_tbs(n = 6, rseed = 1)
 
 
+
+# make_grid: Generate a grid of x-y coordinates (from -x:x to -y:y): ------ 
+
+#' Generate a grid of x-y coordinates (as a tibble). 
+#'
+#' \code{make_grid} generates a grid of x/y coordinates and returns it as a tibble.
+#' 
+#' @param x_min Minimum x coordinate.  
+#' Default: \code{x_min = 0}. 
+#'
+#' @param x_max Maximum x coordinate.  
+#' Default: \code{x_max = 2}. 
+#' 
+#' @param y_min Minimum y coordinate.  
+#' Default: \code{y_min = 0}. 
+#'
+#' @param y_max Maximum y coordinate.  
+#' Default: \code{y_max = 1}. 
+#'
+#' @examples
+#' make_grid()
+#' make_grid(x_min = -3, x_max = 3, y_min = -2, y_max = 2)
+#'
+#' @family data functions
+#'
+#' @import tibble
+#' 
+#' @export 
+
+make_grid <- function(x_min = 0, x_max = 2, y_min = 0, y_max = 1){
+  
+  # check inputs: 
+  if (!is.numeric(x_min) || !is.numeric(x_max) || 
+      !is.numeric(y_min) || !is.numeric(y_max) ) {
+    stop("All arguments must be numeric.")
+  }
+  
+  if (x_min > x_max) {
+    message("x_max should be larger than x_min: Reversing them...")
+    x_tmp <- x_min
+    x_min <- x_max
+    x_max <- x_tmp 
+  }
+  
+  if (y_min > y_max) {
+    message("y_max should be larger than y_min: Reversing them...")
+    y_tmp <- y_min
+    y_min <- y_max
+    y_max <- y_tmp 
+  }
+  
+  # initialize:
+  tb <- NA 
+  
+  # ranges: 
+  xs <- x_min:x_max
+  ys <- y_min:y_max
+  
+  # tibble:
+  tb <- tibble::tibble(x = rep(xs, times = length(ys)),
+                       y = rep(ys, each = length(xs)))
+  
+  return(tb)
+  
+}  # make_grid end. 
+
+## Check: 
+# make_grid()
+# make_grid(x_min = 0, x_max = 0, y_min = 1, y_max = 1)
+# make_grid(x_min = 1, x_max = 0, y_min = 2, y_max = 1)
+# make_grid(x_min = "A")
+# make_grid(x_min = 1/2, y_min = 1/3)
+
+
+
 ## ToDo: ----------
+
+# - add exercises involving coin, dice, and dice_2 fns  
+#   (pointing out R oddities with sample). 
 
 ## eof. ----------------------

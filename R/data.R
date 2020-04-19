@@ -1,5 +1,5 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2019 08 08
+## hn | uni.kn | 2020 01 29
 ## ---------------------------
 
 ## Documentation of datasets included in /data. 
@@ -40,21 +40,25 @@
 #' @family datasets
 #' 
 #' @source 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
+#' \strong{Articles}
+#' 
+#' \itemize{
+#' 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
 #' Web-based positive psychology interventions: A reexamination of effectiveness. 
-#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218-232. 
+#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218--232. 
 #' doi: \code{10.1002/jclp.22328} 
 #' 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
 #' Data from, ‘Web-based positive psychology interventions: A reexamination of effectiveness’. 
 #' \emph{Journal of Open Psychology Data}, \emph{6}(1). 
 #' doi: \code{10.5334/jopd.35}
-#' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
 "posPsy_p_info"
 
@@ -111,21 +115,25 @@
 #' \code{\link{posPsy_long}} for a corrected version of this file (in long format). 
 #' 
 #' @source 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
+#' \strong{Articles}
+#' 
+#' \itemize{
+#' 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
 #' Web-based positive psychology interventions: A reexamination of effectiveness. 
-#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218-232. 
+#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218--232. 
 #' doi: \code{10.1002/jclp.22328} 
 #' 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
 #' Data from, ‘Web-based positive psychology interventions: A reexamination of effectiveness’. 
 #' \emph{Journal of Open Psychology Data}, \emph{6}(1). 
 #' doi: \code{10.5334/jopd.35}
-#' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
 "posPsy_AHI_CESD"
 
@@ -151,21 +159,25 @@
 #' \code{\link{posPsy_wide}} for a version of this file (in wide format). 
 #' 
 #' @source 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
+#' \strong{Articles}
+#' 
+#' \itemize{
+#' 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
 #' Web-based positive psychology interventions: A reexamination of effectiveness. 
-#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218-232. 
+#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218--232. 
 #' doi: \code{10.1002/jclp.22328} 
 #' 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
 #' Data from, ‘Web-based positive psychology interventions: A reexamination of effectiveness’. 
 #' \emph{Journal of Open Psychology Data}, \emph{6}(1). 
 #' doi: \code{10.5334/jopd.35}
-#' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
 "posPsy_long"
 
@@ -189,23 +201,28 @@
 #' \code{\link{posPsy_long}} for a version of this file (in long format). 
 #' 
 #' @source 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
+#' \strong{Articles}
+#' 
+#' \itemize{
+#' 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R., & Schüz, B. (2017). 
 #' Web-based positive psychology interventions: A reexamination of effectiveness. 
-#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218-232. 
+#' \emph{Journal of Clinical Psychology}, \emph{73}(3), 218--232. 
 #' doi: \code{10.1002/jclp.22328} 
 #' 
-#' Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
+#' \item Woodworth, R. J., O’Brien-Malone, A., Diamond, M. R. and Schüz, B. (2018). 
 #' Data from, ‘Web-based positive psychology interventions: A reexamination of effectiveness’. 
 #' \emph{Journal of Open Psychology Data}, \emph{6}(1). 
 #' doi: \code{10.5334/jopd.35}
-#' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
 "posPsy_wide"
+
 
 
 # (2) False Positive Psychology data: ---------- 
@@ -264,24 +281,29 @@
 #' @family datasets
 #' 
 #' @source 
-#' Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2011). 
+#' \strong{Articles}
+#' 
+#' \itemize{
+#' 
+#' \item Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2011). 
 #' False-positive psychology: Undisclosed flexibility in data collection and analysis 
 #' allows presenting anything as significant. 
-#' \emph{Psychological Science}, \emph{22}(11), 1359-1366. 
+#' \emph{Psychological Science}, \emph{22}(11), 1359--1366. 
 #' doi: \url{https://doi.org/10.1177/0956797611417632}
 #' 
-#' Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2014). 
+#' \item Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2014). 
 #' Data from paper "False-Positive Psychology: 
 #' Undisclosed Flexibility in Data Collection and Analysis 
 #' Allows Presenting Anything as Significant". 
 #' \emph{Journal of Open Psychology Data}, \emph{2}(1), e1. 
 #' doi: \url{http://doi.org/10.5334/jopd.aa} 
+#' }
 #' 
 #' See files at \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.aa/} and 
-#' the archive at \url{https://zenodo.org/record/7664} for original dataset.
-#' 
+#' the archive at \url{https://zenodo.org/record/7664} for original dataset. 
 
 "falsePosPsy_all"
+
 
 
 
@@ -291,7 +313,16 @@
 
 #' Outlier data.
 #'
-#' \code{outliers} is a fictitious dataset containing the sex and height of 1000 people.  
+#' \code{outliers} is a fictitious dataset containing the id, sex, and height 
+#' of 1000 non-existing, but otherwise normal people.  
+#' 
+#' \strong{Codebook}
+#' 
+#' \describe{
+#'   \item{id}{Participant ID (as character code)}
+#'   \item{sex}{Gender (female vs. male)}
+#'   \item{height}{Height (in cm)}
+#' }
 #' 
 #' @format A tibble with 100 cases (rows) and 3 variables (columns). 
 #' 
@@ -467,6 +498,7 @@
 
 
 
+
 # (5) Chapter 7: Tidying data / tidyr: ---------- 
 
 # https://bookdown.org/hneth/ds4psy/7-3-tidy-essentials.html
@@ -490,7 +522,8 @@
 #'
 #' \code{table6} is a fictitious dataset to practice tidying data.
 #' 
-#' This dataset is a variant of the \code{tidyr::table1} to \code{tidyr::table5} dataset.   
+#' This dataset is a variant of the \code{table1} to \code{table5} datasets 
+#' of the \bold{tidyr} package.   
 #' 
 #' @format A tibble with 6 cases (rows) and 2 variables (columns). 
 #' 
@@ -521,7 +554,8 @@
 #'
 #' \code{table7} is a fictitious dataset to practice tidying data.
 #' 
-#' This dataset is a variant of the \code{tidyr::table1} to \code{tidyr::table5} dataset.   
+#' This dataset is a variant of the \code{table1} to \code{table5} datasets 
+#' of the \bold{tidyr} package.    
 #' 
 #' @format A tibble with 6 cases (rows) and 1 (horrendous) variable (column). 
 #' 
@@ -552,7 +586,8 @@
 #'
 #' \code{table8} is a fictitious dataset to practice tidying data.
 #' 
-#' This dataset is a variant of the \code{tidyr::table1} to \code{tidyr::table5} dataset.   
+#' This dataset is a variant of the \code{table1} to \code{table5} datasets 
+#' of the \bold{tidyr} package.     
 #' 
 #' @format A tibble with 3 cases (rows) and 5 variables (columns). 
 #' 
@@ -593,6 +628,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/exp_wide.csv}. 
 
 "exp_wide"
+
 
 
 
@@ -767,7 +803,38 @@
 
 
 
-# (7) Chapter 10: Iteration / loops: -------- 
+# (7) Text data: -------- 
+
+# ToDo: Find some book/text to analyze. 
+
+
+
+# (8) Time data: --------
+
+# Fame data (DOB and DOD of famous people):
+# Chapter 10 (Time data), Exercise 3
+# See Exercise 3 at https://bookdown.org/hneth/ds4psy/10-4-time-ex.html#time:ex03 
+# See file all_DATASETs.R for raw data (as tibbles).
+
+#' Data table fame.
+#'
+#' \code{fame} is a dataset to practice working with dates.
+#'  
+#' \code{fame} contains the names, areas, dates of birth (DOB), and 
+#' --- if applicable --- the dates of death (DOD) of famous people.
+#' 
+#' @format A tibble with 38 cases (rows) and 4 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' Student solutions to exercises, dates from \url{https://en.wikipedia.org}. 
+
+"fame"
+
+
+
+# (9) Chapter 12: Iteration / loops: -------- 
 
 # https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html
 
@@ -787,8 +854,27 @@
 
 #' Data table tb.
 #'
-#' \code{tb} is a fictitious dataset to practice loops and iteration 
-#' (from a CSV file).  
+#' \code{tb} is a fictitious dataset describing 
+#' 100 non-existing, but otherwise ordinary people.
+#' 
+#' \strong{Codebook} 
+#' 
+#' \itemize{
+#' 
+#' \item 1. \strong{id}: Participant ID.
+#' 
+#' \item 2. \strong{age}: Age (in years).
+#' 
+#' \item 3. \strong{height}: Height (in cm).
+#' 
+#' \item 4. \strong{shoesize}: Shoesize (EU standard).
+#' 
+#' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tibbles).
+#' 
+#' } 
+#' 
+#' \code{tb} was orginally created to practice loops and iterations 
+#' (as a CSV file). 
 #' 
 #' @format A tibble with 100 cases (rows) and 5 variables (columns). 
 #' 
@@ -835,8 +921,12 @@
 "pi_100k"
 
 
+
 ## ToDo: ----------
 
-## - add codebooks (see data_190807.R in archive).
+# - generate ds4psy survey data
+# - add text data (Chapter 9: Text; e.g. attention check response on "i read instructions", some eBook for sentinent analysis, ...) 
+# - add date/time data (Chapter 10: Time, e.g., DOB, time of test, task start/end, etc.)
+# - add more info to codebooks (see data_190807.R in archive)
 
 ## eof. ----------------------

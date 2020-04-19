@@ -12,20 +12,42 @@ See CSV data at \url{http://rpository.com/ds4psy/data/out.csv}.
 outliers
 }
 \description{
-\code{outliers} is a fictitious dataset containing the sex and height of 1000 people.
+\code{outliers} is a fictitious dataset containing the id, sex, and height 
+of 1000 non-existing, but otherwise normal people.
+}
+\details{
+\strong{Codebook}
+
+\describe{
+  \item{id}{Participant ID (as character code)}
+  \item{sex}{Gender (female vs. male)}
+  \item{height}{Height (in cm)}
+}
 }
 \seealso{
-Other datasets: \code{\link{data_1}}, \code{\link{data_2}},
-  \code{\link{data_t1_de}}, \code{\link{data_t1_tab}},
-  \code{\link{data_t1}}, \code{\link{data_t2}},
-  \code{\link{data_t3}}, \code{\link{data_t4}},
-  \code{\link{exp_wide}}, \code{\link{falsePosPsy_all}},
-  \code{\link{pi_100k}}, \code{\link{posPsy_AHI_CESD}},
-  \code{\link{posPsy_long}}, \code{\link{posPsy_p_info}},
-  \code{\link{posPsy_wide}}, \code{\link{t3}},
-  \code{\link{t4}}, \code{\link{table6}},
-  \code{\link{table7}}, \code{\link{table8}},
-  \code{\link{tb}}
+Other datasets: 
+\code{\link{data_1}},
+\code{\link{data_2}},
+\code{\link{data_t1_de}},
+\code{\link{data_t1_tab}},
+\code{\link{data_t1}},
+\code{\link{data_t2}},
+\code{\link{data_t3}},
+\code{\link{data_t4}},
+\code{\link{exp_wide}},
+\code{\link{falsePosPsy_all}},
+\code{\link{fame}},
+\code{\link{pi_100k}},
+\code{\link{posPsy_AHI_CESD}},
+\code{\link{posPsy_long}},
+\code{\link{posPsy_p_info}},
+\code{\link{posPsy_wide}},
+\code{\link{t3}},
+\code{\link{t4}},
+\code{\link{table6}},
+\code{\link{table7}},
+\code{\link{table8}},
+\code{\link{tb}}
 }
 \concept{datasets}
 \keyword{datasets}

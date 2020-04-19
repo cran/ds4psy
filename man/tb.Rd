@@ -12,20 +12,53 @@ See CSV data at \url{http://rpository.com/ds4psy/data/tb.csv}.
 tb
 }
 \description{
-\code{tb} is a fictitious dataset to practice loops and iteration 
-(from a CSV file).
+\code{tb} is a fictitious dataset describing 
+100 non-existing, but otherwise ordinary people.
+}
+\details{
+\strong{Codebook} 
+
+\itemize{
+
+\item 1. \strong{id}: Participant ID.
+
+\item 2. \strong{age}: Age (in years).
+
+\item 3. \strong{height}: Height (in cm).
+
+\item 4. \strong{shoesize}: Shoesize (EU standard).
+
+\item 5. \strong{IQ}: IQ score (according Raven's Regressive Tibbles).
+
+} 
+
+\code{tb} was orginally created to practice loops and iterations 
+(as a CSV file).
 }
 \seealso{
-Other datasets: \code{\link{data_1}}, \code{\link{data_2}},
-  \code{\link{data_t1_de}}, \code{\link{data_t1_tab}},
-  \code{\link{data_t1}}, \code{\link{data_t2}},
-  \code{\link{data_t3}}, \code{\link{data_t4}},
-  \code{\link{exp_wide}}, \code{\link{falsePosPsy_all}},
-  \code{\link{outliers}}, \code{\link{pi_100k}},
-  \code{\link{posPsy_AHI_CESD}}, \code{\link{posPsy_long}},
-  \code{\link{posPsy_p_info}}, \code{\link{posPsy_wide}},
-  \code{\link{t3}}, \code{\link{t4}}, \code{\link{table6}},
-  \code{\link{table7}}, \code{\link{table8}}
+Other datasets: 
+\code{\link{data_1}},
+\code{\link{data_2}},
+\code{\link{data_t1_de}},
+\code{\link{data_t1_tab}},
+\code{\link{data_t1}},
+\code{\link{data_t2}},
+\code{\link{data_t3}},
+\code{\link{data_t4}},
+\code{\link{exp_wide}},
+\code{\link{falsePosPsy_all}},
+\code{\link{fame}},
+\code{\link{outliers}},
+\code{\link{pi_100k}},
+\code{\link{posPsy_AHI_CESD}},
+\code{\link{posPsy_long}},
+\code{\link{posPsy_p_info}},
+\code{\link{posPsy_wide}},
+\code{\link{t3}},
+\code{\link{t4}},
+\code{\link{table6}},
+\code{\link{table7}},
+\code{\link{table8}}
 }
 \concept{datasets}
 \keyword{datasets}

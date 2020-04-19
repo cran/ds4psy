@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- ds4psy logo 1: -->
 <a href="https://bookdown.org/hneth/ds4psy/">
-<img src = "./../inst/images/ds4psy.png" alt = "ds4psy" width = "125px" align = "right" style = "width: 125px; float: right; border:11;"/>
+<img src = "./../inst/images/ds4psy.png" alt = "ds4psy" width = "150px" align = "right" style = "width: 150px; float: right; border:11;"/>
 </a>
 
 
@@ -26,10 +26,10 @@ knitr::opts_chunk$set(
 [Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/).   
 
 This R package provides datasets and functions used in the book and course. 
+Its source code is hosted at <https://github.com/hneth/ds4psy>. 
 
 The book and course introduce the principles and methods of data science for students of psychology and other biological or social sciences. 
-
-The source code of the corresponding [ds4psy book](https://bookdown.org/hneth/ds4psy/) is hosted at <https://github.com/hneth/ds4psy_book>. 
+The book is available at <https://bookdown.org/hneth/ds4psy/>. 
 
 
 ## Description
@@ -37,6 +37,8 @@ The source code of the corresponding [ds4psy book](https://bookdown.org/hneth/ds
 The **ds4psy** book and course provide an introduction to data science that is tailored to the needs of psychologists, but is also suitable for students of the humanities and other biological or social sciences. 
 This audience typically has some knowledge of statistics, but rarely an idea how data is prepared and shaped to allow for statistical testing. 
 By using various data types and working with many examples, we teach tools for transforming, summarizing, and visualizing data. By keeping our eyes open for the perils of misleading representations, the book fosters fundamental skills of data literacy and cultivates reproducible research practices that enable and precede any practical use of statistics. 
+
+The R package **ds4psy** primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in **ds4psy** are designed to be instructive and entertaining, rather than elegant or efficient. 
 
 
 ## Installation
@@ -63,13 +65,15 @@ This package and the corresponding book are still being developed and are update
 
 - A current version of the book is available at <https://bookdown.org/hneth/ds4psy/>.  
 
-- There are 2 GitHub repositories to be distinguished:  
+- The current R package is available at <https://CRAN.R-project.org/package=ds4psy>.  
 
-    - The repository for the [ds4psy book](https://bookdown.org/hneth/ds4psy/) is <https://github.com/hneth/ds4psy_book>.  
+- For source versions, there are 2 GitHub repositories to be distinguished:  
+
+    - The repository for the [ds4psy book](https://bookdown.org/hneth/ds4psy/) is <https://github.com/hneth/ds4psy> (with an additional suffix `_book`). 
 
     - The repository for the [ds4psy package](https://github.com/hneth/ds4psy/) is <https://github.com/hneth/ds4psy>.  
 
-- The current course syllabus and raw versions of all data files used in examples and exercises are available at <http://rpository.com/ds4psy/>.   
+<!-- - The current course syllabus is available at <http://rpository.com/ds4psy/>.    -->
 
 
 ## About
@@ -81,29 +85,35 @@ If you find these materials useful, or want to adopt or alter them for your purp
 
 To cite **ds4psy** in derivations and publications, please use:
 
-- Neth, H. (2019). ds4psy: Data Science for Psychologists.  
+- Neth, H. (2020). ds4psy: Data Science for Psychologists.  
 Social Psychology and Decision Sciences, University of Konstanz, Germany.  
-Textbook and computer software (R package version 0.1.0, August 8, 2019).  
+Textbook and R package (version 0.2.0, April 20, 2020).  
 Retrieved from <https://bookdown.org/hneth/ds4psy/>.
 
 A **BibTeX** entry for LaTeX users is: 
 
-```{r bitex-entry, eval = FALSE}
+```{r bitex-entry, eval = FALSE, highlight = FALSE}
 @Manual{ds4psy,
   title = {ds4psy: Data Science for Psychologists},
   author = {Hansjörg Neth},
-  year = {2019},
+  year = {2020},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {Textbook and R package (version 0.1.0, August 8, 2019)},
-  url = {https://bookdown.org/hneth/ds4psy/},
+  note = {Textbook and R package (version 0.2.0, April 20, 2020)},
+  url = {https://bookdown.org/hneth/ds4psy/}
 }
 ```
 
 
 ### License
 
+<!-- (a) online image: -->
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+<!-- (b) local image: -->
+
+<!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src = "./../inst/images/CC_BY_NC_SA.png" /></a> -->
 
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">**Data science for psychologists** (**ds4psy**)</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://neth.de" property="cc:attributionName" rel="cc:attributionURL">Hansjörg Neth</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. 
 

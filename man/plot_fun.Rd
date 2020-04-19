@@ -2,32 +2,40 @@
 % Please edit documentation in R/plot_fun.R
 \name{plot_fun}
 \alias{plot_fun}
-\title{A function to plot some plot.}
+\title{Another function to plot some plot.}
 \usage{
-plot_fun(a = NA, b = TRUE, c = TRUE, d = 1, e = FALSE,
-  f = FALSE, g = FALSE, c1 = c(rev(pal_seeblau), "white", pal_grau,
-  "black", Bordeaux), c2 = "black")
+plot_fun(
+  a = NA,
+  b = TRUE,
+  c = TRUE,
+  d = 1,
+  e = FALSE,
+  f = FALSE,
+  g = FALSE,
+  c1 = c(rev(pal_seeblau), "white", pal_grau, "black", Bordeaux),
+  c2 = "black"
+)
 }
 \arguments{
 \item{a}{A (natural) number. 
 Default: \code{a = NA}.}
 
-\item{b}{A Boolean value. 
+\item{b}{Boolean. 
 Default: \code{b = TRUE}.}
 
-\item{c}{A Boolean value. 
+\item{c}{Boolean. 
 Default: \code{c = TRUE}.}
 
 \item{d}{A (decimal) number. 
 Default: \code{d = 1.0}.}
 
-\item{e}{A Boolean value. 
+\item{e}{Boolean. 
 Default: \code{e = FALSE}.}
 
-\item{f}{A Boolean value. 
+\item{f}{Boolean. 
 Default: \code{f = FALSE}.}
 
-\item{g}{A Boolean value. 
+\item{g}{Boolean. 
 Default: \code{g = FALSE}.}
 
 \item{c1}{A color palette (e.g., as a vector). 
@@ -38,12 +46,18 @@ Note: Using colors of the \code{unikn} package by default.}
 Default: \code{c2 = "black"}.}
 }
 \description{
-\code{plot_fun} is a function that uses parameters to plot a plot.
+\code{plot_fun} is a function that provides options for plotting a plot.
 }
 \details{
 \code{plot_fun} is deliberately kept cryptic and obscure to illustrate 
-how function parameters can be explored (and why transparent variable 
-names are essential for understanding and using a function).
+how function parameters can be explored. 
+
+\code{plot_fun} also shows that brevity in argument names should not 
+come at the expense of clarity. In fact, transparent argument names 
+are absolutely essential for understanding and using a function. 
+
+\code{plot_fun} currently requires \code{pal_seeblau}, \code{pal_grau}, and 
+\code{Bordeaux} (from the \strong{unikn} package) for its default colors.
 }
 \examples{
 # Basics: 
@@ -58,8 +72,11 @@ plot_fun(a = 4, f = TRUE, g = TRUE, c1 = c("steelblue", "white", "firebrick"))
 \code{\link{plot_fn}} for a related function; 
 \code{\link{pal_ds4psy}} for color palette.
 
-Other plot functions: \code{\link{plot_fn}},
-  \code{\link{plot_n}}, \code{\link{plot_tiles}},
-  \code{\link{theme_ds4psy}}
+Other plot functions: 
+\code{\link{plot_fn}()},
+\code{\link{plot_n}()},
+\code{\link{plot_text}()},
+\code{\link{plot_tiles}()},
+\code{\link{theme_ds4psy}()}
 }
 \concept{plot functions}

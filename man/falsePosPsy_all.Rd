@@ -6,18 +6,23 @@
 \title{False Positive Psychology data.}
 \format{A tibble with 78 cases (rows) and 19 variables (columns):}
 \source{
-Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2011). 
+\strong{Articles}
+
+\itemize{
+
+\item Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2011). 
 False-positive psychology: Undisclosed flexibility in data collection and analysis 
 allows presenting anything as significant. 
-\emph{Psychological Science}, \emph{22}(11), 1359-1366. 
+\emph{Psychological Science}, \emph{22}(11), 1359--1366. 
 doi: \url{https://doi.org/10.1177/0956797611417632}
 
-Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2014). 
+\item Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2014). 
 Data from paper "False-Positive Psychology: 
 Undisclosed Flexibility in Data Collection and Analysis 
 Allows Presenting Anything as Significant". 
 \emph{Journal of Open Psychology Data}, \emph{2}(1), e1. 
 doi: \url{http://doi.org/10.5334/jopd.aa} 
+}
 
 See files at \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.aa/} and 
 the archive at \url{https://zenodo.org/record/7664} for original dataset.
@@ -33,7 +38,7 @@ highlight problematic research practices within psychology.
 Simmons, Nelson and Simonsohn (2011) published a controversial article 
 with a necessarily false finding. By conducting simulations and 2 simple behavioral experiments, 
 the authors show that flexibility in data collection, analysis, and reporting 
-dramatically increases the rate of false-positive findings.
+dramatically increases the rate of false-positive findings. 
 
 \describe{
   \item{study}{Study ID.}
@@ -72,17 +77,29 @@ dramatically increases the rate of false-positive findings.
 See \url{https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html} for codebook and more information.
 }
 \seealso{
-Other datasets: \code{\link{data_1}}, \code{\link{data_2}},
-  \code{\link{data_t1_de}}, \code{\link{data_t1_tab}},
-  \code{\link{data_t1}}, \code{\link{data_t2}},
-  \code{\link{data_t3}}, \code{\link{data_t4}},
-  \code{\link{exp_wide}}, \code{\link{outliers}},
-  \code{\link{pi_100k}}, \code{\link{posPsy_AHI_CESD}},
-  \code{\link{posPsy_long}}, \code{\link{posPsy_p_info}},
-  \code{\link{posPsy_wide}}, \code{\link{t3}},
-  \code{\link{t4}}, \code{\link{table6}},
-  \code{\link{table7}}, \code{\link{table8}},
-  \code{\link{tb}}
+Other datasets: 
+\code{\link{data_1}},
+\code{\link{data_2}},
+\code{\link{data_t1_de}},
+\code{\link{data_t1_tab}},
+\code{\link{data_t1}},
+\code{\link{data_t2}},
+\code{\link{data_t3}},
+\code{\link{data_t4}},
+\code{\link{exp_wide}},
+\code{\link{fame}},
+\code{\link{outliers}},
+\code{\link{pi_100k}},
+\code{\link{posPsy_AHI_CESD}},
+\code{\link{posPsy_long}},
+\code{\link{posPsy_p_info}},
+\code{\link{posPsy_wide}},
+\code{\link{t3}},
+\code{\link{t4}},
+\code{\link{table6}},
+\code{\link{table7}},
+\code{\link{table8}},
+\code{\link{tb}}
 }
 \concept{datasets}
 \keyword{datasets}
