@@ -4,7 +4,9 @@
 \name{outliers}
 \alias{outliers}
 \title{Outlier data.}
-\format{A tibble with 100 cases (rows) and 3 variables (columns).}
+\format{
+A table with 100 cases (rows) and 3 variables (columns).
+}
 \source{
 See CSV data at \url{http://rpository.com/ds4psy/data/out.csv}.
 }
@@ -44,6 +46,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

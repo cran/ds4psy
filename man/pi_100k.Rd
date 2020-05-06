@@ -4,7 +4,9 @@
 \name{pi_100k}
 \alias{pi_100k}
 \title{Data: 100k digits of pi.}
-\format{A character of \code{nchar(pi_100k) = 100001}.}
+\format{
+A character of \code{nchar(pi_100k) = 100001}.
+}
 \source{
 See TXT data at \url{http://rpository.com/ds4psy/data/pi_100k.txt}. 
 
@@ -36,6 +38,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

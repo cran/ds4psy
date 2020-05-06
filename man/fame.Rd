@@ -4,7 +4,9 @@
 \name{fame}
 \alias{fame}
 \title{Data table fame.}
-\format{A tibble with 38 cases (rows) and 4 variables (columns).}
+\format{
+A table with 38 cases (rows) and 4 variables (columns).
+}
 \source{
 Student solutions to exercises, dates from \url{https://en.wikipedia.org}.
 }
@@ -37,6 +39,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

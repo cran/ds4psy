@@ -1,5 +1,5 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2020 01 29
+## hn | uni.kn | 2020 05 06
 ## ---------------------------
 
 ## Documentation of datasets included in /data. 
@@ -35,7 +35,7 @@
 #' 
 #' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
 #'
-#' @format A tibble with 295 cases (rows) and 6 variables (columns).
+#' @format A table with 295 cases (rows) and 6 variables (columns).
 #' 
 #' @family datasets
 #' 
@@ -107,7 +107,7 @@
 #' 
 #' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
 #' 
-#' @format A tibble with 992 cases (rows) and 50 variables (columns).
+#' @format A table with 992 cases (rows) and 50 variables (columns).
 #'  
 #' @family datasets
 #' 
@@ -150,7 +150,7 @@
 #' This dataset is a corrected version of \code{\link{posPsy_AHI_CESD}} 
 #' and in long-format. 
 #' 
-#' @format A tibble with 990 cases (rows) and 50 variables (columns).
+#' @format A table with 990 cases (rows) and 50 variables (columns).
 #'  
 #' @family datasets
 #' 
@@ -276,7 +276,7 @@
 #' See \url{https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html} for codebook and more information. 
 #'
 #'
-#' @format A tibble with 78 cases (rows) and 19 variables (columns):
+#' @format A table with 78 cases (rows) and 19 variables (columns):
 #' 
 #' @family datasets
 #' 
@@ -324,7 +324,7 @@
 #'   \item{height}{Height (in cm)}
 #' }
 #' 
-#' @format A tibble with 100 cases (rows) and 3 variables (columns). 
+#' @format A table with 100 cases (rows) and 3 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -359,7 +359,7 @@
 #' \code{data_t1} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -388,7 +388,7 @@
 #' \code{data_t1_de} is a fictitious dataset to practice data import 
 #' (from a CSV file, de/European style).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -417,7 +417,7 @@
 #' \code{data_t1_tab} is a fictitious dataset to practice data import 
 #' (from a TAB file).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -450,7 +450,7 @@
 #' \code{data_1} is a fictitious dataset to practice data import 
 #' (from a DELIMITED file).  
 #' 
-#' @format A tibble with 100 cases (rows) and 4 variables (columns). 
+#' @format A table with 100 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -486,7 +486,7 @@
 #' \code{data_2} is a fictitious dataset to practice data import 
 #' (from a FWF file).  
 #' 
-#' @format A tibble with 100 cases (rows) and 4 variables (columns). 
+#' @format A table with 100 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -525,7 +525,7 @@
 #' This dataset is a variant of the \code{table1} to \code{table5} datasets 
 #' of the \bold{tidyr} package.   
 #' 
-#' @format A tibble with 6 cases (rows) and 2 variables (columns). 
+#' @format A table with 6 cases (rows) and 2 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -557,7 +557,7 @@
 #' This dataset is a variant of the \code{table1} to \code{table5} datasets 
 #' of the \bold{tidyr} package.    
 #' 
-#' @format A tibble with 6 cases (rows) and 1 (horrendous) variable (column). 
+#' @format A table with 6 cases (rows) and 1 (horrendous) variable (column). 
 #' 
 #' @family datasets
 #' 
@@ -589,7 +589,7 @@
 #' This dataset is a variant of the \code{table1} to \code{table5} datasets 
 #' of the \bold{tidyr} package.     
 #' 
-#' @format A tibble with 3 cases (rows) and 5 variables (columns). 
+#' @format A table with 3 cases (rows) and 5 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -620,7 +620,7 @@
 #' \code{exp_wide} is a fictitious dataset to practice tidying data 
 #' (here: converting from wide to long format).
 #' 
-#' @format A tibble with 10 cases (rows) and 7 variables (columns). 
+#' @format A table with 10 cases (rows) and 7 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -630,13 +630,81 @@
 "exp_wide"
 
 
+# (6) Chapter 7: Exercise 1: 'Four messes and one tidy table': ------ 
+
+# https://bookdown.org/hneth/ds4psy/7-4-tidy-ex.html#tidy:ex01
 
 
-# (6) Chapter 8: Joining data / dplyr: ---------- 
+# (6a): t_1.csv: ----- 
+
+#' Data t_1.
+#'
+#' \code{t_1} is a fictitious dataset to practice tidying data.
+#' 
+#' @format A table with 8 cases (rows) and 9 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data at \url{http://rpository.com/ds4psy/data/t_1.csv}. 
+
+"t_1"
+
+
+# (6b): t_2.csv: ----- 
+
+#' Data t_2.
+#'
+#' \code{t_2} is a fictitious dataset to practice tidying data.
+#' 
+#' @format A table with 8 cases (rows) and 5 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data at \url{http://rpository.com/ds4psy/data/t_2.csv}. 
+
+"t_2"
+
+
+# (6c): t_3.csv: ----- 
+
+#' Data t_3.
+#'
+#' \code{t_3} is a fictitious dataset to practice tidying data.
+#' 
+#' @format A table with 16 cases (rows) and 6 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data at \url{http://rpository.com/ds4psy/data/t_3.csv}. 
+
+"t_3"
+
+
+# (6d): t_4.csv: ----- 
+
+#' Data t_4.
+#'
+#' \code{t_4} is a fictitious dataset to practice tidying data.
+#' 
+#' @format A table with 16 cases (rows) and 8 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data at \url{http://rpository.com/ds4psy/data/t_4.csv}. 
+
+"t_4"
+
+
+
+# (7) Chapter 8: Joining data / dplyr: ---------- 
 
 # https://bookdown.org/hneth/ds4psy/8-3-join-essentials.html
 
-# (6a) data_t1.csv: ---- 
+# (7a) data_t1.csv: ---- 
 # Note: Same as (4a) above. 
 
 # data_t1 <- readr::read_csv("http://rpository.com/ds4psy/data/data_t1.csv")
@@ -653,7 +721,7 @@
 # See (4a) above.
 
 
-# (6b) data_t2.csv: ---- 
+# (7b) data_t2.csv: ---- 
 
 # data_t2 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t2.csv")
 # 
@@ -672,7 +740,7 @@
 #' \code{data_t2} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -684,7 +752,7 @@
 
 # Exercise 1:
 
-# (6c) t3.csv: ---- 
+# (7c) t3.csv: ---- 
 
 # t3 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/t3.csv")
 # 
@@ -703,7 +771,7 @@
 #' \code{t3} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 10 cases (rows) and 4 variables (columns). 
+#' @format A table with 10 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -713,7 +781,7 @@
 "t3"
 
 
-# (6d) t4.csv: ---- 
+# (7d) t4.csv: ---- 
 
 # t4 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/t4.csv")
 # 
@@ -732,7 +800,7 @@
 #' \code{t4} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 10 cases (rows) and 4 variables (columns). 
+#' @format A table with 10 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -744,7 +812,7 @@
 
 # Exercise 3: 
 
-# (6e) data_t3.csv: ---- 
+# (7e) data_t3.csv: ---- 
 
 # data_t3 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t3.csv")
 # 
@@ -763,7 +831,7 @@
 #' \code{data_t3} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -773,7 +841,7 @@
 "data_t3"
 
 
-# (6f) data_t4.csv: ---- 
+# (7f) data_t4.csv: ---- 
 
 # data_t4 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t4.csv")
 # 
@@ -792,7 +860,7 @@
 #' \code{data_t4} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
 #' 
-#' @format A tibble with 20 cases (rows) and 4 variables (columns). 
+#' @format A table with 20 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -803,18 +871,18 @@
 
 
 
-# (7) Text data: -------- 
+# (8) Text data: -------- 
 
 # ToDo: Find some book/text to analyze. 
 
 
 
-# (8) Time data: --------
+# (9) Time data: --------
 
 # Fame data (DOB and DOD of famous people):
 # Chapter 10 (Time data), Exercise 3
 # See Exercise 3 at https://bookdown.org/hneth/ds4psy/10-4-time-ex.html#time:ex03 
-# See file all_DATASETs.R for raw data (as tibbles).
+# See file all_DATASETs.R for raw data (as tables).
 
 #' Data table fame.
 #'
@@ -823,7 +891,7 @@
 #' \code{fame} contains the names, areas, dates of birth (DOB), and 
 #' --- if applicable --- the dates of death (DOD) of famous people.
 #' 
-#' @format A tibble with 38 cases (rows) and 4 variables (columns). 
+#' @format A table with 38 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -834,11 +902,11 @@
 
 
 
-# (9) Chapter 12: Iteration / loops: -------- 
+# (10) Chapter 12: Iteration / loops: -------- 
 
 # https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html
 
-# (7a) tb data: ------ 
+# (10a) tb data: ------ 
 
 # tb <- readr::read_csv2("http://rpository.com/ds4psy/data/tb.csv") 
 # 
@@ -869,14 +937,14 @@
 #' 
 #' \item 4. \strong{shoesize}: Shoesize (EU standard).
 #' 
-#' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tibbles).
+#' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tables).
 #' 
 #' } 
 #' 
 #' \code{tb} was orginally created to practice loops and iterations 
 #' (as a CSV file). 
 #' 
-#' @format A tibble with 100 cases (rows) and 5 variables (columns). 
+#' @format A table with 100 cases (rows) and 5 variables (columns). 
 #' 
 #' @family datasets
 #' 
@@ -886,7 +954,7 @@
 "tb"
 
 
-# (7b) pi data: ------ 
+# (10b) pi data: ------ 
 
 # https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html 
 # Orig. data source <http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html>

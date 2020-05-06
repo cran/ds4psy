@@ -86,7 +86,7 @@ Default: \code{border_size = 0.5}.}
 \description{
 \code{plot_text} parses text 
 (from a file or from user input in Console) 
-into a tibble and then plots all 
+into a table and then plots all 
 its characters as a tile plot (using \strong{ggplot2}).
 }
 \examples{
@@ -133,7 +133,7 @@ its characters as a tile plot (using \strong{ggplot2}).
 
 }
 \seealso{
-\code{\link{read_ascii}} for reading text into a tibble; 
+\code{\link{read_ascii}} for reading text into a table; 
 \code{\link{pal_ds4psy}} for default color palette.
 
 Other plot functions: 

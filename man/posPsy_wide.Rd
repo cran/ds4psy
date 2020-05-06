@@ -4,7 +4,9 @@
 \name{posPsy_wide}
 \alias{posPsy_wide}
 \title{Positive Psychology: All corrected data (in wide format).}
-\format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 295 rows and 294 columns.}
+\format{
+An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 295 rows and 294 columns.
+}
 \source{
 \strong{Articles}
 
@@ -62,6 +64,10 @@ Other datasets:
 \code{\link{posPsy_p_info}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

@@ -4,7 +4,9 @@
 \name{table7}
 \alias{table7}
 \title{Data table7.}
-\format{A tibble with 6 cases (rows) and 1 (horrendous) variable (column).}
+\format{
+A table with 6 cases (rows) and 1 (horrendous) variable (column).
+}
 \source{
 See CSV data at \url{http://rpository.com/ds4psy/data/table7.csv}.
 }
@@ -39,6 +41,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table8}},
 \code{\link{tb}}

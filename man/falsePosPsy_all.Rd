@@ -4,7 +4,9 @@
 \name{falsePosPsy_all}
 \alias{falsePosPsy_all}
 \title{False Positive Psychology data.}
-\format{A tibble with 78 cases (rows) and 19 variables (columns):}
+\format{
+A table with 78 cases (rows) and 19 variables (columns):
+}
 \source{
 \strong{Articles}
 
@@ -96,6 +98,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

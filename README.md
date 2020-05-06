@@ -53,7 +53,7 @@ install.packages('ds4psy')  # install ds4psy from CRAN client
 library('ds4psy')           # load to use the package
 ```
 
-The current development version can be installed from its
+The current development version of **ds4psy** can be installed from its
 [GitHub](https://github.com) repository at
 <https://github.com/hneth/ds4psy/>:
 
@@ -64,7 +64,7 @@ library('ds4psy')  # load to use the package
 ```
 
 The most recent version of the [ds4psy
-book](https://bookdown.org/hneth/ds4psy/) is freely available at
+book](https://bookdown.org/hneth/ds4psy/) is available at
 <https://bookdown.org/hneth/ds4psy/>.
 
 ## Course Coordinates
@@ -85,7 +85,7 @@ book](https://bookdown.org/hneth/ds4psy/) is freely available at
   - The [ds4psy book](https://bookdown.org/hneth/ds4psy/) with examples
     and weekly programming exercises (WPAs) is available at
     <https://bookdown.org/hneth/ds4psy/>.  
-  - The [ds4psy package](https://CRAN.R-project.org/package=ds4psy) is
+  - The R package [ds4psy](https://CRAN.R-project.org/package=ds4psy) is
     available at <https://CRAN.R-project.org/package=ds4psy>.
 
 ## Description
@@ -272,7 +272,7 @@ To cite **ds4psy** in derivations and publications, please use:
   - Neth, H. (2020). ds4psy: Data Science for Psychologists.  
     Social Psychology and Decision Sciences, University of Konstanz,
     Germany.  
-    Textbook and R package (version 0.2.0, April 20, 2020).  
+    Textbook and R package (version 0.2.1, May 6, 2020).  
     Retrieved from <https://bookdown.org/hneth/ds4psy/>.
 
 A **BibTeX** entry for LaTeX users is:
@@ -284,7 +284,7 @@ A **BibTeX** entry for LaTeX users is:
   year = {2020},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {Textbook and R package (version 0.2.0, April 20, 2020)},
+  note = {Textbook and R package (version 0.2.1, May 6, 2020)},
   url = {https://bookdown.org/hneth/ds4psy/} 
 }
 ```
@@ -294,13 +294,15 @@ The URL of the **ds4psy** R package is
 
 ### License
 
-<!-- (a) online image: -->
+<!-- (a) Use online image: -->
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
-<!-- (b) local image: -->
+<!-- (b) Use local image: -->
 
 <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src = "./images/CC_BY_NC_SA.png" /></a> -->
+
+<!-- License text:  -->
 
 <span xmlns:dct="http://purl.org/dc/terms/" data-property="dct:title">**Data
 science for psychologists** (**ds4psy**)</span> by
@@ -312,6 +314,6 @@ License</a>.
 
 <!-- Update: -->
 
-\[Updated 2020-04-18 by [hn](https://neth.de).\]
+\[Updated 2020-05-06 by [hn](https://neth.de).\]
 
 <!-- eof. -->

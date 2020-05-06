@@ -4,7 +4,9 @@
 \name{table8}
 \alias{table8}
 \title{Data table8.}
-\format{A tibble with 3 cases (rows) and 5 variables (columns).}
+\format{
+A table with 3 cases (rows) and 5 variables (columns).
+}
 \source{
 See CSV data at \url{http://rpository.com/ds4psy/data/table8.csv}.
 }
@@ -39,6 +41,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{tb}}

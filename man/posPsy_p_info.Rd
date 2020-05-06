@@ -4,7 +4,9 @@
 \name{posPsy_p_info}
 \alias{posPsy_p_info}
 \title{Positive Psychology: Participant data.}
-\format{A tibble with 295 cases (rows) and 6 variables (columns).}
+\format{
+A table with 295 cases (rows) and 6 variables (columns).
+}
 \source{
 \strong{Articles}
 
@@ -76,6 +78,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},

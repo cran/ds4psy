@@ -1,8 +1,15 @@
 ## plot_fun.R | ds4psy
-## hn | uni.kn | 2020 04 18
+## hn | uni.kn | 2020 05 06
 ## ---------------------------
 
 ## Functions for plotting. 
+
+## Global variables: ---------- 
+
+utils::globalVariables(c("x", "y", "char"))  # to avoid Warning NOTE "Undefined global functions or variables". 
+
+# Source: 
+# <https://community.rstudio.com/t/how-to-solve-no-visible-binding-for-global-variable-note/28887> 
 
 ## Plotting: ---------- 
 
@@ -59,19 +66,17 @@
 #' # (1) Tile plot:
 #' plot_tiles()  # default plot (random n, with borders, no labels)
 #' 
-#' plot_tiles(n =  6, sort = FALSE)      # random order
-#' plot_tiles(n =  8, borders = FALSE)   # no borders
-#' plot_tiles(n = 10, lbl_tiles = TRUE)  # with tile labels 
-#' plot_tiles(n = 10, lbl_title = TRUE)  # with title label 
+#' plot_tiles(n = 4, sort = FALSE)      # random order
+#' plot_tiles(n = 6, borders = FALSE)   # no borders
+#' plot_tiles(n = 8, lbl_tiles = TRUE,  # with tile + 
+#'            lbl_title = TRUE)         # title labels 
 #' 
 #' # Set colors: 
-#' plot_tiles(n = 3, pal = c("steelblue", "white", "black"),
-#'            lbl_tiles = TRUE, sort = TRUE)
-#' plot_tiles(n = 5, pal = c("orange", "white", "firebrick"),
+#' plot_tiles(n = 4, pal = c("orange", "white", "firebrick"),
 #'            lbl_tiles = TRUE, lbl_title = TRUE,
 #'            sort = TRUE)
-#' plot_tiles(n = 10, sort = FALSE, border_col = "white", border_size = 2)
-#'   
+#' plot_tiles(n = 6, sort = FALSE, border_col = "white", border_size = 2)
+#'
 #' # Fixed rseed:
 #' plot_tiles(n = 4, sort = FALSE, borders = FALSE, 
 #'            lbl_tiles = TRUE, lbl_title = TRUE, 
@@ -80,14 +85,12 @@
 #' # (2) polar plot:  
 #' plot_tiles(polar = TRUE)  # default polar plot (with borders, no labels)
 #' 
-#' plot_tiles(n =  6, polar = TRUE, sort = FALSE)      # random order
-#' plot_tiles(n =  8, polar = TRUE, borders = FALSE)   # no borders
-#' plot_tiles(n = 10, polar = TRUE, lbl_tiles = TRUE)  # with tile labels 
-#' plot_tiles(n = 10, polar = TRUE, lbl_title = TRUE)  # with title label 
-#' 
+#' plot_tiles(n = 4, polar = TRUE, sort = FALSE)   # random order
+#' plot_tiles(n = 6, polar = TRUE, sort = TRUE,    # sorted and with 
+#'            lbl_tiles = TRUE, lbl_title = TRUE)  # tile + title labels 
 #' plot_tiles(n = 4, sort = FALSE, borders = TRUE,  
 #'            border_col = "white", border_size = 2, 
-#'            polar = TRUE, rseed = 132)
+#'            polar = TRUE, rseed = 132)           # fixed rseed
 #'  
 #' @family plot functions
 #'
@@ -95,8 +98,7 @@
 #' \code{\link{pal_ds4psy}} for default color palette. 
 #' 
 #' @import ggplot2
-#' @import grDevices
-#' @import here
+#' @import grDevices 
 #' @import unikn
 #' @importFrom cowplot theme_nothing 
 #' 
@@ -231,9 +233,9 @@ plot_tiles <- function(n = NA,
   }  # if (sort) etc.
   
   # create a n x n SQUARE of tiles:
-  cur_plot <- ggplot2::ggplot(cur_tb) + 
-    ggplot2::geom_tile(aes(x = cur_tb$x, y = cur_tb$y,  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
-    ggplot2::geom_text(aes(x = cur_tb$x, y = cur_tb$y, label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
+  cur_plot <- ggplot2::ggplot(data = cur_tb) + 
+    ggplot2::geom_tile(aes(x = x, y = y,  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
+    ggplot2::geom_text(aes(x = x, y = y, label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
     ## Label (on top left): 
     ggplot2::annotate("text", x = x_lbl, y = y_lbl, label = cur_lbl, col = top_col, 
                       size = lbl_size_top, fontface = 1) +  # label (on top left)
@@ -292,7 +294,13 @@ plot_tiles <- function(n = NA,
     # suffix <- ""  # "_ds4psy" "_190731" # ""  # (e.g., "_ds4psy")
     
     plot_name <- paste0(prefix, coord, num, sort_rand, brds, lbls, titl, suffix, filext)
-    full_name <- here(save_path, plot_name)
+    
+    ## (a) using the here package: 
+    # full_name <- here::here(save_path, plot_name)
+    
+    # (b) using getwd() instead:
+    cur_wd   <- getwd()
+    full_name <- paste0(cur_wd, "/", save_path, "/", plot_name)  
     
     # Parameters (currently fixed):
     # plot_size <-  5.0  # SMALL:  in cm (used in ggsave below): normal (small) size
@@ -527,18 +535,16 @@ plot_fun <- function(a = NA,
 #' plot_n()  # default plot (random n, row = TRUE, with borders, no labels)
 #' plot_n(row = FALSE)  # default plot (random n, with borders, no labels)
 #' 
-#' plot_n(n =  6, sort = FALSE)      # random order
-#' plot_n(n =  8, borders = FALSE)   # no borders
-#' plot_n(n = 10, lbl_tiles = TRUE)  # with tile labels 
-#' plot_n(n = 10, lbl_title = TRUE)  # with title label 
+#' plot_n(n = 4, sort = FALSE)      # random order
+#' plot_n(n = 6, borders = FALSE)   # no borders
+#' plot_n(n = 8, lbl_tiles = TRUE,  # with tile + 
+#'        lbl_title = TRUE)         # title labels 
 #' 
 #' # Set colors: 
-#' plot_n(n = 3, pal = c("forestgreen", "white", "black"),
-#'        lbl_tiles = TRUE, sort = TRUE)
 #' plot_n(n = 5, row = FALSE,  
 #'        pal = c("orange", "white", "firebrick"),
 #'        lbl_tiles = TRUE, lbl_title = TRUE, sort = TRUE)
-#' plot_n(n = 10, sort = FALSE, border_col = "white", border_size = 2)
+#' plot_n(n = 6, sort = FALSE, border_col = "white", border_size = 2)
 #'   
 #' # Fixed rseed:
 #' plot_n(n = 4, sort = FALSE, borders = FALSE, 
@@ -547,11 +553,11 @@ plot_fun <- function(a = NA,
 #' # (2) polar plot (as PIE or TARGET):    
 #' plot_n(polar = TRUE)  # PIE plot (with borders, no labels)
 #' plot_n(polar = TRUE, row = FALSE)  # TARGET plot (with borders, no labels)
-#'  
+#' 
 #' plot_n(n = 4, polar = TRUE, sort = FALSE)      # PIE in random order
 #' plot_n(n = 5, polar = TRUE, row = FALSE, borders = FALSE)   # TARGET no borders
-#' plot_n(n = 7, polar = TRUE, lbl_tiles = TRUE)  # PIE with tile labels 
-#' plot_n(n = 7, polar = TRUE, row = FALSE, lbl_title = TRUE)  # TARGET with title label 
+#' plot_n(n = 5, polar = TRUE, lbl_tiles = TRUE)  # PIE with tile labels 
+#' plot_n(n = 5, polar = TRUE, row = FALSE, lbl_title = TRUE)  # TARGET with title label 
 #' 
 #' plot_n(n = 4, row = TRUE, sort = FALSE, borders = TRUE,  
 #'        border_col = "white", border_size = 2, 
@@ -567,7 +573,6 @@ plot_fun <- function(a = NA,
 #' 
 #' @import ggplot2
 #' @import grDevices
-#' @import here
 #' @import unikn
 #' @importFrom cowplot theme_nothing 
 #' 
@@ -749,9 +754,9 @@ plot_n <- function(n = NA,
   if (row) {
     
     # create a ROW of tiles:
-    cur_plot <- ggplot2::ggplot(cur_tb) + 
-      ggplot2::geom_tile(aes(x = cur_tb$x, y = cur_tb$y,  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
-      ggplot2::geom_text(aes(x = cur_tb$x, y = cur_tb$y, label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
+    cur_plot <- ggplot2::ggplot(data = cur_tb) + 
+      ggplot2::geom_tile(aes(x = x, y = y,  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
+      ggplot2::geom_text(aes(x = x, y = y, label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
       ## Label (on top left): 
       ggplot2::annotate("text", x = x_lbl, y = y_lbl, label = cur_lbl, col = top_col, 
                         size = lbl_size_top, fontface = 1) +  # label (on top left)
@@ -769,9 +774,9 @@ plot_n <- function(n = NA,
   } else { # as col: 
     
     # create a COLUMN of tiles:
-    cur_plot <- ggplot2::ggplot(cur_tb) + 
-      ggplot2::geom_tile(aes(x = cur_tb$y, y = ((n + 1) - cur_tb$x),  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
-      ggplot2::geom_text(aes(x = cur_tb$y, y = ((n + 1) - cur_tb$x), label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
+    cur_plot <- ggplot2::ggplot(data = cur_tb) + 
+      ggplot2::geom_tile(aes(x = y, y = ((n + 1) - x),  fill = !!sym(var_tile)), color = brd_col, size = brd_size) +  # tiles (with borders, opt.)
+      ggplot2::geom_text(aes(x = y, y = ((n + 1) - x), label = !!sym(var_tile)), color = lbl_col, size = lbl_size) +  # labels (opt.) 
       ## Label (on top left): 
       ggplot2::annotate("text", x = x_lbl, y = y_lbl, label = cur_lbl, col = top_col, 
                         size = lbl_size_top, fontface = 1) +  # label (on top left)
@@ -841,7 +846,13 @@ plot_n <- function(n = NA,
     # suffix <- ""  # "_ds4psy" "_190731" # ""  # (e.g., "_ds4psy")
     
     plot_name <- paste0(prefix, p_type, coord, num, sort_rand, brds, lbls, titl, suffix, filext)
-    full_name <- here(save_path, plot_name)
+    
+    ## (a) using the here package: 
+    # full_name <- here::here(save_path, plot_name)
+    
+    # (b) using getwd() instead:
+    cur_wd   <- getwd()
+    full_name <- paste0(cur_wd, "/", save_path, "/", plot_name) 
     
     # Parameters (currently fixed):
     # plot_size <-  5.0  # SMALL:  in cm (used in ggsave below): normal (small) size
@@ -1066,7 +1077,7 @@ plot_fn <- function(x = NA,
 #'
 #' \code{plot_text} parses text 
 #' (from a file or from user input in Console) 
-#' into a tibble and then plots all 
+#' into a table and then plots all 
 #' its characters as a tile plot (using \strong{ggplot2}).
 #' 
 #' @param file The text file to read (or its path). 
@@ -1174,11 +1185,10 @@ plot_fn <- function(x = NA,
 #' @family plot functions
 #'
 #' @seealso
-#' \code{\link{read_ascii}} for reading text into a tibble; 
+#' \code{\link{read_ascii}} for reading text into a table; 
 #' \code{\link{pal_ds4psy}} for default color palette. 
 #' 
 #' @import ggplot2
-#' @import tibble 
 #' @importFrom grDevices colorRampPalette 
 #' @importFrom cowplot theme_nothing
 #' @importFrom stats runif
@@ -1236,7 +1246,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
     brd_size <- NA  # hide label
   }
   
-  # (1) Read text file into tibble: 
+  # (1) Read text file into a table: 
   tb_txt <- read_ascii(file = file, flip_y = TRUE)
   nr_chars <- nrow(tb_txt)
   # tb_txt  # 4debugging
@@ -1247,7 +1257,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
     
     # (a) case-sensitive match: 
     
-    # # (A) char_freq as tibble:   
+    # # (A) char_freq as table:   
     # # Using dplyr + pipe:
     # char_freq <- tb_txt %>%
     #   dplyr::count(char) %>%   # Note: Upper- and lowercase are counted separately!
@@ -1265,7 +1275,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
     
     # (b) case-INsensitive match:
     
-    # # (A) char_freq as tibble:   
+    # # (A) char_freq as table:   
     # tb_txt$char_lc <- tolower(tb_txt$char)  # all in lowercase!
     # 
     # # Using dplyr + pipe:
@@ -1292,7 +1302,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   # (3) If char_bg is defined && NOT the most frequent in char_freq: Make it the most frequent character:
   if (!is.na(char_bg) && (names(char_freq)[1] != char_bg)){
     
-    # # (A) char_freq as tibble:    
+    # # (A) char_freq as table:    
     # # Set counter of char_freq$n for char_bg to a maximum value:
     # char_freq$n[char_freq$char == char_bg] <- max(1000, (max(char_freq$n) + 1))
     # 
@@ -1307,7 +1317,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   }
   # print(char_freq)  # 4debugging
   
-  # # (A) char_freq as tibble:   
+  # # (A) char_freq as table:   
   # nr_char_freq <- nrow(char_freq)
   
   # (B) char_freq as named vector:
@@ -1345,7 +1355,7 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   
   for (i in 1:n_replace){
     
-    # # (A) char_freq as tibble:  
+    # # (A) char_freq as table:  
     # cur_char <- char_freq$char[i]  # i-th most freq char
     
     # (B) char_freq as named vector:  
@@ -1374,10 +1384,10 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   
   
   # (6) Use ggplot2: 
-  cur_plot <- ggplot2::ggplot(data = tb_txt, aes(x = tb_txt$x, y = tb_txt$y)) +
+  cur_plot <- ggplot2::ggplot(data = tb_txt, aes(x = x, y = y)) +
     ggplot2::geom_tile(aes(), fill = col_map, color = brd_col, size = brd_size,  # tiles (with borders, opt.)
                        height = height, width = width) +  
-    ggplot2::geom_text(aes(label = tb_txt$char), color = col_lbl, size = cex, 
+    ggplot2::geom_text(aes(label = char), color = col_lbl, size = cex, 
                        fontface = fontface, family = family, angle = char_angles) + 
     ggplot2::coord_equal() + 
     # theme: 

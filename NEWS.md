@@ -1,5 +1,5 @@
 
-# ds4psy 0.2.0.9000+
+# ds4psy 0.2.1.9001+
 
 <!-- Description: --> 
 
@@ -7,14 +7,55 @@ All datasets and functions required for the examples and exercises of the book "
 
 <!-- Source code: --> 
 
-The current development version of **ds4psy** (0.2.0.9000+) is hosted at <https://github.com/hneth/ds4psy/>. 
+The current development version of **ds4psy** (0.2.1.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+
+-------- 
+
+# ds4psy 0.2.1
+
+Release of **ds4psy** (0.2.1) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-05-06] 
+
+This is a **maintenance release** to remove some dependencies, fix bugs on CRAN platforms, and add some datasets. 
+
+## Major changes 
+
+- Removed dependencies on the `here` and `tibble` packages 
+  (and removed these packages from declared Imports). 
+
+## Minor changes
+
+- Added 4 messy table versions of ficticious experiment data (used in 
+*Exercise 1* of *Chapter 7: Tidying data* _Four messes and one tidy table_) to the package: 
+`t_1`--`t_4`. 
+
+## Details 
+
+- bug fix: Replaced `what_day` with a simpler version that omits `unit` and `as_integer` arguments 
+(to avoid WARN on CRAN for `r-devel-linux-x86_64-debian-clang`)
+- bug fix: Removed `.data$...` elements from `aes()` in `ggplot` calls 
+- bug fix: Added `utils::globalVariables(...)` to avoid Warning NOTE "Undefined global functions or variables"
+- bug fix: Removed packages not used in this version (i.e., `dplyr`, and `magrittr`) from declared Imports 
+
+
+## To do
+
+Critical:
+
+- None. 
+
+Optional:
+
+- Add graphical functions for _clock plots_ (including new book chapters)  
+- Create a ds4psy survey (to collect user data for additional examples)
+- Add more data with text, date, and time variables  
+- Add an _ascii art_ option for converting strings or text into tile plots (with colored tiles) 
 
 
 -------- 
 
 # ds4psy 0.2.0
 
-Release of **ds4psy** (0.2.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy> is planned for April 2020. [2020-04-20] 
+Release of **ds4psy** (0.2.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-04-20] 
 
 ## Major changes 
 
@@ -40,13 +81,6 @@ Changes involving new functionality include:
 - added documentations of datasets (in `data.R`)  
 - bug fix: Removed redundant code (from `plot_fun.R`)    
 - bug fix: Removed packages not used in this version (i.e., `readr`, `stringr`, `tidyr`, and `tidyverse`) from declared Imports
-
-## To do
-
-- add graphical functions for _clock plots_ (including new book chapters)  
-- create a ds4psy survey (to collect user data for additional examples)
-- add more data with text, date, and time variables  
-- add an _ascii art_ option for converting strings or text into tile plots (with colored tiles) 
 
 
 -------- 

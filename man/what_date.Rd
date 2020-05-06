@@ -48,7 +48,7 @@ what_date(ds, rev = TRUE, month_form = "b")
 
 }
 \seealso{
-\code{what_day()} function to obtain days; 
+\code{what_day()} function to obtain (week)days; 
 \code{what_time()} function to obtain times; 
 \code{cur_time()} function to print the current time; 
 \code{cur_date()} function to print the current date; 

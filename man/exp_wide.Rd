@@ -4,7 +4,9 @@
 \name{exp_wide}
 \alias{exp_wide}
 \title{Data exp_wide.}
-\format{A tibble with 10 cases (rows) and 7 variables (columns).}
+\format{
+A table with 10 cases (rows) and 7 variables (columns).
+}
 \source{
 See CSV data at \url{http://rpository.com/ds4psy/data/exp_wide.csv}.
 }
@@ -35,6 +37,10 @@ Other datasets:
 \code{\link{posPsy_wide}},
 \code{\link{t3}},
 \code{\link{t4}},
+\code{\link{t_1}},
+\code{\link{t_2}},
+\code{\link{t_3}},
+\code{\link{t_4}},
 \code{\link{table6}},
 \code{\link{table7}},
 \code{\link{table8}},
