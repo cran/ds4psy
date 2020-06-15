@@ -1,10 +1,212 @@
 ## text_fun.R | ds4psy
-## hn | uni.kn | 2020 05 06
+## hn | uni.kn | 2020 06 14
 ## ---------------------------
 
-## Functions for text/string objects. 
+## Character objects and functions for string/text objects. 
 
-## (0) Define text labels: ---------- 
+## (0) Define character vectors and strings of text: ---------- 
+
+
+## Umlaute / German umlauts: ------ 
+
+# Sources: For Unicode characters, see:
+# <https://home.unicode.org/>
+# <https://www.unicode.org/charts/>
+# <https://en.wikipedia.org/wiki/List_of_Unicode_characters>
+
+uml_a <- "\U00E4"  # ä
+uml_o <- "\U00F6"  # ö
+uml_u <- "\U00FC"  # ü
+
+uml_A <- "\U00C4"  # Ä
+uml_O <- "\U00D6"  # Ö
+uml_U <- "\U00DC"  # Ü
+
+uml_s <- "\U00DF"  # ß
+
+# As named vector:
+umlaut <- c(uml_a, uml_o, uml_u, 
+            uml_A, uml_O, uml_U,
+            uml_s)
+names(umlaut) <- c("a", "o", "u", 
+                   "A", "O", "U",
+                   "s") 
+
+## Check:
+# umlaut
+# names(umlaut)
+
+# paste(umlaut, collapse = " ")
+# paste0("Hansj", umlaut["o"], "rg i", umlaut["s"], "t gern s", umlaut["u"], "sse ", umlaut["A"], "pfel.")
+
+
+#' Umlaut provides German Umlaut letters (as Unicode characters). 
+#' 
+#' \code{Umlaut} provides the German Umlaut letters (aka. diaeresis/diacritic) 
+#' as a named character vector. 
+#' 
+#' For Unicode details, see 
+#' \url{https://home.unicode.org/}, 
+#  \url{https://www.unicode.org/charts/}, and 
+#  \url{https://en.wikipedia.org/wiki/List_of_Unicode_characters}. 
+#' 
+#' For details on German Umlaut letters (aka. diaeresis/diacritic), see 
+#' \url{https://en.wikipedia.org/wiki/Diaeresis_(diacritic)} and 
+#' \url{https://en.wikipedia.org/wiki/Germanic_umlaut}. 
+#' 
+#' @examples
+#' Umlaut
+#' names(Umlaut)
+#' 
+#' paste0("Hansj", Umlaut["o"], "rg i", Umlaut["s"], "t s", Umlaut["u"], "sse ", Umlaut["A"], "pfel.")
+#' paste0("Das d", Umlaut["u"], "nne M", Umlaut["a"], "dchen l", Umlaut["a"], "chelt.")
+#' paste0("Der b", Umlaut["o"], "se Mann macht ", Umlaut["u"], "blen ", Umlaut["A"], "rger.")
+#' paste0("Das ", Umlaut["U"], "ber-Ich ist ", Umlaut["a"], "rgerlich.")
+#' 
+#' @family text objects and functions
+#' 
+#' @export
+
+Umlaut <- umlaut 
+
+## Check:
+# Umlaut
+# names(Umlaut)
+
+## Apply:
+# paste(Umlaut, collapse = " ")
+# paste0("Hansj", Umlaut["o"], "rg i", Umlaut["s"], "t gern s", Umlaut["u"], "sse ", Umlaut["A"], "pfel.")
+# paste0("Das d", Umlaut["u"], "nne M", Umlaut["a"], "dchen l", Umlaut["a"], "chelt sch", Umlaut["o"], "n.")
+# paste0("Der b", Umlaut["o"], "se Mann macht ", Umlaut["u"], "blen ", Umlaut["A"], "rger.")
+
+
+
+## metachar: Meta-characters of extended regular expressions (in R): ------ 
+
+# metachar provides the metacharacters of extended regular expressions (as a character vector)
+# See documentation to ?regex 
+
+metas <- c(". \ | ( ) [ { ^ $ * + ?")
+
+# as vector:
+mv <- unlist(strsplit(metas, split = " "))
+# mv
+
+mv[2] <- "\\"  # correction for \
+# mv
+
+## Check:
+# writeLines(mv)
+# nchar(paste0(mv, collapse = ""))  # 12
+
+
+#' metachar provides R metacharacters 
+#' (as a character vector). 
+#' 
+#' \code{metachar} provides the metacharacters of extended regular expressions 
+#' (as a character vector).
+#' 
+#' \code{metachar} allows illustrating the notion of 
+#' meta-characters in regular expressions 
+#' (and provides corresponding exemplars). 
+#' 
+#' See \code{?base::regex} for details. 
+#' 
+#' @examples
+#' metachar
+#' length(metachar)  # 12
+#' nchar(paste0(metachar, collapse = ""))  # 12
+#' 
+#' @family text objects and functions
+#' 
+#' @seealso
+#' \code{\link{cclass}} for a vector of character classes. 
+#' 
+#' @export
+
+metachar <- mv
+
+# ## Check:
+# metachar
+# length(metachar)  # 12
+# nchar(paste0(metachar, collapse = ""))  # 12
+# # writeLines(metachar)
+
+
+
+## cclass: A (named) vector of different character classes (in R): ------ 
+
+# letters:
+ltr <- paste(letters, collapse = "")  # lowercase
+LTR <- paste(LETTERS, collapse = "")  # uppercase
+
+# digits: "0 1 2 3 4 5 6 7 8 9"
+dig <- paste(0:9, collapse = "")
+# hex: "0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f"
+hex <- paste(c(0:9, LETTERS[1:6], letters[1:6]), collapse = "")
+
+# punctuation:
+# pun <- "! # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ ` { | } ~"  # with space
+pun <- "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"  # w/o space
+
+# spaces (4 different kinds):
+sp1 <- " "   # space
+sp2 <- "\t"  # tab
+sp3 <- "\n"  # new line
+sp4 <- "\r"  # return
+# spc <- paste(sp1, sp2, sp3, sp4, collapse = " ")  # with space
+spc <- paste(sp1, sp2, sp3, sp4, collapse = "")  # w/o space
+
+# Combine (to ccv):
+ccv <- c(ltr, LTR, dig, hex, pun, spc)
+names(ccv) <- c("ltr", "LTR", "dig", "hex", "pun", "spc")
+
+## Check: 
+# ccv
+# ccv["hex"]  # select by name
+# writeLines(ccv["pun"])
+# stringr::str_view(ccv, "\\.", match = TRUE)
+# stringr::str_view(ccv, "\\\\", match = TRUE)
+# stringr::str_view(ccv, "[:punct:]", match = TRUE)
+# stringr::str_view(ccv, "[:space:]", match = TRUE)
+# stringr::str_view(ccv, "[:blank:]", match = TRUE)
+# stringr::str_view(ccv, "\t", match = TRUE)
+# grep("\r", ccv, value = TRUE)
+
+#' cclass provides character classes   
+#' (as a named vector).
+#' 
+#' \code{cclass} provides different character classes  
+#' (as a named character vector).
+#' 
+#' \code{cclass} allows illustrating matching 
+#' character classes via regular expressions. 
+#' 
+#' See \code{?base::regex} for details. 
+#' 
+#' @examples
+#' cclass["hex"]  # select by name
+#' writeLines(cclass["pun"])
+#' grep("[[:alpha:]]", cclass, value = TRUE)
+#' 
+#' @family text objects and functions
+#' 
+#' @seealso
+#' \code{\link{metachar}} for a vector of metacharacters. 
+#' 
+#' @export
+
+cclass <- ccv
+
+## Check:
+# cclass
+# cclass["hex"]  # select by name
+# writeLines(cclass["pun"])
+# grep("[[:alpha:]]", cclass, value = TRUE)
+# grep("[[:space:]]", cclass, value = TRUE)
+
+
+## Other/specific text elements (for ds4psy course materials): ------ 
 
 # course_title     <- paste0("Data science for psychologists")
 # course_title_abb <- paste0("ds4psy")
@@ -13,7 +215,7 @@
 # name_course <- paste0(course_title, " (", course_title_abb, "), by ", name_hn, "")
 
 # # Table of contents (ToC):
-# toc <- tribble(
+# toc <- tibble::tribble(
 #   ~nr, ~lbl,                 ~val,  ~part,   
 #    0,  "Introduction",          2,  0,
 #    1,  "R basics",             10,  0, # was: "Basic R concepts and commands",
@@ -29,7 +231,7 @@
 #   11,  "Functions",            10,  3, 
 #   12,  "Iteration",             8,  3)
 # 
-# # toc  # to be used in plot_tbar() and plot_tclock()
+# # toc  # used in plot_tbar() and plot_tclock()
 
 
 ## (1) L33t slang: ---------- 
@@ -70,7 +272,9 @@ my_l33t <- c("t" = "+",
              "r" = "R"
 ) 
 
-#' l33t_rul35 provides rules for translating into leet/l33t slang. 
+
+#' l33t_rul35 provides rules for translating text 
+#' into leet/l33t slang. 
 #' 
 #' \code{l33t_rul35} specifies rules for translating characters 
 #' into other characters (typically symbols) to mimic 
@@ -84,7 +288,11 @@ my_l33t <- c("t" = "+",
 #' 
 #' See \url{https://en.wikipedia.org/wiki/Leet} for details. 
 #' 
-#' @family text functions
+#' 
+#' @family text objects and functions
+#' 
+#' @seealso
+#' \code{\link{transl33t}} for a corresponding function. 
 #' 
 #' @export
 
@@ -93,6 +301,7 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 ## Check: 
 # l33t_rul35
 
+
 ## transl33t function: ------ 
 
 ## (a) Test:
@@ -100,7 +309,7 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 
 ## (b) as function: 
 
-#' transl33t text into leet slang.
+#' transl33t translates text into leet slang.
 #'
 #' \code{transl33t} translates text into leet (or l33t) slang 
 #' given a set of rules.
@@ -138,10 +347,10 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 #' transl33t(txt = "hEllo world", in_case = "lo", out_case = "up", 
 #'           rules = c("e" = "3", "l" = "1", "o" = "0"))  # e transl33ted
 #' 
-#' @family text functions
+#' @family text objects and functions
 #'
 #' @seealso
-#' \code{\link{l33t_rul35}} for default rules. 
+#' \code{\link{l33t_rul35}} for default rules used. 
 #' 
 #' @export
 
@@ -260,7 +469,7 @@ transl33t <- function(txt, rules = l33t_rul35,
 #' # read_ascii()
 #' }
 #' 
-#' @family text functions
+#' @family text objects and functions
 #'
 #' @seealso
 #' \code{\link{plot_text}} for a corresponding plot function. 
@@ -408,9 +617,9 @@ read_ascii <- function(file = "", flip_y = FALSE){
 # read_ascii()
 
 
-## count_char: Count the frequency of characters in a string: -------- 
+## count_chars: Count the frequency of characters in a string: -------- 
 
-#' count_char counts the frequency of characters 
+#' count_chars counts the frequency of characters 
 #' in a string of text \code{x}.
 #'
 #' @param x A string of text (required).
@@ -427,24 +636,25 @@ read_ascii <- function(file = "", flip_y = FALSE){
 #' @examples
 #' # Default: 
 #' x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
-#' count_char(x)
+#' count_chars(x)
 #' 
 #' # Options: 
-#' count_char(x, case_sense = FALSE)
-#' count_char(x, rm_specials = FALSE)
-#' count_char(x, sort_freq = FALSE)
+#' count_chars(x, case_sense = FALSE)
+#' count_chars(x, rm_specials = FALSE)
+#' count_chars(x, sort_freq = FALSE)
 #'  
-#' @family text functions
+#' @family text objects and functions
 #'
 #' @seealso
+#' \code{\link{count_words}} for counting the frequency of words;   
 #' \code{\link{plot_text}} for a corresponding plot function. 
 #' 
 #' @export
 
-count_char <- function(x, # string of text to count
-                       case_sense = TRUE, 
-                       rm_specials = TRUE, 
-                       sort_freq = TRUE
+count_chars <- function(x, # string of text to count
+                        case_sense = TRUE, 
+                        rm_specials = TRUE, 
+                        sort_freq = TRUE
 ){
   
   freq <- NA  # initialize
@@ -491,20 +701,314 @@ count_char <- function(x, # string of text to count
   
   return(freq)
   
-} # count_char. 
+} # count_chars end. 
 
 # ## Check:
 # x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
 # 
-# count_char(x)
-# count_char(x, case_sense = FALSE)
-# count_char(x, rm_specials = FALSE)
-# count_char(x, sort_freq = FALSE)
+# count_chars(x)
+# count_chars(x, case_sense = FALSE)
+# count_chars(x, rm_specials = FALSE)
+# count_chars(x, sort_freq = FALSE)
 # 
-# # Note: count_char returns a named vector of type integer:
-# freq <- count_char(x)
+# # Note: count_chars returns a named vector of type integer:
+# freq <- count_chars(x)
 # typeof(freq)
 # freq["e"]
+
+
+## Text helper functions: ------- 
+
+## text_to_sentences: Turn a text (consisting of one or more strings) into a vector of all its sentences: ------ 
+
+#' text_to_sentences splits a string of text \code{x} 
+#' (consisting of one or more character strings) 
+#' into a vector of its constituting sentences. 
+#' 
+#' \code{text_to_sentences} splits at given punctuation marks 
+#' (as a regular expression, default: \code{split_delim = "\\.|\\?|!"})  
+#' and removes empty leading and trailing spaces before returning 
+#' a vector of the remaining character sequences (as the sentences).
+#' 
+#' The Boolean \code{force_delim} distinguishes between 
+#' two splitting modes:
+#' 
+#' \enumerate{
+#' 
+#'   \item If \code{force_delim = FALSE} (as per default), 
+#'   the function assumes a standard sentence-splitting pattern: 
+#'   A sentence delimiter in \code{split_delim} must be followed by 
+#'   a single space and a capital letter starting the next sentence. 
+#'   Sentence delimiters in \code{split_delim} are not removed 
+#'   from the output.
+#'   
+#'   \item If \code{force_delim = TRUE}, 
+#'   the function enforces splits at each delimiter in \code{split_delim}. 
+#'   For instance, any dot (i.e., the metacharacter \code{"\\."}) is  
+#'   interpreted as a full stop, so that sentences containing dots 
+#'   mid-sentence (e.g., for abbreviations, etc.) are split into parts. 
+#'   Sentence delimiters in \code{split_delim} are removed 
+#'   from the output.
+#'   
+#'   }
+#' 
+#' Internally, \code{text_to_sentences} uses \code{\link{strsplit}} to 
+#' split strings.
+#' 
+#'
+#' @param x A string of text (required), 
+#' typically a character vector. 
+#' 
+#' @param split_delim Sentence delimiters (as regex) 
+#' used to split \code{x} into substrings. 
+#' By default, \code{split_delim = "\\.|\\?|!"}. 
+#' 
+#' @param force_delim Boolean: Enforce splitting at 
+#' \code{split_delim}? 
+#' If \code{force_delim = FALSE} (as per default), 
+#' the function assumes a standard sentence-splitting pattern: 
+#' \code{split_delim} is followed by a single space and a capital letter. 
+#' If \code{force_delim = TRUE}, splits at \code{split_delim} are 
+#' enforced (regardless of spacing or capitalization).
+#' 
+#'  
+#' @examples
+#' x <- c("A first sentence. Exclamation sentence!", 
+#'        "Any questions? But etc. can be tricky. A fourth --- and final --- sentence.")
+#' text_to_sentences(x)
+#' text_to_sentences(x, force_delim = TRUE)
+#' 
+#' # Changing split delimiters:
+#' text_to_sentences(x, split_delim = "\\.")  # only split at "."
+#' 
+#' text_to_sentences("Buy apples, berries, and coconuts.")
+#' text_to_sentences("Buy apples, berries; and coconuts.", 
+#'                   split_delim = ",|;|\\.", force_delim = TRUE)
+#'                   
+#' text_to_sentences(c("123. 456? 789! 007 etc."), force_delim = TRUE)
+#' text_to_sentences("Dr. Who is problematic.")
+#' 
+#' 
+#' @family text objects and functions
+#'
+#' @seealso
+#' \code{\link{text_to_words}} for splitting text into a vector of words; 
+#' \code{\link{count_words}} for counting the frequency of words; 
+#' \code{\link{strsplit}} for splitting strings. 
+#' 
+#' @export
+
+text_to_sentences <- function(x,  # string(s) of text
+                              split_delim = "\\.|\\?|!",  # sentence delimiters (as regex)
+                              force_delim = FALSE         # force split at delimiters
+){
+  
+  st <- NA
+  regex <- NA
+  # split_delim <- "([[:punct:]])"  # as user argument
+  
+  # Turn into character (if not already):
+  x1 <- as.character(x)
+  
+  # Paste all into one string:
+  x2 <- paste(x1, collapse = " ")
+  
+  # Split at SENTENCE punctuation provided by split_delim:
+  if (!force_delim){
+    
+    # (1) Smart splitting: Expect well-formatted pattern: 
+    #     Sentence delimiter, single space, capital letter to start sentence: 
+    
+    regex <- paste("(?<=(", split_delim, "))\\s(?=[A-Z])", sep = "") # require single space and capitalization
+    
+    x3 <- unlist(strsplit(x2, split = regex, perl = TRUE))
+    
+  } else {
+    
+    # (2) Force split at delimiter provided by split_delim 
+    #     (e.g., if multiple spaces, or no capitalization of first letter in sentence): 
+    
+    # regex <- paste("(", split_delim, ")\\s(?=[A-Z])", sep = "")  # require single space and capitalization
+    regex <- split_delim  # force split at split_delim 
+    
+    x3 <- unlist(strsplit(x2, split = regex, perl = TRUE))
+    
+  }
+  
+  # Remove empty LEADING and TRAILING spaces:
+  x4 <- unlist(strsplit(x3, split = "^( ){1,}"))
+  
+  x5 <- unlist(strsplit(x4, split = "$( ){1,}"))  
+  
+  # Remove all instances of "":
+  st <- x5[x5 != ""]
+  
+  return(st)
+  
+}
+
+# ## Check:
+# x <- c("A first sentence. Exclamation sentence!",
+#        "Any questions? But etc. can be tricky. A fourth --- and final --- sentence.")
+# text_to_sentences(x)
+# text_to_sentences(x, force_delim = TRUE)
+# 
+# 
+# # Changing split delimiters:
+# text_to_sentences(x, split_delim = "\\.")  # only split at "."
+# 
+# text_to_sentences("Buy apples, berries, and coconuts.")
+# text_to_sentences("Buy apples, berries; and coconuts.", 
+#                   split_delim = ",|;|\\.", force_delim = TRUE)
+# 
+# text_to_sentences(c("123. 456? 789! 007 etc."), force_delim = TRUE)
+# text_to_sentences("Dr. Who is problematic.")
+
+
+## text_to_words: Turn a text (consisting of one or more strings) into a vector of its words: ------ 
+
+#' text_to_words splits a string of text \code{x} 
+#' (consisting of one or more character strings) 
+#' into a vector of its constituting words.
+#' 
+#' \code{text_to_words} removes all (standard) punctuation marks 
+#' and empty spaces in the resulting parts, 
+#' before returning a vector of the remaining character symbols 
+#' (as the words).
+#' 
+#' Internally, \code{text_to_words} uses \code{\link{strsplit}} to 
+#' split strings.
+#'
+#'
+#' @param x A string of text (required), 
+#' typically a character vector. 
+#'
+#'  
+#' @examples
+#' # Default: 
+#' x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
+#' text_to_words(x)
+#' 
+#' @family text objects and functions
+#'
+#' @seealso
+#' \code{\link{text_to_sentences}} for splitting text into a vector of sentences;  
+#' \code{\link{count_words}} for counting the frequency of words; 
+#' \code{\link{strsplit}} for splitting strings. 
+#' 
+#' @export
+
+text_to_words <- function(x  # string(s) of text
+){
+  
+  ws <- NA
+  
+  # Turn into character (if not already):
+  x1 <- as.character(x)
+  
+  # Remove punctuation:
+  x2 <- unlist(strsplit(x1, split = "[[:punct:]]"))
+  
+  # Remove empty space:
+  x3 <- unlist(strsplit(x2, split = "( ){1,}"))
+  
+  # Remove all instances of "":
+  ws <- x3[x3 != ""]
+  
+  return(ws)
+  
+}
+
+# ## Check:
+# s3 <- c("A first sentence.", "The second sentence.", 
+#         "A third --- and also the final --- sentence.")
+# wv <- text_to_words(s3)
+# wv
+
+## words_to_text: Turn a vector of words into a (single) vector: ------ 
+
+words_to_text <- function(w, collapse = " "){
+  
+  paste(w, collapse = collapse)
+  
+}
+
+## Check:
+# words_to_text(wv)
+
+
+## count_words: Count the frequency of words in a string: -------- 
+
+#' count_words counts the frequency of words  
+#' in a string of text \code{x}.
+#'
+#' @param x A string of text (required).
+#' 
+#' @param case_sense Boolean: Distinguish lower- vs. uppercase characters? 
+#' Default: \code{case_sense = TRUE}. 
+#' 
+#' @param sort_freq Boolean: Sort output by word frequency? 
+#' Default: \code{sort_freq = TRUE}. 
+#' 
+#' @examples
+#' # Default: 
+#' s3 <- c("A first sentence.", "The second sentence.", 
+#'         "A third --- and also the final --- sentence.")
+#' count_words(s3)  # case-sensitive, sorts by frequency 
+#' 
+#' # Options: 
+#' count_words(s3, case_sense = FALSE)  # case insensitive
+#' count_words(s3, sort_freq = FALSE)   # sorts alphabetically
+#'  
+#' @family text objects and functions
+#'
+#' @seealso
+#' \code{\link{count_chars}} for counting the frequency of characters;   
+#' \code{\link{plot_text}} for a corresponding plot function. 
+#' 
+#' @export
+
+count_words <- function(x,  # string(s) of text
+                        case_sense = TRUE, 
+                        sort_freq = TRUE
+){
+  
+  freq <- NA  # initialize
+  
+  # Turn into character (if not already):
+  v0 <- as.character(x)
+  
+  if (case_sense){
+    v1 <- v0  # as is
+  } else {
+    v1 <- tolower(v0)  # lowercase
+  }
+  
+  # Split input into a vector of all its words:
+  w <- text_to_words(v1)
+  
+  if (sort_freq){
+    
+    freq <- sort(table(w), decreasing = TRUE)
+    
+  } else { # no sorting:
+    
+    freq <- table(w)    
+    
+  } # if (sort_freq).
+  
+  return(freq)
+  
+} # count_words end.
+
+
+# ## Check:
+# s3 <- c("A first sentence.", "The second sentence.", 
+#         "A third --- and also the final --- sentence.")
+# 
+# count_words(s3)                      # case-sens, sorts by frequency 
+# count_words(s3, case_sense = FALSE)  # case insensitive
+# count_words(s3, sort_freq = FALSE)   # sorts alphabetically
 
 
 # (4) Capitalization ---------- 
@@ -520,7 +1024,7 @@ count_char <- function(x, # string of text to count
 #' x <- c("Hello world!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
 #' caseflip(x)
 #'  
-#' @family text functions
+#' @family text objects and functions
 #'
 #' @seealso
 #' \code{\link{capitalize}} for converting the case of initial letters. 
@@ -547,22 +1051,8 @@ caseflip <- function(x){
 # caseflip(NA)
 
 
-## Text helper functions: ------- 
 
-text_to_words <- function(s, split = " "){
-  
-  unlist(strsplit(s, split = split))  
-  
-}
-
-words_to_text <- function(w, collapse = " "){
-  
-  paste(w, collapse = collapse)
-  
-}
-
-
-## capitalize the first n letters of words (with exception): -------- 
+## capitalize the first n letters of words (w/o exception): -------- 
 
 #' capitalize converts the case of 
 #' each word's \code{n} initial characters 
@@ -595,7 +1085,7 @@ words_to_text <- function(w, collapse = " "){
 #' capitalize(x, n = 2, upper = FALSE)
 #' capitalize(x, as_text = FALSE)
 #' 
-#' @family text functions
+#' @family text objects and functions
 #'
 #' @seealso
 #' \code{\link{caseflip}} for converting the case of all letters. 
@@ -638,7 +1128,7 @@ capitalize <- function(x, # string of text to capitalize
 }
 
 # ## Check:
-x <- c("Hello world! This is a 1st TEST sentence. The end.")
+# x <- c("Hello world! This is a 1st TEST sentence. The end.")
 # capitalize(x)
 # capitalize(x, n = 3)
 # capitalize(x, n = 2, upper = FALSE)
@@ -650,6 +1140,71 @@ x <- c("Hello world! This is a 1st TEST sentence. The end.")
 # capitalize(x, n = 3)
 # capitalize(x, n = 2, upper = FALSE)
 # capitalize(x, as_text = FALSE)
+
+
+
+
+
+## count_str: count the number of occurrences of a pattern in a character vector x: -------- 
+
+# Source of function: 
+# <https://aurelienmadouasse.wordpress.com/2012/05/24/r-code-how-the-to-count-the-number-of-occurrences-of-a-substring-within-a-string/> 
+
+# count_str_org <- function(x, pattern, split){
+#   
+#   unlist(
+#     lapply(strsplit(x, split), 
+#            function(z) stats::na.omit(length(grep(pattern, z)))
+#     ))
+#   
+# }
+
+
+# Count the number of pattern matches in a string: 
+
+count_str <- function(x, pattern, split = ""){
+  
+  # initialize: 
+  count   <- NA
+  x_split <- NA
+  
+  x_split <- strsplit(x, split)
+  
+  # count <- unlist(lapply(x_split, function(z) stats::na.omit(length(grep(pattern = pattern, x = z, value = FALSE)))))
+  
+  count <- unlist(lapply(x_split, function(z) length(grep(pattern = pattern, x = z, value = FALSE))))
+  
+  return(count)
+  
+}
+
+# ## Check:
+# x <- c("hello", "world!", "This is a test sentence.", "", "The end.")
+# p <- "en"
+# 
+# # splitting:
+# x_split <- strsplit(x, split = NA)  # leaves x as is
+# x_split
+# 
+# x_split <- strsplit(x, split = "")  # splits x into individual characters
+# x_split
+# 
+# # grep:
+# grep(pattern = p, x = x_split)
+# 
+# # Compare: 
+# count_str(x, p)              # number within each character object
+# count_str(x, p, split = NA)  # only 0 vs. 1 per character object
+# 
+# # Contrast with:
+# stringr::str_count(x, p)     # number within each character object
+
+# Conclusion:
+# count_str*() is not reliable, as grep() only contrasts matches with non-matches (binary) and 
+#              results thus depend on the segmentation of strings (into sub-strings). 
+# By contrast, stringr::count_str() provides a the exact frequency counts 
+# (i.e., how often a pattern is matched.)
+
 
 ## ToDo: ----------
 

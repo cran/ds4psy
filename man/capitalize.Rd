@@ -46,11 +46,17 @@ capitalize(x, as_text = FALSE)
 \seealso{
 \code{\link{caseflip}} for converting the case of all letters.
 
-Other text functions: 
+Other text objects and functions: 
+\code{\link{Umlaut}},
 \code{\link{caseflip}()},
-\code{\link{count_char}()},
+\code{\link{cclass}},
+\code{\link{count_chars}()},
+\code{\link{count_words}()},
 \code{\link{l33t_rul35}},
+\code{\link{metachar}},
 \code{\link{read_ascii}()},
+\code{\link{text_to_sentences}()},
+\code{\link{text_to_words}()},
 \code{\link{transl33t}()}
 }
-\concept{text functions}
+\concept{text objects and functions}

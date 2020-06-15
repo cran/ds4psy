@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{transl33t}
 \alias{transl33t}
-\title{transl33t text into leet slang.}
+\title{transl33t translates text into leet slang.}
 \usage{
 transl33t(txt, rules = l33t_rul35, in_case = "no", out_case = "no")
 }
@@ -47,13 +47,19 @@ transl33t(txt = "hEllo world", in_case = "lo", out_case = "up",
 
 }
 \seealso{
-\code{\link{l33t_rul35}} for default rules.
+\code{\link{l33t_rul35}} for default rules used.
 
-Other text functions: 
+Other text objects and functions: 
+\code{\link{Umlaut}},
 \code{\link{capitalize}()},
 \code{\link{caseflip}()},
-\code{\link{count_char}()},
+\code{\link{cclass}},
+\code{\link{count_chars}()},
+\code{\link{count_words}()},
 \code{\link{l33t_rul35}},
-\code{\link{read_ascii}()}
+\code{\link{metachar}},
+\code{\link{read_ascii}()},
+\code{\link{text_to_sentences}()},
+\code{\link{text_to_words}()}
 }
-\concept{text functions}
+\concept{text objects and functions}

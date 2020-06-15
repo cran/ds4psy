@@ -4,6 +4,7 @@
 <!-- Use status badges: -->
 
 [![CRAN\_status](http://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
+[![Build\_status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy)
 [![Downloads](http://cranlogs.r-pkg.org/badges/ds4psy?color=brightgreen)](http://www.r-pkg.org/pkg/ds4psy)
 
 <!-- Possible status badges:
@@ -195,24 +196,16 @@ Please install the following open-source programs on your computer:
 
 ``` r
 # Tidyverse packages: 
-install.packages("tidyverse")
+install.packages('tidyverse')
 
 # Course packages: 
-install.packages("ds4psy", "unikn")
-
-# Additional data packages (optional): 
-install.packages("nycflights13", "babynames", "fueleconomy")
+install.packages('ds4psy')  # datasets and functions
+install.packages('unikn')   # color palettes and functions
 ```
 
 ### Other resources
 
 <!-- #### Course essentials and exercises (WPAs) -->
-
-<!-- ds4psy logo: -->
-
-<a href="https://bookdown.org/hneth/ds4psy/">
-<img src = "./inst/images/ds4psy.png" alt = "ds4psy" width = "150px" align = "right" style = "width: 150px; float: right; border:11;"/>
-</a>
 
 <!-- Table with links: -->
 
@@ -254,8 +247,8 @@ Nr. | Topic       |
   - [R manuals](https://cran.r-project.org/manuals.html) and related
     [books](https://www.r-project.org/doc/bib/R-books.html)
 
-  - See the free books on R and data science on
-<https://bookdown.org/>
+  - See the books on R and data science available on
+    <https://bookdown.org/>.
 
 <!-- - Zumel, N., & Mount, J. (2014). _Practical data science with R_. Greenwich, CT: Manning Publications. -->
 
@@ -267,12 +260,18 @@ know](https://www.spds.uni-konstanz.de/hans-neth).
 
 ### Citation
 
+<!-- ds4psy logo: -->
+
+<a href="https://bookdown.org/hneth/ds4psy/">
+<img src = "./inst/images/ds4psy.png" alt = "ds4psy" width = "150px" align = "right" style = "width: 150px; float: right; border:11;"/>
+</a>
+
 To cite **ds4psy** in derivations and publications, please use:
 
   - Neth, H. (2020). ds4psy: Data Science for Psychologists.  
     Social Psychology and Decision Sciences, University of Konstanz,
     Germany.  
-    Textbook and R package (version 0.2.1, May 6, 2020).  
+    Textbook and R package (version 0.3.0, June 15, 2020).  
     Retrieved from <https://bookdown.org/hneth/ds4psy/>.
 
 A **BibTeX** entry for LaTeX users is:
@@ -284,7 +283,7 @@ A **BibTeX** entry for LaTeX users is:
   year = {2020},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {Textbook and R package (version 0.2.1, May 6, 2020)},
+  note = {Textbook and R package (version 0.3.0, June 15, 2020)},
   url = {https://bookdown.org/hneth/ds4psy/} 
 }
 ```
@@ -314,6 +313,6 @@ License</a>.
 
 <!-- Update: -->
 
-\[Updated 2020-05-06 by [hn](https://neth.de).\]
+\[Updated 2020-06-15 by [hn](https://neth.de).\]
 
 <!-- eof. -->

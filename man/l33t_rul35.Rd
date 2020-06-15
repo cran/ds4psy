@@ -3,7 +3,8 @@
 \docType{data}
 \name{l33t_rul35}
 \alias{l33t_rul35}
-\title{l33t_rul35 provides rules for translating into leet/l33t slang.}
+\title{l33t_rul35 provides rules for translating text 
+into leet/l33t slang.}
 \format{
 An object of class \code{character} of length 13.
 }
@@ -25,12 +26,20 @@ New (i.e., replaced) characters are
 See \url{https://en.wikipedia.org/wiki/Leet} for details.
 }
 \seealso{
-Other text functions: 
+\code{\link{transl33t}} for a corresponding function.
+
+Other text objects and functions: 
+\code{\link{Umlaut}},
 \code{\link{capitalize}()},
 \code{\link{caseflip}()},
-\code{\link{count_char}()},
+\code{\link{cclass}},
+\code{\link{count_chars}()},
+\code{\link{count_words}()},
+\code{\link{metachar}},
 \code{\link{read_ascii}()},
+\code{\link{text_to_sentences}()},
+\code{\link{text_to_words}()},
 \code{\link{transl33t}()}
 }
-\concept{text functions}
+\concept{text objects and functions}
 \keyword{datasets}

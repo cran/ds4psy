@@ -1,5 +1,5 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2020 05 06
+## hn | uni.kn | 2020 06 14
 ## ---------------------------
 
 ## Documentation of datasets included in /data. 
@@ -306,7 +306,6 @@
 
 
 
-
 # (3) Outlier data from Chapter 3: Transforming data / dplyr: ---------- 
 
 # https://bookdown.org/hneth/ds4psy/3-6-transform-ex.html 
@@ -494,8 +493,6 @@
 #' See FWF data at \url{http://rpository.com/ds4psy/data/data_2.dat}. 
 
 "data_2"
-
-
 
 
 
@@ -876,7 +873,6 @@
 # ToDo: Find some book/text to analyze. 
 
 
-
 # (9) Time data: --------
 
 # Fame data (DOB and DOD of famous people):
@@ -899,7 +895,6 @@
 #' Student solutions to exercises, dates from \url{https://en.wikipedia.org}. 
 
 "fame"
-
 
 
 # (10) Chapter 12: Iteration / loops: -------- 
@@ -941,7 +936,7 @@
 #' 
 #' } 
 #' 
-#' \code{tb} was orginally created to practice loops and iterations 
+#' \code{tb} was originally created to practice loops and iterations 
 #' (as a CSV file). 
 #' 
 #' @format A table with 100 cases (rows) and 5 variables (columns). 
@@ -989,11 +984,143 @@
 "pi_100k"
 
 
+# (11) Text data: ------ 
+
+
+# (11a) countries: ---- 
+
+# # Source: <https://www.gapminder.org/data/documentation/gd004/>
+# file <- "GM_lifeExpectancy_by_country_v11.csv"
+# path <- "./data-raw/raw_data_sources/_gapminder/"
+# datapath <- paste0(path, file)
+# datapath
+# 
+# GM_life_expectancy <- readr::read_csv2(file = datapath)
+# GM_life_expectancy
+# 
+# countries <- GM_life_expectancy$country
+# countries
+
+#' Data: Names of countries.
+#'
+#' \code{countries} is a dataset containing the names of 
+#' 197 countries (as a vector of text strings). 
+#' 
+#' @format A vector of type \code{character}  
+#' with \code{length(countries) = 197}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' Data from \url{https://www.gapminder.org}: 
+#' Original data at \url{https://www.gapminder.org/data/documentation/gd004/}.
+
+"countries"
+
+
+# (11b) fruits: ---- 
+
+# Source: <https://simple.wikipedia.org/wiki/List_of_fruits>
+# fruits
+# length(fruits)  # 122
+
+#' Data: Names of fruits. 
+#'
+#' \code{fruits} is a dataset containing the names of 
+#' 122 fruits (as a vector of text strings). 
+#' 
+#' Botanically, "fruits" are the seed-bearing structures 
+#' of flowering plants (angiosperms) formed from the ovary 
+#' after flowering. 
+#' 
+#' In common usage, "fruits" refer to the fleshy 
+#' seed-associated structures of a plant 
+#' that taste sweet or sour, 
+#' and are edible in their raw state.
+#' 
+#' @format A vector of type \code{character}  
+#' with \code{length(fruits) = 122}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' Data based on \url{https://simple.wikipedia.org/wiki/List_of_fruits}.
+
+"fruits"
+
+
+# (11c) flowery phrases: ---- 
+
+#' Data: Flowery phrases. 
+#'
+#' \code{flowery} contains versions and variations 
+#' of Gertrude Stein's popular phrase 
+#' "A rose is a rose is a rose".  
+#' 
+#' The phrase stems from Gertrude Stein's poem "Sacred Emily" 
+#' (written in 1913 and published in 1922, in "Geography and Plays").  
+#' The verbatim line in the poem actually reads 
+#' "Rose is a rose is a rose is a rose". 
+#' 
+#' See \url{https://en.wikipedia.org/wiki/Rose_is_a_rose_is_a_rose_is_a_rose} 
+#' for additional variations and sources. 
+#' 
+#' @format A vector of type \code{character}  
+#' with \code{length(flowery) = 60}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' Data based on \url{https://en.wikipedia.org/wiki/Rose_is_a_rose_is_a_rose_is_a_rose}.
+
+"flowery"
+
+
+# (11e) Bushisms: ---- 
+
+#' Data: Bushisms.  
+#'
+#' \code{Bushisms} contains phrases spoken by 
+#' or attributed to U.S. president George W. Bush 
+#' (the 43rd president of the United States, 
+#' in office from January 2001 to January 2009).
+#' 
+#' @format A vector of type \code{character}  
+#' with \code{length(Bushisms) = 22}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' Data based on \url{https://en.wikipedia.org/wiki/Bushism}. 
+
+"Bushisms" 
+
+
+# (11e) Trumpisms: ---- 
+
+#' Data: Trumpisms. 
+#'
+#' \code{Trumpisms} contains words frequently used 
+#' by U.S. president Donald J. Trump 
+#' (the 45th and current president of the United States, 
+#' as of May 2020).
+#' 
+#' @format A vector of type \code{character}  
+#' with \code{length(Trumpisms) = 96}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' Data originally based on \url{https://www.yourdictionary.com/slideshow/donald-trump-20-most-frequently-used-words.html} 
+#' and expanded by public speeches and Twitter tweets on \url{https://twitter.com/realDonaldTrump}. 
+
+"Trumpisms"
+
 
 ## ToDo: ----------
 
-# - generate ds4psy survey data
-# - add text data (Chapter 9: Text; e.g. attention check response on "i read instructions", some eBook for sentinent analysis, ...) 
+# - collect ds4psy survey data
+# - add text data (Chapter 9: Text; e.g., dinos, fruit, veggies, attention check response on "i read instructions", some eBook for sentinent analysis, ...) 
 # - add date/time data (Chapter 10: Time, e.g., DOB, time of test, task start/end, etc.)
 # - add more info to codebooks (see data_190807.R in archive)
 

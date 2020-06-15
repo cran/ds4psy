@@ -59,11 +59,17 @@ which was previously used to determine an (absolute) file path.
 \seealso{
 \code{\link{plot_text}} for a corresponding plot function.
 
-Other text functions: 
+Other text objects and functions: 
+\code{\link{Umlaut}},
 \code{\link{capitalize}()},
 \code{\link{caseflip}()},
-\code{\link{count_char}()},
+\code{\link{cclass}},
+\code{\link{count_chars}()},
+\code{\link{count_words}()},
 \code{\link{l33t_rul35}},
+\code{\link{metachar}},
+\code{\link{text_to_sentences}()},
+\code{\link{text_to_words}()},
 \code{\link{transl33t}()}
 }
-\concept{text functions}
+\concept{text objects and functions}

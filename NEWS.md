@@ -1,5 +1,5 @@
 
-# ds4psy 0.2.1.9001+
+# ds4psy 0.3.0.9001+
 
 <!-- Description: --> 
 
@@ -7,7 +7,58 @@ All datasets and functions required for the examples and exercises of the book "
 
 <!-- Source code: --> 
 
-The current development version of **ds4psy** (0.2.1.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+- The current development version of **ds4psy** (0.3.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+
+- The current version of the textbook **Data Science for Psychologists** is available at <https://bookdown.org/hneth/ds4psy/>.
+
+-------- 
+
+# ds4psy 0.3.0
+
+Release of **ds4psy** (0.3.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-06-15] 
+
+This release adds support for text processing. 
+
+
+## Major changes 
+
+- added functions and datasets for string manipulation and text processing
+
+
+## Minor changes 
+
+- added `text_to_sentences()` and `text_to_words()` functions for text processing   
+- added `count_words()` (in analogy to `count_chars()`) function for text processing  
+- added `cclass` (as a named character vector) for matching character classes in regular expressions  
+- added `metachar` (as a character vector) for matching meta-characters in regular expressions
+- added `Umlaut` (as a named character vector) for showing and selecting German Umlaut characters    
+- added datasets of `countries`, `fruits`, and `flowery` phrases (as character vectors)   
+- added datasets of `Bushisms` and `Trumpisms` (as character vectors)  
+- added `sample_char()` function
+
+
+## Details 
+
+- added Travis integration to `README.Rmd` 
+- renamed `count_char()` to `count_chars()` (to use plural form) 
+- renamed `sample_date()` and `sample_time()` (to use singular form)  
+- renamed family of `text functions` to `text objects and functions`  
+- renamed family of `random functions` to `sampling functions`  
+
+
+## To do
+
+Critical:
+
+- none. 
+
+Optional:
+
+- add graphical functions for _clock plots_ (including new book chapters)  
+- create a ds4psy survey (to collect user data for additional examples)
+- add more data with text, date, and time variables  
+- add an _ascii art_ option for converting strings or text into tile plots (with colored tiles) 
+
 
 -------- 
 
@@ -19,12 +70,12 @@ This is a **maintenance release** to remove some dependencies, fix bugs on CRAN 
 
 ## Major changes 
 
-- Removed dependencies on the `here` and `tibble` packages 
+- removed dependencies on the `here` and `tibble` packages 
   (and removed these packages from declared Imports). 
 
 ## Minor changes
 
-- Added 4 messy table versions of ficticious experiment data (used in 
+- added 4 messy table versions of ficticious experiment data (used in 
 *Exercise 1* of *Chapter 7: Tidying data* _Four messes and one tidy table_) to the package: 
 `t_1`--`t_4`. 
 
@@ -35,20 +86,6 @@ This is a **maintenance release** to remove some dependencies, fix bugs on CRAN 
 - bug fix: Removed `.data$...` elements from `aes()` in `ggplot` calls 
 - bug fix: Added `utils::globalVariables(...)` to avoid Warning NOTE "Undefined global functions or variables"
 - bug fix: Removed packages not used in this version (i.e., `dplyr`, and `magrittr`) from declared Imports 
-
-
-## To do
-
-Critical:
-
-- None. 
-
-Optional:
-
-- Add graphical functions for _clock plots_ (including new book chapters)  
-- Create a ds4psy survey (to collect user data for additional examples)
-- Add more data with text, date, and time variables  
-- Add an _ascii art_ option for converting strings or text into tile plots (with colored tiles) 
 
 
 -------- 
@@ -64,9 +101,9 @@ Changes involving new functionality include:
 - added random data generation functions (e.g., for `coin()` flips and `dice()` throws)
 - added `is.wholenumber()` to test for integer values (mentioned in R oddities)
 - added `plot_text()` plotting function  
-- added `read_ascii()` and `count_char()` text processing functions 
-- added `caseflip()` and `capitalize()` text processing functions 
-- added random date and time generation functions (e.g., for `sample_dates()` and `sample_times()`) 
+- added `read_ascii()` and `count_chars()` functions for text processing 
+- added `caseflip()` and `capitalize()` functions for text processing 
+- added random date and time generation functions (e.g., for `sample_date()` and `sample_time()`) 
 - added simple date and time functions (e.g., `cur_date()`, `cur_time()`, for Chapter 10: Time data) 
 - added `what_` functions for simple date and time queries (for Chapter 10: Time data) 
 
@@ -145,6 +182,9 @@ New content:
 
 Details and cosmetics:
 
-- use a unified theme template for all plots
+- use a unified theme template for all plots  
+
+
+[File `News.md` updated on 2020-06-15.]
 
 <!-- eof. -->
