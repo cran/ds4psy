@@ -4,7 +4,7 @@
 \alias{what_month}
 \title{What month is it?}
 \usage{
-what_month(when = Sys.time(), abbr = FALSE, as_integer = FALSE)
+what_month(when = Sys.Date(), abbr = FALSE, as_integer = FALSE)
 }
 \arguments{
 \item{when}{Date (as a scalar or vector).
@@ -32,13 +32,16 @@ what_month()
 what_month(abbr = TRUE)
 what_month(as_integer = TRUE)
 
-# Work with vectors (when as characters):
+# with date vector (as characters):
 ds <- c("2020-01-01", "2020-02-29", "2020-12-24", "2020-12-31")
 what_month(when = ds)
 what_month(when = ds, abbr = TRUE, as_integer = FALSE)
 what_month(when = ds, abbr = TRUE, as_integer = TRUE)
 
-    
+# with time vector (strings of POSIXct times):
+ts <- c("2020-02-29 10:11:12 CET", "2020-12-31 23:59:59")
+what_month(ts)
+        
 }
 \seealso{
 \code{what_week()} function to obtain weeks; 
@@ -49,8 +52,11 @@ what_month(when = ds, abbr = TRUE, as_integer = TRUE)
 \code{Sys.time()} function of \strong{base} R.
 
 Other date and time functions: 
+\code{\link{change_time}()},
+\code{\link{change_tz}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{is_leap_year}()},
 \code{\link{what_date}()},
 \code{\link{what_day}()},
 \code{\link{what_time}()},

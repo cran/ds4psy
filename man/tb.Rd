@@ -8,7 +8,7 @@
 A table with 100 cases (rows) and 5 variables (columns).
 }
 \source{
-See CSV data at \url{http://rpository.com/ds4psy/data/tb.csv}.
+See CSV data file at \url{http://rpository.com/ds4psy/data/tb.csv}.
 }
 \usage{
 tb
@@ -19,6 +19,8 @@ tb
 }
 \details{
 \strong{Codebook} 
+
+The table contains 5 columns/variables:
 
 \itemize{
 
@@ -50,6 +52,8 @@ Other datasets:
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
+\code{\link{dt_10}},
+\code{\link{exp_num_dt}},
 \code{\link{exp_wide}},
 \code{\link{falsePosPsy_all}},
 \code{\link{fame}},

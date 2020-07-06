@@ -4,7 +4,7 @@
 \alias{what_time}
 \title{What time is it?}
 \usage{
-what_time(when = NA, seconds = FALSE, sep = ":")
+what_time(when = NA, seconds = FALSE, as_string = TRUE, sep = ":", tz = "")
 }
 \arguments{
 \item{when}{Time (as a scalar or vector).
@@ -14,26 +14,58 @@ Returning \code{Sys.time()}, if \code{when = NA}.}
 \item{seconds}{Boolean: Show time with seconds?
 Default: \code{seconds = FALSE}.}
 
+\item{as_string}{Boolean: Return as character string? 
+Default: \code{as_string = TRUE}. 
+If \code{as_string = FALSE}, a "POSIXct" object is returned.}
+
 \item{sep}{Character: Separator to use. 
 Default: \code{sep = ":"}.}
+
+\item{tz}{Time zone.
+Default: \code{tz = ""} (i.e., current system time zone,  
+see \code{Sys.timezone()}). 
+Use \code{tz = "UTC"} for Coordinated Universal Time.}
+}
+\value{
+A character string or object of class "POSIXct".
 }
 \description{
 \code{what_time} provides a satisficing version of 
 \code{Sys.time()} that is sufficient for most purposes.
 }
 \details{
-\code{what_time} returns either a simple version of 
-\code{when} or \code{Sys.time()}  
-(in "%H:%M" or "%H:%M:%S" format) 
-using current system settings.
+By default, \code{what_time} prints a simple version of 
+\code{when} or \code{Sys.time()} 
+as a character string (in "%H:%M" or "%H:%M:%S" format) 
+using current default system settings.  
+If \code{as_string = FALSE}, a "POSIXct" 
+(calendar time) object is returned.
+
+The \code{tz} argument allows specifying time zones 
+(see \code{Sys.timezone()} for current setting 
+and \code{OlsonNames()} for options.) 
+
+However, \code{tz} is merely used to represent the 
+times provided to the \code{when} argument. 
+Thus, there currently is no active conversion 
+of times into other time zones 
+(see the \code{now} function of \strong{lubridate} package).
 }
 \examples{
 what_time()  
 
-# with vector (of times): 
-ts <- c("2020-01-14 01:02:03 CET", "2020-12-31 14:15:16")
-what_time(ts)
-what_time(ts, seconds = TRUE, sep = "_")
+# with vector (of "POSIXct" objects): 
+tm <- c("2020-02-29 01:02:03", "2020-12-31 14:15:16")
+what_time(tm)
+
+# with time zone: 
+ts <- ISOdate(2020, 12, 24, c(0, 12))  # midnight and midday UTC
+t1 <- what_time(when = ts, tz = "US/Hawaii")
+t1
+
+# return "POSIXct" object(s):
+t2 <- what_time("2020-02-29 12:30:45", as_string = FALSE, tz = "US/Hawaii")
+format(t2, "\%T \%Z (UTF \%z)")
 
 }
 \seealso{
@@ -43,8 +75,11 @@ what_time(ts, seconds = TRUE, sep = "_")
 \code{Sys.time()} function of \strong{base} R.
 
 Other date and time functions: 
+\code{\link{change_time}()},
+\code{\link{change_tz}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{is_leap_year}()},
 \code{\link{what_date}()},
 \code{\link{what_day}()},
 \code{\link{what_month}()},

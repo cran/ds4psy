@@ -1,12 +1,13 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2020 06 14
+## hn | uni.kn | 2020 07 02
 ## ---------------------------
 
 ## Documentation of datasets included in /data. 
 
-# (1) Positive Psychology data: ---------- 
 
-# (1a) posPsy_p_info: ------ 
+# (01) Positive Psychology data: ---------- 
+
+# (01a) posPsy_p_info: ------ 
 
 #' Positive Psychology: Participant data.
 #'
@@ -63,7 +64,7 @@
 "posPsy_p_info"
 
 
-# (1b) posPsy_AHI_CESD: ------ 
+# (01b) posPsy_AHI_CESD: ------ 
 
 #' Positive Psychology: AHI CESD data.
 #'
@@ -138,7 +139,7 @@
 "posPsy_AHI_CESD"
 
 
-# (1c) posPsy_long: ------ 
+# (01c) posPsy_long: ------ 
 
 #' Positive Psychology: AHI CESD corrected data (in long format). 
 #'
@@ -182,7 +183,7 @@
 "posPsy_long"
 
 
-# (1d) posPsy_wide: ------ 
+# (01d) posPsy_wide: ------ 
 
 #' Positive Psychology: All corrected data (in wide format). 
 #' 
@@ -225,7 +226,8 @@
 
 
 
-# (2) False Positive Psychology data: ---------- 
+
+# (02) False Positive Psychology data: ---------- 
 
 # https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html
 
@@ -306,7 +308,8 @@
 
 
 
-# (3) Outlier data from Chapter 3: Transforming data / dplyr: ---------- 
+
+# (03) Transforming data / dplyr (Chapter 3): outliers ---------- 
 
 # https://bookdown.org/hneth/ds4psy/3-6-transform-ex.html 
 
@@ -334,11 +337,51 @@
 
 
 
-# (4) Tables from Chapter 6: Importing data / readr: ---------- 
+
+# (03.14) pi data: --------  
+
+# https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html 
+# Orig. data source <http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html>
+
+# # pi_all <- readLines("./data/pi_100k.txt")                # from local data file
+# pi_data <- "http://rpository.com/ds4psy/data/pi_100k.txt"  # URL of online data file
+# pi_100k <- readLines(pi_data)                              # read from online source
+# 
+# # Check:
+# dim(pi_100k)  #  NULL !
+# 
+# # Check number of missing values: 
+# sum(is.na(pi_100k))  #  0 missing values
+# 
+# # Save to /data:
+# usethis::use_data(pi_100k, overwrite = TRUE)
+
+
+#' Data: 100k digits of pi.
+#'
+#' \code{pi_100k} is a dataset containing the first 100k digits of pi. 
+#' 
+#' @format A character of \code{nchar(pi_100k) = 100001}. 
+#' 
+#' @family datasets 
+#' 
+#' @source 
+#' See TXT data at \url{http://rpository.com/ds4psy/data/pi_100k.txt}. 
+#' 
+#' Original data at \url{http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html}. 
+
+"pi_100k"
+
+
+
+
+
+
+# (06) Importing data / readr (Chapter 6): ---------- 
 
 # https://bookdown.org/hneth/ds4psy/6-3-import-essentials.html 
 
-# (4a) data_t1.csv: ---- 
+# (06a) data_t1.csv: ---- 
 # Note: Same as (6a) below. 
 
 # data_t1 <- readr::read_csv("http://rpository.com/ds4psy/data/data_t1.csv")
@@ -368,7 +411,7 @@
 "data_t1"
 
 
-# (4b) data_t1_de.csv: ---- 
+# (06b) data_t1_de.csv: ---- 
 
 # data_t1_de <- readr::read_csv2("http://rpository.com/ds4psy/data/data_t1_de.csv")
 # 
@@ -397,7 +440,7 @@
 "data_t1_de"
 
 
-# (4c) data_t1_tab.csv: ---- 
+# (06c) data_t1_tab.csv: ---- 
 
 # data_t1_tab <- read_tsv("http://rpository.com/ds4psy/data/data_t1_tab.csv")
 # 
@@ -426,7 +469,7 @@
 "data_t1_tab"
 
 
-# (4d) data_1.dat: ---- 
+# (06d) data_1.dat: ---- 
 
 # my_file <- "http://rpository.com/ds4psy/data/data_1.dat"
 # 
@@ -459,7 +502,7 @@
 "data_1"
 
 
-# (4e) data_2.dat: ---- 
+# (06e) data_2.dat: ---- 
 
 # my_file_path <- "http://rpository.com/ds4psy/data/data_2.dat"  # from online source
 # 
@@ -496,11 +539,12 @@
 
 
 
-# (5) Chapter 7: Tidying data / tidyr: ---------- 
+
+# (07) Tidying data / tidyr (Chapter 7): ---------- 
 
 # https://bookdown.org/hneth/ds4psy/7-3-tidy-essentials.html
 
-# (5a) table6.csv: ------ 
+# (07a) table6.csv: ------ 
 
 # ## Load data (as comma-separated file): 
 # table6 <- readr::read_csv("http://rpository.com/ds4psy/data/table6.csv")  # from online source
@@ -532,7 +576,7 @@
 "table6"
 
 
-# (5b) table7.csv: ------ 
+# (07b) table7.csv: ------ 
 
 # # Load data (as comma-separated file): 
 # table7 <- readr::read_csv("http://rpository.com/ds4psy/data/table7.csv")  # from online source
@@ -564,7 +608,7 @@
 "table7"
 
 
-# (5c) table8.csv: ------ 
+# (07c) table8.csv: ------ 
 
 # # Load data (as comma-separated file): 
 # table8 <- readr::read_csv("http://rpository.com/ds4psy/data/table8.csv")  # from online source
@@ -596,7 +640,7 @@
 "table8"
 
 
-# (5d) exp_wide.csv: ------ 
+# (07d) exp_wide.csv: ------ 
 
 # https://bookdown.org/hneth/ds4psy/7-5-tidy-ex.html
 
@@ -627,12 +671,12 @@
 "exp_wide"
 
 
-# (6) Chapter 7: Exercise 1: 'Four messes and one tidy table': ------ 
+# (07e) Chapter 7: Exercise 1: 'Four messes and one tidy table': ------ 
 
 # https://bookdown.org/hneth/ds4psy/7-4-tidy-ex.html#tidy:ex01
 
 
-# (6a): t_1.csv: ----- 
+# (07e1): t_1.csv: ----- 
 
 #' Data t_1.
 #'
@@ -648,7 +692,7 @@
 "t_1"
 
 
-# (6b): t_2.csv: ----- 
+# (07e2): t_2.csv: ----- 
 
 #' Data t_2.
 #'
@@ -664,7 +708,7 @@
 "t_2"
 
 
-# (6c): t_3.csv: ----- 
+# (07e3): t_3.csv: ----- 
 
 #' Data t_3.
 #'
@@ -680,7 +724,7 @@
 "t_3"
 
 
-# (6d): t_4.csv: ----- 
+# (07e4): t_4.csv: ----- 
 
 #' Data t_4.
 #'
@@ -697,11 +741,12 @@
 
 
 
-# (7) Chapter 8: Joining data / dplyr: ---------- 
+
+# (08) Joining data / dplyr (Chapter 8): ---------- 
 
 # https://bookdown.org/hneth/ds4psy/8-3-join-essentials.html
 
-# (7a) data_t1.csv: ---- 
+# (08a) data_t1.csv: ---- 
 # Note: Same as (4a) above. 
 
 # data_t1 <- readr::read_csv("http://rpository.com/ds4psy/data/data_t1.csv")
@@ -718,7 +763,7 @@
 # See (4a) above.
 
 
-# (7b) data_t2.csv: ---- 
+# (08b) data_t2.csv: ---- 
 
 # data_t2 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t2.csv")
 # 
@@ -749,7 +794,7 @@
 
 # Exercise 1:
 
-# (7c) t3.csv: ---- 
+# (08c) t3.csv: ---- 
 
 # t3 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/t3.csv")
 # 
@@ -778,7 +823,7 @@
 "t3"
 
 
-# (7d) t4.csv: ---- 
+# (08d) t4.csv: ---- 
 
 # t4 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/t4.csv")
 # 
@@ -809,7 +854,7 @@
 
 # Exercise 3: 
 
-# (7e) data_t3.csv: ---- 
+# (08e) data_t3.csv: ---- 
 
 # data_t3 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t3.csv")
 # 
@@ -838,7 +883,7 @@
 "data_t3"
 
 
-# (7f) data_t4.csv: ---- 
+# (08f) data_t4.csv: ---- 
 
 # data_t4 <- readr::read_csv(file = "http://rpository.com/ds4psy/data/data_t4.csv")
 # 
@@ -868,126 +913,10 @@
 
 
 
-# (8) Text data: -------- 
 
-# ToDo: Find some book/text to analyze. 
+# (09) Text data (Chapter 9): -------- 
 
-
-# (9) Time data: --------
-
-# Fame data (DOB and DOD of famous people):
-# Chapter 10 (Time data), Exercise 3
-# See Exercise 3 at https://bookdown.org/hneth/ds4psy/10-4-time-ex.html#time:ex03 
-# See file all_DATASETs.R for raw data (as tables).
-
-#' Data table fame.
-#'
-#' \code{fame} is a dataset to practice working with dates.
-#'  
-#' \code{fame} contains the names, areas, dates of birth (DOB), and 
-#' --- if applicable --- the dates of death (DOD) of famous people.
-#' 
-#' @format A table with 38 cases (rows) and 4 variables (columns). 
-#' 
-#' @family datasets
-#' 
-#' @source 
-#' Student solutions to exercises, dates from \url{https://en.wikipedia.org}. 
-
-"fame"
-
-
-# (10) Chapter 12: Iteration / loops: -------- 
-
-# https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html
-
-# (10a) tb data: ------ 
-
-# tb <- readr::read_csv2("http://rpository.com/ds4psy/data/tb.csv") 
-# 
-# # Check:
-# dim(tb)  #  100 cases x 5 variables
-# 
-# # Check number of missing values: 
-# sum(is.na(tb))  #  0 missing values
-# 
-# # Save to /data:
-# usethis::use_data(tb, overwrite = TRUE)
-
-
-#' Data table tb.
-#'
-#' \code{tb} is a fictitious dataset describing 
-#' 100 non-existing, but otherwise ordinary people.
-#' 
-#' \strong{Codebook} 
-#' 
-#' \itemize{
-#' 
-#' \item 1. \strong{id}: Participant ID.
-#' 
-#' \item 2. \strong{age}: Age (in years).
-#' 
-#' \item 3. \strong{height}: Height (in cm).
-#' 
-#' \item 4. \strong{shoesize}: Shoesize (EU standard).
-#' 
-#' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tables).
-#' 
-#' } 
-#' 
-#' \code{tb} was originally created to practice loops and iterations 
-#' (as a CSV file). 
-#' 
-#' @format A table with 100 cases (rows) and 5 variables (columns). 
-#' 
-#' @family datasets
-#' 
-#' @source 
-#' See CSV data at \url{http://rpository.com/ds4psy/data/tb.csv}. 
-
-"tb"
-
-
-# (10b) pi data: ------ 
-
-# https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html 
-# Orig. data source <http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html>
-
-# # pi_all <- readLines("./data/pi_100k.txt")                # from local data file
-# pi_data <- "http://rpository.com/ds4psy/data/pi_100k.txt"  # URL of online data file
-# pi_100k <- readLines(pi_data)                              # read from online source
-# 
-# # Check:
-# dim(pi_100k)  #  NULL !
-# 
-# # Check number of missing values: 
-# sum(is.na(pi_100k))  #  0 missing values
-# 
-# # Save to /data:
-# usethis::use_data(pi_100k, overwrite = TRUE)
-
-
-#' Data: 100k digits of pi.
-#'
-#' \code{pi_100k} is a dataset containing the first 100k digits of pi. 
-#' 
-#' @format A character of \code{nchar(pi_100k) = 100001}. 
-#' 
-#' @family datasets 
-#' 
-#' @source 
-#' See TXT data at \url{http://rpository.com/ds4psy/data/pi_100k.txt}. 
-#' 
-#' Original data at \url{http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html}. 
-
-"pi_100k"
-
-
-# (11) Text data: ------ 
-
-
-# (11a) countries: ---- 
+# (09a) countries: ---- 
 
 # # Source: <https://www.gapminder.org/data/documentation/gd004/>
 # file <- "GM_lifeExpectancy_by_country_v11.csv"
@@ -1018,7 +947,7 @@
 "countries"
 
 
-# (11b) fruits: ---- 
+# (09b) fruits: ---- 
 
 # Source: <https://simple.wikipedia.org/wiki/List_of_fruits>
 # fruits
@@ -1049,7 +978,7 @@
 "fruits"
 
 
-# (11c) flowery phrases: ---- 
+# (09c) flowery phrases: ---- 
 
 #' Data: Flowery phrases. 
 #'
@@ -1076,7 +1005,7 @@
 "flowery"
 
 
-# (11e) Bushisms: ---- 
+# (09e) Bushisms: ---- 
 
 #' Data: Bushisms.  
 #'
@@ -1096,7 +1025,7 @@
 "Bushisms" 
 
 
-# (11e) Trumpisms: ---- 
+# (09e) Trumpisms: ---- 
 
 #' Data: Trumpisms. 
 #'
@@ -1117,11 +1046,198 @@
 "Trumpisms"
 
 
+
+# (10) Time data (Chapter 10): --------
+
+# (10a) fame data: ---- 
+
+# Fame data (DOB and DOD of famous people):
+# Chapter 10 (Time data), Exercise 3
+# See Exercise 3 at https://bookdown.org/hneth/ds4psy/10-4-time-ex.html#time:ex03 
+# See file all_DATASETs.R for raw data (as tables).
+
+#' Data table fame.
+#'
+#' \code{fame} is a dataset to practice working with dates.
+#'  
+#' \code{fame} contains the names, areas, dates of birth (DOB), and 
+#' --- if applicable --- the dates of death (DOD) of famous people.
+#' 
+#' @format A table with 38 cases (rows) and 4 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' Student solutions to exercises, dates from \url{https://en.wikipedia.org}. 
+
+"fame"
+
+# (10b) exp_num_dt data: ---- 
+
+# Experimental numeracy and date-time (dt) data:
+
+# File is a combination from 2 sources:
+# A. numeracy data:
+# See generating code chunk "data-create-numeracy-data" in book file "55_datasets.Rmd".
+# numeracy <- readr::read_csv("../ds4psy/data-raw/numeracy.csv")  # local csv file
+# numeracy <- readr::read_csv("http://rpository.com/ds4psy/data/numeracy.csv")  # online
+# numeracy  # 1000 x 12
+
+# B. dt data: 
+# See generating code chunk "data-create-time-bday-data" in book file "55_datasets.Rmd".
+# dt <- readr::read_csv("../ds4psy/data-raw/dt.csv")  # from local file 
+# dt <- readr::read_csv("http://rpository.com/ds4psy/data/dt.csv")  # online file
+# dt  # 1000 x 9
+
+## Check: 
+# dim(exp_num_dt)  # 1000 observations (rows) x 15 variables (columns)
+# sum(is.na(exp_num_dt))  # 130 missing values
+# usethis::use_data(exp_num_dt, overwrite = TRUE)
+
+#' Data from an experiment with numeracy and date-time variables. 
+#'
+#' \code{exp_num_dt} is a fictitious dataset describing 
+#' 1000 non-existing, but surprisingly friendly people. 
+#' 
+#' \strong{Codebook} 
+#' 
+#' The table contains 15 columns/variables:
+#' 
+#' \itemize{
+#' 
+#' \item 1. \strong{name}: Participant initials.
+#' 
+#' \item 2. \strong{gender}: Self-identified gender. 
+#' 
+#' \item 3. \strong{bday}: Day (within month) of DOB.
+#' 
+#' \item 4. \strong{bmonth}: Month (within year) of DOB.
+#' 
+#' \item 5. \strong{byear}: Year of DOB.
+#' 
+#' \item 6. \strong{height}: Height (in cm).
+#' 
+#' \item 7. \strong{blood_type}: Blood type. 
+#'  
+#' \item 8. \strong{bnt_1} to 11. \strong{bnt_4}: Correct response to BNT question? (1: correct, 0: incorrect).
+#' 
+#' \item 12. \strong{g_iq} and 13. \strong{s_iq}: Scores from two IQ tests (general vs. social).
+#' 
+#' \item 14. \strong{t_1} and 15. \strong{t_2}: Start and end time. 
+#' 
+#' } 
+#' 
+#' \code{exp_num_dt} was generated for analyzing test scores (e.g., IQ, numeracy), 
+#' for converting data from wide into long format, 
+#' and for dealing with date- and time-related variables. 
+#' 
+#' @format A table with 1000 cases (rows) and 15 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data files at 
+#' \url{http://rpository.com/ds4psy/data/numeracy.csv} and 
+#' \url{http://rpository.com/ds4psy/data/dt.csv}. 
+
+"exp_num_dt"
+
+
+# (10c) dt_10 data: 10 Danish bdays ---- 
+
+## Sources:
+# dt_10 <- readr::read_csv("./data-raw/dt_10.csv") # local file
+# dt_10_o <- readr::read_csv("http://rpository.com/ds4psy/data/dt_10.csv")  # online
+# all.equal(dt_10, dt_10_o)
+
+## Check: 
+# dim(dt_10)  # 10 x 7
+
+#' Data from 10 Danish people. 
+#'
+#' \code{dt_10} contains precise DOB information of 
+#' 10 non-existent, but definitely Danish people. 
+#' 
+#' @format A table with 10 cases (rows) and 7 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data file at 
+#' \url{http://rpository.com/ds4psy/data/dt_10.csv}. 
+
+"dt_10"
+
+
+# (11) Function data (Chapter 11): -------- 
+
+# none yet.
+
+# (12) Iteration / loops (Chapter 12): -------- 
+
+# https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html
+
+# (12a) tb data: ------ 
+
+# tb <- readr::read_csv2("http://rpository.com/ds4psy/data/tb.csv") 
+# 
+# # Check:
+# dim(tb)  #  100 cases x 5 variables
+# 
+# # Check number of missing values: 
+# sum(is.na(tb))  #  0 missing values
+# 
+# # Save to /data:
+# usethis::use_data(tb, overwrite = TRUE)
+
+
+#' Data table tb.
+#'
+#' \code{tb} is a fictitious dataset describing 
+#' 100 non-existing, but otherwise ordinary people.
+#' 
+#' \strong{Codebook} 
+#' 
+#' The table contains 5 columns/variables:
+#' 
+#' \itemize{
+#' 
+#' \item 1. \strong{id}: Participant ID.
+#' 
+#' \item 2. \strong{age}: Age (in years).
+#' 
+#' \item 3. \strong{height}: Height (in cm).
+#' 
+#' \item 4. \strong{shoesize}: Shoesize (EU standard).
+#' 
+#' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tables).
+#' 
+#' } 
+#' 
+#' \code{tb} was originally created to practice loops and iterations 
+#' (as a CSV file). 
+#' 
+#' @format A table with 100 cases (rows) and 5 variables (columns). 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See CSV data file at \url{http://rpository.com/ds4psy/data/tb.csv}. 
+
+"tb"
+
+
+
 ## ToDo: ----------
 
-# - collect ds4psy survey data
-# - add text data (Chapter 9: Text; e.g., dinos, fruit, veggies, attention check response on "i read instructions", some eBook for sentinent analysis, ...) 
-# - add date/time data (Chapter 10: Time, e.g., DOB, time of test, task start/end, etc.)
-# - add more info to codebooks (see data_190807.R in archive)
+# - Add date/time data (Chapter 10: Time, e.g., DOB, time of test, task start/end, etc.)
+# - Combine 2 datasets (currently online):
+#   a. numeracy.csv (1000 x 12, see book chapter 55_datasets.Rmd), 
+#   b. dt.csv (1000 x 9): date and time variables (see book chapter 10_times.Rmd)
+# - Consider combining with dataset `outliers` (1000 x 3), BUT: different genders and height values and regularities
+# - Collect ds4psy survey data
+# - Find some book/text to analyze (Chapter 9: Text data).
+# - Add text data (Chapter 9: Text; e.g., dinos, fruit, veggies, attention check response on "i read instructions", some eBook for sentinent analysis, ...) 
+# - Add more info to codebooks (see data_190807.R in archive)
 
 ## eof. ----------------------

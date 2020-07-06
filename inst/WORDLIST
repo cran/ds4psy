@@ -1,8 +1,13 @@
 ahi
 AHI
 ahiTotal
+bday
+bmonth
+bnt
+BNT
 bookdown
 Bushisms
+byear
 caseflip
 cclass
 CES
@@ -12,6 +17,7 @@ cesdTotal
 codebook
 Codebook
 Daryll
+dddd
 de
 doi
 ds
@@ -29,6 +35,7 @@ hn
 hneth
 http
 https
+iq
 Jarious
 Kalimba
 Konstanz
@@ -39,7 +46,11 @@ metacharacter
 NonCommercial
 nz
 O'Reilly
+O’Reilly
 png
+POSIXct
+POSIXlt
+POSIXt
 posttest
 Posttest
 PPIs
@@ -68,7 +79,6 @@ unikn
 Wickham
 Wilczynski
 Woodworth
-WPA
 WPAs
 www
 yyyy

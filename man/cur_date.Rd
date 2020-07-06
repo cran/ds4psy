@@ -4,30 +4,39 @@
 \alias{cur_date}
 \title{Current date (in yyyy-mm-dd or dd-mm-yyyy format).}
 \usage{
-cur_date(rev = FALSE, sep = "-")
+cur_date(rev = FALSE, as_string = TRUE, sep = "-")
 }
 \arguments{
 \item{rev}{Boolean: Reverse from "yyyy-mm-dd" to "dd-mm-yyyy" format?
 Default: \code{rev = FALSE}.}
 
+\item{as_string}{Boolean: Return as character string? 
+Default: \code{as_string = TRUE}. 
+If \code{as_string = FALSE}, a "Date" object is returned.}
+
 \item{sep}{Character: Separator to use. 
 Default: \code{sep = "-"}.}
+}
+\value{
+A character string or object of class "Date".
 }
 \description{
 \code{cur_date} provides a relaxed version of 
 \code{Sys.time()} that is sufficient for most purposes.
 }
 \details{
-\code{cur_date} returns \code{Sys.time()} 
-(in "%Y-%m-%d" or "%d-%m-%Y" format) 
-using current system settings.
+By default, \code{cur_date} returns \code{Sys.Date} 
+as a character string (using current system settings and 
+\code{sep} for formatting).  
+If \code{as_string = FALSE}, a "Date" object is returned.  
  
-By default, this corresponds to the "%Y-%m-%d" (or "%F")     
-format used as the ISO 8601 standard. 
+Alternatively, consider using \code{Sys.Date} 
+or \code{Sys.time()} to obtain the "%Y-%m-%d" (or "%F")     
+format according to the ISO 8601 standard. 
 
-For more options, see the 
-\code{date()} and \code{Sys.Date()} functions of \strong{base} R 
-and the plethora of formatting options for \code{Sys.time()}.
+For more options, see the documentations of the  
+\code{date} and \code{Sys.Date} functions of \strong{base} R   
+and the formatting options for \code{Sys.time()}.
 }
 \examples{
 cur_date()
@@ -35,13 +44,21 @@ cur_date(sep = "/")
 cur_date(rev = TRUE)
 cur_date(rev = TRUE, sep = ".")
 
+# return a "Date" object:
+dt <- cur_date(as_string = FALSE)
+class(dt)
+
 }
 \seealso{
+\code{what_date()} function to print dates with more options; 
 \code{date()} and \code{today()} functions of the \strong{lubridate} package; 
 \code{date()}, \code{Sys.Date()}, and \code{Sys.time()} functions of \strong{base} R.
 
 Other date and time functions: 
+\code{\link{change_time}()},
+\code{\link{change_tz}()},
 \code{\link{cur_time}()},
+\code{\link{is_leap_year}()},
 \code{\link{what_date}()},
 \code{\link{what_day}()},
 \code{\link{what_month}()},

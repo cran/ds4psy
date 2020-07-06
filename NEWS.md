@@ -1,15 +1,52 @@
 
-# ds4psy 0.3.0.9001+
+# ds4psy 0.4.0.9001+
 
 <!-- Description: --> 
 
 All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2020), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be instructive and entertaining, rather than elegant or efficient.
 
-<!-- Source code: --> 
+### Overview {-}
 
-- The current development version of **ds4psy** (0.3.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+The book and course [Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/) includes the following resources:
 
-- The current version of the textbook **Data Science for Psychologists** is available at <https://bookdown.org/hneth/ds4psy/>.
+<!-- Links: --> 
+
+- The most recent release of **ds4psy** (0.4.0) is available from CRAN: <https://CRAN.R-project.org/package=ds4psy>.
+
+- The current development version of **ds4psy** (0.4.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+
+- The textbook **Data Science for Psychologists** is hosted at <https://bookdown.org/hneth/ds4psy/>.
+
+-------- 
+
+# ds4psy 0.4.0
+
+Release of **ds4psy** (0.4.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-07-06] 
+
+## Major changes 
+
+- This version adds support for processing data with **dates** and **times**:   
+
+    - simple date and time functions now include options for returning dates or times, rather than strings.
+    - added time zone support to various functions.
+    - added datasets with date and time variables. 
+
+## Minor changes 
+
+- `change_tz()` and `change_time()` functions for changing the display of calendar times ("POSIXct") to local times ("POSIXlt") in different time zones `tz`, and vice versa (i.e., changing actual time, but preserving time display).  
+- `is_leap_year()` function checks dates and times (or integers denoting years in 4-digit "%Y" format) for falling within a leap year.  
+- data in `dt_10` and `exp_num_dt` support exercises on dates and times.  
+- `cur_date()` and `cur_time()` now print date/time (as string) or return a "Date"/"POSIXct" object.  
+- `what_date()` and `what_time()` gain support for adding time zones `tz` (but no active conversion).  
+- `sample_time()`: Switch default to sampling "POSIXct" objects (making "POSIXlt" optional) and allow specifying time zones `tz`.   
+- All date and time functions based primarily on dates (`cur_date()`, `what_date()`, etc.) now use `Sys.Date()` (i.e., an object of class "Date") rather than `Sys.time()` (i.e., a "POSIXct" calendar time) as default.  
+
+## Details 
+
+- bug fix: Distinguish `is.wholenumber()` from `is.integer()`  
+- bug fix: Use `\u...` rather than `\U...` in `Umlaut` definitions  
+- bug fix: Removed non-ASCII characters from `fruits` and `flowery`  
+
 
 -------- 
 
@@ -17,7 +54,7 @@ All datasets and functions required for the examples and exercises of the book "
 
 Release of **ds4psy** (0.3.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-06-15] 
 
-This release adds support for text processing. 
+This release adds support for processing **text** data. 
 
 
 ## Major changes 
@@ -44,20 +81,6 @@ This release adds support for text processing.
 - renamed `sample_date()` and `sample_time()` (to use singular form)  
 - renamed family of `text functions` to `text objects and functions`  
 - renamed family of `random functions` to `sampling functions`  
-
-
-## To do
-
-Critical:
-
-- none. 
-
-Optional:
-
-- add graphical functions for _clock plots_ (including new book chapters)  
-- create a ds4psy survey (to collect user data for additional examples)
-- add more data with text, date, and time variables  
-- add an _ascii art_ option for converting strings or text into tile plots (with colored tiles) 
 
 
 -------- 
@@ -137,54 +160,6 @@ The initial functionality is limited, as the package is designed to support the 
 
 ---------- 
 
-# ds4psy_book (course and textbook)
-
-This project has not yet been released (on CRAN or GitHub). 
-
-- The current book draft is available at <https://bookdown.org/hneth/ds4psy/>. 
-
-- The current source code of the **ds4psy_book** project (0.0.0.9001+) is hosted at <https://github.com/hneth/ds4psy> (with an additional suffix `_book`). 
-
-
-## Log of changes made 
-
-New content: 
-
-- added a new exercise on _Visual illusions_ using `make_grid()` function (see Exercise 6 in Chapter 2).  
-- added a new exercise on _Printing numbers as characters_ using `num_as_char()` function (see Exercise 6 in Chapter 11).  
-- added _A tidyverse caveat_ to Clarifications (see introductory chapter). 
-- added exercises on function exploration (`plot_fn()` and `plot_fun()`) to Chapter 1: Exploring functions.
-- added `fame` data (for Exercise 3 in Chapter 10: Time data)
-
-Structure:
-
-- ... 
-
-Details and cosmetics:
-
-- removed WPA abbreviations (for both exercises and solutions)
-- made figures smaller (e.g., a maximum of 75% of column width)
-- included _Preparation_ sections within _Introduction_ sections
-- use **unikn** color schemes (in most places)
-
-
-## To do
-
-New content: 
-
-- add exercises on random data generation (`coin()` and `dice()`) to Chapter 1 or 11: Functions? 
-- add _factors_ to Basics chapter, or a chapter on _Factors_ (in Part 2: Data wrangling) 
-- add chapter on _Text strings_ (in Part 2: Data wrangling)
-- add chapter on _Dates and times_ (in Part 2: Data wrangling)
-- consider making _conditionals_ its own chapter (in Part 3: Programming) 
-- emphasize _reproducible research_ aspects in introduction and appendix on R Markdown
-- add appendix on _R oddities_
-
-Details and cosmetics:
-
-- use a unified theme template for all plots  
-
-
-[File `News.md` updated on 2020-06-15.]
+[File `News.md` updated on 2020-07-06.]
 
 <!-- eof. -->
