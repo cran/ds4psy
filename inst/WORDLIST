@@ -8,7 +8,6 @@ BNT
 bookdown
 Bushisms
 byear
-caseflip
 cclass
 CES
 cesd
@@ -20,6 +19,7 @@ Daryll
 dddd
 de
 doi
+dplyr
 ds
 effectiveness’
 enrolment
@@ -31,6 +31,7 @@ grey
 Grolemund
 Hansjörg
 hh
+HH
 hn
 hneth
 http
@@ -43,6 +44,7 @@ leet
 lubridate
 metachar
 metacharacter
+nd
 NonCommercial
 nz
 O'Reilly
@@ -73,6 +75,7 @@ stringr
 th
 tidyr
 tidyverse
+tol
 toOrdinal
 Trumpisms
 unikn

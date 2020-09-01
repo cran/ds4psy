@@ -1,5 +1,5 @@
 ## text_fun.R | ds4psy
-## hn | uni.kn | 2020 06 22
+## hn | uni.kn | 2020 08 07
 ## ---------------------------
 
 ## Character objects and functions for string/text objects. 
@@ -214,7 +214,7 @@ cclass <- ccv
 # name_hn <- "Hansjoerg Neth"
 # name_course <- paste0(course_title, " (", course_title_abb, "), by ", name_hn, "")
 
-# # Table of contents (ToC):
+# # Table of contents (ToC) [Spring 2020]: 
 # toc <- tibble::tribble(
 #   ~nr, ~lbl,                 ~val,  ~part,   
 #    0,  "Introduction",          2,  0,
@@ -226,8 +226,8 @@ cclass <- ccv
 #    6,  "Importing data",        5,  2,  
 #    7,  "Tidying data",          7,  2,  
 #    8,  "Joining data",          6,  2,  
-#    9,  "Text data",             8,  2, 
-#   10,  "Time data",             6,  2,   
+#    9,  "Text data",             9,  2, # increased value 
+#   10,  "Time data",             8,  2, # increased value 
 #   11,  "Functions",            10,  3, 
 #   12,  "Iteration",             8,  3)
 # 
@@ -330,6 +330,8 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 #' @param out_case Change case of output string. 
 #' Default: \code{out_case = "no"}. 
 #' Set to \code{"lo"} or \code{"up"} for lower or uppercase, respectively.  
+#' 
+#' @return A character vector. 
 #' 
 #' @examples
 #' # Use defaults:
@@ -448,6 +450,10 @@ transl33t <- function(txt, rules = l33t_rul35,
 #' and the top line in the text file becomes \code{y = n_lines}? 
 #' Default: \code{flip_y = FALSE}. 
 #' 
+#' @return A data frame with 3 variables: 
+#' Each character's \code{x}- and \code{y}-coordinates (from top to bottom)  
+#' and a variable \code{char} for the character at this coordinate. 
+#' 
 #' @examples
 #' ## Create a temporary file "test.txt":
 #' # cat("Hello world!", "This is a test.", 
@@ -473,7 +479,6 @@ transl33t <- function(txt, rules = l33t_rul35,
 #'
 #' @seealso
 #' \code{\link{plot_text}} for a corresponding plot function. 
-#' 
 #' 
 #' @export
 
@@ -619,8 +624,7 @@ read_ascii <- function(file = "", flip_y = FALSE){
 
 ## count_chars: Count the frequency of characters in a string: -------- 
 
-#' count_chars counts the frequency of characters 
-#' in a string of text \code{x}.
+#' Count the frequency of characters in a string of text \code{x}.
 #'
 #' @param x A string of text (required).
 #' 
@@ -632,7 +636,9 @@ read_ascii <- function(file = "", flip_y = FALSE){
 #' 
 #' @param sort_freq Boolean: Sort output by character frequency? 
 #' Default: \code{sort_freq = TRUE}. 
-#' 
+#'
+#' @return A named numeric vector. 
+#'
 #' @examples
 #' # Default: 
 #' x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
@@ -642,7 +648,7 @@ read_ascii <- function(file = "", flip_y = FALSE){
 #' count_chars(x, case_sense = FALSE)
 #' count_chars(x, rm_specials = FALSE)
 #' count_chars(x, sort_freq = FALSE)
-#'  
+#'
 #' @family text objects and functions
 #'
 #' @seealso
@@ -721,17 +727,19 @@ count_chars <- function(x, # string of text to count
 
 ## text_to_sentences: Turn a text (consisting of one or more strings) into a vector of all its sentences: ------ 
 
-#' text_to_sentences splits a string of text \code{x} 
+#' Split strings of text \code{x} into sentences. 
+#' 
+#' \code{text_to_sentences} splits text \code{x} 
 #' (consisting of one or more character strings) 
 #' into a vector of its constituting sentences. 
 #' 
-#' \code{text_to_sentences} splits at given punctuation marks 
-#' (as a regular expression, default: \code{split_delim = "\\.|\\?|!"})  
-#' and removes empty leading and trailing spaces before returning 
-#' a vector of the remaining character sequences (as the sentences).
+#' The splits of \code{x} will occur at given punctuation marks 
+#' (provided as a regular expression, default: \code{split_delim = "\\.|\\?|!"}).   
+#' Empty leading and trailing spaces are removed before returning 
+#' a vector of the remaining character sequences (i.e., the sentences).
 #' 
-#' The Boolean \code{force_delim} distinguishes between 
-#' two splitting modes:
+#' The Boolean argument \code{force_delim} distinguishes between 
+#' two splitting modes: 
 #' 
 #' \enumerate{
 #' 
@@ -755,7 +763,6 @@ count_chars <- function(x, # string of text to count
 #' Internally, \code{text_to_sentences} uses \code{\link{strsplit}} to 
 #' split strings.
 #' 
-#'
 #' @param x A string of text (required), 
 #' typically a character vector. 
 #' 
@@ -771,7 +778,8 @@ count_chars <- function(x, # string of text to count
 #' If \code{force_delim = TRUE}, splits at \code{split_delim} are 
 #' enforced (regardless of spacing or capitalization).
 #' 
-#'  
+#' @return A character vector. 
+#' 
 #' @examples
 #' x <- c("A first sentence. Exclamation sentence!", 
 #'        "Any questions? But etc. can be tricky. A fourth --- and final --- sentence.")
@@ -803,12 +811,15 @@ text_to_sentences <- function(x,  # string(s) of text
                               force_delim = FALSE         # force split at delimiters
 ){
   
+  # 0. Initialize:
   st <- NA
   regex <- NA
   # split_delim <- "([[:punct:]])"  # as user argument
   
-  # Turn into character (if not already):
+  # 1. Handle inputs:
   x1 <- as.character(x)
+  
+  # 2. Main:
   
   # Paste all into one string:
   x2 <- paste(x1, collapse = " ")
@@ -843,9 +854,10 @@ text_to_sentences <- function(x,  # string(s) of text
   # Remove all instances of "":
   st <- x5[x5 != ""]
   
+  # 3. Output: 
   return(st)
   
-}
+} # text_to_sentences end. 
 
 # ## Check:
 # x <- c("A first sentence. Exclamation sentence!",
@@ -867,9 +879,11 @@ text_to_sentences <- function(x,  # string(s) of text
 
 ## text_to_words: Turn a text (consisting of one or more strings) into a vector of its words: ------ 
 
-#' text_to_words splits a string of text \code{x} 
+#' Split strings text \code{x} into words. 
+#' 
+#' \code{text_to_words} splits a string of text \code{x} 
 #' (consisting of one or more character strings) 
-#' into a vector of its constituting words.
+#' into a vector of its constituting words. 
 #' 
 #' \code{text_to_words} removes all (standard) punctuation marks 
 #' and empty spaces in the resulting parts, 
@@ -879,11 +893,11 @@ text_to_sentences <- function(x,  # string(s) of text
 #' Internally, \code{text_to_words} uses \code{\link{strsplit}} to 
 #' split strings.
 #'
-#'
 #' @param x A string of text (required), 
 #' typically a character vector. 
+#' 
+#' @return A character vector. 
 #'
-#'  
 #' @examples
 #' # Default: 
 #' x <- c("Hello!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
@@ -901,23 +915,21 @@ text_to_sentences <- function(x,  # string(s) of text
 text_to_words <- function(x  # string(s) of text
 ){
   
-  ws <- NA
+  # 0. Initialize:
+  wds <- NA
   
-  # Turn into character (if not already):
+  # 1. Handle inputs:
   x1 <- as.character(x)
   
-  # Remove punctuation:
-  x2 <- unlist(strsplit(x1, split = "[[:punct:]]"))
+  # 2. Main: 
+  x2 <- unlist(strsplit(x1, split = "[[:punct:]]"))  # remove punctuation
+  x3 <- unlist(strsplit(x2, split = "( ){1,}"))      # remove spaces
+  wds <- x3[x3 != ""]  # remove instances of ""
   
-  # Remove empty space:
-  x3 <- unlist(strsplit(x2, split = "( ){1,}"))
+  # 3. Output: 
+  return(wds)
   
-  # Remove all instances of "":
-  ws <- x3[x3 != ""]
-  
-  return(ws)
-  
-}
+} # text_to_words end. 
 
 # ## Check:
 # s3 <- c("A first sentence.", "The second sentence.", 
@@ -931,7 +943,7 @@ words_to_text <- function(w, collapse = " "){
   
   paste(w, collapse = collapse)
   
-}
+} # words_to_text end. 
 
 ## Check:
 # words_to_text(wv)
@@ -939,8 +951,7 @@ words_to_text <- function(w, collapse = " "){
 
 ## count_words: Count the frequency of words in a string: -------- 
 
-#' count_words counts the frequency of words  
-#' in a string of text \code{x}.
+#' Count the frequency of words in a string of text \code{x}.
 #'
 #' @param x A string of text (required).
 #' 
@@ -949,6 +960,8 @@ words_to_text <- function(w, collapse = " "){
 #' 
 #' @param sort_freq Boolean: Sort output by word frequency? 
 #' Default: \code{sort_freq = TRUE}. 
+#'
+#' @return A named numeric vector. 
 #' 
 #' @examples
 #' # Default: 
@@ -959,7 +972,7 @@ words_to_text <- function(w, collapse = " "){
 #' # Options: 
 #' count_words(s3, case_sense = FALSE)  # case insensitive
 #' count_words(s3, sort_freq = FALSE)   # sorts alphabetically
-#'  
+#'
 #' @family text objects and functions
 #'
 #' @seealso
@@ -973,9 +986,10 @@ count_words <- function(x,  # string(s) of text
                         sort_freq = TRUE
 ){
   
-  freq <- NA  # initialize
+  # 0. Initialize: 
+  freq <- NA
   
-  # Turn into character (if not already):
+  # 1. Handle inputs: 
   v0 <- as.character(x)
   
   if (case_sense){
@@ -984,9 +998,10 @@ count_words <- function(x,  # string(s) of text
     v1 <- tolower(v0)  # lowercase
   }
   
-  # Split input into a vector of all its words:
+  # 2. Main: Split input into a vector of all its words:
   w <- text_to_words(v1)
   
+  # 3. Prepare outputs: 
   if (sort_freq){
     
     freq <- sort(table(w), decreasing = TRUE)
@@ -1001,7 +1016,6 @@ count_words <- function(x,  # string(s) of text
   
 } # count_words end.
 
-
 # ## Check:
 # s3 <- c("A first sentence.", "The second sentence.", 
 #         "A third --- and also the final --- sentence.")
@@ -1015,10 +1029,18 @@ count_words <- function(x,  # string(s) of text
 
 ## caseflip: Flip lower to upper case and vice versa: --------  
 
-#' caseflip flips the case of characters 
+#' Flip the case of characters in a string of text \code{x}.
+#' 
+#' \code{caseflip} flips the case of all characters 
 #' in a string of text \code{x}.
+#' 
+#' Internally, \code{caseflip} uses the \code{letters} and \code{LETTERS} 
+#' constants of \strong{base} R and the \code{chartr} function 
+#' for replacing characters in strings of text. 
 #'
 #' @param x A string of text (required).
+#' 
+#' @return A character vector. 
 #' 
 #' @examples
 #' x <- c("Hello world!", "This is a 1st sentence.", "This is the 2nd sentence.", "The end.")
@@ -1027,7 +1049,8 @@ count_words <- function(x,  # string(s) of text
 #' @family text objects and functions
 #'
 #' @seealso
-#' \code{\link{capitalize}} for converting the case of initial letters. 
+#' \code{\link{capitalize}} for converting the case of initial letters; 
+#' \code{chartr} for replacing characters in strings of text. 
 #' 
 #' @export
 
@@ -1054,10 +1077,14 @@ caseflip <- function(x){
 
 ## capitalize the first n letters of words (w/o exception): -------- 
 
-#' capitalize converts the case of 
+#' Capitalize initial characters in strings of text \code{x}.  
+#' 
+#' \code{capitalize} converts the case of 
 #' each word's \code{n} initial characters 
 #' (typically to \code{upper}) 
 #' in a string of text \code{x}.
+#'
+#' @return A character vector. 
 #'
 #' @param x A string of text (required).
 #' 
@@ -1140,8 +1167,6 @@ capitalize <- function(x, # string of text to capitalize
 # capitalize(x, n = 3)
 # capitalize(x, n = 2, upper = FALSE)
 # capitalize(x, as_text = FALSE)
-
-
 
 
 

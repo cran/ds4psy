@@ -1,5 +1,5 @@
 ## data_fun.R | ds4psy
-## hn | uni.kn | 2020 06 23
+## hn | uni.kn | 2020 08 15
 ## ---------------------------
 
 ## Functions for creating and manipulating data. 
@@ -80,7 +80,7 @@ coin <- function(n = 1, events = c("H", "T")){
     n <- n[1]
   }
   
-  if ( (length(n) == 1) && ( is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+  if ( (length(n) == 1) && ( is.na(n) || !is.numeric(n) || !is_wholenumber(n) || (n < 1) ) ) { 
     message("coin: n must be a positive integer. Using n = 1:") 
     n <- 1
   }
@@ -157,6 +157,8 @@ coin <- function(n = 1, events = c("H", "T")){
 #' 
 #' @param ... Other arguments.  
 #' (Use for specifying \code{prob}, as passed to \code{sample()}.)   
+#' 
+#' @return A text string (scalar character vector). 
 #' 
 #' @examples
 #' sample_char()  # default
@@ -263,46 +265,80 @@ sample_char <- function(x_char = c(letters, LETTERS), n = 1, replace = FALSE, ..
 #' \code{from = "1970-01-01"} 
 #' \code{to = Sys.Date()} (current date).
 #' 
-#' @param n Number dates to draw. 
-#' Default: \code{n = 1}. 
+#' Both \code{from} and \code{to} currently 
+#' need to be scalars (i.e., with a length of 1). 
 #' 
-#' @param from Earliest date (as string). 
-#' Default: \code{from = "1970-01-01"}. 
+#' @param from Earliest date (as "Date" or string). 
+#' Default: \code{from = "1970-01-01"} 
+#' (as a scalar). 
 #' 
-#' @param to Latest date (as string). 
-#' Default: \code{to = Sys.Date()}. 
+#' @param to Latest date (as "Date" or string). 
+#' Default: \code{to = Sys.Date()} 
+#' (as a scalar).  
+#' 
+#' @param size Size of date samples to draw. 
+#' Default: \code{size = 1}. 
+#' 
+#' @param ... Other arguments.  
+#' (Use for specifying \code{replace}, as passed to \code{sample()}.) 
+#' 
+#' @return A vector of class "Date". 
 #' 
 #' @examples
 #' sample_date()
-#' sort(sample_date(n = 10))
-#' sort(sample_date(n = 10, from = "2020-02-28", to = "2020-03-01"))  # 2020 is a leap year
+#' sort(sample_date(size = 10))
+#' sort(sample_date(from = "2020-02-28", to = "2020-03-01", 
+#'      size = 10, replace = TRUE))  # 2020 is a leap year
 #' 
 #' # Note: Oddity with sample():
-#' sort(sample_date(n = 10, from = "2020-01-01", to = "2020-01-01"))  # range of 0!
+#' sort(sample_date(from = "2020-01-01", to = "2020-01-01", size = 10, replace = TRUE))  # range of 0!
 #' # see sample(9:9, size = 10, replace = TRUE)
 #' 
 #' @family sampling functions
 #'
 #' @export 
 
-sample_date <- function(n = 1, from = "1970-01-01", to = Sys.Date()){
+sample_date <- function(from = "1970-01-01", to = Sys.Date(), size = 1, ...){
   
+  # 0. Initialize:
+  dt <- rep(NA, size) 
+  
+  # 1. Handle inputs:
+  if (!is_Date(from)){
+    # message('sample_date: Aiming to parse "from" as "Date".')
+    from <- date_from_noDate(from)
+  }
+  
+  if (!is_Date(to)){
+    # message('sample_date: Aiming to parse "to" as "Date".')
+    to <- date_from_noDate(to)
+  }
+  
+  # 2. Main: Use sample()
   # set.seed(1984)  # for reproducible randomness
-  d1 <- as.Date(from)  
-  d2 <- as.Date(to)   
+  dt <- as.Date(sample(as.numeric(from):as.numeric(to), size = size, ...), origin = '1970-01-01')
   
-  as.Date(sample(as.numeric(d1):as.numeric(d2), size = n, 
-                 replace = TRUE), origin = '1970-01-01')
+  # 3. Output:
+  return(dt)
   
-}
+} # sample_date end. 
 
-## Check:
+# ## Check:
 # sample_date()
-# sort(sample_date(n = 10))
-# sort(sample_date(n = 10, from = "2020-02-28", to = "2020-03-01"))  # 2020 is a leap year
+# sort(sample_date(size = 10))
+# sort(sample_date(from = "2020-02-28", to = "2020-03-01", size = 10, replace = TRUE))  # 2020 is a leap year
+# 
+# # with vectors:
+# (f <- as.Date(c("1970-01-01", "1980-01-01", "1990-01-01")))
+# (t <- as.Date(c("1979-12-31", "1989-12-31", "1999-12-31")))
+# sample_date(f, t, 10)  # only uses 1st elements
+# 
+# ft <- data.frame(f, t)
+# apply(ft, MARGIN = 1, FUN = function(from, to) sample(x = from:to, size = 1))
+# # ToDo: Vectorized version of sample_date().
 # 
 # # Note: Oddity with sample():
-# sort(sample_date(n = 10, from = "2020-01-01", to = "2020-01-01"))  # range of 0!
+# sort(sample_date(from = "2020-01-01", to = "2020-01-01", size = 10, replace = TRUE))  # range of 0!
 # # see sample(9:9, size = 10, replace = TRUE)
 
 
@@ -319,6 +355,9 @@ sample_date <- function(n = 1, from = "1970-01-01", to = Sys.Date()){
 #' \code{from = "1970-01-01 00:00:00"} 
 #' \code{to = Sys.time()} (current time).
 #' 
+#' Both \code{from} and \code{to} currently 
+#' need to be scalars (i.e., with a length of 1). 
+#' 
 #' If \code{as_POSIXct = FALSE}, a local time ("POSIXlt") object is returned 
 #' (as a list). 
 #' 
@@ -326,14 +365,16 @@ sample_date <- function(n = 1, from = "1970-01-01", to = Sys.Date()){
 #' (see \code{Sys.timezone()} for current setting 
 #' and \code{OlsonNames()} for options.) 
 #' 
-#' @param n Number dates to draw. 
-#' Default: \code{n = 1}. 
+#' @param from Earliest date-time (as string). 
+#' Default: \code{from = "1970-01-01 00:00:00"} 
+#' (as a scalar). 
 #' 
-#' @param from Earliest date (as string). 
-#' Default: \code{from = "1970-01-01 00:00:00"}. 
+#' @param to Latest date-time (as string). 
+#' Default: \code{to = Sys.time()} 
+#' (as a scalar). 
 #' 
-#' @param to Latest date (as string). 
-#' Default: \code{to = Sys.time()}. 
+#' @param size Size of time samples to draw. 
+#' Default: \code{size = 1}. 
 #' 
 #' @param as_POSIXct Boolean: Return calendar time ("POSIXct") object? 
 #' Default: \code{as_POSIXct = TRUE}. 
@@ -345,49 +386,72 @@ sample_date <- function(n = 1, from = "1970-01-01", to = Sys.Date()){
 #' see \code{Sys.timezone()}). 
 #' Use \code{tz = "UTC"} for Universal Time, Coordinated. 
 #' 
+#' @param ... Other arguments.  
+#' (Use for specifying \code{replace}, as passed to \code{sample()}.) 
+#' 
+#' @return A vector of class "POSIXct" or "POSIXlt".   
+#' 
 #' @examples
 #' # Basics:
 #' sample_time()
-#' sample_time(n = 10)
+#' sample_time(size = 10)
 #' 
 #' # Specific ranges:
-#' sort(sample_time(n = 10, from = (Sys.time() - 60)))  # within the last minute
-#' sort(sample_time(n = 10, from = (Sys.time() - 1 * 60 * 60)))  # within the last hour
-#' sort(sample_time(n = 10, from = Sys.time(), 
-#'                            to = (Sys.time() + 1 * 60 * 60)))  # within the next hour
-#' sort(sample_time(n = 10, from = "2020-12-31 00:00:00 CET", 
-#'                            to = "2020-12-31 00:00:01 CET"))   # within 1 sec range
+#' sort(sample_time(from = (Sys.time() - 60), size = 10))  # within last minute
+#' sort(sample_time(from = (Sys.time() - 1 * 60 * 60), size = 10))  # within last hour
+#' sort(sample_time(from = Sys.time(), to = (Sys.time() + 1 * 60 * 60), 
+#'      size = 10, replace = FALSE))  # within next hour
+#' sort(sample_time(from = "2020-12-31 00:00:00 CET", to = "2020-12-31 00:00:01 CET",
+#'                  size = 10, replace = TRUE))  # within 1 sec range 
 #'                            
 #' # Local time (POSIXlt) objects (as list):
-#' sample_time(as_POSIXct = FALSE)
-#' unlist(sample_time(as_POSIXct = FALSE))
+#' (lt_sample <- sample_time(as_POSIXct = FALSE))
+#' unlist(lt_sample)
 #' 
 #' # Time zones:
-#' sample_time(n = 3, tz = "UTC")
-#' sample_time(n = 3, tz = "US/Pacific")
+#' sample_time(size = 3, tz = "UTC")
+#' sample_time(size = 3, tz = "US/Pacific")
 #'  
 #' # Note: Oddity with sample(): 
-#' sort(sample_time(n = 10, from = "2020-12-31 00:00:00 CET", 
-#'                            to = "2020-12-31 00:00:00 CET"))  # range of 0!
+#' sort(sample_time(from = "2020-12-31 00:00:00 CET", to = "2020-12-31 00:00:00 CET",
+#'      size = 10, replace = TRUE))  # range of 0!
 #' # see sample(9:9, size = 10, replace = TRUE)
 #' 
 #' @family sampling functions
 #'
 #' @export
 
-sample_time <- function(n = 1, 
-                        from = "1970-01-01 00:00:00", to = Sys.time(),
-                        as_POSIXct = TRUE, tz = ""){
+sample_time <- function(from = "1970-01-01 00:00:00", 
+                        to = Sys.time(),
+                        size = 1, 
+                        as_POSIXct = TRUE, tz = "", 
+                        ...){
   
-  tv <- rep(NA, n)  # initialize
+  # 0. Initialize:
+  tv <- rep(NA, size)  
+  lt1 <- rep(NA, size)  
+  lt2 <- rep(NA, size)  
   
-  t1 <- as.POSIXlt(from)
-  t2 <- as.POSIXlt(to)
+  # 1. Handle inputs:
+  if (!is_POSIXt(from)){
+    # message('sample_time: Aiming to parse "from" as "POSIXct".')
+    from <- time_from_noPOSIXt(from)
+  }
   
-  tv <- as.POSIXlt(sample(as.numeric(t1):as.numeric(t2), size = n, 
-                          replace = TRUE), origin = '1970-01-01')
+  if (!is_POSIXt(to)){
+    # message('sample_time: Aiming to parse "to" as "POSIXct".')
+    to <- time_from_noPOSIXt(to)
+  }
   
-  # Add time zone:
+  # Convert into local times:
+  lt1 <- as.POSIXlt(from)
+  lt2 <- as.POSIXlt(to)
+  
+  # 2. Main: Use sample()
+  # set.seed(1984)  # for reproducible randomness
+  tv <- as.POSIXlt(sample(as.numeric(lt1):as.numeric(lt2), size = size, ...), origin = '1970-01-01')
+  
+  # 3. Add time zone:
   if (as_POSIXct) { 
     tv <- as.POSIXct(tv, tz = tz)  # convert into POSIXct with tz
   } else {
@@ -395,32 +459,35 @@ sample_time <- function(n = 1,
     tv <- as.POSIXlt(tv, tz = tz)  # re-convert into POSIXlt
   }
   
+  # 4. Output: 
   return(tv)
   
 } # sample_time end.
 
-
 # ## Check:
 # # Basics:
 # sample_time()
-# sample_time(n = 10)
+# sample_time(size = 10)
 # 
 # # Specific ranges:
-# sort(sample_time(n = 10, from = (Sys.time() - 60)))  # within the last minute
-# sort(sample_time(n = 10, from = (Sys.time() - 1 * 60 * 60)))  # within the last hour
-# sort(sample_time(n = 10, from = Sys.time(), to = (Sys.time() + 1 * 60 * 60)))  # within next hour
-# sort(sample_time(n = 10, from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:01 CET"))  # 1 sec range
+# sort(sample_time(from = (Sys.time() - 60), size = 10))  # within the last minute
+# sort(sample_time(from = (Sys.time() -  2), size = 10, replace = TRUE))  # with duplicates
+# sort(sample_time(from = (Sys.time() - 1 * 60 * 60), size = 10))  # within the last hour
+# sort(sample_time(from = Sys.time(), to = (Sys.time() + 1 * 60 * 60), size = 10))  # within next hour
+# sort(sample_time(from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:01 CET", 
+#                  size = 10, replace = TRUE))  # 1 sec range
 # 
 # # Local time (POSIXlt) objects (as list):
 # sample_time(as_POSIXct = FALSE)
 # unlist(sample_time(as_POSIXct = FALSE))
 # 
 # # Time zones:
-# sample_time(n = 3, tz = "UTC")
-# sample_time(n = 3, tz = "US/Pacific")
+# sample_time(size = 3, tz = "UTC")
+# sample_time(size = 3, tz = "US/Pacific")
 # 
 # # Note: Oddity with sample():
-# sort(sample_time(n = 10, from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:00 CET"))  # range of 0!
+# sort(sample_time(from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:00 CET", 
+#                  size = 10, replace = TRUE))  # range of 0!
 # # see sample(9:9, size = 10, replace = TRUE)
 
 ## ToDo: Sampling normally distributed times:
@@ -495,7 +562,7 @@ dice <- function(n = 1, events = 1:6){
     n <- n[1]
   }
   # Verify that n is a numeric integer > 1:  
-  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is_wholenumber(n) || (n < 1) ) ) { 
     message("dice: n must be a positive integer. Using n = 1:") 
     n <- 1
   }
@@ -515,7 +582,7 @@ dice <- function(n = 1, events = 1:6){
   } else {  # sides is a scalar: length(sides) <= 1:
     
     # Verify that events is a numeric integer > 1:
-    if ( is.na(events) || !is.numeric(events) || !is.wholenumber(events) || (events < 1) ) { 
+    if ( is.na(events) || !is.numeric(events) || !is_wholenumber(events) || (events < 1) ) { 
       message("dice: events must be an integer or a set. Using events = 6:") 
       events <- 6
     }
@@ -614,7 +681,7 @@ dice_2 <- function(n = 1, sides = 6){
   }
   
   # Verify that n is a numeric integer > 1:  
-  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is.wholenumber(n) || (n < 1) ) ) { 
+  if ((length(n) == 1) && (is.na(n) || !is.numeric(n) || !is_wholenumber(n) || (n < 1) ) ) { 
     message("dice_2: n must be a positive integer. Using n = 1:") 
     n <- 1
   }
@@ -634,7 +701,7 @@ dice_2 <- function(n = 1, sides = 6){
   } else {  # sides is a scalar: length(sides) <= 1:
     
     # Verify that sides is a numeric integer > 1:
-    if ( is.na(sides) || !is.numeric(sides) || !is.wholenumber(n) || (sides < 1) ) { 
+    if ( is.na(sides) || !is.numeric(sides) || !is_wholenumber(n) || (sides < 1) ) { 
       message("dice_2: sides must be an integer or a set. Using sides = 6:") 
       sides <- 6
     }
@@ -1042,6 +1109,9 @@ make_grid <- function(x_min = 0, x_max = 2, y_min = 0, y_max = 1){
 
 ## ToDo: ----------
 
+# - Vectorized versions of sample_date() and sample_time() 
+#   that allow inputs of (recycled) vectors from and to and draw 
+#   n = size samples from each pair-wise range.
 # - sample_time variant for sampling normally distributed times?
 
 ## eof. ----------------------

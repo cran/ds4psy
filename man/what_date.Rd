@@ -74,22 +74,22 @@ what_date(rev = TRUE, sep = " ", month_form = "B")
 what_date(when = Sys.time())
 
 # with time vector (of "POSIXct" objects):
-ts <- c("2020-12-24 01:02:03 CET", "2020-12-31 23:59:59")
+ts <- c("1969-07-13 13:53 CET", "2020-12-31 23:59:59")
 what_date(ts)
 what_date(ts, rev = TRUE, sep = ".")
 what_date(ts, rev = TRUE, month_form = "b")
-
-# with time zone: 
-ts <- ISOdate(2020, 12, 24, c(0, 12))  # midnight and midday UTC
-what_date(when = ts, tz = "US/Hawaii")
 
 # return a "Date" object:
 dt <- what_date(as_string = FALSE)
 class(dt)
 
+# with time zone: 
+ts <- ISOdate(2020, 12, 24, c(0, 12))  # midnight and midday UTC
+what_date(when = ts, tz = "US/Hawaii", as_string = FALSE)
+
 }
 \seealso{
-\code{what_day()} function to obtain (week)days; 
+\code{what_wday()} function to obtain (week)days; 
 \code{what_time()} function to obtain times; 
 \code{cur_time()} function to print the current time; 
 \code{cur_date()} function to print the current date; 
@@ -101,10 +101,14 @@ Other date and time functions:
 \code{\link{change_tz}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
 \code{\link{what_time}()},
+\code{\link{what_wday}()},
 \code{\link{what_week}()},
 \code{\link{what_year}()}
 }

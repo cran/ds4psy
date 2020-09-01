@@ -1,9 +1,9 @@
 
-# ds4psy 0.4.0.9001+
+# ds4psy 0.5.0+
 
 <!-- Description: --> 
 
-All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2020), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be instructive and entertaining, rather than elegant or efficient.
+All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2020), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be explicit and instructive, rather than elegant or efficient.
 
 ### Overview {-}
 
@@ -11,11 +11,52 @@ The book and course [Data Science for Psychologists](https://bookdown.org/hneth/
 
 <!-- Links: --> 
 
-- The most recent release of **ds4psy** (0.4.0) is available from CRAN: <https://CRAN.R-project.org/package=ds4psy>.
+- The most recent release of **ds4psy** (0.5.0) is available from CRAN: <https://CRAN.R-project.org/package=ds4psy>.
 
-- The current development version of **ds4psy** (0.4.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+- The current development version of **ds4psy** (0.5.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
 
 - The textbook **Data Science for Psychologists** is hosted at <https://bookdown.org/hneth/ds4psy/>.
+
+-------- 
+
+# ds4psy 0.5.0
+
+Release of **ds4psy** (0.5.0) on CRAN: <https://CRAN.R-project.org/package=ds4psy>. [2020-09-01] 
+
+## Major changes 
+
+- Additional functions for **dates** and **times**:
+
+    - added `diff_dates()` to compute temporal differences between dates (in human time units of years, months, and days) 
+    - added `diff_times()` to compute temporal differences between times (in human time units of years, ..., and seconds) 
+    - added `diff_tz()` to compute time difference based on time zone differences  
+    - added `days_in_month()` to obtain number of days in months for given dates (accounting for leap years)  
+
+<!-- Add blank line.  --> 
+
+- added `is_equal()` and `num_equal()` to check pairwise (near) equality of vectors  
+- added `theme_clean()` as an alternative to `theme_ds4psy()`  
+
+## Minor changes 
+
+- renamed `is.wholenumber()` to `is_wholenumber()`  
+- revised arguments of `sample_date()` and `sample_time()` to align with `sample()` 
+- revised `theme_ds4psy()` to provide control over colors of backgrounds, lines, and text elements 
+- updated `fame` data  
+
+<!-- Add blank line.  --> 
+
+## Details 
+
+- bug fix: `num_as_char()` now also works for negative numbers.  
+- bug fix: Remove alternative solution in `is_leap_year()` (which yielded `FALSE` for `NA` inputs).  
+- bug fix: Replace `\u2212` (minus sign) by `-` (dash) in `exp_num_dt$blood_type` to prevent **Note** on "marked UTF-8 strings".  
+
+<!-- Add blank line.  --> 
+
+The current development version of **ds4psy** (0.5.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+
+<!-- Add blank line.  --> 
 
 -------- 
 
@@ -30,6 +71,8 @@ Release of **ds4psy** (0.4.0) on CRAN: <https://CRAN.R-project.org/package=ds4ps
     - simple date and time functions now include options for returning dates or times, rather than strings.
     - added time zone support to various functions.
     - added datasets with date and time variables. 
+
+<!-- Add blank line.  --> 
 
 ## Minor changes 
 
@@ -82,6 +125,7 @@ This release adds support for processing **text** data.
 - renamed family of `text functions` to `text objects and functions`  
 - renamed family of `random functions` to `sampling functions`  
 
+<!-- Add blank line.  --> 
 
 -------- 
 
@@ -110,6 +154,8 @@ This is a **maintenance release** to remove some dependencies, fix bugs on CRAN 
 - bug fix: Added `utils::globalVariables(...)` to avoid Warning NOTE "Undefined global functions or variables"
 - bug fix: Removed packages not used in this version (i.e., `dplyr`, and `magrittr`) from declared Imports 
 
+
+<!-- Add blank line.  --> 
 
 -------- 
 
@@ -143,6 +189,8 @@ Changes involving new functionality include:
 - bug fix: Removed packages not used in this version (i.e., `readr`, `stringr`, `tidyr`, and `tidyverse`) from declared Imports
 
 
+<!-- Add blank line.  --> 
+
 -------- 
 
 # ds4psy 0.1.0
@@ -158,8 +206,10 @@ The initial functionality is limited, as the package is designed to support the 
 - provides an initial color scheme and plotting theme
 - added plotting functions (e.g., of book graphics) for exploring functions 
 
+<!-- Add blank line.  --> 
+
 ---------- 
 
-[File `News.md` updated on 2020-07-06.]
+[File `NEWS.md` updated on 2020-08-31.]
 
 <!-- eof. -->

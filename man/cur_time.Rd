@@ -56,11 +56,15 @@ Other date and time functions:
 \code{\link{change_time}()},
 \code{\link{change_tz}()},
 \code{\link{cur_date}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
 \code{\link{what_date}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
 \code{\link{what_time}()},
+\code{\link{what_wday}()},
 \code{\link{what_week}()},
 \code{\link{what_year}()}
 }

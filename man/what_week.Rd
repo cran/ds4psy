@@ -33,7 +33,7 @@ what_week()
 what_week(as_integer = TRUE)
 
 # Other dates/times:
-d1 <- as.Date("2019-08-23")
+d1 <- as.Date("2020-12-24")
 what_week(when = d1, unit = "year")
 what_week(when = d1, unit = "month")
 
@@ -51,7 +51,7 @@ what_week(ts)
 
 }
 \seealso{
-\code{what_day()} function to obtain (week)days; 
+\code{what_wday()} function to obtain (week)days; 
 \code{what_date()} function to obtain dates; 
 \code{cur_time()} function to print the current time; 
 \code{cur_date()} function to print the current date; 
@@ -63,11 +63,15 @@ Other date and time functions:
 \code{\link{change_tz}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
 \code{\link{what_date}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
 \code{\link{what_time}()},
+\code{\link{what_wday}()},
 \code{\link{what_year}()}
 }
 \concept{date and time functions}

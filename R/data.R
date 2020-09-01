@@ -1,7 +1,5 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2020 07 02
-## ---------------------------
-
+## hn | uni.kn | 2020 08 31
 ## Documentation of datasets included in /data. 
 
 
@@ -298,7 +296,7 @@
 #' Undisclosed Flexibility in Data Collection and Analysis 
 #' Allows Presenting Anything as Significant". 
 #' \emph{Journal of Open Psychology Data}, \emph{2}(1), e1. 
-#' doi: \url{http://doi.org/10.5334/jopd.aa} 
+#' doi: \url{https://doi.org/10.5334/jopd.aa} 
 #' }
 #' 
 #' See files at \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.aa/} and 
@@ -1027,15 +1025,16 @@
 
 # (09e) Trumpisms: ---- 
 
-#' Data: Trumpisms. 
+#' Data: Trumpisms.
 #'
 #' \code{Trumpisms} contains words frequently used 
 #' by U.S. president Donald J. Trump 
 #' (the 45th and current president of the United States, 
-#' as of May 2020).
+#' as of September 2020).
 #' 
 #' @format A vector of type \code{character}  
-#' with \code{length(Trumpisms) = 96}. 
+#' with \code{length(Trumpisms) = 108} 
+#' (as of September 2020). 
 #' 
 #' @family datasets 
 #' 
@@ -1063,14 +1062,15 @@
 #' \code{fame} contains the names, areas, dates of birth (DOB), and 
 #' --- if applicable --- the dates of death (DOD) of famous people.
 #' 
-#' @format A table with 38 cases (rows) and 4 variables (columns). 
+#' @format A table with 66 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 
 #' @source 
-#' Student solutions to exercises, dates from \url{https://en.wikipedia.org}. 
+#' Student solutions to exercises, dates mostly from \url{https://www.wikipedia.org/}. 
 
 "fame"
+
 
 # (10b) exp_num_dt data: ---- 
 
@@ -1226,6 +1226,12 @@
 
 "tb"
 
+
+## Check data: ------ 
+
+## Check for "marked UTF-8 strings":
+
+# tools:::.check_package_datasets(".")
 
 
 ## ToDo: ----------

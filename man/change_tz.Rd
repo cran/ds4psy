@@ -58,7 +58,6 @@ tv <- c(tc, t2)
 tv  # Note: Both times in tz of tc
 change_tz(tv, "US/Pacific")
 
-
 }
 \seealso{
 \code{\link{change_time}} function which preserves time display but changes time; 
@@ -68,11 +67,15 @@ Other date and time functions:
 \code{\link{change_time}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
 \code{\link{what_date}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
 \code{\link{what_time}()},
+\code{\link{what_wday}()},
 \code{\link{what_week}()},
 \code{\link{what_year}()}
 }

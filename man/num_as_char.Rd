@@ -34,7 +34,11 @@ Default: \code{sep = "."}.}
 The arguments \code{n_pre_dec} and \code{n_dec} set a number of desired digits 
 before and after the decimal separator \code{sep}. 
 \code{num_as_char} tries to meet these digit numbers by adding zeros to the front 
-and end of \code{x}. 
+and end of \code{x}. However, when \code{n_pre_dec} is lower than the 
+number of relevant (pre-decimal) digits, all relevant digits are shown. 
+
+\code{n_pre_dec} also works for negative numbers, but 
+the minus symbol is not counted as a (pre-decimal) digit. 
 
 \strong{Caveat:} Note that this function illustrates how numbers, 
 characters, \code{for} loops, and \code{paste()} can be combined 
@@ -56,28 +60,34 @@ num_as_char(1.6666, n_pre_dec = 1, n_dec = 1)
 num_as_char(1.6666, n_pre_dec = 2, n_dec = 2)
 num_as_char(1.6666, n_pre_dec = 2, n_dec = 3)
 
-# Note: If n_pre_dec is too small, actual number is used:
+# Note: If n_pre_dec is too small, actual number is kept:
 num_as_char(11.33, n_pre_dec = 0, n_dec = 1)
 num_as_char(11.66, n_pre_dec = 1, n_dec = 1)
 
-# Details:
+# Note:
 num_as_char(1, sep = ",")
 num_as_char(2, sym = " ")
 num_as_char(3, sym = " ", n_dec = 0)
+
+# for vectors:
+num_as_char(1:10/1, n_pre_dec = 1, n_dec = 1)
+num_as_char(1:10/3, n_pre_dec = 2, n_dec = 2)
+
+# for negative numbers (adding relevant pre-decimals):
+mix <- c(10.33, -10.33, 10.66, -10.66)
+num_as_char(mix, n_pre_dec = 1, n_dec = 1)
+num_as_char(mix, n_pre_dec = 1, n_dec = 0)
 
 # Beware of bad inputs:
 num_as_char(4, sym = "8")
 num_as_char(5, sym = "99")
 
-# Works for vectors:
-num_as_char(1:10/1, n_pre_dec = 1, n_dec = 1)
-num_as_char(1:10/3, n_pre_dec = 2, n_dec = 2)
-
-
 }
 \seealso{
 Other utility functions: 
-\code{\link{is.wholenumber}()},
-\code{\link{num_as_ordinal}()}
+\code{\link{is_equal}()},
+\code{\link{is_wholenumber}()},
+\code{\link{num_as_ordinal}()},
+\code{\link{num_equal}()}
 }
 \concept{utility functions}

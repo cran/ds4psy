@@ -61,11 +61,15 @@ what_time(tm)
 # with time zone: 
 ts <- ISOdate(2020, 12, 24, c(0, 12))  # midnight and midday UTC
 t1 <- what_time(when = ts, tz = "US/Hawaii")
-t1
+t1  # time display changed, due to tz
 
 # return "POSIXct" object(s):
-t2 <- what_time("2020-02-29 12:30:45", as_string = FALSE, tz = "US/Hawaii")
-format(t2, "\%T \%Z (UTF \%z)")
+# Same time in differen tz:
+t2 <- what_time(as.POSIXct("2020-02-29 10:00:00"), as_string = FALSE, tz = "US/Hawaii")
+format(t2, "\%F \%T \%Z (UTF \%z)")
+# from string:
+t3 <- what_time("2020-02-29 10:00:00", as_string = FALSE, tz = "US/Hawaii")
+format(t3, "\%F \%T \%Z (UTF \%z)")
 
 }
 \seealso{
@@ -79,10 +83,14 @@ Other date and time functions:
 \code{\link{change_tz}()},
 \code{\link{cur_date}()},
 \code{\link{cur_time}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
 \code{\link{what_date}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
+\code{\link{what_wday}()},
 \code{\link{what_week}()},
 \code{\link{what_year}()}
 }

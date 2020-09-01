@@ -2,55 +2,128 @@
 % Please edit documentation in R/theme_fun.R
 \name{theme_ds4psy}
 \alias{theme_ds4psy}
-\title{ds4psy default plot theme (using ggplot2 and unikn).}
+\title{A basic and flexible plot theme (using ggplot2 and unikn).}
 \usage{
 theme_ds4psy(
-  col_title = "black",
   base_size = 11,
   base_family = "",
-  base_line_size = base_size/20,
-  base_rect_size = base_size/20
+  base_line_size = base_size/22,
+  base_rect_size = base_size/22,
+  col_title = grey(0, 1),
+  col_txt_1 = grey(0.1, 1),
+  col_txt_2 = grey(0.2, 1),
+  col_txt_3 = grey(0.1, 1),
+  col_bgrnd = "transparent",
+  col_panel = grey(1, 1),
+  col_strip = "transparent",
+  col_axes = grey(0, 1),
+  col_gridx = grey(0.75, 1),
+  col_gridy = grey(0.75, 1),
+  col_brdrs = "transparent"
 )
 }
 \arguments{
-\item{col_title}{Color of title (text) elements (optional, numeric).
-Default: \code{col_title = "black"}.  
-Consider using \code{col_title = unikn::pal_seeblau[[4]]} 
-in combination with black or grey data points.}
-
 \item{base_size}{Base font size (optional, numeric). 
 Default: \code{base_size = 11}.}
 
 \item{base_family}{Base font family (optional, character). 
-Default: \code{base_family = ""}.}
+Default: \code{base_family = ""}. 
+Options include \code{"mono"}, \code{"sans"} (default), and "serif".}
 
 \item{base_line_size}{Base line size (optional, numeric). 
-Default: \code{base_line_size = base_size/20}.}
+Default: \code{base_line_size = base_size/22}.}
 
 \item{base_rect_size}{Base rectangle size (optional, numeric). 
-Default: \code{base_rect_size = base_size/20}.}
+Default: \code{base_rect_size = base_size/22}.}
+
+\item{col_title}{Color of plot title (and tag). 
+Default: \code{col_title = grey(.0, 1)} (i.e., "black").}
+
+\item{col_txt_1}{Color of primary text (headings and axis labels).
+Default: \code{col_title = grey(.1, 1)}.}
+
+\item{col_txt_2}{Color of secondary text (caption, legend, axes labels/ticks). 
+Default: \code{col_title = grey(.2, 1)}.}
+
+\item{col_txt_3}{Color of other text (facet strip labels).
+Default: \code{col_title = grey(.1, 1)}.}
+
+\item{col_bgrnd}{Color of plot background.
+Default: \code{col_bgrnd = "transparent"}.}
+
+\item{col_panel}{Color of panel background(s).
+Default: \code{col_panel = grey(1.0, 1)} (i.e., "white").}
+
+\item{col_strip}{Color of facet strips. 
+Default: \code{col_strip = "transparent"}.}
+
+\item{col_axes}{Color of (x and y) axes. 
+Default: \code{col_axes = grey(.00, 1)} (i.e., "black").}
+
+\item{col_gridx}{Color of (major and minor) panel lines (through x/vertical). 
+Default: \code{col_gridx = grey(.75, 1)} (i.e., light "grey").}
+
+\item{col_gridy}{Color of (major and minor) panel lines (through y/horizontal). 
+Default: \code{col_gridy = grey(.75, 1)} (i.e., light "grey").}
+
+\item{col_brdrs}{Color of (panel and strip) borders. 
+Default: \code{col_brdrs = "transparent"}.}
 }
 \description{
-\code{theme_ds4psy} provides a basic \bold{ds4psy} theme 
+\code{theme_ds4psy} provides a generic \bold{ds4psy} theme 
 to use in \bold{ggplot2} commands.
 }
 \details{
 The theme is lightweight and no-nonsense, but somewhat 
-opinionated (e.g., in using mostly grey scales to 
-allow emphasizing data points with color accents).
+opinionated (e.g., in using transparency and grid lines, 
+and relying on grey tones for emphasizing data with color accents). 
+
+Basic sizes and the colors of text elements, 
+backgrounds, and lines can be specified. 
+However, excessive customization rarely yields aesthetic improvements 
+over the standard \strong{ggplot2} themes.
 }
 \examples{
 
 \donttest{
-  # Plotting iris dataset (using ggplot2 and theme_ds4psy):
-  
-  library("ggplot2")  # theme_ds4psy requires loading ggplot2 
-  
-  ggplot(datasets::iris) +
-    geom_jitter(aes(x = Petal.Length, y = Petal.Width, color = Species), size = 3, alpha = 2/3) +
-    labs(title = "Iris species",
-         caption = "Data from datasets::iris") +
-    theme_ds4psy(col_title = "black", base_size = 11)
+
+# Plotting iris dataset (using ggplot2 and unikn):
+
+library('ggplot2')  # theme_ds4psy() requires ggplot2
+library('unikn')    # for colors and usecol() function
+   
+ggplot(datasets::iris) +
+  geom_jitter(aes(x = Petal.Length, y = Petal.Width, color = Species), size = 3, alpha = 2/3) +
+  scale_color_manual(values = usecol(pal = c(Pinky, Seeblau, Seegruen))) +
+  labs(title = "Iris petals",
+       subtitle = "The subtitle of this plot", 
+       caption = "Data from datasets::iris") +
+  theme_ds4psy()
+
+ggplot(datasets::iris) +
+  geom_jitter(aes(x = Sepal.Length, y = Sepal.Width, color = Species), size = 3, alpha = 2/3) +
+  facet_wrap(~Species) +
+  scale_color_manual(values = usecol(pal = c(Pinky, Seeblau, Seegruen))) +
+  labs(tag = "A",
+       title = "Iris sepals",
+       subtitle = "This is a demo plot with facets and default colors", 
+       caption = "Data from datasets::iris") + 
+  coord_fixed(ratio = 3/2) + 
+  theme_ds4psy()
+
+# in unikn::Seeblau look:
+
+ggplot(datasets::iris) +
+  geom_jitter(aes(x = Sepal.Length, y = Sepal.Width, color = Species), size = 3, alpha = 2/3) +
+  facet_wrap(~Species) +
+  scale_color_manual(values = usecol(pal = c(Pinky, Seeblau, Seegruen))) +
+  labs(tag = "B",
+       title = "Iris sepals",
+       subtitle = "A demo plot using unikn::Seeblau colors", 
+       caption = "Data from datasets::iris") + 
+  coord_fixed(ratio = 3/2) + 
+  theme_ds4psy(col_title = pal_seeblau[[4]], col_strip = pal_seeblau[[1]], col_brdrs = Grau)
+
 }
 
 }
@@ -62,6 +135,7 @@ Other plot functions:
 \code{\link{plot_fun}()},
 \code{\link{plot_n}()},
 \code{\link{plot_text}()},
-\code{\link{plot_tiles}()}
+\code{\link{plot_tiles}()},
+\code{\link{theme_clean}()}
 }
 \concept{plot functions}

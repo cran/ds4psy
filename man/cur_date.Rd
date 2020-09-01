@@ -45,8 +45,8 @@ cur_date(rev = TRUE)
 cur_date(rev = TRUE, sep = ".")
 
 # return a "Date" object:
-dt <- cur_date(as_string = FALSE)
-class(dt)
+from <- cur_date(as_string = FALSE)
+class(from)
 
 }
 \seealso{
@@ -58,11 +58,15 @@ Other date and time functions:
 \code{\link{change_time}()},
 \code{\link{change_tz}()},
 \code{\link{cur_time}()},
+\code{\link{days_in_month}()},
+\code{\link{diff_dates}()},
+\code{\link{diff_times}()},
+\code{\link{diff_tz}()},
 \code{\link{is_leap_year}()},
 \code{\link{what_date}()},
-\code{\link{what_day}()},
 \code{\link{what_month}()},
 \code{\link{what_time}()},
+\code{\link{what_wday}()},
 \code{\link{what_week}()},
 \code{\link{what_year}()}
 }
