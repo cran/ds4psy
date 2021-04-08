@@ -6,21 +6,20 @@
 \title{Data: Trumpisms.}
 \format{
 A vector of type \code{character}  
-with \code{length(Trumpisms) = 108} 
-(as of September 2020).
+with \code{length(Trumpisms) = 168} 
+(on 2021-01-28).
 }
 \source{
 Data originally based on \url{https://www.yourdictionary.com/slideshow/donald-trump-20-most-frequently-used-words.html} 
-and expanded by public speeches and Twitter tweets on \url{https://twitter.com/realDonaldTrump}.
+and expanded by interviews, public speeches, and Twitter tweets at \url{https://twitter.com/realDonaldTrump}.
 }
 \usage{
 Trumpisms
 }
 \description{
-\code{Trumpisms} contains words frequently used 
-by U.S. president Donald J. Trump 
-(the 45th and current president of the United States, 
-as of September 2020).
+\code{Trumpisms} contains frequent words and characteristic phrases 
+by U.S. president Donald J. Trump (the 45th president of the United States, 
+in office from January 20, 2017, to January 20, 2021).
 }
 \seealso{
 Other datasets: 

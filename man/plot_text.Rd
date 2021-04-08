@@ -61,7 +61,7 @@ Default: \code{col_bg = "white"}.}
 \item{pal}{Color palette for filling tiles 
 of text (used in order of character frequency). 
 Default: \code{pal = pal_ds4psy[1:5]} 
-(i.e., shades of \code{unikn::Seeblau}).}
+(i.e., shades of \code{Seeblau}).}
 
 \item{pal_extend}{Boolean: Should pal be extended 
 to match the number of different characters in text? 
@@ -142,6 +142,7 @@ Other plot functions:
 \code{\link{plot_n}()},
 \code{\link{plot_tiles}()},
 \code{\link{theme_clean}()},
-\code{\link{theme_ds4psy}()}
+\code{\link{theme_ds4psy}()},
+\code{\link{theme_empty}()}
 }
 \concept{plot functions}

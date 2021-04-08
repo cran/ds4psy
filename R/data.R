@@ -1,5 +1,5 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2020 08 31
+## hn | uni.kn | 2021 04 07
 ## Documentation of datasets included in /data. 
 
 
@@ -55,7 +55,7 @@
 #' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
-#' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
+#' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
 #' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
@@ -130,7 +130,7 @@
 #' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
-#' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
+#' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
 #' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
@@ -174,7 +174,7 @@
 #' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
-#' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
+#' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
 #' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
@@ -216,7 +216,7 @@
 #' }
 #' 
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
-#' and \url{https://doi.org/10.6084/m9.figshare.1577563.v1} for original dataset. 
+#' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
 #' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
 
@@ -289,14 +289,14 @@
 #' False-positive psychology: Undisclosed flexibility in data collection and analysis 
 #' allows presenting anything as significant. 
 #' \emph{Psychological Science}, \emph{22}(11), 1359--1366. 
-#' doi: \url{https://doi.org/10.1177/0956797611417632}
+#' doi: \doi{10.1177/0956797611417632}
 #' 
 #' \item Simmons, J.P., Nelson, L.D., & Simonsohn, U. (2014). 
 #' Data from paper "False-Positive Psychology: 
 #' Undisclosed Flexibility in Data Collection and Analysis 
 #' Allows Presenting Anything as Significant". 
 #' \emph{Journal of Open Psychology Data}, \emph{2}(1), e1. 
-#' doi: \url{https://doi.org/10.5334/jopd.aa} 
+#' doi: \doi{10.5334/jopd.aa} 
 #' }
 #' 
 #' See files at \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.aa/} and 
@@ -369,9 +369,6 @@
 #' Original data at \url{http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html}. 
 
 "pi_100k"
-
-
-
 
 
 
@@ -1020,27 +1017,26 @@
 #' @source 
 #' Data based on \url{https://en.wikipedia.org/wiki/Bushism}. 
 
-"Bushisms" 
+"Bushisms"
 
 
 # (09e) Trumpisms: ---- 
 
 #' Data: Trumpisms.
 #'
-#' \code{Trumpisms} contains words frequently used 
-#' by U.S. president Donald J. Trump 
-#' (the 45th and current president of the United States, 
-#' as of September 2020).
+#' \code{Trumpisms} contains frequent words and characteristic phrases 
+#' by U.S. president Donald J. Trump (the 45th president of the United States, 
+#' in office from January 20, 2017, to January 20, 2021). 
 #' 
 #' @format A vector of type \code{character}  
-#' with \code{length(Trumpisms) = 108} 
-#' (as of September 2020). 
+#' with \code{length(Trumpisms) = 168} 
+#' (on 2021-01-28).
 #' 
 #' @family datasets 
 #' 
 #' @source 
 #' Data originally based on \url{https://www.yourdictionary.com/slideshow/donald-trump-20-most-frequently-used-words.html} 
-#' and expanded by public speeches and Twitter tweets on \url{https://twitter.com/realDonaldTrump}. 
+#' and expanded by interviews, public speeches, and Twitter tweets at \url{https://twitter.com/realDonaldTrump}. 
 
 "Trumpisms"
 
@@ -1062,7 +1058,7 @@
 #' \code{fame} contains the names, areas, dates of birth (DOB), and 
 #' --- if applicable --- the dates of death (DOD) of famous people.
 #' 
-#' @format A table with 66 cases (rows) and 4 variables (columns). 
+#' @format A table with 67 cases (rows) and 4 variables (columns). 
 #' 
 #' @family datasets
 #' 

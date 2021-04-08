@@ -17,10 +17,10 @@ knitr::opts_chunk$set(
 #  @Manual{ds4psy,
 #    title = {ds4psy: Data Science for Psychologists},
 #    author = {Hansjörg Neth},
-#    year = {2020},
+#    year = {2021},
 #    organization = {Social Psychology and Decision Sciences, University of Konstanz},
 #    address = {Konstanz, Germany},
-#    note = {Textbook and R package (version 0.5.0, Sep 1, 2020)},
+#    note = {Textbook and R package (version 0.6.0, April 8, 2021)},
 #    url = {https://bookdown.org/hneth/ds4psy/}
 #  }
 

@@ -1,5 +1,5 @@
 ## data_fun.R | ds4psy
-## hn | uni.kn | 2020 08 15
+## hn | uni.kn | 2021 04 01
 ## ---------------------------
 
 ## Functions for creating and manipulating data. 
@@ -17,7 +17,7 @@ random_bin_value <- function(x = c(0, 1), n = 1, replace = TRUE) {
   
   sample(x = x, size = n, replace = replace)  
   
-} # random_bin_value end. 
+} # random_bin_value() end. 
 
 ## Check: 
 # random_bin_value(n = 10)
@@ -88,7 +88,7 @@ coin <- function(n = 1, events = c("H", "T")){
   # sample n outcomes: 
   sample(x = events, size = n, replace = TRUE)
   
-} # coin end. 
+} # coin() end. 
 
 # ## Check:
 # # Basics:
@@ -211,7 +211,7 @@ sample_char <- function(x_char = c(letters, LETTERS), n = 1, replace = FALSE, ..
   
   return(out)
   
-} # sample_char end. 
+} # sample_char() end. 
 
 # ## Check: 
 # sample_char()
@@ -321,7 +321,8 @@ sample_date <- function(from = "1970-01-01", to = Sys.Date(), size = 1, ...){
   # 3. Output:
   return(dt)
   
-} # sample_date end. 
+} # sample_date() end. 
+
 
 # ## Check:
 # sample_date()
@@ -340,7 +341,6 @@ sample_date <- function(from = "1970-01-01", to = Sys.Date(), size = 1, ...){
 # # Note: Oddity with sample():
 # sort(sample_date(from = "2020-01-01", to = "2020-01-01", size = 10, replace = TRUE))  # range of 0!
 # # see sample(9:9, size = 10, replace = TRUE)
-
 
 
 # Sample random times (from a given range): ------
@@ -462,7 +462,7 @@ sample_time <- function(from = "1970-01-01 00:00:00",
   # 4. Output: 
   return(tv)
   
-} # sample_time end.
+} # sample_time() end.
 
 # ## Check:
 # # Basics:
@@ -594,7 +594,7 @@ dice <- function(n = 1, events = 1:6){
   # Sample n times from set_of_events: 
   sample(x = set_of_events, size = n, replace = TRUE)
   
-} # dice end.
+} # dice() end.
 
 # ## Check:
 # # Basics:
@@ -626,6 +626,7 @@ dice <- function(n = 1, events = 1:6){
 # dice(n = 10, sides = 4:4)  # odd: see sample() for an explanation.
 
 # dice(NULL, NULL)
+
 
 # dice_2: n non-random draws from a sample (from 1 to sides): ------ 
 
@@ -662,7 +663,6 @@ dice <- function(n = 1, events = 1:6){
 #' # Note an oddity:
 #' dice_2(n = 10, sides = 8:9)  # works, but 
 #' dice_2(n = 10, sides = 9:9)  # odd: see sample() for an explanation.
-#' 
 #' 
 #' @family sampling functions
 #'
@@ -724,9 +724,9 @@ dice_2 <- function(n = 1, sides = 6){
   
   sample(x = set_of_sides, size = n, replace = TRUE, prob = pset)
   
-} # dice_2 end.
+} # dice_2() end.
 
-# ## Check:
+## Check:
 # # Basics:
 # dice_2()
 # table(dice_2(10^5))
@@ -747,16 +747,47 @@ dice_2 <- function(n = 1, sides = 6){
 # dice_2(n = 10, sides = 4:4)  # odd: see sample() for an explanation.
 
 
-# Permutations: List all permutations of a set: ----------
+# Permutations: List ALL permutations of a vector/set x / permute a set/vector x: ------ 
 
 # library(combinat)
-
+# 
 # set <- c("a", "b", "c")
 # pm <- combinat::permn(x = set)
 # pm
 
+# Recursive definition: 
 
-# Combinations: List all combinations of length n of a set: ---------- 
+all_permutations <- function(x) {
+  
+  out <- NA  # initialize ----
+  n <- length(x)
+  
+  if (n == 1) { # basic case: ----  
+    
+    out <- x
+    
+  } else { # Use recursion: ---- 
+    
+    out <- NULL  # init/stopping case
+    
+    for (i in 1:n) { # loop: ----
+      
+      out <- rbind(out, cbind(x[i], all_permutations(x[-i])))
+      
+    }
+  }
+  
+  return(out)
+  
+} # all_permutations() end. 
+
+## Check:
+# all_permutations(246)
+# all_permutations(1:3)
+# all_permutations(c("A", "B", "b", "a"))
+
+
+# Combinations: List ALL combinations of length n of a set x: ------ 
 
 # # (a) Using utils::combn: 
 # m <- utils::combn(x = 1:4, m = 2)
@@ -765,12 +796,23 @@ dice_2 <- function(n = 1, sides = 6){
 # t(m)
 # is.vector(m)  # if m == length(x)
 
-all_combinations <- function(set, length){
+all_combinations <- function(x, length){
   
+  # Prepare: ---- 
   out <- NA  # initialize
   
-  # Use utils::combn to obtain matrix:
-  m <- utils::combn(x = set, m = length)
+  # Verify inputs: 
+  if (is.na(x) || is.na(length)){
+    return(NA)
+  }
+  
+  if (length > length(x)){
+    message(paste0("all_combinations: length must not exceed length(x). Using length = ", length(x)))
+    length <- length(x)
+  }
+  
+  # Main: Use utils::combn to obtain matrix: ---- 
+  m <- utils::combn(x = x, m = length)
   
   if (is.vector(m)){
     
@@ -782,35 +824,48 @@ all_combinations <- function(set, length){
     
   }
   
+  # Output:
   return(out)
   
-} # all_combinations end. 
+} # all_combinations() end. 
 
 ## Check:
-# all_combinations(set = 1:3, length = 4)  # ERROR: n < m
-# all_combinations(set = c("a", "b", "c"), 2)
-# all_combinations(set = 1:5, length = 2)
-# all_combinations(set = 1:25, 2)  # Note: 25 * 24 / 2 combinations.
+# all_combinations(x = c("a", "b", "c"), 2)
+# all_combinations(x = 1:5, length = 2)
+# all_combinations(x = 1:25, 2)  # Note: 25 * 24 / 2 = 300 combinations.
+# all_combinations(x = 1:3, length = 1)
+# all_combinations(x = 1:3, length = 88)
+# all_combinations(x = 1:3, length = NA)
+# all_combinations(x = NA, length = 1)
 
+# random_symbols: Get n vectors of random symbols (of length len) from some set x: ----- 
 
-# Random vector of n symbols of length len from some set: ----- 
-
-random_symbols <- function(n = 1, set = letters, len = 1, sep = "") {
+random_symbols <- function(x = letters, len = 1, n = 1, sep = "", replace = TRUE) {
   
   stopifnot(is.numeric(n), n > 0) # check conditions
   
-  out <- rep(NA, n) # initialize output vector
+  out <- rep(NA, n) # initialize vector
   
-  for (i in 1:n) {
+  for (i in 1:n) { # loop 1: 1:n 
     
     i_th <- ""  # initialize
     
-    for (j in 1:len) {
-      
-      j_th <- sample(set, 1, replace = TRUE)
-      i_th <- paste0(i_th, j_th, sep = sep)
-      
-    }
+    # (a) Sample symbols in set x 1 element at a time: ----
+    
+    # for (j in 1:len) { # loop 2: 1:len
+    #   
+    #   j_th <- sample(x = x, size = 1)  # Note: replace ineffective for size 1
+    #   i_th <- paste0(i_th, j_th, sep = sep)
+    #   
+    # }
+    
+    # (b) Sample len elements at once: ---- 
+    
+    v_x <- as.vector(x)  # turn x into vector
+    
+    i_th <- sample(x = v_x, size = len, replace = replace)
+    
+    i_th <- paste0(i_th, collapse = "")  # collapse i_th again
     
     out[i] <- i_th
     
@@ -818,74 +873,75 @@ random_symbols <- function(n = 1, set = letters, len = 1, sep = "") {
   
   return(out)
   
-} # random_symbols end. 
+} # random_symbols() end. 
 
 ## Check:
-# random_symbols(n = 10, len = 4)
-# random_symbols(n = 10, len = 10)
-# random_symbols(n = 10, set = as.character(0:9), len = 4)
-
+# random_symbols()
+# random_symbols(len = 4, n = 10)
+# random_symbols(len = 4, n = 10, replace = FALSE)
+# random_symbols(x = as.character(0:4), len = 5, n = 5) # with replacement
+# random_symbols(x = as.character(0:4), len = 5, n = 5, replace = FALSE) # w/o replacement
 
 
 ## Goal: Adding a random amount (number or proportion) of NA or other values to a vector:
 
-# Adding to data: add_NAs: ----- 
+# add_NAs: Adding NA/missing values to a vector v of data: ----- 
 
-## A function to replace a random amount (a proportion <= 1 or absolute number > 1) 
-## of vector elements by NA values:  
+## A function to replace a random amount (a proportion <= 1 OR absolute number > 1) 
+## of vector v's elements by NA values:  
 
-add_NAs <- function(vec, amount){
+add_NAs <- function(v, amount){
   
-  stopifnot((is.vector(vec)) & (amount >= 0) & (amount <= length(vec)))
+  stopifnot((is.vector(v)) & (amount >= 0) & (amount <= length(v)))
   
-  out <- vec
-  n <- length(vec)
+  out <- v
+  n <- length(v)
   
-  amount2 <- ifelse(amount < 1, round(n * amount, 0), amount) # turn amount prop into n
+  amount_2 <- ifelse(amount < 1, round(n * amount, 0), amount) # turn amount prop into n
   
-  out[sample(x = 1:n, size = amount2, replace = FALSE)] <- NA
+  out[sample(x = 1:n, size = amount_2, replace = FALSE)] <- NA
   
   return(out)
   
-} # add_NAs end. 
+} # add_NAs() end. 
 
-## Check:
+# Check:
 # add_NAs(1:10, 0)
-# add_NAs(1:10, 3)
+# add_NAs(1:10, 5)
 # add_NAs(1:10, .5)
-# add_NAs(letters[1:10], 3)
+# add_NAs(letters[1:10], 5)
 
 
-# Adding to data: add_whats: ----- 
+# add_whats: Adding some element(s) what to a vector v of data: ----- 
 
 ## Generalization of add_NAs: 
-## Replace a random amount of vector elements by what: 
+## Replace a random amount of vector v elements by what: 
 
-add_whats <- function(vec, amount, what = NA){
+add_whats <- function(v, amount, what = NA){
   
-  stopifnot((is.vector(vec)) & (amount >= 0) & (amount <= length(vec)))
+  stopifnot((is.vector(v)) & (amount >= 0) & (amount <= length(v)))
   
-  out <- vec
-  n <- length(vec)
+  out <- v
+  n <- length(v)
   
-  amount2 <- ifelse(amount < 1, round(n * amount, 0), amount) # turn amount prop into n
+  amount_2 <- ifelse(amount < 1, round(n * amount, 0), amount) # turn amount prop into n
   
-  out[sample(x = 1:n, size = amount2, replace = FALSE)] <- what
+  out[sample(x = 1:n, size = amount_2, replace = FALSE)] <- what
   
   return(out)
   
-}  # add_whats end. 
+} # add_whats() end. 
 
 ## Check:
-# add_whats(1:10, 3) # default: what = NA
-# add_whats(1:10, 3, what = 99)
+# add_whats(1:10,  5)  # default: what = NA
+# add_whats(1:10,  5, what = 99)
 # add_whats(1:10, .5, what = "ABC")
 
 
 
 ## (2) Make tables for plots: ----------
 
-# make_tb: Create (n x n) table tb for plots: --------
+# make_tb: Create (n x n) table tb for plots: ------ 
 
 make_tb <- function(n = NA, rseed = NA){
   
@@ -946,7 +1002,7 @@ make_tb <- function(n = NA, rseed = NA){
   
   return(tb)
   
-} # make_tb end. 
+} # make_tb() end. 
 
 ## Check: 
 # make_tb(n = 3)
@@ -954,7 +1010,7 @@ make_tb <- function(n = NA, rseed = NA){
 # make_tb(n = 5, rseed = 1)
 
 
-# make_tbs: Create simpler (1 x n) table tbs for plots: --------
+# make_tbs: Create simpler (1 x n) table tbs for plots: ------ 
 
 make_tbs <- function(n = NA, rseed = NA){
   
@@ -1015,13 +1071,12 @@ make_tbs <- function(n = NA, rseed = NA){
   
   return(tbs)
   
-} # make_tbs end. 
+} # make_tbs() end. 
 
 ## Check: 
 # make_tbs(n = 6)
 # make_tbs(n = 6, rseed = 1)  # check rseed
 # make_tbs(n = 6, rseed = 1)
-
 
 
 # make_grid: Generate a grid of x-y coordinates (from -x:x to -y:y): ------ 
@@ -1095,7 +1150,7 @@ make_grid <- function(x_min = 0, x_max = 2, y_min = 0, y_max = 1){
   
   return(tb)
   
-}  # make_grid end. 
+} # make_grid() end. 
 
 ## Check: 
 # make_grid()
@@ -1105,6 +1160,80 @@ make_grid <- function(x_min = 0, x_max = 2, y_min = 0, y_max = 1){
 # make_grid(x_min = 1/2, y_min = 1/3)
 ## Errors: 
 # make_grid(x_min = "A")
+
+
+
+## (3) Misc: ----------
+
+
+# get_set: Get a coordinate set from datasets::anscombe (as df): ------ 
+
+#' Get a set of x-y coordinates. 
+#'
+#' \code{get_set} obtains a set of x/y coordinates and returns it 
+#' (as a data frame).
+#' 
+#' Each set stems from Anscombe's Quartet 
+#' (see \code{datasets::anscombe}, hence 
+#' \code{1 <= n <= 4}) and is returned as an 
+#' \code{11 x 2} data frame. 
+#' 
+#' @source See \code{?datasets:anscombe} for details and references. 
+#' 
+#' @param n Number of set (as an integer from 1 to 4)).  
+#' Default: \code{n = 1}. 
+#'
+#' @examples
+#' get_set(1)
+#' plot(get_set(2), col = "red")
+#'
+#' @family data functions
+#'
+#' @export 
+
+# Obtain a set of x- and y- values out of Anscombe's quartet: 
+
+get_set <- function(n = 1){
+  
+  set <- NA  # initialize 
+  
+  # check inputs: ----  
+  if (is.null(n)){
+    message("get_set: n must not be NULL. Using n = 1:") 
+    n <- 1
+  }
+  
+  if (length(n) > 1) {  # n is a vector: 
+    message(paste0("get_set: n must be a scalar. Using n[1] = ", n[1], ":"))
+    n <- n[1]
+  }
+  
+  if ( (length(n) == 1) && ( is.na(n) || !is.numeric(n) || !is_wholenumber(n) || (n < 1) || (n > 4)) ) { 
+    message("get_set: n must be a positive integer (from 1 to 4). Using n = 1:") 
+    n <- 1
+  }
+  
+  # main: ---- 
+  df <- datasets::anscombe  # get data
+  
+  ans <- with(df, data.frame(x = c(x1, x2, x3, x4), 
+                             y = c(y1, y2, y3, y4), 
+                             nr = gl(4, nrow(df))))
+  
+  set <- ans[ans$nr == n, 1:2]  # get subset
+  
+  rownames(set) <- paste0("p", num_as_char(1:nrow(set), n_pre_dec = 2, n_dec = 0))
+  
+  return(set)
+  
+} # get_set() end. 
+
+## Check: 
+# get_set(1)
+# get_set(pi)
+# plot(get_set(2), col = "red")
+# 
+# # Note: @importFrom datasets anscombe is not needed.
 
 
 ## ToDo: ----------
