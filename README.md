@@ -33,9 +33,7 @@ course introduce the principles and methods of data science for students
 of psychology and other biological or social sciences.
 
 <!-- Description of ds4psy package:  -->
-<!-- All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2020), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences.  -->
-<!-- The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises.  -->
-<!-- All functions included in 'ds4psy' are designed to be explicit and instructive, rather than elegant or efficient. -->
+<!-- All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2021), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be explicit and instructive, rather than efficient or elegant.  -->
 
 ## Installation
 
@@ -267,7 +265,7 @@ To cite **ds4psy** in derivations and publications, please use:
 -   Neth, H. (2021). ds4psy: Data Science for Psychologists.  
     Social Psychology and Decision Sciences, University of Konstanz,
     Germany.  
-    Textbook and R package (version 0.6.0, April 8, 2021).  
+    Textbook and R package (version 0.7.0, May 12, 2021).  
     Retrieved from
     <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.
 
@@ -281,7 +279,7 @@ A **BibTeX** entry for LaTeX users is:
       year = {2021},
       organization = {Social Psychology and Decision Sciences, University of Konstanz},
       address = {Konstanz, Germany},
-      note = {Textbook and R package (version 0.6.0, April 8, 2021)},
+      note = {Textbook and R package (version 0.7.0, May 12, 2021)},
       url = {https://bookdown.org/hneth/ds4psy/} 
     }
 
@@ -308,6 +306,6 @@ License</a>.
 
 <!-- Update: -->
 
-\[Updated 2021-04-08 by [hn](https://neth.de).\]
+\[Updated 2021-05-12 by [hn](https://neth.de).\]
 
 <!-- eof. -->

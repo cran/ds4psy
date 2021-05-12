@@ -3,7 +3,7 @@
 
 <!-- Description: --> 
 
-All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2021), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be explicit and instructive, rather than elegant or efficient.
+All datasets and functions required for the examples and exercises of the book "Data Science for Psychologists" (by Hansjoerg Neth, Konstanz University, 2021), available at <https://bookdown.org/hneth/ds4psy/>. The book and course introduce principles and methods of data science to students of psychology and other biological or social sciences. The 'ds4psy' package primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. All functions included in 'ds4psy' are designed to be explicit and instructive, rather than efficient or elegant. 
 
 
 ### Overview {-}
@@ -13,11 +13,75 @@ The book and course [Data Science for Psychologists](https://bookdown.org/hneth/
 <!-- Links: --> 
 
 - The textbook **Data Science for Psychologists** is hosted at <https://bookdown.org/hneth/ds4psy/>. 
-- The most recent release of **ds4psy** (0.6.0) is available from CRAN: <https://CRAN.R-project.org/package=ds4psy>.
-- The current development version of **ds4psy** (0.6.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+- The most recent release of **ds4psy** (0.7.0) is available from CRAN: <https://CRAN.R-project.org/package=ds4psy>.
+- The current development version of **ds4psy** (0.7.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
 
 
-<!-- Current release:  --> 
+<!-- Current version:  --> 
+
+-------- 
+
+# ds4psy 0.7.0
+
+<!-- Log of changes: --> 
+
+This version adds functionality, increases modularity, and fixes a bug in text data. [2021-05-12] 
+
+Changes since last release: 
+
+
+## Major changes 
+
+- Breaking change: The function `read_ascii()` was split into 2\ parts (to enable independent access to their functionality): 
+
+    1. A new `read_ascii()` version reads text (from file or user input) into a character string;  
+    2. A new `map_text_coord()` function converts a text string into a table of individual characters (with x/y-coordinates).  
+
+<!-- Add blank line. --> 
+
+- Added `plot_chars()` for plotting characters of text and visualizing pattern matches (specified as regular expressions) by highlighting labels (color/angle) or background tiles (color). The function uses 2\ auxiliary functions: 
+
+    1. `map_text_regex()` adds pattern matching options (for colors and angles) to `map_text_coord()`.  
+    2. `plot_charmap()` plots character maps as text and tile plots (with aesthetics for labels and tiles).  
+
+<!-- Add blank line. --> 
+
+- Added `count_chars_words()` for counting the frequency of both characters and words in text strings.  
+
+
+## Minor changes 
+
+- added `plot_mar` argument to `theme_empty()` 
+- added functionality to `plot_text()` (but see `plot_chars()`) 
+- added utility functions for locating, identifying, and assigning vectors (of color/angle maps) to text strings matching a pattern 
+- added `text_to_chars()` and related functions for converting character strings (e.g., text to characters, preserving spaces) 
+- added utility functions for counting the frequency of characters and words in text strings 
+- renamed `is_vector()` to `is_vect()` as `is_vector()` function is defined by the **purrr** package 
+
+
+## Details 
+
+- signal deprecation status in `plot_text()`   
+- bug fix: removed marked UTF-8 strings from `Trumpisms` 
+
+
+## ToDo  
+
+Changes to be implemented prior to next release: 
+
+- Split the mixed functionality of `plot_text()` into 2 functions:  
+
+    1. Combine `count_chars_words()` with `map_text_coord()` or `map_text_regex()` 
+    to create a df with 2 color vectors (fg/bg) based on `char_freq` and/or `word_freq`  
+
+    2. `plot_charmap()` directly plots the resulting df.  
+
+
+<!-- Note:  --> 
+
+The current development version of **ds4psy** is hosted at <https://github.com/hneth/ds4psy/>. 
+
+<!-- Latest CRAN release:  --> 
 
 -------- 
 
@@ -45,10 +109,6 @@ Changes since last release:
 
 - removed import of **cowplot** by adding `theme_empty()` 
 - reduced reliance on **unikn** by replacing some colors with corresponding HEX codes 
-
-<!-- Note:  --> 
-
-The current development version of **ds4psy** is hosted at <https://github.com/hneth/ds4psy/>. 
 
 <!-- Previous release:  --> 
 
@@ -251,6 +311,6 @@ The initial functionality is limited, as the package is designed to support the 
 
 ---------- 
 
-[File `NEWS.md` updated on 2021-04-08.]
+[File `NEWS.md` updated on 2021-05-12.]
 
 <!-- eof. -->

@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{text_to_words}
 \alias{text_to_words}
-\title{Split strings text \code{x} into words.}
+\title{Split string(s) of text \code{x} into words.}
 \usage{
 text_to_words(x)
 }
@@ -11,7 +11,7 @@ text_to_words(x)
 typically a character vector.}
 }
 \value{
-A character vector.
+A character vector (of words).
 }
 \description{
 \code{text_to_words} splits a string of text \code{x} 
@@ -20,12 +20,13 @@ into a vector of its constituting words.
 }
 \details{
 \code{text_to_words} removes all (standard) punctuation marks 
-and empty spaces in the resulting parts, 
+and empty spaces in the resulting text parts, 
 before returning a vector of the remaining character symbols 
-(as the words).
+(as its words).
 
 Internally, \code{text_to_words} uses \code{\link{strsplit}} to 
-split strings.
+split strings at punctuation marks (\code{split = "[[:punct:]]"}) 
+and blank spaces (\code{split = "( ){1,}"}).
 }
 \examples{
 # Default: 
@@ -35,6 +36,7 @@ text_to_words(x)
 }
 \seealso{
 \code{\link{text_to_sentences}} for splitting text into a vector of sentences;  
+\code{\link{text_to_chars}} for splitting text into a vector of characters;  
 \code{\link{count_words}} for counting the frequency of words; 
 \code{\link{strsplit}} for splitting strings.
 
@@ -43,11 +45,16 @@ Other text objects and functions:
 \code{\link{capitalize}()},
 \code{\link{caseflip}()},
 \code{\link{cclass}},
+\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
 \code{\link{count_words}()},
 \code{\link{l33t_rul35}},
+\code{\link{map_text_chars}()},
+\code{\link{map_text_coord}()},
+\code{\link{map_text_regex}()},
 \code{\link{metachar}},
 \code{\link{read_ascii}()},
+\code{\link{text_to_chars}()},
 \code{\link{text_to_sentences}()},
 \code{\link{transl33t}()}
 }

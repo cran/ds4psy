@@ -3,8 +3,7 @@
 \docType{data}
 \name{cclass}
 \alias{cclass}
-\title{cclass provides character classes   
-(as a named vector).}
+\title{cclass provides character classes (as a named vector).}
 \format{
 An object of class \code{character} of length 6.
 }
@@ -19,7 +18,8 @@ cclass
 \code{cclass} allows illustrating matching 
 character classes via regular expressions. 
 
-See \code{?base::regex} for details.
+See \code{?base::regex} for details on regular expressions 
+and \code{?"'"} for a list of character constants/quotes in R.
 }
 \examples{
 cclass["hex"]  # select by name
@@ -34,11 +34,16 @@ Other text objects and functions:
 \code{\link{Umlaut}},
 \code{\link{capitalize}()},
 \code{\link{caseflip}()},
+\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
 \code{\link{count_words}()},
 \code{\link{l33t_rul35}},
+\code{\link{map_text_chars}()},
+\code{\link{map_text_coord}()},
+\code{\link{map_text_regex}()},
 \code{\link{metachar}},
 \code{\link{read_ascii}()},
+\code{\link{text_to_chars}()},
 \code{\link{text_to_sentences}()},
 \code{\link{text_to_words}()},
 \code{\link{transl33t}()}

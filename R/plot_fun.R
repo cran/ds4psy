@@ -1,5 +1,5 @@
 ## plot_fun.R | ds4psy
-## hn | uni.kn | 2021 03 31
+## hn | uni.kn | 2021 05 11
 ## ---------------------------
 
 ## Functions for plotting. 
@@ -8,8 +8,8 @@
 
 utils::globalVariables(c("x", "y", "char"))  # to avoid Warning NOTE "Undefined global functions or variables". 
 
-# Source: 
-# <https://community.rstudio.com/t/how-to-solve-no-visible-binding-for-global-variable-note/28887> 
+# Source: <https://community.rstudio.com/t/how-to-solve-no-visible-binding-for-global-variable-note/28887> 
+
 
 ## Plotting: ---------- 
 
@@ -36,7 +36,7 @@ utils::globalVariables(c("x", "y", "char"))  # to avoid Warning NOTE "Undefined 
 #' 
 #' @param border_size Size of borders (if \code{borders = TRUE}). 
 #' Default: \code{border_size = 0.2}.  
-
+#' 
 #' @param lbl_tiles Boolean: Add numeric labels to tiles? 
 #' Default: \code{lbl_tiles = FALSE} (i.e., no labels). 
 #' 
@@ -315,9 +315,9 @@ plot_tiles <- function(n = NA,
   
   # return(invisible(cur_tb))
   
-} # plot_tiles.
+} # plot_tiles().
 
-# ## Check:
+## Check:
 # # (1) Tile plot:
 # plot_tiles()  # default plot (random n, with borders, no labels)
 # 
@@ -456,7 +456,7 @@ plot_fun <- function(a = NA,
              prefix = "",
              suffix = "")
   
-} # plot_fun. 
+} # plot_fun(). 
 
 ## Check:
 # plot_fun()       # Task 1: Explore and describe each parameter.
@@ -865,7 +865,7 @@ plot_n <- function(n = NA,
   
   # return(invisible(cur_tb))
   
-} # plot_n.
+} # plot_n().
 
 ## Check:
 # # (1) ROW: 
@@ -1060,8 +1060,7 @@ plot_fn <- function(x = NA,
          prefix = "plot_fn_",
          suffix = "")
   
-} # plot_fn. 
-
+} # plot_fn(). 
 
 
 
@@ -1070,17 +1069,41 @@ plot_fn <- function(x = NA,
 #' Plot text characters (from file or user input).
 #'
 #' \code{plot_text} parses text 
-#' (from a file or from user input in Console) 
-#' into a table and then plots all 
-#' its characters as a tile plot (using \strong{ggplot2}).
+#' (from a file or from user input) 
+#' and plots its individual characters 
+#' as a tile plot (using \strong{ggplot2}).
 #' 
-#' @param file The text file to read (or its path). 
-#' If \code{file = ""} (the default), \code{scan} is used 
-#' to read user input from the Console. 
+#' \code{plot_text} blurs the boundary between a text 
+#' and its graphical representation by adding visual options 
+#' for coloring characters based on their frequency counts. 
+#' (Note that \code{\link{plot_chars}} provides additional 
+#' support for matching regular expressions.) 
+#' 
+#' \code{plot_text} is character-based: 
+#' Individual characters are plotted at equidistant x-y-positions 
+#' with color settings for text labels and tile fill colors.
+#' 
+#' By default, the color palette \code{pal} 
+#' (used for tile fill colors) is scaled 
+#' to indicate character frequency. 
+#' 
+#' \code{plot_text} invisibly returns a 
+#' description of the plot (as a data frame). 
+#' 
+#' @return An invisible data frame describing the plot.
+#' 
+#' @param x The text to plot (as a character vector). 
+#' Different elements denote different lines of text. 
+#' If \code{x = NA} (as per default), 
+#' the \code{file} argument is used to read 
+#' a text file or scan user input (entering text in Console).  
+#' 
+#' @param file A text file to read (or its path). 
+#' If \code{file = ""} (as per default), 
+#' \code{scan} is used to read user input from the Console. 
 #' If a text file is stored in a sub-directory, 
 #' enter its path and name here (without any leading or 
 #' trailing "." or "/"). 
-#' Default: \code{file = ""}. 
 #' 
 #' @param char_bg Character used as background. 
 #' Default: \code{char_bg = " "}. 
@@ -1114,15 +1137,15 @@ plot_fn <- function(x = NA,
 #' Default: \code{pal = pal_ds4psy[1:5]} 
 #' (i.e., shades of \code{Seeblau}).
 #' 
-#' @param pal_extend Boolean: Should pal be extended 
+#' @param pal_extend Boolean: Should \code{pal} be extended 
 #' to match the number of different characters in text? 
 #' Default: \code{pal_extend = TRUE}. 
 #' If \code{pal_extend = FALSE}, only the tiles of 
 #' the \code{length(pal)} most frequent characters 
 #' will be filled by the colors of \code{pal}. 
 #' 
-#' @param case_sense Boolean: Should lower- and 
-#' uppercase characters be distinguished? 
+#' @param case_sense Boolean: Distinguish 
+#' lower- vs. uppercase characters? 
 #' Default: \code{case_sense = FALSE}. 
 #' 
 #' @param borders Boolean: Add borders to tiles? 
@@ -1135,51 +1158,61 @@ plot_fn <- function(x = NA,
 #' Default: \code{border_size = 0.5}.
 #' 
 #' @examples
+#' # (A) From text string(s):
+#' plot_text(x = c("Hello", "world!"))
+#' plot_text(x = c("Hello world!", "How are you today?"))
+#' 
+#' # (B) From user input:
+#' # plot_text()  # (enter text in Console)
+#' 
+#' # (C) From text file:
 #' ## Create a temporary file "test.txt":
-#' # cat("Hello world!", "This is a test.", 
+#' # cat("Hello world!", "This is a test file.", 
 #' #     "Can you see this text?", 
 #' #     "Good! Please carry on...", 
 #' #     file = "test.txt", sep = "\n")
 #' 
-#' ## (a) Plot text (from file): 
-#' # plot_text("test.txt")
+#' # plot_text(file = "test.txt")
 #' 
 #' ## Set colors, pal_extend, and case_sense:
 #' # cols <- c("steelblue", "skyblue", "lightgrey")
 #' # cols <- c("firebrick", "olivedrab", "steelblue", "orange", "gold")
-#' # plot_text("test.txt", pal = cols, pal_extend = TRUE)
-#' # plot_text("test.txt", pal = cols, pal_extend = FALSE)
-#' # plot_text("test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
+#' # plot_text(file = "test.txt", pal = cols, pal_extend = TRUE)
+#' # plot_text(file = "test.txt", pal = cols, pal_extend = FALSE)
+#' # plot_text(file = "test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
 #' 
 #' ## Customize text and grid options:
-#' # plot_text("test.txt", col_lbl = "darkblue", cex = 4, family = "sans", fontface = 3,
+#' # plot_text(file = "test.txt", col_lbl = "darkblue", cex = 4, family = "sans", fontface = 3,
 #' #           pal = "gold1", pal_extend = TRUE, border_col = NA)
-#' # plot_text("test.txt", family = "serif", cex = 6, lbl_rotate = TRUE,  
+#' # plot_text(file = "test.txt", family = "serif", cex = 6, lbl_rotate = TRUE,  
 #' #           pal = NA, borders = FALSE)
-#' # plot_text("test.txt", col_lbl = "white", pal = c("green3", "black"),
+#' # plot_text(file = "test.txt", col_lbl = "white", pal = c("green3", "black"),
 #' #           border_col = "black", border_size = .2)
 #' 
 #' ## Color ranges:
-#' # plot_text("test.txt", pal = c("red2", "orange", "gold"))
-#' # plot_text("test.txt", pal = c("olivedrab4", "gold"))
+#' # plot_text(file = "test.txt", pal = c("red2", "orange", "gold"))
+#' # plot_text(file = "test.txt", pal = c("olivedrab4", "gold"))
 #' 
-#' # unlink("test.txt")  # clean up (by deleting file).
+#' # unlink("test.txt")  # clean up.
 #'  
 #' \donttest{
-#' ## (b) Plot text (from file in subdir):
-#' # plot_text("data-raw/txt/hello.txt")  # requires txt file
+#' ## (B) From text file (in subdir):
+#' # plot_text(file = "data-raw/txt/hello.txt")  # requires txt file
 #' # plot_text(file = "data-raw/txt/ascii.txt", cex = 5, 
 #' #           col_bg = "grey", char_bg = "-")
 #'          
-#' ## (c) Plot text input (from console):
-#' # plot_text()
-#'  
+#' ## (C) From user input:
+#' # plot_text()  # (enter text in Console)
 #' }
 #'
 #' @family plot functions
 #'
 #' @seealso
-#' \code{\link{read_ascii}} for reading text into a table; 
+#' \code{\link{plot_charmap}} for plotting character maps; 
+#' \code{\link{plot_chars}} for creating and plotting character maps; 
+#' \code{\link{map_text_coord}} for mapping text to a table of character coordinates; 
+#' \code{\link{map_text_regex}} for mapping text to a character table and matching patterns; 
+#' \code{\link{read_ascii}} for parsing text from file or user input; 
 #' \code{\link{pal_ds4psy}} for default color palette. 
 #' 
 #' @import ggplot2
@@ -1188,25 +1221,37 @@ plot_fn <- function(x = NA,
 #' 
 #' @export 
 
-plot_text <- function(file = "",  # "" read from console; "test.txt" read from file
-                      char_bg = " ",  # character used as background, if char_bg = NA: most frequent char.
+plot_text <- function(x = NA,     # Text string(s) to plot 
+                      file = "",  # "" reads user input from console; "test.txt" reads from file
+                      
+                      char_bg = " ",  # A character used as background, if char_bg = NA: most frequent char.
+                      
                       # text format:
                       lbl_tiles = TRUE, 
-                      lbl_rotate = FALSE,  # TRUE rotates labels 
+                      lbl_rotate = FALSE,  # rotate labels?  
                       cex = 3,             # size of characters
                       fontface = 1,        # font face (1:4)
                       family = "sans",     # font family: 1 of "sans" "serif" "mono"
-                      # colors: 
-                      col_lbl = "black",   # color of text characters
-                      col_bg = "white",    # bg color (for most frequent character in file)
-                      pal = pal_ds4psy[1:5],  # c("steelblue", "skyblue", "lightgrey"),  # color palette for other replacements
-                      pal_extend = TRUE,   # extend color palette (to n of different characters in file)
-                      case_sense = FALSE,
+                      
+                      # 2+n colors:
+                      col_lbl = "black",   # normal color of text labels (fg)
+                      col_bg = "white",    # tile fill color/bg (typically most frequent character)
+                      pal = pal_ds4psy[1:5],  # c("steelblue", "skyblue", "lightgrey"), # color palette for filling other bg tiles
+                      pal_extend = TRUE,   # extend color pal (to n of different characters in file)
+                      case_sense = FALSE,  # distinguish lower and uppercase chars (in counting freq and assigning color)? 
+                      
                       # tile borders: 
                       borders = TRUE,        # show tile borders?
                       border_col = "white",  # color of tile border 
                       border_size = 0.5      # width of tile border
 ){
+  
+  # (0) Deprecation notice: ----- 
+  
+  message("plot_text() will be replaced by plot_charmap().\nConsider using plot_charmap() instead...")
+  
+  # .Deprecated("plot_charmap")
+  
   
   ## (-) Default file/path:
   # file <- "test.txt"  # 4debugging
@@ -1218,9 +1263,11 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   # angle <- 0
   # (b) Tile:
   height <- 1
-  width <- 1
+  width  <- 1
   
-  # (0) Interpret inputs:
+
+  # (1) Interpret inputs: ------ 
+  
   if (!lbl_tiles) {col_lbl <- NA}
   
   # Font family:
@@ -1239,90 +1286,66 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
     brd_size <- NA  # hide label
   }
   
-  # (1) Read text file into a table: 
-  tb_txt <- read_ascii(file = file, flip_y = TRUE)
-  nr_chars <- nrow(tb_txt)
+  
+  # (2) Read text input into a text string (txt_ui) and character table (tb_txt): ------ 
+  
+  if (all(is.na(x))){  # Case 1: Read text from file or user input (Console): 
+    
+    txt_ui <- read_ascii(file = file, quiet = FALSE)     # 1. read user input (UI)
+    tb_txt <- map_text_coord(x = txt_ui, flip_y = TRUE)  # 2. map UI to x/y-table
+    
+  } else {  # Case 2: Use the character vector provided as x:
+    
+    tb_txt <- map_text_coord(x = x, flip_y = TRUE)       # 3. map x to x/y-table
+    
+  } # if (is,na(x)) end.
+  
   # tb_txt  # 4debugging
+  nr_txt <- nrow(tb_txt)  # (elements/nrows of x/text)
   
   
-  # (2) Determine frequency of chars:
-  if (case_sense){
-    
-    # (a) case-sensitive match: 
-    
-    # # (A) char_freq as table:   
-    # # Using dplyr + pipe:
-    # char_freq <- tb_txt %>%
-    #   dplyr::count(char) %>%   # Note: Upper- and lowercase are counted separately!
-    #   dplyr::arrange(desc(n))
-    # 
-    # # # Without pipe:
-    # # t2 <- dplyr::count(tb_txt, char)
-    # # char_freq <- dplyr::arrange(t2, desc(n))
-    
-    # (B) char_freq as named vector:
-    char_freq <- count_chars(tb_txt$char, case_sense = TRUE, rm_specials = FALSE, sort_freq = TRUE)
-    nr_unique_chars <- length(char_freq)
-    
-  } else {
-    
-    # (b) case-INsensitive match:
-    
-    # # (A) char_freq as table:   
-    # tb_txt$char_lc <- tolower(tb_txt$char)  # all in lowercase!
-    # 
-    # # Using dplyr + pipe:
-    # char_freq <- tb_txt %>%
-    #   dplyr::count(char_lc) %>% # Note: Upper- and lowercase are counted together!
-    #   dplyr::mutate(char = char_lc) %>%
-    #   dplyr::select(char, n) %>%
-    #   dplyr::arrange(desc(n))
-    # 
-    # # # Without pipe:
-    # # t2 <- dplyr::count(tb_txt, char_lc)
-    # # t3 <- dplyr::mutate(t2, char = char_lc)
-    # # t4 <- dplyr::select(t3, char, n)
-    # # char_freq <- dplyr::arrange(t4, desc(n))
-    
-    # (B) char_freq as named vector:
-    char_freq <- count_chars(tb_txt$char, case_sense = FALSE, rm_specials = FALSE, sort_freq = TRUE)
-    nr_unique_chars <- length(char_freq)
-    
-  }
+  # (3) Determine frequency of chars: ------ 
+  
+  # (A+B) Pass case_sense to char_freq():
+  char_freq <- count_chars(tb_txt$char, case_sense = case_sense, rm_specials = FALSE, sort_freq = TRUE)
+  nr_unique_chars <- length(char_freq)
   # char_freq  # 4debugging
   # print(nr_unique_chars)  # 4debugging
   
-  # (3) If char_bg is defined && NOT the most frequent in char_freq: Make it the most frequent character:
+  
+  # (C) If char_bg is defined && NOT the most frequent in char_freq: Make it the most frequent character:
   if (!is.na(char_bg) && (names(char_freq)[1] != char_bg)){
     
-    # # (A) char_freq as table:    
+    # # (a) char_freq as a table:    
     # # Set counter of char_freq$n for char_bg to a maximum value:
-    # char_freq$n[char_freq$char == char_bg] <- max(1000, (max(char_freq$n) + 1))
-    # 
+    # char_freq$n[char_freq$char == char_bg] <- max(1000, (max(char_freq$n) + 1)) 
     # # Re-arrange according to n:
     # char_freq <- char_freq %>% dplyr::arrange(desc(n))
     
-    # (B) char_freq as named vector:
-    ix <- names(char_freq) == char_bg
-    char_freq[ix] <- max(1000, (max(char_freq) + 1))
+    # (b) char_freq as a named vector:
+    ix <- (names(char_freq) == char_bg)  # ix of char_bg in char_freq
+    char_freq[ix] <- max(1000, (max(char_freq) + 1))  # some high val
     char_freq <- sort(char_freq, decreasing = TRUE)
     
   }
   # print(char_freq)  # 4debugging
   
-  # # (A) char_freq as table:   
+  # # (a) char_freq as table:   
   # nr_char_freq <- nrow(char_freq)
   
-  # (B) char_freq as named vector:
+  # (b) char_freq as named vector:
   nr_char_freq <- sum(char_freq)
   # nr_char_freq  # 4debugging
   
   ## (+) Check:
-  # if (nr_char_freq != nr_chars){
-  #   message("plot_text: nr_char_freq differs from nr_chars.")
+  # if (nr_char_freq != nr_txt){
+  #   message("plot_text: nr_char_freq differs from nr_txt.")
   # } 
   
-  # (4) Create color palette:
+  
+  # (4) Color palette and color map: ------ 
+  
+  # (A) Define color palette: 
   if (pal_extend){
     
     ## Stretch pal to a color gradient (of char_freq different colors): 
@@ -1340,8 +1363,8 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   # print(col_pal)  # 4debugging
   
   
-  # (5) Use color palette to create a color map for frequent chars of tb_txt:
-  col_map <- rep(col_bg, nr_chars)       # initialize color map
+  # (B) Use color palette to create a color map (by frequency of chars in tb_txt):
+  col_map <- rep(col_bg, nr_txt)       # initialize color map
   n_replace <- min(nr_colors, nr_unique_chars)  # limit number of replacements 
   # print(n_replace)  # 4debugging
   
@@ -1366,15 +1389,18 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
   } # loop i.
   # col_map
   
-  # (+) Randomize text orientation:
+  
+  # (5) Rotation/orientation: ------ 
+  
   # lbl_rotate <- TRUE  # FALSE (default)
   if (lbl_rotate){
-    char_angles <- round(stats::runif(n = nr_chars, min = 0, max = 360), 0)
+    char_angles <- round(stats::runif(n = nr_txt, min = 0, max = 360), 0)
   } else {
     char_angles <- 0
   }
   
-  # (6) Use ggplot2: 
+  # (6) Plot (using ggplot2): ------  
+  
   cur_plot <- ggplot2::ggplot(data = tb_txt, aes(x = x, y = y)) +
     ggplot2::geom_tile(aes(), fill = col_map, color = brd_col, size = brd_size,  # tiles (with borders, opt.)
                        height = height, width = width) +  
@@ -1384,61 +1410,672 @@ plot_text <- function(file = "",  # "" read from console; "test.txt" read from f
     # theme: 
     theme_empty() # theme_gray() # theme_classic() # cowplot::theme_nothing()
   
-  # (7) plot plot: 
-  cur_plot
+  # plot plot: 
+  print(cur_plot)
   
-  # (+) return(invisible(tb_txt))
   
-} # plot_text. 
+  # (7) Output: ------ 
+  
+  # A. Add vectors to tb_txt:
+  tb_txt$col_fg <- col_lbl
+  tb_txt$col_bg <- col_map 
+  tb_txt$angle  <- char_angles
+  
+  # B. return(char_s)
+  return(invisible(tb_txt))
+  
+} # plot_text(). 
 
-# ## Check:
+
+## Check:
+# # (A) From text string(s):
+# plot_text(x = c("Hello", "world!"))
+# plot_text(x = c("Hello world!", "Howdy?"))
+# 
+# # (B) From user input:
+# plot_text()
+# 
+# # (C) From text file:
 # # Create a temporary file "test.txt":
-# cat("Hello world!", "This is a test.",
+# cat("Hello world!", "This is a test file.",
 #     "Can you see this text?",
 #     "Good! Please carry on...",
 #     file = "test.txt", sep = "\n")
 # 
-# # (a) Plot text from file:
-# plot_text("test.txt")
+# plot_text(file = "test.txt")
 # 
 # # Set colors, pal_extend, and case_sense:
 # cols <- c("firebrick", "olivedrab", "steelblue", "orange", "gold")
-# plot_text("test.txt", pal = cols, pal_extend = TRUE)
-# plot_text("test.txt", pal = cols, pal_extend = FALSE)
-# plot_text("test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = TRUE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = FALSE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
 # 
 # # Customize text and grid options:
-# plot_text("test.txt", col_lbl = "white", borders = FALSE)
-# plot_text("test.txt", col_lbl = "firebrick", cex = 4, fontface = 3,
+# plot_text(file = "test.txt", col_lbl = "white", borders = FALSE)
+# plot_text(file = "test.txt", col_lbl = "firebrick", cex = 4, fontface = 3,
 #           pal = "grey90", pal_extend = TRUE, border_col = NA)
-# plot_text("test.txt", col_lbl = "white", pal = c("green4", "black"),
+# plot_text(file = "test.txt", col_lbl = "white", pal = c("green4", "black"),
 #           border_col = "black", border_size = .2)
 # 
 # # Color ranges:
 # plot_text("test.txt", pal = c("red2", "orange", "gold"))
 # plot_text("test.txt", pal = c("olivedrab4", "gold"))
 # 
-# unlink("test.txt")  # clean up (by deleting file). 
+# # Note: plot_text() invisibly returns a description of the plot (as df):
+# tb <- plot_text(file = "test.txt", lbl_rotate = TRUE)
+# head(tb)
+# 
+# unlink("test.txt")  # clean up (by deleting file).
 # 
 # \donttest{
-# # (b) Read text file (from subdir):
+# # (B) From text file (from subdir):
 # plot_text("data-raw/txt/hello.txt")  # requires txt file
 # plot_text(file = "data-raw/txt/ascii.txt", cex = 5,
 #           col_bg = "lightgrey", border_col = "white")
 # 
-# # (c) Read user input (from console):
-# plot_text()
+# # (C) From user input:
+# plot_text()  # (enter text in Console)
 # 
 # }
+
+
+## plot_charmap: Plot a table of characters with x- and y-coodinates: -------- 
+
+# Note: This was the ggplot2 part of plot_chars() (below).
+
+#' Plot a character map as a tile plot with text labels. 
+#'
+#' \code{plot_charmap} plots a character map and some aesthetics 
+#' as a tile plot with text labels (using \strong{ggplot2}).
+#' 
+#' \code{plot_charmap} is based on \code{\link{plot_chars}}. 
+#' As it only contains the plotting-related parts, 
+#' it assumes a character map generated by 
+#' \code{\link{map_text_regex}} as input. 
+#' 
+#' The plot generated by \code{plot_charmap} is character-based: 
+#' Individual characters are plotted at equidistant x-y-positions 
+#' and aesthetic variables are used for text labels and tile fill colors.
+#' 
+#' @return A plot generated by \strong{ggplot2}.
+#' 
+#' @param x A character map, as generated by 
+#' \code{\link{map_text_coord}} or 
+#' \code{\link{map_text_regex}} (as df). 
+#' Alternatively, some text to map or plot (as a character vector). 
+#' Different elements denote different lines of text. 
+#' If \code{x = NA} (as per default), 
+#' the \code{file} argument is used to read 
+#' a text file or user input from the Console. 
+#' 
+#' @param file A text file to read (or its path). 
+#' If \code{file = ""} (as per default), 
+#' \code{scan} is used to read user input from the Console. 
+#' If a text file is stored in a sub-directory, 
+#' enter its path and name here (without any leading or 
+#' trailing "." or "/"). 
+#' 
+#' @param lbl_tiles Add character labels to tiles? 
+#' Default: \code{lbl_tiles = TRUE} (i.e., show labels). 
+#' 
+#' @param col_lbl Default color of text labels 
+#' (unless specified as a column \code{col_fg} of \code{x}).
+#' Default: \code{col_lbl = "black"}.
+#' 
+#' @param angle Default angle of text labels 
+#' (unless specified as a column of \code{x}).  
+#' Default: \code{angle = 0}. 
+#' 
+#' @param cex Character size (numeric). 
+#' Default: \code{cex = 3}. 
+#' 
+#' @param fontface Font face of text labels (numeric). 
+#' Default: \code{fontface = 1}, (from 1 to 4).
+#' 
+#' @param family Font family of text labels (name).
+#' Default: \code{family = "sans"}. 
+#' Alternative options: "sans", "serif", or "mono".
+#' 
+#' @param col_bg Default color to fill background tiles 
+#' (unless specified as a column \code{col_bg} of \code{x}).
+#' Default: \code{col_bg = "grey80"}. 
+#' 
+#' @param borders Boolean: Add borders to tiles? 
+#' Default: \code{borders = FALSE} (i.e., no borders).
+#' 
+#' @param border_col Color of tile borders. 
+#' Default: \code{border_col = "white"}.  
+#' 
+#' @param border_size Size of tile borders. 
+#' Default: \code{border_size = 0.5}.
+#' 
+#' @examples
+#' # (0) Prepare: 
+#' ts <- c("Hello world!", "This is a test to test this splendid function", 
+#'         "Does this work?", "That's good.", "Please carry on.")
+#' sum(nchar(ts))  
+#' 
+#' # (1) From character map:
+#' # (a) simple: 
+#' cm_1 <- map_text_coord(x = ts, flip_y = TRUE)
+#' plot_charmap(cm_1)
+#' 
+#' # (b) pattern matching (regex): 
+#' cm_2 <- map_text_regex(ts, lbl_hi = "\\b\\w{4}\\b", bg_hi = "[good|test]", 
+#'                        lbl_rotate = "[^aeiou]", angle_fg = c(-45, +45))
+#' plot_charmap(cm_2)                      
+#' 
+#' # (2) Alternative inputs:     
+#' # (a) From text string(s):
+#' plot_charmap(ts)
+#'
+#' # (b) From user input:
+#' # plot_charmap()  # (enter text in Console)
+#'  
+#' # (c) From text file:
+#' # cat("Hello world!", "This is a test file.",
+#' #      "Can you see this text?",
+#' #      "Good! Please carry on...",
+#' #      file = "test.txt", sep = "\n")
+#' 
+#' # plot_charmap(file = "test.txt")
+#' 
+#' # unlink("test.txt")  # clean up (by deleting file). 
+#'
+#' @family plot functions
+#'
+#' @seealso
+#' \code{\link{plot_chars}} for creating and plotting character maps; 
+#' \code{\link{plot_text}} for plotting characters and color tiles by frequency; 
+#' \code{\link{map_text_regex}} for mapping text to a character table and matching patterns; 
+#' \code{\link{map_text_coord}} for mapping text to a table of character coordinates; 
+#' \code{\link{read_ascii}} for reading text inputs into a character string; 
+#' \code{\link{pal_ds4psy}} for default color palette. 
+#' 
+#' @import ggplot2
+#' @importFrom grDevices colorRampPalette 
+#' @importFrom stats runif
+#' 
+#' @export 
+
+plot_charmap <- function(x = NA,     # what to plot (required): charmap OR {text/file/user input}.
+                         file = "",  # text file, considered iff x = NA.
+                         
+                         # labels:
+                         lbl_tiles = TRUE,  # show labels (using col_lbl_? below)
+                         col_lbl = "black", 
+                         angle = 0, 
+                         cex = 3,           # character size
+                         fontface = 1,      # font face (1:4)
+                         family = "sans",   # font family: 1 of "sans" "serif" "mono"
+                         
+                         # tiles:
+                         col_bg = "grey80", 
+                         borders = FALSE,       # show tile borders?
+                         border_col = "white",  # color of tile border 
+                         border_size = 0.5      # width of tile border
+){
+  
+  # (0) Initialize: ----
+  
+  tb <- NA
+  
+  # (1) Inputs: ----
+  
+  if (is.data.frame(x)){
+    
+    # ToDo: Ensure that columns {char, x, y} are present.  
+    
+    tb <- x 
+    
+  } else {
+    
+    message("plot_charmap: No character map provided. Mapping text from x or file...")
+    
+    tb <- map_text_or_file(x = x, file = file, flip_y = TRUE)  # use text helper function
+    
+  }
+  
+  
+  # (2) Parameters: ---- 
+  
+  # (a) minimal required inputs (from tb):
+  label <- tb$char
+  x <- tb$x
+  y <- tb$y
+  
+  tb_vars <- names(tb)  # names of tb columns
+  
+  # (b) Label aesthetics:
+  if ("col_fg" %in% tb_vars) { col_lbl <- tb$col_fg } 
+  
+  if (!lbl_tiles){ col_lbl <- NA }  # hide text labels
+  
+  if ("angle" %in% tb_vars) { angle <- tb$angle }
+  
+  # (c) Tile aesthetics:
+  if ("col_bg" %in% tb_vars) { col_bg <- tb$col_bg } 
+  
+  if (!borders){  # hide tile borders:
+    border_col  <- NA
+    border_size <- NA
+  }
+  
+  # (d) Constants: 
+  height <- 1
+  width  <- 1
+  
+  # (e) Coordinates:
+  ratio <- 1/1   #  ratio of height/width (y/x). Default: ratio <- 1/1 
+  xlim  <- NULL  # range of x-coordinates. Default x_lim <- NULL
+  ylim  <- NULL  # range of y-coordinates. Default y_lim <- NULL
+  
+  
+  # (3) Plot tb (using ggplot2): ---- 
+  
+  cur_plot <- ggplot2::ggplot(data = tb, aes(x = x, y = y)) +
+    ggplot2::geom_tile(aes(), fill = col_bg, color = border_col, size = border_size,
+                       height = height, width = width) +  
+    ggplot2::geom_text(aes(label = label), color = col_lbl, size = cex, angle = angle, 
+                       fontface = fontface, family = family) + 
+    ggplot2::coord_fixed(ratio = ratio, xlim = xlim, ylim = ylim, expand = TRUE, clip = "on") + 
+    # theme: 
+    theme_empty() # theme_gray() # theme_classic() # cowplot::theme_nothing()
+  
+  ## plot plot: 
+  # print(cur_plot)
+  
+  
+  # (4) Return:
+  return(cur_plot)  # jnd: plot_chars() returns character map/description!
+  
+} # plot_charmap(). 
+
+## Check:
+# # (1) Plot an existing charmap: 
+# # (a) simple:
+# s <- c("ene mene miste", "es rappelt", "in der kiste")
+# cm_1 <- map_text_coord(s)
+# plot_charmap(cm_1)
+# 
+# # (b) matching patterns (regex):
+# ts <- c("Hello world!", "This is a test to test this splendid function",
+#         "Does this work?", "That's good.", "Please carry on.")
+# sum(nchar(ts))
+# cm_2 <- map_text_regex(ts, lbl_hi = "\\b\\w{4}\\b", bg_hi = "[good|test]",
+#                        lbl_rotate = "[^aeiou]", angle_fg = c(-45, +45))
+# plot_charmap(cm_2)
+# 
+# # (2) Alternative inputs: 
+# # (a) From text string(s):
+# plot_charmap(ts)
 #
-# # Note: theme_empty() removed need for: #' @importFrom cowplot theme_nothing 
+# # (b) From file:
+# cat("Hello world!", "This is a test file.",
+#     "Can you see this text?",
+#     "Good! Please carry on...",
+#     file = "test.txt", sep = "\n")
+# plot_charmap(file = "test.txt")
+# unlink("test.txt")  # clean up (by deleting file).
+#
+# # (c) From user input:
+# plot_charmap()
+
+
+## plot_chars: Alternative to plot_text (with regex functionality): -------- 
+
+#' Plot text characters (from file or user input) and match patterns.
+#'
+#' \code{plot_chars} parses text (from a file or user input) 
+#' into a table and then plots its individual characters 
+#' as a tile plot (using \strong{ggplot2}).
+#' 
+#' \code{plot_chars} blurs the boundary between a text 
+#' and its graphical representation by combining options 
+#' for matching patterns of text with visual features 
+#' for displaying characters (e.g., their color or orientation). 
+#' 
+#' \code{plot_chars} is based on \code{\link{plot_text}}, 
+#' but provides additional support for detecting and displaying characters 
+#' (i.e., text labels, their orientation, and color options) 
+#' based on matching regular expression (regex). 
+#' 
+#' Internally, \code{plot_chars} is a wrapper that calls 
+#' (1) \code{\link{map_text_regex}} for creating a character map 
+#' (allowing for matching patterns for some aesthetics) and 
+#' (2) \code{\link{plot_charmap}} for plotting this character map. 
+#' 
+#' However, in contrast to \code{\link{plot_charmap}}, 
+#' \code{plot_chars} invisibly returns a 
+#' description of the plot (as a data frame). 
+#' 
+#' The plot generated by \code{plot_chars} is character-based: 
+#' Individual characters are plotted at equidistant x-y-positions 
+#' and the aesthetic settings provided for text labels and tile fill colors. 
+#' 
+#' Five regular expressions and corresponding 
+#' color and angle arguments allow identifying, 
+#' marking (highlighting or de-emphasizing), and rotating 
+#' those sets of characters (i.e, their text labels or fill colors).
+#' that match the provided patterns. 
+#' 
+#' @return An invisible data frame describing the plot.
+#' 
+#' @param x The text to plot (as a character vector). 
+#' Different elements denote different lines of text. 
+#' If \code{x = NA} (as per default), 
+#' the \code{file} argument is used to read 
+#' a text file or user input from the Console. 
+#' 
+#' @param file A text file to read (or its path). 
+#' If \code{file = ""} (as per default), 
+#' \code{scan} is used to read user input from the Console. 
+#' If a text file is stored in a sub-directory, 
+#' enter its path and name here (without any leading or 
+#' trailing "." or "/"). 
+#' 
+#' @param lbl_hi Labels to highlight (as regex). 
+#' Default: \code{lbl_hi = NA}. 
+#' 
+#' @param lbl_lo Labels to de-emphasize (as regex). 
+#' Default: \code{lbl_lo = NA}. 
+#' 
+#' @param bg_hi Background tiles to highlight (as regex). 
+#' Default: \code{bg_hi = NA}. 
+#' 
+#' @param bg_lo Background tiles to de-emphasize (as regex). 
+#' Default: \code{bg_lo = "[[:space:]]"}.
+#' 
+#' @param lbl_rotate Labels to rotate (as regex). 
+#' Default: \code{lbl_rotate = NA}. 
+#' 
+#' @param case_sense Boolean: Distinguish 
+#' lower- vs. uppercase characters in pattern matches? 
+#' Default: \code{case_sense = TRUE}. 
+#' 
+#' @param lbl_tiles Add character labels to tiles? 
+#' Default: \code{lbl_tiles = TRUE} (i.e., show labels). 
+#' 
+#' @param angle_fg Angle(s) for rotating character labels 
+#' matching the pattern of the \code{lbl_rotate} expression. 
+#' Default: \code{angle_fg = c(-90, 90)}. 
+#' If \code{length(angle_fg) > 1}, a random value 
+#' in uniform \code{range(angle_fg)} is used for every character. 
+#' 
+#' @param angle_bg Angle(s) of rotating character labels 
+#' not matching the pattern of the \code{lbl_rotate} expression. 
+#' Default: \code{angle_bg = 0} (i.e., no rotation). 
+#' If \code{length(angle_bg) > 1}, a random value 
+#' in uniform \code{range(angle_bg)} is used for every character. 
+#' 
+#' @param cex Character size (numeric). 
+#' Default: \code{cex = 3}. 
+#' 
+#' @param family Font family of text labels (name).
+#' Default: \code{family = "sans"}. 
+#' Alternative options: "sans", "serif", or "mono".
+#' 
+#' @param fontface Font face of text labels (numeric). 
+#' Default: \code{fontface = 1}, (from 1 to 4).
+#' 
+#' @param col_lbl Default color of text labels.
+#' Default: \code{col_lbl = "black"}. 
+#' 
+#' @param col_lbl_hi Highlighting color of text labels.
+#' Default: \code{col_lbl_hi = pal_ds4psy[[1]]}. 
+#' 
+#' @param col_lbl_lo De-emphasizing color of text labels.
+#' Default: \code{col_lbl_lo = pal_ds4psy[[9]]}.
+#' 
+#' @param col_bg Default color to fill background tiles.
+#' Default: \code{col_bg = pal_ds4psy[[7]]}. 
+#' 
+#' @param col_bg_hi Highlighting color to fill background tiles.
+#' Default: \code{col_bg_hi = pal_ds4psy[[4]]}. 
+#' 
+#' @param col_bg_lo De-emphasizing color to fill background tiles.
+#' Default: \code{col_bg_lo = "white"}.
+#' 
+#' @param col_sample Boolean: Sample color vectors (within category)?
+#' Default: \code{col_sample = FALSE}. 
+#' 
+#' @param borders Boolean: Add borders to tiles? 
+#' Default: \code{borders = FALSE} (i.e., no borders).
+#' 
+#' @param border_col Color of tile borders. 
+#' Default: \code{border_col = "white"}.  
+#' 
+#' @param border_size Size of tile borders. 
+#' Default: \code{border_size = 0.5}.
+#' 
+#' @examples 
+#' # (A) From text string(s):
+#' plot_chars(x = c("Hello world!", "Does this work?", 
+#'                  "That's good.", "Please carry on..."))
+#'
+#' # (B) From user input:
+#' # plot_chars()  # (enter text in Console)
+#' 
+#' # (C) From text file:
+#' # Create and use a text file: 
+#' # cat("Hello world!", "This is a test file.", 
+#' #     "Can you see this text?", 
+#' #     "Good! Please carry on...", 
+#' #     file = "test.txt", sep = "\n")
+#' 
+#' # plot_chars(file = "test.txt")  # default
+#' # plot_chars(file = "test.txt", lbl_hi = "[[:upper:]]", lbl_lo = "[[:punct:]]", 
+#' #            col_lbl_hi = "red", col_lbl_lo = "blue")
+#'  
+#' # plot_chars(file = "test.txt", lbl_hi = "[aeiou]", col_lbl_hi = "red", 
+#' #            col_bg = "white", bg_hi = "see")  # mark vowels and "see" (in bg)
+#' # plot_chars(file = "test.txt", bg_hi = "[aeiou]", col_bg_hi = "gold")  # mark (bg of) vowels
+#' 
+#' ## Label options:
+#' # plot_chars(file = "test.txt", bg_hi = "see", lbl_tiles = FALSE)
+#' # plot_chars(file = "test.txt", cex = 5, family = "mono", fontface = 4, lbl_angle = c(-20, 20))
+#' 
+#' ## Note: plot_chars() invisibly returns a description of the plot (as df):
+#' # tb <- plot_chars(file = "test.txt", lbl_hi = "[aeiou]", lbl_rotate = TRUE)
+#' # head(tb)
+#' 
+#' # unlink("test.txt")  # clean up (by deleting file).
+#' 
+#' \donttest{
+#' ## (B) From text file (in subdir):
+#' # plot_chars(file = "data-raw/txt/hello.txt")  # requires txt file
+#' # plot_chars(file = "data-raw/txt/ascii.txt", lbl_hi = "[2468]", bg_lo = "[[:digit:]]", 
+#' #            col_lbl_hi = "red", cex = 10, fontface = 2)
+#'            
+#' ## (C) User input:
+#' # plot_chars()  # (enter text in Console)
+#' }
+#'
+#' @family plot functions
+#'
+#' @seealso
+#' \code{\link{plot_charmap}} for plotting character maps; 
+#' \code{\link{plot_text}} for plotting characters and color tiles by frequency; 
+#' \code{\link{map_text_coord}} for mapping text to a table of character coordinates; 
+#' \code{\link{map_text_regex}} for mapping text to a character table and matching patterns; 
+#' \code{\link{read_ascii}} for reading text inputs into a character string; 
+#' \code{\link{pal_ds4psy}} for default color palette. 
+#' 
+#' @import ggplot2
+#' @importFrom grDevices colorRampPalette 
+#' @importFrom stats runif
+#' 
+#' @export 
+
+plot_chars <- function(x = NA,     # Text string(s) to plot; iff is.na(x):  
+                       file = "",  # "" reads user input from console; "test.txt" reads from file
+                       
+                       # 5 regex patterns (to emphasize and de-emphasize matching characters in text string): 
+                       lbl_hi = NA, # "asdf",   # [[:upper:]]",   # labels to highlight (as regex)
+                       lbl_lo = NA, # "qwer",   # [[:punct:]]",   # labels to de-emphasize (as regex)
+                       bg_hi  = NA, # "zxcv",   # background tiles to highlight (as regex)
+                       bg_lo  = "[[:space:]]",  # background tiles to de-emphasize (as regex)
+                       lbl_rotate = NA,         # "[^[:space:]]",  # pattern for labels to rotate (as regex)
+                       case_sense = TRUE,       # distinguish lower/uppercase (in pattern matching)?
+                       
+                       # labels (text):
+                       lbl_tiles = TRUE,  # show labels (using col_lbl_? below)
+                       # lbl_angle = 0,   # angle of rotation (0 := no rotation) 
+                       angle_fg = c(-90, 90),  # angle(s) of labels matching the lbl_rotate pattern
+                       angle_bg = 0,           # default angle(s) & labels NOT matching the lbl_rotate pattern
+                       cex = 3,           # character size
+                       fontface = 1,      # font face (1:4)
+                       family = "sans",   # font family: 1 of "sans" "serif" "mono"
+                       
+                       # 6 colors (of labels and tiles): 
+                       col_lbl = "black",             # default text label color
+                       col_lbl_hi = pal_ds4psy[[1]],  # highlighted labels (matching lbl_hi)
+                       col_lbl_lo = pal_ds4psy[[9]],  # de-emphasized labels (matching lbl_lo)
+                       col_bg = pal_ds4psy[[7]],      # default tile fill color
+                       col_bg_hi = pal_ds4psy[[4]],   # highlighted tiles (matching bg_hi)
+                       col_bg_lo = "white",           # de-emphasized tiles (matching bg_lo)
+                       col_sample = FALSE,            # sample from color vectors (within category)?
+                       
+                       # borders (of tiles): 
+                       borders = FALSE,       # show tile borders?
+                       border_col = "white",  # color of tile border 
+                       border_size = 0.5      # width of tile border
+){
+  
+  # (0) Deprecation notice: ----- 
+  
+  # Note jnd: plot_chars() invisibly returns cmap, whereas plot_charmap() returns a plot!
+  # +++ here now +++ 
+  
+  # message("plot_chars() merely combines map_text_regex() and plot_charmap().\nConsider using these functions instead...")
+  # .Deprecated(new = "plot_charmap")
+  
+  
+  # (1) Create character map (with regex): ------ 
+  
+  cmap <- map_text_regex(x = x, file = file,     # input x or file?
+                         lbl_hi = lbl_hi, lbl_lo = lbl_lo,  # regex stuff: 
+                         bg_hi = bg_hi, bg_lo = bg_lo, 
+                         lbl_rotate = lbl_rotate, case_sense = case_sense,
+                         lbl_tiles = lbl_tiles,  # labels 
+                         col_lbl = col_lbl,      # colors: 
+                         col_lbl_hi = col_lbl_hi, col_lbl_lo = col_lbl_lo,
+                         col_bg = col_bg, 
+                         col_bg_hi = col_bg_hi, col_bg_lo = col_bg_lo,
+                         col_sample = col_sample,
+                         angle_fg = angle_fg, angle_bg = angle_bg  # angles
+  )
+  
+  
+  # (2) Plot character map: ------  
+  
+  p <- plot_charmap(x = cmap, # input
+                    cex = cex, fontface = fontface, family = family,  # labels/fonts
+                    borders = borders, border_col = border_col, border_size = border_size  # borders
+  )
+  
+  print(p)  # plot plot
+  
+  
+  # (3) Output: ------
+  
+  return(invisible(cmap))  # jnd: plot_charmap() returns a plot!
+  
+} # plot_chars().
+
+## Check:
+# # (A) From text string(s):
+# plot_chars("Hello world!")  # (A) Using x (text input)
+# 
+# # (B) From user input:
+# plot_chars()  # # (enter text in Console)
+# 
+# # (C) From text file:
+# # Create a temporary file "test.txt":
+# cat("Hello world!", "This is a test file.",
+#     "Can you see this text?",
+#     "Good! Please carry on...",
+#     file = "test.txt", sep = "\n")
+# 
+# # (a) Plot & mark text from file:
+# plot_chars(file = "test.txt")  # default
+# plot_chars(file = "test.txt", lbl_hi = "[[:upper:]]", lbl_lo = "[[:punct:]]", col_lbl_hi = "red", col_lbl_lo = "cyan")
+# plot_chars(file = "test.txt", lbl_hi = "\\b\\w{4}\\b", col_lbl_hi = "red", col_bg = "white", bg_hi = "see")  # mark fg of four-letter words
+# plot_chars(file = "test.txt", lbl_hi = "[aeiou]", col_lbl_hi = "red", col_bg = "white", bg_hi = "test")  # mark vowels and "see"
+# plot_chars(file = "test.txt", bg_hi = "\\b\\w{4}\\b", col_bg_hi = "gold")  # mark bg of 4-letter words
+# plot_chars(file = "test.txt", bg_hi = "[aeiou]", col_bg_hi = "gold")  # mark vowels (in bg)
+# 
+# # Case sensitivity:
+# plot_chars(file = "test.txt", lbl_hi = "[tc]", bg_hi = "[gh]", case_sense = TRUE, cex = 5)
+# plot_chars(file = "test.txt", lbl_hi = "[tc]", bg_hi = "[gh]", case_sense = FALSE, cex = 5)
+# 
+# # Label options:
+# plot_chars(file = "test.txt", bg_hi = "see", lbl_tiles = FALSE, borders = TRUE)  # hide labels
+# plot_chars(file = "test.txt", cex = 5, family = "mono", fontface = 2,
+#            lbl_rotate = "[^[:space:]]", angle_fg = c(-45, 45))  # rotate labels
+# plot_chars(file = "test.txt", cex = 5, family = "mono", fontface = 2,
+#            lbl_rotate = "test|text", angle_fg = c(0, 360))
+# plot_chars(file = "test.txt", cex = 5, family = "mono", fontface = 2,
+#            lbl_rotate = "test|text", angle_fg = 0, angle_bg = "180")
+# 
+# # Multiple colors:
+# plot_chars(file = "test.txt", lbl_hi = "[aeiou]", bg_hi = "te.t",
+#            col_lbl = c("grey99", "grey85"),
+#            col_bg = c("grey10", "grey15", "grey20"),
+#            col_bg_hi = pal_ds4psy[1:3], col_bg_lo = "grey80",
+#            col_lbl_hi = c("gold1", "gold2"),
+#            col_sample = FALSE, cex = 5, fontface = 2)
+# 
+# # Sampling colors (within each category only):
+# plot_chars(file = "test.txt", lbl_hi = "[aeiou]", bg_hi = "te.t",
+#            col_lbl = c("grey95", "grey85"), col_bg = c("grey1", "grey10", "grey20"),
+#            col_bg_hi = pal_ds4psy[1:3],  col_bg_lo = c("grey90", "grey80", "grey70"),
+#            col_lbl_hi = c("gold1", "gold3"),
+#            col_sample = TRUE, cex = 5, fontface = 2)
+# 
+# # Highlight labels and tiles of same matches:
+# plot_chars(file = "test.txt", lbl_hi = "te.t", bg_hi = "te.t",
+#            col_bg = "white", col_bg_hi = "gold", col_lbl_hi = "red",
+#            borders = TRUE, border_col = "black")
+# 
+# plot_chars(file = "test.txt",
+#            lbl_hi = "te.t", bg_hi = "te.t", lbl_rotate = ".his",
+#            col_bg_hi = "gold", col_lbl_hi = "red3",
+#            cex = 6, family = "mono", fontface = 2,
+#            borders = TRUE, border_col = "black", border_size = .2)
+# 
+# # Note: plot_chars() invisibly returns a description of the plot (as df):
+# tb <- plot_chars(file = "test.txt", lbl_hi = "[aeiou]", lbl_rotate = "[hlwypt?!]",
+#                  case_sense = FALSE, angle_fg = 90, cex = 4)
+# head(tb)
+# 
+# unlink("test.txt")  # clean up (by deleting file).
+
+## Note: External file "check_plot_fun.Rmd" contains more checks. 
 
 
 ## Done: ----------
 
-# - theme_empty() removed need for: #' @importFrom cowplot theme_nothing 
+# - Clean up legacy code and moved some checks to external file "check_plot_fun.Rmd". 
+
+# - Replaced old plot_chars() by a function that only calls the 2 more specialized functions:
+#   1. map_text_regex() maps text to x/y-coords with optional regex columns => df
+#   2. plot_charmap() reads/creates/uses a charmap (df) to plot it.
+
+# - Added plot_chars() for more control over regex matches and colors
+# - Revised plot_text() to invisibly return plot description (as df)
+# - Added theme_empty() to remove need for: #' @importFrom cowplot theme_nothing 
+
 
 ## ToDo: ----------
+
+# - Visualize char or word frequency: 
+#   1. Use count_chars_words() to create color vectors (fg/bg) based on char_ or word_freq. [done]
+#   2. Map freq counts to color palette (using either interval scale with bins or ordinal scale with ranks)
+#   3. Use plot_charmap() or plot_text() to plot char or word frequency.
+
+# - Revise plot_text() to use count_chars_words() and 
+#   allow coloring by character or word frequency.
 
 # - Consider adding plot_tbar() and plot_tclock() 
 #   (to plot toc, see file images/art.Rmd).

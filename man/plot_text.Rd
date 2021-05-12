@@ -5,6 +5,7 @@
 \title{Plot text characters (from file or user input).}
 \usage{
 plot_text(
+  x = NA,
   file = "",
   char_bg = " ",
   lbl_tiles = TRUE,
@@ -23,13 +24,18 @@ plot_text(
 )
 }
 \arguments{
-\item{file}{The text file to read (or its path). 
-If \code{file = ""} (the default), \code{scan} is used 
-to read user input from the Console. 
+\item{x}{The text to plot (as a character vector). 
+Different elements denote different lines of text. 
+If \code{x = NA} (as per default), 
+the \code{file} argument is used to read 
+a text file or scan user input (entering text in Console).}
+
+\item{file}{A text file to read (or its path). 
+If \code{file = ""} (as per default), 
+\code{scan} is used to read user input from the Console. 
 If a text file is stored in a sub-directory, 
 enter its path and name here (without any leading or 
-trailing "." or "/"). 
-Default: \code{file = ""}.}
+trailing "." or "/").}
 
 \item{char_bg}{Character used as background. 
 Default: \code{char_bg = " "}. 
@@ -63,15 +69,15 @@ of text (used in order of character frequency).
 Default: \code{pal = pal_ds4psy[1:5]} 
 (i.e., shades of \code{Seeblau}).}
 
-\item{pal_extend}{Boolean: Should pal be extended 
+\item{pal_extend}{Boolean: Should \code{pal} be extended 
 to match the number of different characters in text? 
 Default: \code{pal_extend = TRUE}. 
 If \code{pal_extend = FALSE}, only the tiles of 
 the \code{length(pal)} most frequent characters 
 will be filled by the colors of \code{pal}.}
 
-\item{case_sense}{Boolean: Should lower- and 
-uppercase characters be distinguished? 
+\item{case_sense}{Boolean: Distinguish 
+lower- vs. uppercase characters? 
 Default: \code{case_sense = FALSE}.}
 
 \item{borders}{Boolean: Add borders to tiles? 
@@ -83,60 +89,93 @@ Default: \code{border_col = "white"}.}
 \item{border_size}{Size of borders (if \code{borders = TRUE}). 
 Default: \code{border_size = 0.5}.}
 }
+\value{
+An invisible data frame describing the plot.
+}
 \description{
 \code{plot_text} parses text 
-(from a file or from user input in Console) 
-into a table and then plots all 
-its characters as a tile plot (using \strong{ggplot2}).
+(from a file or from user input) 
+and plots its individual characters 
+as a tile plot (using \strong{ggplot2}).
+}
+\details{
+\code{plot_text} blurs the boundary between a text 
+and its graphical representation by adding visual options 
+for coloring characters based on their frequency counts. 
+(Note that \code{\link{plot_chars}} provides additional 
+support for matching regular expressions.) 
+
+\code{plot_text} is character-based: 
+Individual characters are plotted at equidistant x-y-positions 
+with color settings for text labels and tile fill colors.
+
+By default, the color palette \code{pal} 
+(used for tile fill colors) is scaled 
+to indicate character frequency. 
+
+\code{plot_text} invisibly returns a 
+description of the plot (as a data frame).
 }
 \examples{
+# (A) From text string(s):
+plot_text(x = c("Hello", "world!"))
+plot_text(x = c("Hello world!", "How are you today?"))
+
+# (B) From user input:
+# plot_text()  # (enter text in Console)
+
+# (C) From text file:
 ## Create a temporary file "test.txt":
-# cat("Hello world!", "This is a test.", 
+# cat("Hello world!", "This is a test file.", 
 #     "Can you see this text?", 
 #     "Good! Please carry on...", 
 #     file = "test.txt", sep = "\n")
 
-## (a) Plot text (from file): 
-# plot_text("test.txt")
+# plot_text(file = "test.txt")
 
 ## Set colors, pal_extend, and case_sense:
 # cols <- c("steelblue", "skyblue", "lightgrey")
 # cols <- c("firebrick", "olivedrab", "steelblue", "orange", "gold")
-# plot_text("test.txt", pal = cols, pal_extend = TRUE)
-# plot_text("test.txt", pal = cols, pal_extend = FALSE)
-# plot_text("test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = TRUE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = FALSE)
+# plot_text(file = "test.txt", pal = cols, pal_extend = FALSE, case_sense = TRUE)
 
 ## Customize text and grid options:
-# plot_text("test.txt", col_lbl = "darkblue", cex = 4, family = "sans", fontface = 3,
+# plot_text(file = "test.txt", col_lbl = "darkblue", cex = 4, family = "sans", fontface = 3,
 #           pal = "gold1", pal_extend = TRUE, border_col = NA)
-# plot_text("test.txt", family = "serif", cex = 6, lbl_rotate = TRUE,  
+# plot_text(file = "test.txt", family = "serif", cex = 6, lbl_rotate = TRUE,  
 #           pal = NA, borders = FALSE)
-# plot_text("test.txt", col_lbl = "white", pal = c("green3", "black"),
+# plot_text(file = "test.txt", col_lbl = "white", pal = c("green3", "black"),
 #           border_col = "black", border_size = .2)
 
 ## Color ranges:
-# plot_text("test.txt", pal = c("red2", "orange", "gold"))
-# plot_text("test.txt", pal = c("olivedrab4", "gold"))
+# plot_text(file = "test.txt", pal = c("red2", "orange", "gold"))
+# plot_text(file = "test.txt", pal = c("olivedrab4", "gold"))
 
-# unlink("test.txt")  # clean up (by deleting file).
+# unlink("test.txt")  # clean up.
  
 \donttest{
-## (b) Plot text (from file in subdir):
-# plot_text("data-raw/txt/hello.txt")  # requires txt file
+## (B) From text file (in subdir):
+# plot_text(file = "data-raw/txt/hello.txt")  # requires txt file
 # plot_text(file = "data-raw/txt/ascii.txt", cex = 5, 
 #           col_bg = "grey", char_bg = "-")
          
-## (c) Plot text input (from console):
-# plot_text()
- 
+## (C) From user input:
+# plot_text()  # (enter text in Console)
 }
 
 }
 \seealso{
-\code{\link{read_ascii}} for reading text into a table; 
+\code{\link{plot_charmap}} for plotting character maps; 
+\code{\link{plot_chars}} for creating and plotting character maps; 
+\code{\link{map_text_coord}} for mapping text to a table of character coordinates; 
+\code{\link{map_text_regex}} for mapping text to a character table and matching patterns; 
+\code{\link{read_ascii}} for parsing text from file or user input; 
 \code{\link{pal_ds4psy}} for default color palette.
 
 Other plot functions: 
+\code{\link{plot_charmap}()},
+\code{\link{plot_chars}()},
 \code{\link{plot_fn}()},
 \code{\link{plot_fun}()},
 \code{\link{plot_n}()},

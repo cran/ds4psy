@@ -1,5 +1,5 @@
 ## util_fun.R | ds4psy
-## hn | uni.kn | 2021 04 01
+## hn | uni.kn | 2021 05 10
 ## ---------------------------
 
 ## Utility functions. 
@@ -14,7 +14,47 @@ vrep <- Vectorize(rep.int, "times")
 ## => works, but returns a list.
 
 
-# align_vec: Recycle or truncate a vector to the length of a main one: ------
+# recycle_vec: Recycle (extend or truncate) a vector v to a length len: ------
+
+recycle_vec <- function(v, len){
+  
+  # Special cases:  
+  if (is.na(len)) { return(NA) }
+  if (len == 0) { return(v[0]) }
+  
+  # Initialize: 
+  v_len <- length(v)
+  
+  # Main: Compare v_len with len:  
+  if (v_len > len){ # truncate v:
+    
+    v[1:len]  # first len elements
+    
+  } else if (v_len < len) { # extend v:
+    
+    rep(v, ceiling(len/v_len))[1:len]
+    
+  } else {
+    
+    v  # no change
+    
+  }
+  
+} # recycle_vec() end.
+
+
+## Check:
+# recycle_vec(1:4, NA)
+# recycle_vec(1:4, 6)
+# recycle_vec(1:4, 2)
+# recycle_vec(1:4, 4)
+# # Note: 
+# recycle_vec(1:3, 0)
+# recycle_vec(letters[1:3], 0)
+# recycle_vec(c(1, NA, 3), 5)
+
+
+# align_vec: Recycle or truncate a vector v to the length of a main one: ------
 
 # Return the modified vector (with a different length).
 
@@ -42,7 +82,7 @@ align_vec <- function(v_mod, v_fix){
   
   return(v_out)
   
-} # align_vec end.
+} # align_vec() end.
 
 # ## Check:
 # align_vec(LETTERS[1:4], 1:4)  # same length
@@ -88,7 +128,7 @@ align_vec_pair <- function(v1, v2){
   
   return(lo)
   
-} # align_vec_pair
+} # align_vec_pair() end. 
 
 # ## Check:
 # align_vec_pair(1:5, LETTERS[1:5])  # same length
@@ -271,7 +311,7 @@ num_as_char <- function(x, n_pre_dec = 2, n_dec = 2, sym = "0", sep = "."){
   # 4. Output: 
   return(char)
   
-} # num_as_char end. 
+} # num_as_char() end. 
 
 # # Check:
 # num_as_char(1)
@@ -420,7 +460,7 @@ num_as_ordinal <- function(x, sep = ""){
   # 5. Output: 
   return(char)
   
-} # num_as_ordinal end.
+} # num_as_ordinal() end.
 
 ## Checks:
 # num_as_ordinal(1:15)
@@ -438,16 +478,16 @@ num_as_ordinal <- function(x, sep = ""){
 
 
 
-# is_vector: Testing for a vector (which is.vector does not) ------ 
+# is_vect: Testing for a vector (which is.vector does not) ------ 
 
 #' Test for a vector (i.e., atomic vector or list). 
 #'
-#' \code{is_vector} tests if \code{x} is a vector.
+#' \code{is_vect} tests if \code{x} is a vector.
 #' 
-#' \code{is_vector} does what the \strong{base} R function \code{is.vector} is \strong{not} designed to do: 
+#' \code{is_vect} does what the \strong{base} R function \code{is.vector} is \strong{not} designed to do: 
 #' 
 #' \itemize{ 
-#'   \item \code{is_vector()} returns TRUE if \code{x} is an atomic vector or a list (irrespective of its attributes). 
+#'   \item \code{is_vect()} returns TRUE if \code{x} is an atomic vector or a list (irrespective of its attributes). 
 #' 
 #'   \item \code{is.vector()} returns TRUE if \code{x} is a vector of the specified \code{mode} having no attributes other than names, otherwise FALSE.
 #' }
@@ -456,7 +496,10 @@ num_as_ordinal <- function(x, sep = ""){
 #' 
 #' Note that data frames are also vectors.
 #' 
-#' See the documentations of \code{\link{is.atomic}}, \code{\link{is.list}}, and \code{\link{is.vector}} for details.
+#' See the \code{is_vector} function of the \strong{purrr} package 
+#' and the \strong{base} R functions 
+#' \code{\link{is.atomic}}, \code{\link{is.list}}, and \code{\link{is.vector}}, 
+#' for details.
 #' 
 #' @param x Vector(s) to test (required).
 #'
@@ -472,35 +515,35 @@ num_as_ordinal <- function(x, sep = ""){
 #' # Compare:
 #' is.vector(v1)
 #' is.list(v1)
-#' is_vector(v1)
+#' is_vect(v1)
 #' 
 #' is.vector(v2)  # FALSE
 #' is.list(v2)
-#' is_vector(v2)  # TRUE
+#' is_vect(v2)  # TRUE
 #' 
 #' is.vector(ls)
 #' is.list(ls)
-#' is_vector(ls)
+#' is_vect(ls)
 #' 
 #' # Data frames are also vectors: 
 #' df <- as.data.frame(1:3)
-#' is_vector(df)  # is TRUE
+#' is_vect(df)  # is TRUE
 #' 
 #' @family utility functions
 #'
 #' @seealso 
+#' \code{is_vect} function of the \strong{purrr} package; 
 #' \code{\link{is.atomic}} function of the R \strong{base} package; 
 #' \code{\link{is.list}} function of the R \strong{base} package;  
 #' \code{\link{is.vector}} function of the R \strong{base} package.  
 #'
-#' @export 
+#' @export
 
-is_vector <- function(x) {
+is_vect <- function(x) {
   
   is.atomic(x) | is.list(x)
-    
-} # is_vector end.
-
+  
+} # is_vect().
 
 # ## Check: 
 # # 3 types of vectors:
@@ -515,15 +558,15 @@ is_vector <- function(x) {
 # # Compare:
 # is.vector(v1)
 # is.list(v1)
-# is_vector(v1)
+# is_vect(v1)
 # 
 # is.vector(v2)  # FALSE
 # is.list(v2)
-# is_vector(v2)  # TRUE
+# is_vect(v2)  # TRUE
 # 
 # is.vector(ls)
 # is.list(ls)
-# is_vector(ls)
+# is_vect(ls)
 # 
 # # Vectors of vectors:
 # vs <- c(v1, v2, ls)
@@ -534,7 +577,7 @@ is_vector <- function(x) {
 # 
 # # Data frames are also vectors: 
 # df <- as.data.frame(1:3)
-# is_vector(df)  # is TRUE
+# is_vect(df)  # is TRUE
 
 
 # is_wholenumber: Testing for integer values (which is.integer does not) ------ 
@@ -583,7 +626,7 @@ is_wholenumber <- function(x, tol = .Machine$double.eps^0.5) {
   
   abs(x - round(x)) < tol
   
-} # is_wholenumber end.
+} # is_wholenumber().
 
 # # Check: 
 # is_wholenumber(1)    # is TRUE
@@ -662,7 +705,7 @@ num_equal <- function(x, y, tol = .Machine$double.eps^0.5){
   
   return(out)
   
-} # num_equal end. 
+} # num_equal(). 
 
 # ## Check:
 # num_equal(2, sqrt(2)^2)
@@ -750,7 +793,7 @@ is_equal <- function(x, y, ...){
     
   }
   
-} # is_equal end. 
+} # is_equal(). 
 
 ## Check:
 # # numeric data: 
@@ -776,7 +819,7 @@ kill_all <- function(){
   
   rm(list = ls())
   
-} # kill_all end. 
+} # kill_all(). 
 
 ## Check: 
 # kill_all()
