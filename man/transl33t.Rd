@@ -50,7 +50,8 @@ transl33t(txt = "hEllo world", in_case = "lo", out_case = "up",
 
 }
 \seealso{
-\code{\link{l33t_rul35}} for default rules used.
+\code{\link{l33t_rul35}} for default rules used; 
+\code{\link{invert_rules}} for inverting rules.
 
 Other text objects and functions: 
 \code{\link{Umlaut}},
@@ -60,6 +61,7 @@ Other text objects and functions:
 \code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
 \code{\link{count_words}()},
+\code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},
 \code{\link{map_text_chars}()},
 \code{\link{map_text_coord}()},
@@ -68,6 +70,7 @@ Other text objects and functions:
 \code{\link{read_ascii}()},
 \code{\link{text_to_chars}()},
 \code{\link{text_to_sentences}()},
-\code{\link{text_to_words}()}
+\code{\link{text_to_words}()},
+\code{\link{words_to_text}()}
 }
 \concept{text objects and functions}

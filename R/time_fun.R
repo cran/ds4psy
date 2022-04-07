@@ -1,5 +1,5 @@
 ## time_fun.R | ds4psy
-## hn | uni.kn | 2021 04 14
+## hn | uni.kn | 2021 05 28
 ## ---------------------------
 
 ## Main functions for date and time objects. 
@@ -1590,7 +1590,7 @@ diff_days <- function(from_date, to_date = Sys.Date(), units = "days", as_Date =
   
   return(n_days)
   
-} # diff_days. 
+} # diff_days(). 
 
 # ## Check:
 # ds <- Sys.Date() + -2:+2
@@ -2051,7 +2051,7 @@ diff_dates <- function(from_date, to_date = Sys.Date(),
   
   return(age)
   
-} # diff_dates. 
+} # diff_dates(). 
 
 # ## Check:
 # # Days:
@@ -2753,7 +2753,7 @@ diff_times <- function(from_time, to_time = Sys.time(),
   
   return(age)
   
-} # diff_times. 
+} # diff_times(). 
 
 # ## Check:
 # 
@@ -2847,7 +2847,6 @@ diff_times <- function(from_time, to_time = Sys.time(),
 # diff_times(t1, t2, unit = "days", as_character = TRUE)
 # lubridate::as.period(lubridate::interval(t1, t2), unit = "days")
 
-# +++ here now +++ 
 
 # # B. NOT resolved YET:
 # 
@@ -2865,10 +2864,208 @@ diff_times <- function(from_time, to_time = Sys.time(),
 # diff_times(t1, t2, unit = "years", as_character = TRUE)
 # lubridate::as.period(lubridate::interval(t1, t2), unit = "years")
 
-
 ## ToDo: 
-
 # - add n_decimals argument? (default of 0).
+
+
+## (5) Get zodiac name/symbol for given date(s): ------ 
+
+#' Get zodiac (corresponding to date x).  
+#'
+#' \code{zodiac} provides the tropical zodiac sign or symbol 
+#' for given date(s) \code{x}.
+#' 
+#' \code{zodiac} is flexible by providing different 
+#' output formats (in Latin/English, German, or Unicode/HTML, 
+#' see \code{out}) and allowing to adjust the calendar dates 
+#' on which a new zodiac is assigned (via \code{zodiac_swap_mmdd}).
+#' 
+#' @param x Date (as a scalar or vector, required).    
+#' If \code{x} is not a date (of class "Date"), 
+#' the function tries to coerce \code{x} into a "Date". 
+#' 
+#' @param out Output format (as character). 
+#' Available output formats are: 
+#' English/Latin (\code{out = "en"}, by default),   
+#' German/Deutsch (\code{out = "de"}), 
+#' HTML (\code{out = "html"}), or  
+#' Unicode (\code{out = "Unicode"}) symbols. 
+#' 
+#' @param zodiac_swap_mmdd Monthly dates on which 
+#' the 12 zodiac signs switch (in \code{mmdd} format, 
+#' ordered chronologically within a calendar year). 
+#' Default: \code{zodiac_swap_mmdd = c(0120, 0219, 0321, 0421, 0521, 0621, 
+#' 0723, 0823, 0923, 1023, 1123, 1222)}. 
+#' 
+#' @return Zodiac label or symbol (as a factor). 
+#' 
+#' @examples
+#' zodiac(Sys.Date())
+#' 
+#' # Works with vectors:
+#' dt <- sample_date(size = 10)
+#' zodiac(dt)
+#' levels(zodiac(dt))
+#' 
+#' # Alternative outputs:
+#' zodiac(dt, out = "de")  # German/deutsch
+#' zodiac(dt, out = "Unicode")  # Unicode
+#' zodiac(dt, out = "HTML")     # HTML
+#' 
+#' # Alternative date breaks:
+#' zodiac("2000-08-23")  # 0823 is "Virgo" by default
+#' zodiac("2000-08-23",  # change to 0824 (i.e., August 24): 
+#'        zodiac_swap_mmdd = c(0120, 0219, 0321, 0421, 0521, 0621, 
+#'                             0723, 0824, 0923, 1023, 1123, 1222))
+#' 
+#' @source See 
+#' \url{https://en.wikipedia.org/wiki/Zodiac} or 
+#' \url{https://de.wikipedia.org/wiki/Tierkreiszeichen} 
+#' for alternative date ranges. 
+#' 
+#' @family date and time functions
+#' 
+#' @seealso 
+#' \code{Zodiac()} function of the \strong{DescTools} package. 
+#' 
+#' @export
+
+zodiac <- function(x, 
+                   out = "en",
+                   zodiac_swap_mmdd = c(0120, 0219, 0321, 0421, 0521, 0621, 
+                                        0723, 0823, 0923, 1023, 1123, 1222)
+){
+  
+  # 0. Initialize: 
+  date <- NA
+  zod  <- NA
+  
+  # 1. Handle inputs: ------  
+  
+  # (a) NA inputs: ----
+  
+  if (any(is.na(x))){
+    message('zodiac: "date" must not be NA.')    
+    return(NA)
+  }
+  
+  # (b) Turn non-Date inputs into "Date" objects: ---- 
+  
+  if (!is_Date(x)){
+    # message('zodiac: Aiming to parse "x" as "Date".')
+    date <- date_from_noDate(x)
+  } else {
+    date <- x
+  }
+  
+  # 2. Determine month and days:
+  mm <- as.numeric(format(date, "%m"))
+  dd <- as.numeric(format(date, "%d"))
+  
+  mm <- num_as_char(mm, n_pre_dec = 2, n_dec = 0)
+  dd <- num_as_char(dd, n_pre_dec = 2, n_dec = 0)
+  
+  mmdd <- as.numeric(paste0(mm, dd))  # as number (from 101 to 1231)
+  
+  # 3. Get zodiac sign/symbol for date: ----- 
+  
+  # Data: Date breaks and labels: 
+  # Aries:       Mar 21 – Apr 20:  Widder
+  # Taurus:      Apr 21 – May 20:  Stier
+  # Gemini:      May 21 – Jun 20:  Zwillinge 
+  # Cancer:      Jun 21 – Jul 22:  Krebs
+  # Leo:         Jul 23 – Aug 22:  Loewe
+  # Virgo:       Aug 23 – Sep 22:  Jungfrau
+  # Libra:       Sep 23 – Oct 22:  Waage
+  # Scorpio:     Oct 23 – Nov 22:  Skorpion
+  # Sagittarius: Nov 23 – Dec 21:  Schuetze 
+  # Capricorn:   Dec 22 – Jan 19:  Steinbock
+  # Aquarius:    Jan 20 – Feb 18:  Wassermann 
+  # Pisces:      Feb 19 – Mar 20:  Fische
+  
+  # Latin/en: 
+  labels_en <- c("Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", 
+                 "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces")
+  # German/de:
+  labels_de <- c("Widder", "Stier", "Zwillinge", "Krebs", "L\u00F6we", "Jungfrau", 
+                 "Waage", "Skorpion", "Sch\u00FCtze", "Steinbock", "Wassermann", "Fische") 
+  # Unicode: 
+  labels_unicode <- c("\u2648", "\u2649", "\u264A", "\u264B", "\u264C", "\u264D", "\u264E", "\u264F",
+                      "\u2650", "\u2651", "\u2652", "\u2653")
+  # HTML:
+  labels_html <- c("&#9800;", "&#9801;", "&#9802;", "&#9803;", "&#9804;", "&#9805;", 
+                   "&#9806;", "&#9807;", "&#9808;", "&#9809;", "&#9810;", "&#9811;")
+  
+  year_cats <-  c(10:12, 1:10)  # sequence of zodiac sign categories (arranged in calendar year)
+  
+  # Output formats: ---- 
+  out <- substr(tolower(out), 1, 2)  # 4robustness 
+  
+  if (out == "de" | out == "ge"){ # deutsch/German:
+    
+    labels_year <- labels_de[year_cats]  # 13 Namen (out == "de"/"ge") 
+    
+  } else if (out == "un" | out == "uc"){ # Unicode symbols: 
+    
+    labels_year <- labels_unicode[year_cats]  # 13 Unicodes (out == "uc"/"un") 
+    
+  } else if (out == "ht"){ # HTML symbols: 
+    
+    labels_year <- labels_html[year_cats]  # 13 HTML codes (out == "ht"/"HTML") 
+    
+  } else { # default (out == "English/Latin"): 
+    
+    labels_year <- labels_en[year_cats]  # 13 labels (mapped to calendar year)
+    
+  }
+  
+  # 4. Main: Determine zodiac by numeric date breaks (in numeric mmdd format): 
+  date_breaks <- c(-Inf, zodiac_swap_mmdd, +Inf) 
+  zod <- cut(x = mmdd, breaks = date_breaks, labels = labels_year, 
+             include.lowest = TRUE, right = FALSE)
+  
+  # 5. Recode levels of zod as factor (from 1 = Aries to 12 = Pisces): 
+  zod_cats <- c(4:12, 1:3)    # re-order zodiac signs 
+  zod <- factor(zod, levels = levels(zod)[zod_cats])  # re-order factor levels
+  
+  # 6. Output: 
+  # zod <- paste0(mm, "-", dd, ": ", mmdd, " = ", zod, "")  # 4debugging 
+  return(zod)
+  
+} # zodiac(). 
+
+# ## Check:
+# zodiac(Sys.Date())
+# (dt <- sample_date(size = 10))
+# zodiac(dt)
+# 
+# # Verify date range borders:
+# dt_brd <- c("2000-01-19", "2000-01-20",
+#             "2000-02-18", "2000-02-19",
+#             "2000-03-20", "2000-03-21",
+#             "2000-04-20", "2000-04-21",
+#             "2000-05-20", "2000-05-21",
+#             "2000-06-20", "2000-06-21",
+#             "2000-07-22", "2000-07-23",
+#             "2000-08-22", "2000-08-23",
+#             "2000-09-22", "2000-09-23",
+#             "2000-10-22", "2000-10-23",
+#             "2000-11-22", "2000-11-23",
+#             "2000-12-21", "2000-12-22")
+# zodiac(dt_brd)
+# levels(zodiac(dt_brd))
+# is.ordered(zodiac(dt_brd))
+# 
+# # Alternative outputs:
+# zodiac(dt_brd, out = "de")
+# zodiac(dt_brd, out = "unicode")
+# zodiac(dt_brd, out = "HTML")
+# 
+# # Set alternative date breaks:
+# zodiac("2000-08-23")
+# zodiac("2000-08-23", 
+#        zodiac_swap_mmdd = c(0120, 0219, 0321, 0421, 0521, 0621, 
+#                             0723, 0824, 0923, 1023, 1123, 1222))
 
 
 ## Done: ----------
@@ -2883,6 +3080,16 @@ diff_times <- function(from_time, to_time = Sys.time(),
 
 
 ## ToDo: ----------
+
+# Add a zodiac() function (that works for vectors of dates):  
+#
+# Input: Dates or times (as vector)
+# Output: As factor (levels 1-12) OR character OR Unicode/HTML symbols, 
+#         with labels in Latin/en/de
+# See: <https://en.wikipedia.org/wiki/Zodiac> and  
+# See: <https://de.wikipedia.org/wiki/Tierkreiszeichen> for ranges and symbols. 
+# 
+# Note: The DescTools package also contains a Zodiac() function. 
 
 # ad (1) and (2): 
 # - update cur_ and what_ functions to use new helpers

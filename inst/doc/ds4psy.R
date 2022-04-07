@@ -13,14 +13,14 @@ knitr::opts_chunk$set(
 #  devtools::install_github('hneth/ds4psy')
 #  library('ds4psy')  # load to use the package
 
-## ----bitex-entry, eval = FALSE, highlight = FALSE-----------------------------
+## ----bibtex-entry, eval = FALSE, highlight = FALSE----------------------------
 #  @Manual{ds4psy,
 #    title = {ds4psy: Data Science for Psychologists},
 #    author = {Hansjörg Neth},
-#    year = {2021},
+#    year = {2022},
 #    organization = {Social Psychology and Decision Sciences, University of Konstanz},
 #    address = {Konstanz, Germany},
-#    note = {Textbook and R package (version 0.7.0, May 12, 2021)},
+#    note = {Textbook and R package (version 0.8.0, April 8, 2022)},
 #    url = {https://bookdown.org/hneth/ds4psy/}
 #  }
 

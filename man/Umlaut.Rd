@@ -40,6 +40,7 @@ Other text objects and functions:
 \code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
 \code{\link{count_words}()},
+\code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},
 \code{\link{map_text_chars}()},
 \code{\link{map_text_coord}()},
@@ -49,7 +50,8 @@ Other text objects and functions:
 \code{\link{text_to_chars}()},
 \code{\link{text_to_sentences}()},
 \code{\link{text_to_words}()},
-\code{\link{transl33t}()}
+\code{\link{transl33t}()},
+\code{\link{words_to_text}()}
 }
 \concept{text objects and functions}
 \keyword{datasets}

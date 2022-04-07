@@ -1,5 +1,5 @@
 ## text_fun.R | ds4psy
-## hn | uni.kn | 2021 05 10
+## hn | uni.kn | 2022 03 21
 ## ---------------------------
 
 ## Character objects and functions for string/text objects. 
@@ -268,7 +268,7 @@ collapse_chars <- function(x, sep = " "){
   # Output: 
   return(x1)
   
-}
+} # collapse_chars(). 
 
 ## Check:
 # collapse_chars(c("Hello", "world", "!"))
@@ -484,6 +484,7 @@ text_to_sentences <- function(x,  # string(s) of text
 #' @family text objects and functions
 #'
 #' @seealso
+#' \code{\link{text_to_words}} for splitting a text into its words; 
 #' \code{\link{text_to_sentences}} for splitting text into a vector of sentences;  
 #' \code{\link{text_to_chars}} for splitting text into a vector of characters;  
 #' \code{\link{count_words}} for counting the frequency of words; 
@@ -634,10 +635,37 @@ text_to_chars <- function(x, rm_specials = FALSE, sep = ""){
 
 ## words_to_text: Turn a vector of words x into a (single) vector: ------ 
 
-# Inverse of text_to_words() above:
-# Currently only adds spaces between words 
-# (collapsing multiple strings into one).
-# (Note: Currently not exported, but used.)
+#' Paste or collapse words \code{x} into a text. 
+#' 
+#' \code{words_to_text} pastes or collapses 
+#' a character string \code{x} into a text. 
+#' 
+#' Internally, \code{words_to_text} only invokes the \strong{base} R function 
+#' \code{\link{paste}} with the \code{collapse} argument. 
+#' 
+#' @param x A string of text (required), typically a character vector. 
+#' 
+#' @param collapse A character string to separate the elements of \code{x} 
+#' in the resulting text. 
+#' Default: \code{collapse = " "}. 
+#' 
+#' @return A text (as a collapsed character vector). 
+#'
+#' @examples
+#' x <- c("Hello world!", "A 1st sentence.", "A 2nd sentence.", "The end.")
+#' words_to_text(x)
+#' cat(words_to_text(x, collapse = "\n"))
+#' 
+#' @family text objects and functions
+#'
+#' @seealso
+#' \code{\link{text_to_words}} for splitting a text into its words; 
+#' \code{\link{text_to_sentences}} for splitting text into a vector of sentences;  
+#' \code{\link{text_to_chars}} for splitting text into a vector of characters;  
+#' \code{\link{count_words}} for counting the frequency of words; 
+#' \code{\link{strsplit}} for splitting strings. 
+#' 
+#' @export
 
 words_to_text <- function(x, collapse = " "){
   
@@ -646,8 +674,9 @@ words_to_text <- function(x, collapse = " "){
 } # words_to_text(). 
 
 ## Check:
-# words_to_text(wv)
+# words_to_text(wv)  # (using wv from above)
 # words_to_text(c("This", "is only", "a test"))
+# cat(words_to_text(wv, collapse = "\n"))
 
 
 ## chars_to_text: Turn a character vector x into a (single) string of text: ------
@@ -705,14 +734,17 @@ chars_to_text <- function(x){
 
 ## (2) Capitalization: ---------- 
 
+
 ## capitalize: the first n letters of words (w/o exception): -------- 
 
 #' Capitalize initial characters in strings of text \code{x}.  
 #' 
 #' \code{capitalize} converts the case of 
-#' each word's \code{n} initial characters 
-#' (typically to \code{upper}) 
-#' in a string of text \code{x}.
+#' each element's (i.e., character string or word in text) 
+#' \code{n} initial characters to \code{upper} or lowercase.
+#' 
+#' If \code{as_text = TRUE}, the input \code{x} is merged into 
+#' one string of text and the arguments are applied to each word.  
 #'
 #' @return A character vector. 
 #'
@@ -724,45 +756,50 @@ chars_to_text <- function(x){
 #' @param upper Convert to uppercase?
 #' Default: \code{upper = TRUE}. 
 #' 
-#' @param as_text Return word vector as text 
+#' @param as_text Treat and return \code{x} as a text 
 #' (i.e., one character string)? 
-#' Default: \code{as_text = TRUE}.
+#' Default: \code{as_text = FALSE}. 
 #' 
 #' @examples
-#' x <- c("Hello world! This is a 1st TEST sentence. The end.")
+#' x <- c("Hello world!", "this is a TEST sentence.", "the end.")
 #' capitalize(x)
-#' capitalize(x, n = 3)
-#' capitalize(x, n = 2, upper = FALSE)
-#' capitalize(x, as_text = FALSE)
+#' capitalize(tolower(x))
 #' 
-#' # Note: A vector of character strings returns the same results: 
-#' x <- c("Hello world!", "This is a 1st TEST sentence.", "The end.")
-#' capitalize(x)
-#' capitalize(x, n = 3)
-#' capitalize(x, n = 2, upper = FALSE)
-#' capitalize(x, as_text = FALSE)
+#' # Options: 
+#' capitalize(x, n = 3)                  # leaves strings intact
+#' capitalize(x, n = 3, as_text = TRUE)  # treats strings as text
+#' capitalize(x, n = 3, upper = FALSE)   # first n in lowercase
 #' 
 #' @family text objects and functions
 #'
 #' @seealso
-#' \code{\link{caseflip}} for converting the case of all letters. 
+#' \code{\link{caseflip}} for converting the case of all letters; 
+#' \code{\link{words_to_text}} and \code{\link{text_to_words}} for converting character vectors and texts.  
 #' 
 #' @export
 
-capitalize <- function(x, # string of text to capitalize
+capitalize <- function(x,      # character string or text
                        n = 1,  # number of initial letters to capitalize in each word
-                       upper = TRUE,   # convert to uppercase?
-                       as_text = TRUE  # return words as text (1 character string)? 
+                       upper = TRUE,    # convert to uppercase?
+                       as_text = FALSE  # treat and return x as a text (1 character string)? 
                        # except = c("a", "the", "is", "do", "does", "done", "did")
                        # rm_specials = TRUE
 ){
   
-  out <- NA  # initialize 
+  # 0. Initialize:  
+  out <- NA
   
-  # (1) Convert text x to vector of words:
-  words <- text_to_words(x)
+  # 1. Handle inputs:
+  x1 <- as.character(x)
   
-  # (2) Capitalize words:
+  # 2. Convert text x to vector of words:
+  if (as_text){
+    words <- text_to_words(x)
+  } else {
+    words <- x1
+  }
+  
+  # 3. Main: Capitalize words:
   first <- substr(words, 1, n)      # first character of each word 
   rest  <- substr(words, n + 1, nchar(words))  # rest of each word
   rest  <- substring(words, n + 1)  # rest of each word (with default end)
@@ -773,13 +810,14 @@ capitalize <- function(x, # string of text to capitalize
     Words <- paste0(tolower(first), rest) # lowercase first and paste with rest
   }
   
-  # (3) Convert vector of Words to text x:
+  # 4. Convert vector of Words to text x:
   if (as_text){
     out <- words_to_text(Words)
   } else {
     out <- Words
   }
   
+  # 5. Output: 
   return(out)
   
 } # capitalize(). 
@@ -791,12 +829,13 @@ capitalize <- function(x, # string of text to capitalize
 # capitalize(x, n = 2, upper = FALSE)
 # capitalize(x, as_text = FALSE)
 # 
-# # Note: Vector of character strings is merged into one string:
+# # If as_text = TRUE, a character vector is merged into one string of text
+# # and arguments are applied to each word: 
 # x <- c("Hello world!", "This is a 1st TEST sentence.", "The end.")
-# capitalize(x)
-# capitalize(x, n = 3)
-# capitalize(x, n = 2, upper = FALSE)
-# capitalize(x, as_text = FALSE)
+# capitalize(x, n = 3, as_text = FALSE)  # default
+# capitalize(x, n = 3, as_text = TRUE)
+# capitalize(x, n = 3, as_text = TRUE, upper = FALSE)
+
 
 
 ## caseflip: Flip lower to upper case and vice versa: --------  
@@ -1510,7 +1549,8 @@ l33t_rul35 <- c(l33t_num, my_l33t)
 #' @family text objects and functions
 #'
 #' @seealso
-#' \code{\link{l33t_rul35}} for default rules used. 
+#' \code{\link{l33t_rul35}} for default rules used; 
+#' \code{\link{invert_rules}} for inverting rules. 
 #' 
 #' @export
 
@@ -1584,7 +1624,84 @@ transl33t <- function(txt, rules = l33t_rul35,
 #           transl33t(txt = c(letters)))
 
 
+## Encoding and decoding: ---- 
 
+## Invert rules: A function to invert encoding rules (for decoding encoded messages):
+
+# Assume that x is a named vector:
+# - use names as elements
+# - and elements as names
+
+#' invert_rules inverts a set of encoding rules. 
+#'
+#' \code{invert_rules} allows decoding messages that were 
+#' encoded by a set of rules \code{x}.
+#' 
+#' \code{x} is assumed to be a named vector. 
+#' 
+#' \code{invert_rules} replaces the elements of \code{x} 
+#' by the names of \code{x}, and vice versa.
+#' 
+#' A message is issued if the elements of \code{x} are repeated 
+#' (i.e., decoding is non-unique). 
+#' 
+#' @param x The rules used for encoding a message
+#' (as a named vector). 
+#' 
+#' @return A character vector. 
+#' 
+#' @examples
+#' invert_rules(l33t_rul35)  # Note repeated elements
+#' 
+#' # Encoding and decoding a message:
+#' (txt_0 <- "Hello world! How are you doing today?")             # message
+#' (txt_1 <- transl33t(txt_0, rules = l33t_rul35))                # encoding 
+#' (txt_2 <- transl33t(txt_1, rules = invert_rules(l33t_rul35)))  # decoding
+#' 
+#' @family text objects and functions
+#'
+#' @seealso
+#' \code{\link{transl33t}} for encoding text (e.g., into leet slang);  
+#' \code{\link{l33t_rul35}} for default rules used. 
+#' 
+#' @export
+
+invert_rules <- function(x){
+  
+  if (!is_vect(x) | is.null(names(x))){
+    message("invert_rules: x must be a named vector.")
+    return(NA)
+  }
+  
+  out <- NA  # initialize
+  
+  out <- names(x)
+  names(out) <- x
+  
+  if (length(unique(names(out))) < length(out)){
+    message("invert_rules: Some names are repeated.")
+  }
+  
+  return(out)
+  
+} # invert_rules().
+
+## Check:
+# invert_rules(letters[1:3])  # x not a named vector
+# invert_rules(l33t_rul35)  # Note repeated elements
+
+# Encoding and decoding a message:
+# 
+# # Original message:
+# txt_0 <- "Hello world! How are you doing today?"
+# 
+# # Encoding:
+# l33t_rul35  # rules used for encoding
+# (txt_1 <- transl33t(txt_0, rules = l33t_rul35))
+# 
+# # Decoding:
+# invert_rules(l33t_rul35)  # inverse rules
+# (txt_2 <- transl33t(txt_1, rules = invert_rules(l33t_rul35)))
 
 
 
@@ -2862,6 +2979,9 @@ map_text_freqs <- function(x = NA,     # Text string(s) to plot
 
 ## Done: ---------- 
 
+# - Created a version of capitalize() that works for character vectors 
+#   (i.e., capitalizes each vector element).
+
 # - Added map_text_regex() that performs all non-plotting parts of plot_chars(). [2021-04-26]
 # - Added map_text_or_file() that combines read_ascii() with map_text_coord(). [2021-04-26]
 # - Split read_ascii() into 2 functions [2021-04-22]:
@@ -2879,6 +2999,5 @@ map_text_freqs <- function(x = NA,     # Text string(s) to plot
 # 
 # General: Write functions to:
 # - mix alpha-numeric content (letters, words, numbers...) with noise (punctuation, space, random characters)
-
 
 ## eof. ----------------------
