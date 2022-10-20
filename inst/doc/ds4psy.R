@@ -20,7 +20,8 @@ knitr::opts_chunk$set(
 #    year = {2022},
 #    organization = {Social Psychology and Decision Sciences, University of Konstanz},
 #    address = {Konstanz, Germany},
-#    note = {Textbook and R package (version 0.8.0, April 8, 2022)},
-#    url = {https://bookdown.org/hneth/ds4psy/}
+#    note = {Textbook and R package (version 0.9.0, October 20, 2022)},
+#    url = {https://bookdown.org/hneth/ds4psy/},
+#    doi = {10.5281/zenodo.7229812}
 #  }
 

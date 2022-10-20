@@ -2,9 +2,10 @@
 <!-- README.md is generated from README.Rmd. Please edit THIS (Rmd) file. -->
 <!-- Use status badges: -->
 
-[![CRAN\_status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
-[![Build\_status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy)
+[![CRAN_status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
+[![Build_status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy)
 [![Downloads](https://cranlogs.r-pkg.org/badges/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7229812.svg)](https://doi.org/10.5281/zenodo.7229812)
 
 <!-- Possible status badges:
 
@@ -70,14 +71,15 @@ book](https://bookdown.org/hneth/ds4psy/) is available at
 </a>
 
 -   PSY-15150, at the [University of
-    Konstanz](https://www.uni-konstanz.de) by [Hansjörg
-    Neth](https://neth.de) (<h.neth@uni.kn>,
-    [SPDS](https://www.spds.uni-konstanz.de), office D507).  
--   Summer 2022: Mondays, 13:30–15:00, D430.  
+    Konstanz](https://www.uni-konstanz.de) is taught by [Hansjörg
+    Neth](https://www.spds.uni-konstanz.de/hans-neth), [Social
+    Psychology and Decision Sciences](https://www.spds.uni-konstanz.de),
+    office D507).  
+    <!-- * Summer\ 2022: Mondays, 13:30&ndash;15:00, D430. -->
 -   The [ds4psy book](https://bookdown.org/hneth/ds4psy/) with examples
     and exercises is available at
     <https://bookdown.org/hneth/ds4psy/>.  
--   The R package [ds4psy](https://CRAN.R-project.org/package=ds4psy) is
+-   The [ds4psy](https://CRAN.R-project.org/package=ds4psy) R package is
     available at <https://CRAN.R-project.org/package=ds4psy>.
 
 ## Description
@@ -265,10 +267,11 @@ To cite **ds4psy** in derivations and publications, please use:
 -   Neth, H. (2022). ds4psy: Data Science for Psychologists.  
     Social Psychology and Decision Sciences, University of Konstanz,
     Germany.  
-    Textbook and R package (version 0.8.0, April 8, 2022).  
-    Retrieved from <https://bookdown.org/hneth/ds4psy/>.
+    Textbook and R package (version 0.9.0, October 20, 2022).  
+    Retrieved from <https://bookdown.org/hneth/ds4psy/>.  
+    <https://doi.org/10.5281/zenodo.7229812>
 
-<!-- Add blank line.  -->
+<!-- BibTeX reference: -->
 
 A **BibTeX** entry for LaTeX users is:
 
@@ -279,8 +282,9 @@ A **BibTeX** entry for LaTeX users is:
   year = {2022},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {Textbook and R package (version 0.8.0, April 8, 2022)},
-  url = {https://bookdown.org/hneth/ds4psy/} 
+  note = {Textbook and R package (version 0.9.0, October 20, 2022)},
+  url = {https://bookdown.org/hneth/ds4psy/},
+  doi = {10.5281/zenodo.7229812}
 }
 ```
 
@@ -305,8 +309,10 @@ Neth</a> is licensed under a
 Commons Attribution-NonCommercial-ShareAlike 4.0 International
 License</a>.
 
-<!-- Update: -->
+------------------------------------------------------------------------
 
-\[Updated 2022-04-07 by [hn](https://neth.de).\]
+<!-- Footer: -->
+
+\[File `README.md` updated on 2022-10-20.\]
 
 <!-- eof. -->
