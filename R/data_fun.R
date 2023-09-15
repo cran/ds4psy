@@ -1,18 +1,18 @@
 ## data_fun.R | ds4psy
-## hn | uni.kn | 2021 04 14
-## ---------------------------
+## hn | uni.kn | 2023 09 12
+## ------------------------
 
 ## Functions for creating and manipulating data. 
 
 
-## (1) Generate random datasets: ---------- 
+## (1) Generate random data: ---------- 
 
-# Random binary values: Flip a 0/1 coin n times:  ------ 
+# Random binary values: Flip a 2-element-set/coin n times:  ------ 
 
 random_bin_value <- function(x = c(0, 1), n = 1, replace = TRUE) {
   
   if (length(x) != 2) {
-    message("random_bin_value: x should be binary.")
+    stop("random_bin_value: x must be binary.")
   }
   
   sample(x = x, size = n, replace = replace)  
@@ -21,6 +21,7 @@ random_bin_value <- function(x = c(0, 1), n = 1, replace = TRUE) {
 
 ## Check: 
 # random_bin_value(n = 10)
+# random_bin_value(c(TRUE, FALSE), 5)
 # random_bin_value(x = c("m", "f"), n = 100)
 
 
@@ -410,7 +411,7 @@ sample_date <- function(from = "1970-01-01", to = Sys.Date(), size = 1, ...){
 #' 
 #' # Time zones:
 #' sample_time(size = 3, tz = "UTC")
-#' sample_time(size = 3, tz = "US/Pacific")
+#' sample_time(size = 3, tz = "America/Los_Angeles")
 #'  
 #' # Note: Oddity with sample(): 
 #' sort(sample_time(from = "2020-12-31 00:00:00 CET", to = "2020-12-31 00:00:00 CET",
@@ -483,7 +484,7 @@ sample_time <- function(from = "1970-01-01 00:00:00",
 # 
 # # Time zones:
 # sample_time(size = 3, tz = "UTC")
-# sample_time(size = 3, tz = "US/Pacific")
+# sample_time(size = 3, tz = "America/Los_Angeles")
 # 
 # # Note: Oddity with sample():
 # sort(sample_time(from = "2020-01-01 00:00:00 CET", to = "2020-01-01 00:00:00 CET", 
@@ -759,8 +760,9 @@ dice_2 <- function(n = 1, sides = 6){
 
 all_permutations <- function(x) {
   
-  out <- NA  # initialize ----
-  n <- length(x)
+  # initialize: ----
+  out <- NA  
+    n <- length(x)
   
   if (n == 1) { # basic case: ----  
     
@@ -781,10 +783,11 @@ all_permutations <- function(x) {
   
 } # all_permutations(). 
 
-## Check:
+# # Check:
 # all_permutations(246)
 # all_permutations(1:3)
 # all_permutations(c("A", "B", "b", "a"))
+
 
 
 # Combinations: List ALL combinations of length n of a set x: ------ 
@@ -802,7 +805,7 @@ all_combinations <- function(x, length){
   out <- NA  # initialize
   
   # Verify inputs: 
-  if (is.na(x) || is.na(length)){
+  if (all(is.na(x)) || is.na(length)){
     return(NA)
   }
   
@@ -829,7 +832,7 @@ all_combinations <- function(x, length){
   
 } # all_combinations(). 
 
-## Check:
+# # Check:
 # all_combinations(x = c("a", "b", "c"), 2)
 # all_combinations(x = 1:5, length = 2)
 # all_combinations(x = 1:25, 2)  # Note: 25 * 24 / 2 = 300 combinations.
@@ -837,6 +840,8 @@ all_combinations <- function(x, length){
 # all_combinations(x = 1:3, length = 88)
 # all_combinations(x = 1:3, length = NA)
 # all_combinations(x = NA, length = 1)
+
+
 
 # random_symbols: Get n vectors of random symbols (of length len) from some set x: ----- 
 
@@ -914,28 +919,42 @@ add_NAs <- function(v, amount){
 
 # add_whats: Adding some element(s) what to a vector v of data: ----- 
 
-## Generalization of add_NAs: 
-## Replace a random amount of vector v elements by what: 
+# Goal: Replace a random amount of vector v elements by what. 
+#       [A generalization of add_NAs().]
+
 
 add_whats <- function(v, amount, what = NA){
   
+  # Prepare: ----
+  
+  # Verify inputs: 
   stopifnot((is.vector(v)) & (amount >= 0) & (amount <= length(v)))
   
+  # Key parameters:
   out <- v
   n <- length(v)
   
   amount_2 <- ifelse(amount < 1, round(n * amount, 0), amount) # turn amount prop into n
   
-  out[sample(x = 1:n, size = amount_2, replace = FALSE)] <- what
+  
+  # Main: ----
+  
+  # Replace random sample of elements by what:
+  ix_replace <- sample(x = 1:n, size = amount_2, replace = FALSE) 
+  out[ix_replace] <- what
+  
+  
+  # Output: ----
   
   return(out)
   
 } # add_whats(). 
 
-## Check:
-# add_whats(1:10,  5)  # default: what = NA
+# # Check:
+# add_whats(1:10,  5)                # default: what = NA
 # add_whats(1:10,  5, what = 99)
-# add_whats(1:10, .5, what = "ABC")
+# add_whats(1:10, .5, what = TRUE)   # Note: interpreted numerically!
+# add_whats(1:10, .5, what = "ABC")  # Note: v coerced into character!
 
 
 

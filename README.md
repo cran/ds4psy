@@ -1,20 +1,25 @@
 
 <!-- README.md is generated from README.Rmd. Please edit THIS (Rmd) file. -->
-<!-- Use status badges: -->
+<!-- Devel badges start: -->
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy) -->
+<!-- [![Downloads/month](https://cranlogs.r-pkg.org/badges/ds4psy?color='00a9e0')](https://www.r-pkg.org/pkg/ds4psy) -->
+<!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7229812.svg)](https://doi.org/10.5281/zenodo.7229812) -->
+<!-- Devel badges end. -->
+<!-- Release badges start: -->
 
-[![CRAN_status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
-[![Build_status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy)
-[![Downloads](https://cranlogs.r-pkg.org/badges/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
+[![Total
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/ds4psy?color='00a9e0')](https://www.r-pkg.org/pkg/ds4psy)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7229812.svg)](https://doi.org/10.5281/zenodo.7229812)
+<!-- Release badges end. -->
 
-<!-- Possible status badges:
-
-[![CRAN_status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy) 
-[![Build_status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy) 
-[![Downloads](https://cranlogs.r-pkg.org/badges/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
-[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
+<!-- ALL status badges: 
+[![CRAN status](https://www.r-pkg.org/badges/version/ds4psy)](https://CRAN.R-project.org/package=ds4psy)
+[![Build status](https://travis-ci.org/hneth/ds4psy.svg?branch=master)](https://travis-ci.org/hneth/ds4psy)
+[![Downloads/month](https://cranlogs.r-pkg.org/badges/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
+[![Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/ds4psy?color=brightgreen)](https://www.r-pkg.org/pkg/ds4psy)
 [![Rdoc](https://www.rdocumentation.org/badges/version/ds4psy)](https://www.rdocumentation.org/packages/ds4psy)
-
 -->
 <!-- ds4psy logo 1: -->
 
@@ -70,17 +75,16 @@ book](https://bookdown.org/hneth/ds4psy/) is available at
 <img src = "./inst/images/uniKn_logo.png" alt = "spds.uni.kn" width = "300px" align = "right" style = "width: 300px; float: right; border:20;"/>
 </a>
 
--   PSY-15150, at the [University of
-    Konstanz](https://www.uni-konstanz.de) is taught by [Hansjörg
-    Neth](https://www.spds.uni-konstanz.de/hans-neth), [Social
-    Psychology and Decision Sciences](https://www.spds.uni-konstanz.de),
-    office D507).  
-    <!-- * Summer\ 2022: Mondays, 13:30&ndash;15:00, D430. -->
--   The [ds4psy book](https://bookdown.org/hneth/ds4psy/) with examples
-    and exercises is available at
-    <https://bookdown.org/hneth/ds4psy/>.  
--   The [ds4psy](https://CRAN.R-project.org/package=ds4psy) R package is
-    available at <https://CRAN.R-project.org/package=ds4psy>.
+- PSY-15150, at the [University of
+  Konstanz](https://www.uni-konstanz.de) is taught by [Hansjörg
+  Neth](https://www.spds.uni-konstanz.de/hans-neth), [Social Psychology
+  and Decision Sciences](https://www.spds.uni-konstanz.de),
+  office D507  
+  <!-- * Summer\ 2022: Mondays, 13:30&ndash;15:00, D430. -->
+- The [ds4psy book](https://bookdown.org/hneth/ds4psy/) with examples
+  and exercises is available at <https://bookdown.org/hneth/ds4psy/>  
+- The [ds4psy](https://CRAN.R-project.org/package=ds4psy) R package is
+  available at <https://CRAN.R-project.org/package=ds4psy>
 
 ## Description
 
@@ -140,19 +144,19 @@ programming novices are also welcome.
 This package and the corresponding book are still being developed and
 are updated as new materials become available.
 
--   A current version of the book is available at
-    <https://bookdown.org/hneth/ds4psy/>.
+- A current version of the book is available at
+  <https://bookdown.org/hneth/ds4psy/>.
 
--   There are 2 GitHub repositories to be distinguished:
+- There are 2 GitHub repositories to be distinguished:
 
-    -   The repository for the [ds4psy
-        book](https://bookdown.org/hneth/ds4psy/) is
-        <https://github.com/hneth/ds4psy> (with an additional suffix
-        `_book`).
+  - The repository for the [ds4psy
+    book](https://bookdown.org/hneth/ds4psy/) is
+    <https://github.com/hneth/ds4psy> (with an additional suffix
+    `_book`).
 
-    -   The repository for the [ds4psy
-        package](https://CRAN.R-project.org/package=ds4psy) is
-        <https://github.com/hneth/ds4psy>.
+  - The repository for the [ds4psy
+    package](https://CRAN.R-project.org/package=ds4psy) is
+    <https://github.com/hneth/ds4psy>.
 
 <!-- - The current course syllabus and raw versions of all data files used in examples and exercises are available at <http://rpository.com/ds4psy/>. -->
 
@@ -160,17 +164,17 @@ are updated as new materials become available.
 
 ### Course materials
 
--   A current version of [Data science for
-    psychologists](https://bookdown.org/hneth/ds4psy/) is available
-    online at  
-    <https://bookdown.org/hneth/ds4psy/>.
+- A current version of [Data science for
+  psychologists](https://bookdown.org/hneth/ds4psy/) is available online
+  at  
+  <https://bookdown.org/hneth/ds4psy/>.
 
 The book and course was originally based on the following textbook:
 
--   Wickham, H., & Grolemund, G. (2017). *R for data science: Import,
-    tidy, transform, visualize, and model data.* Sebastopol, Canada:
-    O’Reilly Media, Inc. \[Available online at
-    [https://r4ds.had.co.nz](https://r4ds.had.co.nz/).\]
+- Wickham, H., & Grolemund, G. (2017). *R for data science: Import,
+  tidy, transform, visualize, and model data.* Sebastopol, Canada:
+  O’Reilly Media, Inc. \[Available online at
+  [https://r4ds.had.co.nz](https://r4ds.had.co.nz/).\]
 
 <!-- Add blank line.  -->
 
@@ -178,15 +182,14 @@ The book and course was originally based on the following textbook:
 
 Please install the following open-source programs on your computer:
 
--   [The R Project for Statistical
-    Computing](https://www.R-project.org/)
+- [The R Project for Statistical Computing](https://www.R-project.org/)
 
--   [R Studio](https://www.rstudio.com/) is an integrated development
-    environment (IDE) for R.
+- [R Studio](https://posit.co/products/open-source/rstudio/) is an
+  integrated development environment (IDE) for R.
 
--   R packages of the [tidyverse](https://www.tidyverse.org/),
-    [ds4psy](https://CRAN.R-project.org/package=ds4psy), and
-    [unikn](https://CRAN.R-project.org/package=unikn):
+- R packages of the [tidyverse](https://www.tidyverse.org/),
+  [ds4psy](https://CRAN.R-project.org/package=ds4psy), and
+  [unikn](https://CRAN.R-project.org/package=unikn):
 
 <!-- Add blank line.  -->
 
@@ -201,52 +204,31 @@ install.packages('unikn')   # color palettes and functions
 
 ### Other resources
 
-<!-- #### Course essentials and exercises (WPAs) -->
-<!-- Table with links: -->
-<!-- All [ds4psy](http://rpository.com/ds4psy/) essentials (from) previous courses):  -->
-<!--
-Nr. | Topic       |
----:|:------------| 
-0.  | [Syllabus](http://rpository.com/ds4psy/) | 
-1.  | [Basic R concepts and commands](http://rpository.com/ds4psy/essentials/basics.html) | 
-2.  | [Visualizing data](http://rpository.com/ds4psy/essentials/visualize.html) | 
-3.  | [Transforming data](http://rpository.com/ds4psy/essentials/transform.html) |
-4.  | [Exploring data (EDA)](http://rpository.com/ds4psy/essentials/explore.html) | 
-5.  | [Tibbles](http://rpository.com/ds4psy/essentials/tibbles.html) |
-6.  | [Importing data](http://rpository.com/ds4psy/essentials/import.html) |
-7.  | [Tidying data](http://rpository.com/ds4psy/essentials/tidy.html) |
-8.  | [Joining data](http://rpository.com/ds4psy/essentials/join.html) |
-9.  | [Functions](http://rpository.com/ds4psy/essentials/function.html) |
-10. | [Iteration](http://rpository.com/ds4psy/essentials/iteration.html) |
-+.  | [Datasets](http://rpository.com/ds4psy/essentials/datasets.html) | 
--->
-
 #### R manuals and books
 
--   [R manuals](https://cran.r-project.org/manuals.html) and related
-    [books](https://www.r-project.org/doc/bib/R-books.html)
+- [R manuals](https://cran.r-project.org/manuals.html) and related
+  [books](https://www.r-project.org/doc/bib/R-books.html)
 
--   See the books on R and data science available on
-    <https://bookdown.org/>.
+- See the books on R and data science available on
+  <https://bookdown.org>.
 
 <!-- - Zumel, N., & Mount, J. (2014). _Practical data science with R_. Greenwich, CT: Manning Publications. -->
 
-#### RStudio resources
+#### Software tools
 
--   [RStudio](https://www.rstudio.com/)
-    [IDE](https://www.rstudio.com/products/rstudio/),
-    [R Markdown](https://rmarkdown.rstudio.com/), and various [cheat
-    sheets](https://www.rstudio.com/resources/cheatsheets/)
+- [Posit.co](https://posit.co/) resources: [RStudio
+  IDE](https://posit.co/products/open-source/rstudio/),
+  [R Markdown](https://rmarkdown.rstudio.com/), and various [cheat
+  sheets](https://posit.co/resources/cheatsheets/)
 
--   [Tidyverse](https://www.tidyverse.org/) resources:
-
-    -   See <https://www.tidyverse.org/blog/> for current developments
-    -   See <https://www.tidyverse.org/learn/> for learning resources
+- [Tidyverse](https://www.tidyverse.org/) resources:
+  [blog](https://www.tidyverse.org/blog/) and
+  [learn](https://www.tidyverse.org/learn/)
 
 <!-- Add blank line.  -->
 
--   See also the link collections at the end of each chapter of the
-    [ds4psy book](https://bookdown.org/hneth/ds4psy/).
+- See also the link collections at the end of each chapter of the
+  [ds4psy book](https://bookdown.org/hneth/ds4psy/).
 
 ## About
 
@@ -264,12 +246,12 @@ know](https://www.spds.uni-konstanz.de/en/people).
 
 To cite **ds4psy** in derivations and publications, please use:
 
--   Neth, H. (2022). ds4psy: Data Science for Psychologists.  
-    Social Psychology and Decision Sciences, University of Konstanz,
-    Germany.  
-    Textbook and R package (version 0.9.0, October 20, 2022).  
-    Retrieved from <https://bookdown.org/hneth/ds4psy/>.  
-    <https://doi.org/10.5281/zenodo.7229812>
+- Neth, H. (2023). ds4psy: Data Science for Psychologists.  
+  Social Psychology and Decision Sciences, University of Konstanz,
+  Germany.  
+  Textbook and R package (version 1.0.0, September 15, 2023).  
+  Retrieved from <https://bookdown.org/hneth/ds4psy/>.  
+  doi [10.5281/zenodo.7229812](https://doi.org/10.5281/zenodo.7229812)
 
 <!-- BibTeX reference: -->
 
@@ -279,10 +261,10 @@ A **BibTeX** entry for LaTeX users is:
 @Manual{ds4psy,
   title = {ds4psy: Data Science for Psychologists},
   author = {Hansjörg Neth},
-  year = {2022},
+  year = {2023},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {Textbook and R package (version 0.9.0, October 20, 2022)},
+  note = {Textbook and R package (version 1.0.0, September 15, 2023)},
   url = {https://bookdown.org/hneth/ds4psy/},
   doi = {10.5281/zenodo.7229812}
 }
@@ -313,6 +295,6 @@ License</a>.
 
 <!-- Footer: -->
 
-\[File `README.md` updated on 2022-10-20.\]
+\[File `README.md` updated on 2023-09-15.\]
 
 <!-- eof. -->
