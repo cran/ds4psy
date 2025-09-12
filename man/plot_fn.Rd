@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_fun.R
 \name{plot_fn}
 \alias{plot_fn}
-\title{A function to plot a plot.}
+\title{A function to plot a plot}
 \usage{
 plot_fn(
   x = NA,
@@ -82,6 +82,7 @@ plot_fn(x = 7, A = TRUE,  B = TRUE, F = TRUE, f = c("steelblue", "white", "fores
 Other plot functions: 
 \code{\link{plot_charmap}()},
 \code{\link{plot_chars}()},
+\code{\link{plot_circ_points}()},
 \code{\link{plot_fun}()},
 \code{\link{plot_n}()},
 \code{\link{plot_text}()},

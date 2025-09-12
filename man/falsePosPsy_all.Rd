@@ -3,7 +3,7 @@
 \docType{data}
 \name{falsePosPsy_all}
 \alias{falsePosPsy_all}
-\title{False Positive Psychology data.}
+\title{Data: False Positive Psychology}
 \format{
 A table with 78 cases (rows) and 19 variables (columns):
 }
@@ -76,7 +76,7 @@ dramatically increases the rate of false-positive findings.
   Scale from 1: dislike extremely, to 9: like extremely.}
   }
 
-See \url{https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html} for codebook and more information.
+See \url{https://bookdown.org/hneth/ds4psy/B.2-datasets-false.html} for codebook and more information.
 }
 \seealso{
 Other datasets: 
@@ -85,9 +85,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -97,6 +97,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

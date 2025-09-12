@@ -3,7 +3,7 @@
 \docType{data}
 \name{t_3}
 \alias{t_3}
-\title{Data t_3.}
+\title{Data: t_3}
 \format{
 A table with 16 cases (rows) and 6 variables (columns).
 }
@@ -23,9 +23,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -36,6 +36,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

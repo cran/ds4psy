@@ -1,5 +1,5 @@
 ## plot_fun.R | ds4psy
-## hn | uni.kn | 2022 11 06
+## hn | uni.kn | 2024 05 05
 ## ------------------------
 
 ## Functions for plotting. 
@@ -367,9 +367,9 @@ plot_tiles <- function(n = NA,
 
 ## plot_fun: Wrapper around plot_tiles (with fewer and cryptic options): -------- 
 
-#' Another function to plot some plot.
+#' An example function to plot some plot
 #'
-#' \code{plot_fun} is a function that provides options for plotting a plot. 
+#' \code{plot_fun} provides options for plotting a plot. 
 #' 
 #' \code{plot_fun} is deliberately kept cryptic and obscure to illustrate 
 #' how function parameters can be explored. 
@@ -476,7 +476,7 @@ plot_fun <- function(a = NA,
 
 ## plot_n: Simpler row or column plots (of n tiles): -------- 
 
-#' Plot n tiles. 
+#' Plot n tiles 
 #'
 #' \code{plot_n} plots a row or column of \code{n} tiles 
 #' on fixed or polar coordinates. 
@@ -963,7 +963,7 @@ plot_n <- function(n = NA,
 
 ## plot_fn: Wrapper around plot_n (with fewer and cryptic options): -------- 
 
-#' A function to plot a plot.
+#' A function to plot a plot
 #'
 #' \code{plot_fn} is a function that uses parameters for plotting a plot. 
 #' 
@@ -1065,7 +1065,7 @@ plot_fn <- function(x = NA,
 
 ## plot_text: Plot text characters as a tile plot: -------- 
 
-#' Plot text characters (from file or user input).
+#' Plot text characters (from file or user input) 
 #'
 #' \code{plot_text} parses text 
 #' (from a file or from user input) 
@@ -1078,6 +1078,8 @@ plot_fn <- function(x = NA,
 #' (Note that \code{\link{plot_chars}} provides additional 
 #' support for matching regular expressions.) 
 #' 
+#' 
+#' @details 
 #' \code{plot_text} is character-based: 
 #' Individual characters are plotted at equidistant x-y-positions 
 #' with color settings for text labels and tile fill colors.
@@ -1482,7 +1484,7 @@ plot_text <- function(x = NA,     # Text string(s) to plot
 
 # Note: This was the ggplot2 part of plot_chars() (below).
 
-#' Plot a character map as a tile plot with text labels. 
+#' Plot a character map as a tile plot with text labels 
 #'
 #' \code{plot_charmap} plots a character map and some aesthetics 
 #' as a tile plot with text labels (using \strong{ggplot2}).
@@ -1723,7 +1725,7 @@ plot_charmap <- function(x = NA,     # what to plot (required): charmap OR {text
 
 ## plot_chars: Alternative to plot_text (with regex functionality): -------- 
 
-#' Plot text characters (from file or user input) and match patterns.
+#' Plot text characters (from file or user input) and match patterns 
 #'
 #' \code{plot_chars} parses text (from a file or user input) 
 #' into a table and then plots its individual characters 
@@ -1734,6 +1736,7 @@ plot_charmap <- function(x = NA,     # what to plot (required): charmap OR {text
 #' for matching patterns of text with visual features 
 #' for displaying characters (e.g., their color or orientation). 
 #' 
+#' @details 
 #' \code{plot_chars} is based on \code{\link{plot_text}}, 
 #' but provides additional support for detecting and displaying characters 
 #' (i.e., text labels, their orientation, and color options) 
@@ -2069,6 +2072,210 @@ plot_chars <- function(x = NA,     # Text string(s) to plot; iff is.na(x):
 ## Note: External file "_gitless/check_plot_fun.Rmd" contains more checks and examples. 
 
 
+
+
+## plot_circ_points: Plot objects arranged on a circle: -------- 
+
+# Task: Arrange objects (shaped as pch of points) on a circle.
+
+
+#' Plot objects (as points) arranged on a circle 
+#' 
+#' \code{plot_circ_points} arranges a number of \code{n} 
+#' on a circle (defined by its origin coordinates and radius).
+#' 
+#' The \code{...} is passed to \code{\link{points}} of 
+#' the \strong{graphics} package. 
+#' 
+#' @param n The number of points (or shapes defined by \code{pch}) to plot.
+#' @param x_org The x-value of circle origin.
+#' @param y_org The y-value of circle origin.
+#' @param radius The circle radius.
+#' @param show_axes Show axes? Default: \code{show_axes = FALSE}. 
+#' @param show_label Show a point label? Default: \code{show_label = FALSE}.
+#'  
+#' @param ... Additional aesthetics (passed to \code{\link{points}} of \strong{graphics}).
+#' 
+#' @examples 
+#' plot_circ_points(8)  # default
+#' 
+#' # with aesthetics of points():
+#' plot_circ_points(n =  8, r = 10, cex = 8, 
+#'                  pch = sample(21:25, size = 8, replace = TRUE), bg = "deeppink")
+#' plot_circ_points(n = 12, r = 8, show_axes = TRUE, show_label = TRUE,
+#'                  cex = 6, pch = 21, lwd = 5, col = "deepskyblue", bg = "gold")
+#' 
+#' @family plot functions 
+#' 
+#' @importFrom graphics par points text 
+#' 
+#' @export
+
+plot_circ_points <- function(n = 4, 
+                             x_org = 0, y_org = 0, radius = 1, 
+                             show_axes = FALSE, show_label = FALSE, 
+                             ...  # additional aesthetics (passed to points())
+){
+  
+  # Circle parameters:
+  c <- c(x_org, y_org)  # coordindats of center/origin
+  r <- radius           # radius of circle
+  
+  # Colors:
+  # col_fill <- colorRampPalette(c("deepskyblue", "gold"))(n)  # a gradient of n colors
+  
+  # Compute coordinates: 
+  
+  # Compute angle (in degrees):
+  # angle <- 360/n * 0:(n - 1)  # n points (starting at 0)
+  # angle <- 360/n * 0:n        # n + 1 points  
+  angle <- 360/n * 1:n        # n points (starting at 1)
+  # print(angle)  # 4debugging 
+  
+  # Convert angle from degrees to radians:
+  theta <- deg2rad(angle)
+  
+  x <- c[1] + r * sin(theta)
+  # print(x)  # 4debugging 
+  
+  y <- c[2] + r * cos(theta) 
+  # print(y)  # 4debugging 
+  
+  # As df:
+  df <- data.frame(# ix = 1:n,  # point index/row number
+    angle = angle,
+    theta = theta, 
+    x = x, 
+    y = y)
+  # Note: Circle center c and radius r not saved in df. 
+  
+  # Plot: ---- 
+  
+  # Prepare canvass:
+  
+  # Plot settings:
+  opar <- par(no.readonly = TRUE)  # all par settings that can be changed.
+  on.exit(par(opar))  # par(opar)  # restore original settings
+  
+  par(mar = c(2, 2, 2, 2) + 0.1)  # margins; default: par("mar") = 5.1 4.1 4.1 2.1.
+  par(oma = c(0, 0, 0, 0) + 0.1)  # outer margins; default: par("oma") = 0 0 0 0.
+  
+  x_size <- 1.2 * r
+  y_size <- 1.2 * r   
+  
+  
+  # Draw canvass:
+  if (show_axes){
+    
+    plot(x = c[1], type = "n", 
+         axes = TRUE, xlab = NA, ylab = NA, 
+         xlim = c[1] + c(-x_size, +x_size), ylim = c[2] + c(-y_size, +y_size))
+    
+  } else { # no axes:
+    
+    plot(x = c[1], type = "n", 
+         axes = FALSE, xlab = NA, ylab = NA, 
+         xlim = c[1] + c(-x_size, +x_size), ylim = c[2] + c(-y_size, +y_size))
+    
+  }
+  
+  
+  # Add help lines:
+  # grid()
+  # plot(c[1], c[2], pch = 3)  # mark center/origin
+  
+  # Mark a circle around center (as a big point):
+  # points(c[1], c[2], cex = 30, pch = 21, lwd = 1, col = "firebrick")
+  
+  # grid::grid.circle(c[1], c[2], r)
+  
+  # Draw points: 
+  graphics::points(df$x, df$y, ...)
+  # pch = 21, cex = 4, bg = col_fill)
+  
+  if (show_label){ # add text labels:
+    
+    # p_lbl <- as.character(round(df$angle, 1))  # angle (in degrees)
+    p_lbl <- as.character(1:length(df$angle))    # nr
+    
+    graphics::text(df$x, df$y, label = p_lbl, cex = .85)
+    
+  }
+  
+  # Return df (invisibly):
+  
+  # on.exit(par(opar))  # par(opar)  # restore original settings
+  invisible(df) # restores par(opar)
+  
+} # plot_circ_points(). 
+
+# # Check:
+# plot_circ_points()
+# plot_circ_points(1, pch = 16, show_axes = TRUE)
+# plot_circ_points(n = 36, pch = 22, cex = 3, show_label = TRUE)
+# plot_circ_points(n = 12, pch = 21, cex = 4, lwd = 2, col = "blue", bg = "gold")
+#
+# # Add aesthetics (color gradients):
+# col_fill <- colorRampPalette(c("deepskyblue", "gold"))(12)  # a gradient of n colors
+# df <- plot_circ_points(n = 12, pch = 21, cex = 5, col = NA, bg = col_fill)
+# 
+# # Color ring:
+# col_fill <- unikn::usecol(c("gold", "deepskyblue", "deeppink", "gold"), n = 500, alpha = .33)  # a gradient of n colors
+# df <- plot_circ_points(n = 500, pch = 21, cex = 5, col = NA, bg = col_fill, show_axes = FALSE)
+
+
+# +++ here now +++ :
+
+
+# ToDo: Convert into an exercise:
+# - Omit the conversion from degrees to radians:   
+#   theta <- deg2rad(angle)
+
+
+
+
+## Arrange points within a circle (using sunflower arrangement):
+
+# # From 
+# # [Stackoverflow: Uniformly distribute x points inside a circle](https://stackoverflow.com/questions/28567166/uniformly-distribute-x-points-inside-a-circle)
+# # Answer by user [alex_jwb90](https://stackoverflow.com/users/1335174/alex-jwb90)
+# 
+# library(tibble)
+# library(dplyr)
+# library(ggplot2)
+# library(unikn)
+# 
+# radius <- function(k, n, b) {
+#   
+#   ifelse(k > n - b, 1, sqrt(k - 1/2)/sqrt(n - (b + 1)/2))
+#   
+# }
+# 
+# plot_sunflower <- function(n, alpha = 2, geometry = c("planar", "geodesic")) {
+#   
+#   b <- round(alpha*sqrt(n))  # number of boundary points
+#   phi <- (sqrt(5) + 1)/2     # golden ratio
+#   
+#   r <- radius(1:n, n, b)
+#   
+#   theta <- 1:n * ifelse(geometry[1] == "geodesic", 360 * phi, 2 * pi/phi^2)
+#   
+#   tibble(x = r * cos(theta),
+#          y = r * sin(theta))
+#   
+# }
+# 
+# # example:
+# n_points <- 750
+# 
+# plot_sunflower(n_points, 2, "planar") %>%
+#   ggplot(aes(x, y)) +
+#   geom_point(col = usecol(c(Pinky, pal_seeblau, "gold"), n = n_points, alpha = 2/3), size = 5) + 
+#   coord_equal() + 
+#   theme_void()
+# 
+# # Color:
+# # seecol(pal_karpfenblau)
 
 
 ## Done: ----------

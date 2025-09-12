@@ -2,7 +2,7 @@
 % Please edit documentation in R/num_util_fun.R
 \name{num_equal}
 \alias{num_equal}
-\title{Test two numeric vectors for pairwise (near) equality.}
+\title{Test two numeric vectors for pairwise (near) equality}
 \usage{
 num_equal(x, y, tol = .Machine$double.eps^0.5)
 }
@@ -17,11 +17,13 @@ Default: \code{tol = .Machine$double.eps^0.5}
 }
 \description{
 \code{num_equal} tests if two numeric vectors \code{x} and \code{y} are pairwise equal 
-(within some tolerance value `tol`).
+(within a tolerance value `tol`).
 }
 \details{
-\code{num_equal} is a safer way to verify the (near) equality of numeric vectors than \code{==},  
-as numbers may exhibit floating point effects.
+\code{num_equal} verifies that \code{x} and \code{y} are numeric and 
+then evaluates \code{abs(x - y) < tol}. 
+Thus, \code{num_equal} provides a safer way to verify the (near) equality of numeric vectors than \code{==}   
+(due to possible floating point effects).
 }
 \examples{
 num_equal(2, sqrt(2)^2)

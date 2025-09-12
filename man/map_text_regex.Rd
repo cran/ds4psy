@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{map_text_regex}
 \alias{map_text_regex}
-\title{Map text to character table (allowing for matching patterns).}
+\title{Map text to character table (allowing for matching patterns)}
 \usage{
 map_text_regex(
   x = NA,
@@ -181,8 +181,8 @@ Other text objects and functions:
 \code{\link{cclass}},
 \code{\link{chars_to_text}()},
 \code{\link{collapse_chars}()},
-\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
+\code{\link{count_chars_words}()},
 \code{\link{count_words}()},
 \code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},

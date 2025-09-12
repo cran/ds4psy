@@ -2,7 +2,7 @@
 % Please edit documentation in R/time_fun.R
 \name{zodiac}
 \alias{zodiac}
-\title{Get zodiac (corresponding to date x).}
+\title{Get zodiac corresponding to date(s)}
 \source{
 See 
 \url{https://en.wikipedia.org/wiki/Zodiac} or 
@@ -39,7 +39,7 @@ Zodiac label or symbol (as a factor).
 }
 \description{
 \code{zodiac} provides the tropical zodiac sign or symbol 
-for given date(s) \code{x}.
+(aka. astrological sign) for given date(s) \code{x}.
 }
 \details{
 \code{zodiac} is flexible by providing different 

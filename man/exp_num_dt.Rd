@@ -3,7 +3,7 @@
 \docType{data}
 \name{exp_num_dt}
 \alias{exp_num_dt}
-\title{Data from an experiment with numeracy and date-time variables.}
+\title{Data from an experiment with numeracy and date-time variables}
 \format{
 A table with 1000 cases (rows) and 15 variables (columns).
 }
@@ -16,19 +16,18 @@ See CSV data files at
 exp_num_dt
 }
 \description{
-\code{exp_num_dt} is a fictitious dataset describing 
+\code{exp_num_dt} is a fictitious set of data describing 
 1000 non-existing, but surprisingly friendly people.
 }
 \details{
 \strong{Codebook} 
-
-The table contains 15 columns/variables:
+The data characterize 1000 individuals (rows) in 15 variables (columns):
 
 \itemize{
 
 \item 1. \strong{name}: Participant initials.
 
-\item 2. \strong{gender}: Self-identified gender. 
+\item 2. \strong{gender}: Self-identified gender (as a binary variable).
 
 \item 3. \strong{bday}: Day (within month) of DOB.
 
@@ -40,17 +39,26 @@ The table contains 15 columns/variables:
 
 \item 7. \strong{blood_type}: Blood type. 
  
-\item 8. \strong{bnt_1} to 11. \strong{bnt_4}: Correct response to BNT question? (1: correct, 0: incorrect).
+\item 8. \strong{bnt_1} to 11. \strong{bnt_4}: 
+Correct response to corresponding BNT question? 
+(1: correct, 0: incorrect).
 
-\item 12. \strong{g_iq} and 13. \strong{s_iq}: Scores from two IQ tests (general vs. social).
+\item 12. \strong{g_iq} and 13. \strong{s_iq}: 
+Scores from two IQ tests (general vs. social).
 
-\item 14. \strong{t_1} and 15. \strong{t_2}: Start and end time. 
+\item 14. \strong{t_1} and 15. \strong{t_2}: 
+Study start and end time.
 
 } 
 
-\code{exp_num_dt} was generated for analyzing test scores (e.g., IQ, numeracy), 
-for converting data from wide into long format, 
-and for dealing with date- and time-related variables.
+\code{exp_num_dt} was generated for practice purposes. 
+It allows 
+(1) converting data tables from wider into longer format, 
+(2) dealing with date- and time-related variables, and 
+(3) computing, analyzing, and visualizing test scores (e.g., numeracy, IQ). 
+
+The \code{gender} variable was converted into a binary variable 
+(i.e., using 2 categories "female" and "not female").
 }
 \seealso{
 Other datasets: 
@@ -59,9 +67,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -71,6 +79,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

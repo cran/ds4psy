@@ -3,7 +3,7 @@
 \docType{data}
 \name{posPsy_wide}
 \alias{posPsy_wide}
-\title{Positive Psychology: All corrected data (in wide format).}
+\title{Positive Psychology: All corrected data (in wide format)}
 \format{
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 295 rows and 294 columns.
 }
@@ -26,7 +26,7 @@ doi: \code{10.5334/jopd.35}
 See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 
-Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}.
 }
 \usage{
 posPsy_wide
@@ -51,9 +51,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -64,6 +64,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

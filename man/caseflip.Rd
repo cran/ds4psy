@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{caseflip}
 \alias{caseflip}
-\title{Flip the case of characters in a string of text \code{x}.}
+\title{Flip the case of characters in a string of text}
 \usage{
 caseflip(x)
 }
@@ -36,8 +36,8 @@ Other text objects and functions:
 \code{\link{cclass}},
 \code{\link{chars_to_text}()},
 \code{\link{collapse_chars}()},
-\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
+\code{\link{count_chars_words}()},
 \code{\link{count_words}()},
 \code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},

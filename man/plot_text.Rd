@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_fun.R
 \name{plot_text}
 \alias{plot_text}
-\title{Plot text characters (from file or user input).}
+\title{Plot text characters (from file or user input)}
 \usage{
 plot_text(
   x = NA,
@@ -103,7 +103,8 @@ as a tile plot (using \strong{ggplot2}).
 and its graphical representation by adding visual options 
 for coloring characters based on their frequency counts. 
 (Note that \code{\link{plot_chars}} provides additional 
-support for matching regular expressions.) 
+support for matching regular expressions.)
+
 
 \code{plot_text} is character-based: 
 Individual characters are plotted at equidistant x-y-positions 
@@ -176,6 +177,7 @@ plot_text(x = c("Hello world!", "How are you today?"))
 Other plot functions: 
 \code{\link{plot_charmap}()},
 \code{\link{plot_chars}()},
+\code{\link{plot_circ_points}()},
 \code{\link{plot_fn}()},
 \code{\link{plot_fun}()},
 \code{\link{plot_n}()},

@@ -3,7 +3,7 @@
 \docType{data}
 \name{Trumpisms}
 \alias{Trumpisms}
-\title{Data: Trumpisms.}
+\title{Data: Trumpisms}
 \format{
 A vector of type \code{character}  
 with \code{length(Trumpisms) = 168} 
@@ -17,9 +17,13 @@ and expanded by interviews, public speeches, and Twitter tweets from \code{https
 Trumpisms
 }
 \description{
-\code{Trumpisms} contains frequent words and characteristic phrases 
-by U.S. president Donald J. Trump (the 45th president of the United States, 
-in office from January 20, 2017, to January 20, 2021).
+\code{Trumpisms} contains characteristic words and phrases used 
+by U.S. president Donald J. Trump (the 45th and 47th president of the United States of America)  
+during his first presidency (ranging from January 20, 2017, to January 20, 2021).
+}
+\details{
+See \url{https://en.wikiquote.org/wiki/Donald_Trump} for a more recent collection of 
+attributed and disputed quotes.
 }
 \seealso{
 Other datasets: 
@@ -27,9 +31,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -40,6 +44,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

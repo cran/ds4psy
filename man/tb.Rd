@@ -14,7 +14,7 @@ See CSV data file at \url{http://rpository.com/ds4psy/data/tb.csv}.
 tb
 }
 \description{
-\code{tb} is a fictitious dataset describing 
+\code{tb} is a fictitious set of data describing 
 100 non-existing, but otherwise ordinary people.
 }
 \details{
@@ -30,7 +30,7 @@ The table contains 5 columns/variables:
 
 \item 3. \strong{height}: Height (in cm).
 
-\item 4. \strong{shoesize}: Shoesize (EU standard).
+\item 4. \strong{shoesize}: Shoe size (EU standard).
 
 \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tables).
 
@@ -46,9 +46,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -59,6 +59,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

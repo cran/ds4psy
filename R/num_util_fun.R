@@ -1,6 +1,6 @@
 ## num_util_fun.R | ds4psy
-## hn | uni.kn | 2022 08 22
-## ---------------------------
+## hn | uni.kn | 2023 10 30
+## ------------------------
 
 ## (0) Utility functions for manipulating/transforming numbers or numeric symbols/digits: ------ 
 
@@ -15,7 +15,7 @@
 # Note that is.integer() tests for objects of TYPE "integer", not integer values. 
 # See help on is.integer(). 
 
-#' Test for whole numbers (i.e., integers). 
+#' Test for whole numbers (i.e., integers) 
 #'
 #' \code{is_wholenumber} tests if \code{x} contains only integer numbers.
 #' 
@@ -72,17 +72,19 @@ is_wholenumber <- function(x, tol = .Machine$double.eps^0.5) {
 
 # num_equal: Testing 2 numerical vectors for (near) equality ------ 
 
-# See also 
+# See 
 # base::all.equal() and 
 # dplyr::near for similar functions.
 
-#' Test two numeric vectors for pairwise (near) equality. 
+#' Test two numeric vectors for pairwise (near) equality 
 #'
 #' \code{num_equal} tests if two numeric vectors \code{x} and \code{y} are pairwise equal 
-#' (within some tolerance value `tol`). 
+#' (within a tolerance value `tol`). 
 #' 
-#' \code{num_equal} is a safer way to verify the (near) equality of numeric vectors than \code{==},  
-#' as numbers may exhibit floating point effects. 
+#' \code{num_equal} verifies that \code{x} and \code{y} are numeric and 
+#' then evaluates \code{abs(x - y) < tol}. 
+#' Thus, \code{num_equal} provides a safer way to verify the (near) equality of numeric vectors than \code{==}   
+#' (due to possible floating point effects). 
 #' 
 #' @param x 1st numeric vector to compare (required, assumes a numeric vector).
 #'
@@ -167,18 +169,17 @@ num_equal <- function(x, y, tol = .Machine$double.eps^0.5){
 
 # is_equal: A wrapper around "==" and num_equal() ------ 
 
-#' Test two vectors for pairwise (near) equality. 
+#' Test two vectors for pairwise (near) equality 
 #'
 #' \code{is_equal} tests if two vectors \code{x} and \code{y} are pairwise equal. 
 #' 
 #' If both \code{x} and \code{y} are numeric, 
 #' \code{is_equal} calls \code{num_equal(x, y, ...)} 
-#' (allowing for some tolerance threshold \code{tol}).  
-#' 
+#' (allowing for a tolerance threshold \code{tol}). 
 #' Otherwise, \code{x} and \code{y} are compared by \code{x == y}. 
 #' 
-#' \code{is_equal} is a safer way to verify the (near) equality of numeric vectors than \code{==},  
-#' as numbers may exhibit floating point effects. 
+#' \code{is_equal} provides a wrapper around \code{\link{num_equal}} 
+#' (for numeric objects \code{x} and \code{y}) and \code{==} (otherwise).
 #' 
 #' @param x 1st vector to compare (required).
 #'
@@ -187,7 +188,6 @@ num_equal <- function(x, y, tol = .Machine$double.eps^0.5){
 #' @param ... Other parameters (passed to \code{num_equal()}). 
 #'
 #' @examples
-#' 
 #' # numeric data: 
 #' is_equal(2, sqrt(2)^2)
 #' is_equal(2, sqrt(2)^2, tol = 0)
@@ -196,9 +196,9 @@ num_equal <- function(x, y, tol = .Machine$double.eps^0.5){
 #' # other data types:
 #' is_equal((1:3 > 1), (1:3 > 2))                         # logical
 #' is_equal(c("A", "B", "c"), toupper(c("a", "b", "c")))  # character
-#' is_equal(as.Date("2020-08-16"), Sys.Date())            # dates
+#' is_equal(as.Date("2023-10-30"), Sys.Date())            # dates
 #' 
-#' # as factors:
+#' # factors:
 #' is_equal((1:3 > 1), as.factor((1:3 > 2)))  
 #' is_equal(c(1, 2, 3), as.factor(c(1, 2, 3)))
 #' is_equal(c("A", "B", "C"), as.factor(c("A", "B", "C"))) 
@@ -209,7 +209,7 @@ num_equal <- function(x, y, tol = .Machine$double.eps^0.5){
 #' @seealso 
 #' \code{\link{num_equal}} function for comparing numeric vectors;
 #' \code{\link{all.equal}} function of the R \strong{base} package;
-#' \code{near} function of the \strong{dplyr} package. 
+#' \code{near} of the \strong{dplyr} package. 
 #'
 #' @export 
 
@@ -220,7 +220,7 @@ is_equal <- function(x, y, ...){
     # message("is_equal: Passing numeric inputs to num_equal().")
     num_equal(x, y, ...)
     
-  } else { # all other data types: 
+  } else { # other data types: 
     
     x == y
     
@@ -252,7 +252,7 @@ is_equal <- function(x, y, ...){
 
 # num_as_char: Print a number (as character), with n_pre_dec digits prior to decimal sep, and rounded to n_dec digits: ------
 
-#' Convert a number into a character sequence. 
+#' Convert a number into a character sequence 
 #'
 #' \code{num_as_char} converts a number into a character sequence 
 #' (of a specific length). 
@@ -471,7 +471,7 @@ num_as_char <- function(x, n_pre_dec = 2, n_dec = 2, sym = "0", sep = "."){
 
 # num_as_ordinal: Convert a (cardinal) number into an ordinal string: ------
 
-#' Convert a number into an ordinal character sequence. 
+#' Convert a number into an ordinal character sequence 
 #'
 #' \code{num_as_ordinal} converts a given (cardinal) number 
 #' into an ordinal character sequence. 
@@ -596,7 +596,8 @@ base_digit_vec        <- c(0:9, LETTERS[1:6])      # max_base value: 16
 base_digit_vec        <- c(0:9, LETTERS, letters)  # max_base value: 62
 names(base_digit_vec) <- 0:(length(base_digit_vec) - 1)  # zero-indexed numeric names
 
-#' Base digits: Sequence of numeric symbols (as named vector)
+
+#' Base digits: Sequence of numeric symbols (as named vector) 
 #' 
 #' \code{base_digits} provides numeral symbols (digits) 
 #' for notational place-value systems with arbitrary bases 

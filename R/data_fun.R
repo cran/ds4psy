@@ -1,5 +1,5 @@
 ## data_fun.R | ds4psy
-## hn | uni.kn | 2023 09 12
+## hn | uni.kn | 2025 01 18
 ## ------------------------
 
 ## Functions for creating and manipulating data. 
@@ -27,7 +27,7 @@ random_bin_value <- function(x = c(0, 1), n = 1, replace = TRUE) {
 
 # coin: Flip a fair coin n times (with events): ------ 
 
-#' Flip a fair coin (with 2 sides "H" and "T") n times. 
+#' Flip a fair coin (with 2 sides "H" and "T") n times 
 #'
 #' \code{coin} generates a sequence of events that 
 #' represent the results of flipping a fair coin \code{n} times. 
@@ -131,10 +131,10 @@ coin <- function(n = 1, events = c("H", "T")){
 # hist(r_s, right = FALSE)
 
 
-# Sample random characters (from given characters): ------ 
+# sample_char: Sample random characters (from given characters): ------ 
 
-#' Draw a sample of n random characters 
-#' (from given characters). 
+
+#' Draw a sample of n random characters (from given characters)
 #'
 #' \code{sample_char} draws a sample of  
 #' \code{n} random characters from a given range of characters.
@@ -254,7 +254,7 @@ sample_char <- function(x_char = c(letters, LETTERS), n = 1, replace = FALSE, ..
 # sample_char(x_char = c(mcv, nmv), n = 50, replace = TRUE)   # repeated items
 
 
-# Sample random dates (from a given range): ------
+# sample_date: Sample random dates (from a given range): ------
 
 #' Draw a sample of n random dates (from a given range). 
 #'
@@ -344,7 +344,7 @@ sample_date <- function(from = "1970-01-01", to = Sys.Date(), size = 1, ...){
 # # see sample(9:9, size = 10, replace = TRUE)
 
 
-# Sample random times (from a given range): ------
+# sample_time: Sample random times (from a given range): ------
 
 #' Draw a sample of n random times (from a given range). 
 #'
@@ -501,7 +501,8 @@ sample_time <- function(from = "1970-01-01 00:00:00",
 
 # dice: n random draws from a sample (from events): ------ 
 
-#' Throw a fair dice (with a given number of sides) n times. 
+
+#' Throw a fair dice (with a given number of sides) n times 
 #'
 #' \code{dice} generates a sequence of events that 
 #' represent the results of throwing a fair dice 
@@ -631,7 +632,8 @@ dice <- function(n = 1, events = 1:6){
 
 # dice_2: n non-random draws from a sample (from 1 to sides): ------ 
 
-#' Throw a questionable dice (with a given number of sides) n times. 
+
+#' Throw a questionable dice (with a given number of sides) n times
 #'
 #' \code{dice_2} is a variant of \code{\link{dice}} that 
 #' generates a sequence of events that 
@@ -762,7 +764,7 @@ all_permutations <- function(x) {
   
   # initialize: ----
   out <- NA  
-    n <- length(x)
+  n <- length(x)
   
   if (n == 1) { # basic case: ----  
     
@@ -1187,7 +1189,7 @@ make_grid <- function(x_min = 0, x_max = 2, y_min = 0, y_max = 1){
 
 # get_set: Get a coordinate set from datasets::anscombe (as df): ------ 
 
-#' Get a set of x-y coordinates. 
+#' Get a set of x-y coordinates (from Anscombe's Quartet)
 #'
 #' \code{get_set} obtains a set of x/y coordinates and returns it 
 #' (as a data frame).
@@ -1253,6 +1255,30 @@ get_set <- function(n = 1){
 # plot(get_set(2), col = "red")
 # 
 # # Note: @importFrom datasets anscombe is not needed.
+
+
+
+# sort_in_order: Sort a vector x into the order given by the elements of order: ------ 
+
+sort_in_order <- function(x, order){
+  
+  if (! all(x %in% order)){
+    
+    message("Some elements of x are not in order.")
+    
+  }
+  
+  x[order(match(x, order))]
+  
+} # sort_in_order().
+
+# # Check:
+# sort_in_order(c(2, 1, 4, 3, 4, 3, 2, 1), order = c(1, 2, 3, 4))
+# sort_in_order(c(2, 1, 4, 3, 4, 3, 2, 1), order = c(4, 3))
+# sort_in_order(c(2, 1, 4, 3, 4, 3, 2, 1), order = c(3, 5, 8))
+# sort_in_order(c("C", "A", "X", "B", "Y", "A", "Z"), order = LETTERS)
+# sort_in_order(c("C", "A", "X", "B", "Y", "A", "Z"), order = rev(LETTERS))
+
 
 
 ## ToDo: ----------

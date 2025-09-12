@@ -3,7 +3,7 @@
 \docType{data}
 \name{flowery}
 \alias{flowery}
-\title{Data: Flowery phrases.}
+\title{Data: Flowery phrases}
 \format{
 A vector of type \code{character}  
 with \code{length(flowery) = 60}.
@@ -35,9 +35,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -47,6 +47,7 @@ Other datasets:
 \code{\link{falsePosPsy_all}},
 \code{\link{fame}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},

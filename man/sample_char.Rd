@@ -2,8 +2,7 @@
 % Please edit documentation in R/data_fun.R
 \name{sample_char}
 \alias{sample_char}
-\title{Draw a sample of n random characters 
-(from given characters).}
+\title{Draw a sample of n random characters (from given characters)}
 \usage{
 sample_char(x_char = c(letters, LETTERS), n = 1, replace = FALSE, ...)
 }
@@ -56,8 +55,8 @@ sample_char(n = 53, replace = TRUE)     # works again.
 \seealso{
 Other sampling functions: 
 \code{\link{coin}()},
-\code{\link{dice_2}()},
 \code{\link{dice}()},
+\code{\link{dice_2}()},
 \code{\link{sample_date}()},
 \code{\link{sample_time}()}
 }

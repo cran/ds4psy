@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{count_words}
 \alias{count_words}
-\title{Count the frequency of words in a string of text \code{x}.}
+\title{Count the frequency of words in a string of text}
 \usage{
 count_words(x, case_sense = TRUE, sort_freq = TRUE)
 }
@@ -53,8 +53,8 @@ Other text objects and functions:
 \code{\link{cclass}},
 \code{\link{chars_to_text}()},
 \code{\link{collapse_chars}()},
-\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
+\code{\link{count_chars_words}()},
 \code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},
 \code{\link{map_text_chars}()},

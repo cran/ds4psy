@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_fun.R
 \name{read_ascii}
 \alias{read_ascii}
-\title{read_ascii parses text (from file or user input) into string(s) of text.}
+\title{Parse text (from file or user input) into string(s) of text}
 \usage{
 read_ascii(file = "", quiet = FALSE)
 }
@@ -72,8 +72,8 @@ Other text objects and functions:
 \code{\link{cclass}},
 \code{\link{chars_to_text}()},
 \code{\link{collapse_chars}()},
-\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
+\code{\link{count_chars_words}()},
 \code{\link{count_words}()},
 \code{\link{invert_rules}()},
 \code{\link{l33t_rul35}},

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_fun.R
 \name{plot_n}
 \alias{plot_n}
-\title{Plot n tiles.}
+\title{Plot n tiles}
 \usage{
 plot_n(
   n = NA,
@@ -117,6 +117,7 @@ plot_n(n = 5, polar = TRUE, row = FALSE, lbl_title = TRUE)  # TARGET with title 
 Other plot functions: 
 \code{\link{plot_charmap}()},
 \code{\link{plot_chars}()},
+\code{\link{plot_circ_points}()},
 \code{\link{plot_fn}()},
 \code{\link{plot_fun}()},
 \code{\link{plot_text}()},

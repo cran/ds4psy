@@ -3,8 +3,7 @@
 \docType{data}
 \name{l33t_rul35}
 \alias{l33t_rul35}
-\title{l33t_rul35 provides rules for translating text 
-into leet/l33t slang.}
+\title{Rules for translating text into leet/l33t slang}
 \format{
 An object of class \code{character} of length 13.
 }
@@ -35,8 +34,8 @@ Other text objects and functions:
 \code{\link{cclass}},
 \code{\link{chars_to_text}()},
 \code{\link{collapse_chars}()},
-\code{\link{count_chars_words}()},
 \code{\link{count_chars}()},
+\code{\link{count_chars_words}()},
 \code{\link{count_words}()},
 \code{\link{invert_rules}()},
 \code{\link{map_text_chars}()},

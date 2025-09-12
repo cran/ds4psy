@@ -3,7 +3,7 @@
 \docType{data}
 \name{posPsy_AHI_CESD}
 \alias{posPsy_AHI_CESD}
-\title{Positive Psychology: AHI CESD data.}
+\title{Positive Psychology: AHI CESD data}
 \format{
 A table with 992 cases (rows) and 50 variables (columns).
 }
@@ -26,7 +26,7 @@ doi: \code{10.5334/jopd.35}
 See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 
-Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}.
 }
 \usage{
 posPsy_AHI_CESD
@@ -71,7 +71,7 @@ Authentic Happiness Inventory (AHI) and answers to the
 
 }
 
-See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}.
 }
 \seealso{
 \code{\link{posPsy_long}} for a corrected version of this file (in long format).
@@ -82,9 +82,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -95,6 +95,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_long}},

@@ -1,5 +1,5 @@
 ## num_fun.R | ds4psy
-## hn | uni.kn | 2022 10 20
+## hn | uni.kn | 2024 01 17
 ## ------------------------
 
 ## Main functions for manipulating/transforming numbers or numeric symbols/digits: ------ 
@@ -15,7 +15,7 @@
 
 # base2dec: Convert a base N numeral string (of digits) into a decimal number: ------ 
 
-#' Convert a string of numeral digits from some base into decimal notation. 
+#' Convert a string of numeral digits from some base into decimal notation 
 #' 
 #' \code{base2dec} converts a sequence of numeral symbols (digits) 
 #' from its notation as positional numerals (with some base or radix)
@@ -26,6 +26,7 @@
 #' than the base or radix value). 
 #' See \code{\link{base_digits}} for the sequence of default digits. 
 #' 
+#' @details 
 #' \code{base2dec} is the complement of \code{\link{dec2base}}. 
 #' 
 #' @return An integer number (in decimal notation). 
@@ -282,19 +283,98 @@ base2dec_v <- Vectorize(base2dec)
 # base2dec_v(c(10, 100, 1000), base = c(20, 30, 40))
 
 
+# base2dec_r: Recursive version of base2dec: ------ 
+
+base2dec_r <- function(x, base = 2, exp = 0){
+  
+  # Prepare:
+  x <- as.numeric(x)  # x denotes value (in decimal notation)
+  
+  # Warn of inaccuracies when more than 16 digits:
+  fb <- TRUE  # flag: user feedback?
+  
+  if (fb && (exp > 16)){
+    warning(paste0("Beware of rounding inaccuracies for exp = ", exp))
+  }
+  
+  if (x == 0) { # stop:
+    
+    return(0)
+    
+  } else { # simplify:
+    
+    cur_dig <- (x %% 10^(exp + 1)) / 10^exp
+    cur_val <- cur_dig * base^exp
+    
+    next_x <- x - cur_dig * 10^exp
+    
+    return(cur_val + base2dec_r(x = next_x, base = base, exp = (exp + 1)))
+    
+  }
+  
+} # base2dec_r().
+
+# # Check:
+# base2dec_r(x = 11, base = 2)
+# base2dec_r(x = 11, base = 7)
+# base2dec_r(x = 1010, base = 2)
+# base2dec_r(x = 10101010101010101, base = 2)  # Warn against rounding inaccuracies (for x > 2^16)
+# base2dec_r(x = 222, base = 1)  # Note: Non-sensical inputs.
+
+
+# Simulation 1: Verify that the 2 recursive conversion functions complement each other: -----
+
+sim_recursive_funs <- function(n_sim = 100){
+  
+  # Prepare:
+  ccount <- 0
+  
+  # Main:
+  for (i in 1:n_sim){
+    
+    # Frequent errors for cases involving more than 16 digits (in base notation):
+    n_org <- sample(65536:99999, size = 1)  # 
+    tbase <- 2 # sample(2:9, size = 1)
+    
+    # Correct for cases not involving more than 16 digits (in base notation):
+    n_org <- sample(0:65535, size = 1)  # 
+    tbase <- 2 # sample(2:9, size = 1)
+    
+    n_base <- dec2base_r(n_org, base = tbase)  # 1. dec > base: Works for 0:65535 in base 2 
+    n_dec  <- base2dec_r(n_base, base = tbase) # 2. base > dec
+    
+    if (n_org == n_dec){
+      ccount = ccount + 1
+    } else {
+      message(paste0(i, ": Difference for ", n_org, " in base ", tbase, ": n_end = ", n_dec))
+    }
+    
+  }
+  
+  # Result:
+  message(paste0("Recursive functions are complementary in ", ccount, " of ", n_sim, " simulations."))
+  
+} # sim_recursive_funs(). 
+
+# Check:
+# sim_recursive_funs(1000)  # Note: Differences occur for n_org > 65535 and base 2 conversions:
+# as.character(dec2base_r(x = 65535, base = 2))  # = "1111111111111111" (16x "1")
+
+
+
 # dec2base: Conversion function from decimal to base notation (as a complement to base2dec): ------
 
-#' Convert an integer from decimal notation into a string of numeric digits in some base. 
+#' Convert an integer from decimal notation into a string of numeric digits in some base 
 #' 
 #' \code{dec2base} converts an integer from its standard decimal notation 
 #' (i.e., using positional numerals with a base or radix of 10) 
 #' into a sequence of numeric symbols (digits) in some other base. 
-#' 
 #' See \code{\link{base_digits}} for the sequence of default digits. 
 #' 
 #' To prevent erroneous interpretations of numeric outputs, 
 #' \code{dec2base} returns a sequence of digits (as a character string).
 #' 
+#' @details 
 #' \code{dec2base} is the complement of \code{\link{base2dec}}. 
 #' 
 #' @return A character string of digits (in base notation).
@@ -472,8 +552,8 @@ dec2base <- function(x, base = 2){ # as_char = TRUE  # removed, as it would only
     out <- NULL       # initialize output
     
     if (val_left < 0){ 
-      neg_num <- TRUE  # flag input as negative number
-      val_left <- abs(val_left)
+      neg_num  <- TRUE  # flag input as negative number
+      val_left <- abs(val_left)  # use absolute value
     }  
     
     
@@ -593,6 +673,7 @@ dec2base <- function(x, base = 2){ # as_char = TRUE  # removed, as it would only
 # as outputs for any base/radix other than 10 do NOT denote decimal numbers.)
 
 
+
 # dec2base_v: Vectorized version of dec2base(): ------ 
 
 # Note the limitation of 
@@ -613,40 +694,57 @@ dec2base_v <- Vectorize(dec2base)
 # dec2base_v(100, base = c(10, 20, NA, 30, 40, 50))
 
 
+
 # dec2base_r: Recursive version of dec2base(): -----
 
-dec2base_r <- function(x, base = 2){
+dec2base_r <- function(x, base, exp = 0) {
   
-  n <- as.numeric(x)
-  exp <- NA
+  # Prepare:
+  x <- as.numeric(x)  # x denotes value (in decimal notation)
   
-  if (n < base) { # stopping condition: 
+  # Warn of inaccuracies when more than 16 digits:
+  fb <- TRUE  # flag: user feedback?
+  
+  if (fb && (exp > 16)){
+    warning(paste0("Beware of rounding inaccuracies for exp = ", exp))
+  }
+  
+  if (x == 0) { # stop: 
     
-    exp <- 0 
-    out <- as.character(n) 
+    return(0)
     
-  } else { 
+  } else { # simplify: 
     
-    # Simplification step:
-    digit_cur <- n %% base
-    exp <- exp + 1
-    n_left <- n - (digit_cur * base^exp)
+    rest    <- x %%  base
+    nxt_num <- x %/% base
     
-    paste0(dec2base_r(n_left, base), digit_cur)  # recursion
+    add_2 <- rest * (10^exp)
+    
+    # recurse: 
+    return(add_2 + dec2base_r(x = nxt_num, base = base, exp = (exp + 1)))
     
   }
   
-}
+} # dec2base_r(). 
 
-## Check:
-# dec2base_r(11)
+# # Check:
+# dec2base_r(10, base = 2)
+# 
+# # NOTE accuracy boundary / limit case:
+# as.character(dec2base_r(x = 65535, base = 2))  # 2^16 = "1111111111111111" (16x "1")
+# Larger values x > 65535 would require more than 16 digits, which can yield rounding effects: 
+# dec2base_r(x = 65535, base = 2)  # limit case
+# dec2base_r(x = 65536, base = 2)  # Warn against rounding inaccuracies (for x > 2^16)
+#
+# See re-analysis of Nina's i2ds-2 project "nonDecAr_NinaEhmann_hn.Rmd" and ".html" 
 
 
-# Simulation: Verify that dec2base() and base2dec() complement each other: -----
+
+# Simulation 2: Verify that dec2base() and base2dec() complement each other: -----
 
 dec2base_base2dec_sim <- function(n_sim = 100, 
-                                  min_val = 0, max_val = 999999,
-                                  min_base = 2, max_base = 16){
+                                  min_val = 0, max_val = 65535,
+                                  min_base = 2, max_base = 9){
   
   # Use inputs as parameters: 
   n_sim <- n_sim
@@ -660,12 +758,15 @@ dec2base_base2dec_sim <- function(n_sim = 100,
   
   # Store results:
   n_base <- rep(NA, n_sim)
+  # n_base_r <- rep(NA, n_sim)
   n_dec  <- rep(NA, n_sim)
   
   # Main: 
   for (i in 1:n_sim){ # loop through simulations: 
     
-    n_base[i] <- dec2base(n_org[i],  base[i])  # 1. 
+    n_base[i] <- dec2base(n_org[i],  base[i])      # 1a.
+    # n_base_r[i] <- dec2base_r(n_org[i],  base[i])  # 1b. (works up to x = 65535 in base 2)
+    
     n_dec[i]  <- base2dec(n_base[i], base[i])  # 2. 
     
   } # for loop. 
@@ -674,26 +775,40 @@ dec2base_base2dec_sim <- function(n_sim = 100,
   df <- data.frame(n_org, 
                    base, 
                    n_base, 
+                   # n_base_r, 
                    n_dec, 
-                   same = (n_org == n_dec))
+                   # same_base_r = (n_base == as.character(n_base_r)), 
+                   same_org_dec = (n_org == n_dec))
   
-  sum_same <- sum(df$same, na.rm = TRUE)  # count same cases 
+  # Report results:
+  
+  # # 1: Do dec2base() and dec2base_r() yield identical results: 
+  # sum_same_base_r <- sum(df$same_base_r, na.rm = TRUE)  # count same cases 
+  # 
+  # # Feedback:
+  # message(paste0("Same result in ", sum_same_base_r, " of ", n_sim, " simulations? ", 
+  #                (sum_same_base_r == n_sim)))  # All n_sim = same?
+  
+  # 2: Do dec2base() and base2dec() yield complementary results: 
+  sum_same_org_dec <- sum(df$same_org_dec, na.rm = TRUE)  # count same cases 
   
   # Feedback:
-  message(paste0("Same result in all ", n_sim, " simulations? ", 
-                 (sum_same == n_sim)))  # All n_sim = same?
+  message(paste0("Same result in ", sum_same_org_dec, " of ", n_sim, " simulations? ", 
+                 (sum_same_org_dec == n_sim)))  # All n_sim = same?
   
   # Output: 
   return(invisible(df))
   
 } # dec2base_base2dec_sim(). 
 
+
 ## Check: Run simulations... 
 # dec2base_base2dec_sim()  # defaults
 # 
 # length(base_digits)  # maximum base value
-# df <- dec2base_base2dec_sim(20, min_val = 0, max_val = 9999, min_base = 2, max_base = 62)
+# df <- dec2base_base2dec_sim(1000, min_val = 0, max_val = 999999, min_base = 2, max_base = 2)
 # df
+
 
 
 ## (3) Letter arithmetic: -------- 
@@ -813,10 +928,12 @@ encrypt_arithm_expr <- function(x, y, op = "+", base = 10, dig_sym = NULL){
 # - base2dec() and dec2base(): Remove leading and trailing spaces.  
 # - base2dec() and dec2base(): Identify prefixes and negations.
 
+
 ## ToDo: ------
 
 # - Handle non-integer/decimal inputs in base2dec() and dec2base()?
 # - Create vectorized versions of base2dec() and dec2base() as defaults.
 # - Create recursive versions of base2dec() and dec2base()? 
+
 
 ## eof. ----------

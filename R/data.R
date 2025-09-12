@@ -1,13 +1,13 @@
 ## data.R | ds4psy
-## hn | uni.kn | 2022 04 07
-## Documentation of datasets included in /data. 
+## hn | uni.kn | 2025 09 12
+## Documentation of data sets included in /data. 
 
 
 # (01) Positive Psychology data: ---------- 
 
 # (01a) posPsy_p_info: ------ 
 
-#' Positive Psychology: Participant data.
+#' Positive Psychology: Participant data 
 #'
 #' \code{posPsy_p_info} is a dataset containing details of 295 participants. 
 #' 
@@ -32,7 +32,7 @@
 #'   
 #' }
 #' 
-#' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}.
 #'
 #' @format A table with 295 cases (rows) and 6 variables (columns).
 #' 
@@ -57,14 +57,15 @@
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}. 
 
 "posPsy_p_info"
 
 
+
 # (01b) posPsy_AHI_CESD: ------ 
 
-#' Positive Psychology: AHI CESD data.
+#' Positive Psychology: AHI CESD data 
 #'
 #' \code{posPsy_AHI_CESD} is a dataset containing answers to the 24 items of the 
 #' Authentic Happiness Inventory (AHI) and answers to the 
@@ -104,7 +105,7 @@
 #' 
 #' }
 #' 
-#' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}.
+#' See codebook and references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}.
 #' 
 #' @format A table with 992 cases (rows) and 50 variables (columns).
 #'  
@@ -132,14 +133,15 @@
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}. 
 
 "posPsy_AHI_CESD"
 
 
+
 # (01c) posPsy_long: ------ 
 
-#' Positive Psychology: AHI CESD corrected data (in long format). 
+#' Positive Psychology: AHI CESD corrected data (in long format) 
 #'
 #' \code{posPsy_long} is a dataset containing answers to the 24 items of the 
 #' Authentic Happiness Inventory (AHI) and answers to the 
@@ -176,14 +178,15 @@
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}. 
 
 "posPsy_long"
 
 
+
 # (01d) posPsy_wide: ------ 
 
-#' Positive Psychology: All corrected data (in wide format). 
+#' Positive Psychology: All corrected data (in wide format) 
 #' 
 #' \code{posPsy_wide} is a dataset containing answers to the 24 items of the 
 #' Authentic Happiness Inventory (AHI) and answers to the 
@@ -218,7 +221,7 @@
 #' See \url{https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/} for details 
 #' and \doi{10.6084/m9.figshare.1577563.v1} for original dataset. 
 #' 
-#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B-1-datasets-pos.html}. 
+#' Additional references at \url{https://bookdown.org/hneth/ds4psy/B.1-datasets-pos.html}. 
 
 "posPsy_wide"
 
@@ -227,9 +230,9 @@
 
 # (02) False Positive Psychology data: ---------- 
 
-# https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html
+# https://bookdown.org/hneth/ds4psy/B.2-datasets-false.html
 
-#' False Positive Psychology data.
+#' Data: False Positive Psychology
 #'
 #' \code{falsePosPsy_all} is a dataset containing the data from 2 studies designed to 
 #' highlight problematic research practices within psychology. 
@@ -273,7 +276,7 @@
 #'   Scale from 1: dislike extremely, to 9: like extremely.}
 #'   }
 #' 
-#' See \url{https://bookdown.org/hneth/ds4psy/B-2-datasets-false.html} for codebook and more information. 
+#' See \url{https://bookdown.org/hneth/ds4psy/B.2-datasets-false.html} for codebook and more information. 
 #'
 #'
 #' @format A table with 78 cases (rows) and 19 variables (columns):
@@ -355,6 +358,7 @@
 # usethis::use_data(pi_100k, overwrite = TRUE)
 
 
+
 #' Data: 100k digits of pi.
 #'
 #' \code{pi_100k} is a dataset containing the first 100k digits of pi. 
@@ -391,6 +395,7 @@
 # usethis::use_data(data_t1, overwrite = TRUE)
 
 
+
 #' Data table data_t1.
 #'
 #' \code{data_t1} is a fictitious dataset to practice importing and joining data 
@@ -404,6 +409,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/data_t1.csv}. 
 
 "data_t1"
+
 
 
 # (06b) data_t1_de.csv: ---- 
@@ -435,6 +441,7 @@
 "data_t1_de"
 
 
+
 # (06c) data_t1_tab.csv: ---- 
 
 # data_t1_tab <- read_tsv("http://rpository.com/ds4psy/data/data_t1_tab.csv")
@@ -464,6 +471,7 @@
 "data_t1_tab"
 
 
+
 # (06d) data_1.dat: ---- 
 
 # my_file <- "http://rpository.com/ds4psy/data/data_1.dat"
@@ -480,6 +488,7 @@
 # 
 # # Save to /data:
 # usethis::use_data(data_1, overwrite = TRUE)
+
 
 
 #' Data import data_1.
@@ -518,6 +527,7 @@
 # usethis::use_data(data_2, overwrite = TRUE)
 
 
+
 #' Data import data_2.
 #'
 #' \code{data_2} is a fictitious dataset to practice importing data  
@@ -554,7 +564,7 @@
 # usethis::use_data(table6, overwrite = TRUE)
 
 
-#' Data table6.
+#' Data: table6
 #'
 #' \code{table6} is a fictitious dataset to practice reshaping and tidying data.
 #' 
@@ -569,6 +579,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/table6.csv}. 
 
 "table6"
+
 
 
 # (07b) table7.csv: ------ 
@@ -586,7 +597,7 @@
 # usethis::use_data(table7, overwrite = TRUE)
 
 
-#' Data table7.
+#' Data: table7
 #'
 #' \code{table7} is a fictitious dataset to practice reshaping and tidying data.
 #' 
@@ -601,6 +612,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/table7.csv}. 
 
 "table7"
+
 
 
 # (07c) table8.csv: ------ 
@@ -618,7 +630,7 @@
 # usethis::use_data(table8, overwrite = TRUE)
 
 
-#' Data table8.
+#' Data: table8 
 #'
 #' \code{table9} is a fictitious dataset to practice reshaping and tidying data.
 #' 
@@ -633,6 +645,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/table8.csv}. 
 
 "table8"
+
 
 
 # (07c2) table9: The contingency table tidyr::table2 as a 3-dimensional array (xtabs) ------ 
@@ -662,6 +675,7 @@
 #' Generated by using \code{stats::xtabs(formula = count ~., data = tidyr::table2)}. 
 
 "table9"
+
 
 
 # (07d) exp_wide.csv: ------ 
@@ -695,6 +709,7 @@
 "exp_wide"
 
 
+
 # (07e) Chapter 7: Exercise 1: 'Four messes and one tidy table': ------ 
 
 # https://bookdown.org/hneth/ds4psy/7-4-tidy-ex.html#tidy:ex01
@@ -702,7 +717,7 @@
 
 # (07e1): t_1.csv: ----- 
 
-#' Data t_1.
+#' Data: t_1
 #'
 #' \code{t_1} is a fictitious dataset to practice tidying data.
 #' 
@@ -716,9 +731,10 @@
 "t_1"
 
 
+
 # (07e2): t_2.csv: ----- 
 
-#' Data t_2.
+#' Data: t_2
 #'
 #' \code{t_2} is a fictitious dataset to practice tidying data.
 #' 
@@ -732,9 +748,10 @@
 "t_2"
 
 
+
 # (07e3): t_3.csv: ----- 
 
-#' Data t_3.
+#' Data: t_3
 #'
 #' \code{t_3} is a fictitious dataset to practice tidying data.
 #' 
@@ -748,9 +765,10 @@
 "t_3"
 
 
+
 # (07e4): t_4.csv: ----- 
 
-#' Data t_4.
+#' Data: t_4
 #'
 #' \code{t_4} is a fictitious dataset to practice tidying data.
 #' 
@@ -762,7 +780,6 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/t_4.csv}. 
 
 "t_4"
-
 
 
 
@@ -801,6 +818,7 @@
 # usethis::use_data(data_t2, overwrite = TRUE)
 
 
+
 #' Data table data_t2.
 #'
 #' \code{data_t2} is a fictitious dataset to practice importing and joining data 
@@ -814,6 +832,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/data_t2.csv}. 
 
 "data_t2"
+
 
 
 # Exercise 1:
@@ -832,7 +851,7 @@
 # usethis::use_data(t3, overwrite = TRUE)
 
 
-#' Data table t3.
+#' Data: t3
 #'
 #' \code{t3} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
@@ -845,6 +864,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/t3.csv}. 
 
 "t3"
+
 
 
 # (08d) t4.csv: ---- 
@@ -861,7 +881,7 @@
 # usethis::use_data(t4, overwrite = TRUE)
 
 
-#' Data table t4.
+#' Data: t4
 #'
 #' \code{t4} is a fictitious dataset to practice importing and joining data 
 #' (from a CSV file).  
@@ -892,6 +912,7 @@
 # usethis::use_data(data_t3, overwrite = TRUE)
 
 
+
 #' Data table data_t3.
 #'
 #' \code{data_t3} is a fictitious dataset to practice importing and joining data 
@@ -905,6 +926,7 @@
 #' See CSV data at \url{http://rpository.com/ds4psy/data/data_t3.csv}. 
 
 "data_t3"
+
 
 
 # (08f) data_t4.csv: ---- 
@@ -954,7 +976,7 @@
 # countries <- GM_life_expectancy$country
 # countries
 
-#' Data: Names of countries.
+#' Data: Names of countries 
 #'
 #' \code{countries} is a dataset containing the names of 
 #' 197 countries (as a vector of text strings). 
@@ -971,13 +993,14 @@
 "countries"
 
 
+
 # (09b) fruits: ---- 
 
 # Source: <https://simple.wikipedia.org/wiki/List_of_fruits>
 # fruits
 # length(fruits)  # 122
 
-#' Data: Names of fruits. 
+#' Data: Names of fruits 
 #'
 #' \code{fruits} is a dataset containing the names of 
 #' 122 fruits (as a vector of text strings). 
@@ -1002,9 +1025,10 @@
 "fruits"
 
 
+
 # (09c) flowery phrases: ---- 
 
-#' Data: Flowery phrases. 
+#' Data: Flowery phrases 
 #'
 #' \code{flowery} contains versions and variations 
 #' of Gertrude Stein's popular phrase 
@@ -1029,13 +1053,14 @@
 "flowery"
 
 
+
 # (09e) Bushisms: ---- 
 
-#' Data: Bushisms.  
+#' Data: Bushisms 
 #'
-#' \code{Bushisms} contains phrases spoken by 
+#' \code{Bushisms} contains some phrases uttered by 
 #' or attributed to U.S. president George W. Bush 
-#' (the 43rd president of the United States, 
+#' (the 43rd president of the United States of America, 
 #' in office from January 2001 to January 2009).
 #' 
 #' @format A vector of type \code{character}  
@@ -1051,11 +1076,14 @@
 
 # (09e) Trumpisms: ---- 
 
-#' Data: Trumpisms.
+#' Data: Trumpisms 
 #'
-#' \code{Trumpisms} contains frequent words and characteristic phrases 
-#' by U.S. president Donald J. Trump (the 45th president of the United States, 
-#' in office from January 20, 2017, to January 20, 2021). 
+#' \code{Trumpisms} contains characteristic words and phrases used 
+#' by U.S. president Donald J. Trump (the 45th and 47th president of the United States of America)  
+#' during his first presidency (ranging from January 20, 2017, to January 20, 2021). 
+#' 
+#' See \url{https://en.wikiquote.org/wiki/Donald_Trump} for a more recent collection of 
+#' attributed and disputed quotes.
 #' 
 #' @format A vector of type \code{character}  
 #' with \code{length(Trumpisms) = 168} 
@@ -1073,14 +1101,14 @@
 
 # (10) Time data (Chapter 10): --------
 
-# (10a) fame data: ---- 
+# (10a) fame: ---- 
 
 # Fame data (DOB and DOD of famous people):
 # Chapter 10 (Time data), Exercise 3
 # See Exercise 3 at https://bookdown.org/hneth/ds4psy/10-4-time-ex.html#time:ex03 
 # See file all_DATASETs.R for raw data (as tables).
 
-#' Data table fame.
+#' Data: fame 
 #'
 #' \code{fame} is a dataset to practice working with dates.
 #'  
@@ -1097,19 +1125,20 @@
 "fame"
 
 
+
 # (10b) exp_num_dt data: ---- 
 
 # Experimental numeracy and date-time (dt) data:
 
 # File is a combination from 2 sources:
 # A. numeracy data:
-# See generating code chunk "data-create-numeracy-data" in book file "55_datasets.Rmd".
+# See generating code chunk "data-create-numeracy-data" in ds4psy_book file "55_datasets.Rmd".
 # numeracy <- readr::read_csv("../ds4psy/data-raw/numeracy.csv")  # local csv file
 # numeracy <- readr::read_csv("http://rpository.com/ds4psy/data/numeracy.csv")  # online
 # numeracy  # 1000 x 12
 
 # B. dt data: 
-# See generating code chunk "data-create-time-bday-data" in book file "55_datasets.Rmd".
+# See generating code chunk "data-create-time-bday-data" in ds4psy_book file "55_datasets.Rmd".
 # dt <- readr::read_csv("../ds4psy/data-raw/dt.csv")  # from local file 
 # dt <- readr::read_csv("http://rpository.com/ds4psy/data/dt.csv")  # online file
 # dt  # 1000 x 9
@@ -1117,22 +1146,28 @@
 ## Check: 
 # dim(exp_num_dt)  # 1000 observations (rows) x 15 variables (columns)
 # sum(is.na(exp_num_dt))  # 130 missing values
+#
+## 250202: Recode the gender variable into true binary variable:
+# table(exp_num_dt$gender)
+# exp_num_dt$gender[exp_num_dt$gender == "male"] <- "not female"
+# table(exp_num_dt$gender)
+#
+## Store data:
 # usethis::use_data(exp_num_dt, overwrite = TRUE)
 
-#' Data from an experiment with numeracy and date-time variables. 
+#' Data from an experiment with numeracy and date-time variables 
 #'
-#' \code{exp_num_dt} is a fictitious dataset describing 
+#' \code{exp_num_dt} is a fictitious set of data describing 
 #' 1000 non-existing, but surprisingly friendly people. 
 #' 
 #' \strong{Codebook} 
-#' 
-#' The table contains 15 columns/variables:
+#' The data characterize 1000 individuals (rows) in 15 variables (columns):
 #' 
 #' \itemize{
 #' 
 #' \item 1. \strong{name}: Participant initials.
 #' 
-#' \item 2. \strong{gender}: Self-identified gender. 
+#' \item 2. \strong{gender}: Self-identified gender (as a binary variable).
 #' 
 #' \item 3. \strong{bday}: Day (within month) of DOB.
 #' 
@@ -1144,17 +1179,26 @@
 #' 
 #' \item 7. \strong{blood_type}: Blood type. 
 #'  
-#' \item 8. \strong{bnt_1} to 11. \strong{bnt_4}: Correct response to BNT question? (1: correct, 0: incorrect).
+#' \item 8. \strong{bnt_1} to 11. \strong{bnt_4}: 
+#' Correct response to corresponding BNT question? 
+#' (1: correct, 0: incorrect).
 #' 
-#' \item 12. \strong{g_iq} and 13. \strong{s_iq}: Scores from two IQ tests (general vs. social).
+#' \item 12. \strong{g_iq} and 13. \strong{s_iq}: 
+#' Scores from two IQ tests (general vs. social).
 #' 
-#' \item 14. \strong{t_1} and 15. \strong{t_2}: Start and end time. 
+#' \item 14. \strong{t_1} and 15. \strong{t_2}: 
+#' Study start and end time.
 #' 
 #' } 
 #' 
-#' \code{exp_num_dt} was generated for analyzing test scores (e.g., IQ, numeracy), 
-#' for converting data from wide into long format, 
-#' and for dealing with date- and time-related variables. 
+#' \code{exp_num_dt} was generated for practice purposes. 
+#' It allows 
+#' (1) converting data tables from wider into longer format, 
+#' (2) dealing with date- and time-related variables, and 
+#' (3) computing, analyzing, and visualizing test scores (e.g., numeracy, IQ). 
+#' 
+#' The \code{gender} variable was converted into a binary variable 
+#' (i.e., using 2 categories "female" and "not female"). 
 #' 
 #' @format A table with 1000 cases (rows) and 15 variables (columns). 
 #' 
@@ -1168,17 +1212,18 @@
 "exp_num_dt"
 
 
+
 # (10c) dt_10 data: 10 Danish bdays ---- 
 
 ## Sources:
-# dt_10 <- readr::read_csv("./data-raw/dt_10.csv") # local file
+# dt_10   <- readr::read_csv("./data-raw/dt_10.csv") # local file
 # dt_10_o <- readr::read_csv("http://rpository.com/ds4psy/data/dt_10.csv")  # online
 # all.equal(dt_10, dt_10_o)
 
 ## Check: 
 # dim(dt_10)  # 10 x 7
 
-#' Data from 10 Danish people. 
+#' Data from 10 Danish people 
 #'
 #' \code{dt_10} contains precise DOB information of 
 #' 10 non-existent, but definitely Danish people. 
@@ -1194,13 +1239,17 @@
 "dt_10"
 
 
+
 # (11) Function data (Chapter 11): -------- 
 
 # none yet.
 
+
+
 # (12) Iteration / loops (Chapter 12): -------- 
 
 # https://bookdown.org/hneth/ds4psy/10-3-iter-essentials.html
+
 
 # (12a) tb data: ------ 
 
@@ -1218,7 +1267,7 @@
 
 #' Data table tb.
 #'
-#' \code{tb} is a fictitious dataset describing 
+#' \code{tb} is a fictitious set of data describing 
 #' 100 non-existing, but otherwise ordinary people.
 #' 
 #' \strong{Codebook} 
@@ -1233,7 +1282,7 @@
 #' 
 #' \item 3. \strong{height}: Height (in cm).
 #' 
-#' \item 4. \strong{shoesize}: Shoesize (EU standard).
+#' \item 4. \strong{shoesize}: Shoe size (EU standard).
 #' 
 #' \item 5. \strong{IQ}: IQ score (according Raven's Regressive Tables).
 #' 
@@ -1252,11 +1301,429 @@
 "tb"
 
 
+
+# (13) i2ds survey data: ------ 
+
+# Data from i2ds online survey
+# URL: https://ww3.unipark.de/uc/i2ds_survey/ 
+# 2025-09-11
+
+
+#' Data from the i2ds online survey 
+#'
+#' \code{i2ds_survey} contains pre-processed data 
+#' from the i2ds online survey.
+#' 
+#' @format 
+#' On 2025-09-11, this data contains 36 participants (rows) and 112 variables (columns).
+#' 
+#' @details 
+#' 
+#' \strong{Prefix codes}
+#' 
+#' Many variable names have prefixes that denote a particular type of variable:
+#' 
+#' \itemize{
+#' 
+#' \item \strong{rv}: A random variable
+#' 
+#' \item \strong{c(#)}: A choice variable (with # alternatives)
+#' 
+#' \item \strong{t}: A text variable (with any input)
+#' 
+#' \item \strong{tn}: A text variable (with numeric input)
+#' 
+#' \item \strong{crs}: A course-related variable
+#' 
+#' \item \strong{combined}: A composite variable created by averaging either 4 or 5 individual Likert-scale items.
+#' Depending on the item set, the resulting score was normalized (i.e., divided by 4 or 5), and stored as a new variable.
+#' 
+#' }
+#' 
+#' 
+#' \strong{List of variables}
+#' 
+#' After pre-processing the raw data, the variable names and their contents in the \code{i2ds_survey} tibble are as follows:
+#' 
+#' \itemize{
+#' 
+#' \item 1. \code{rv_anchor_high_low} A randomized (character) variable that indicates whether a person is to keep a relatively large or small number in memory (i.e., assignment to either \code{242} or \code{42}, respectively). This manipulation is used to examine anchoring effects on later responses.
+#' 
+#' \item 2. \code{rv_scale_randomization} A randomized (character) variable that indicates whether a person was asked to rate their personality (from "serious" to "humorous") on a 4-point or on a 5-point Likert scale. 
+#' The variable controls for the influence of scale granularity on ratings. 
+#' 
+#' \item 3. \code{rv_barnum_pos_neg} A randomized (character) variable that indicates whether the participant is to receive a positive or negative Barnum statement ("positive" vs. "negative"). This is used to measure sensitivity to vague or generic personality feedback.
+#' 
+#' \item 4. \code{rv_sc_false_dicho_3} A randomized (character) variable indicating which version of the scale is to be shown: a dichotomous comparison between admiration vs. respect, fear vs. love, admiration vs. love and fear, or a single undivided scale (values: "admir_resp"  "fear_love", "admir_love" fear_resp", "single_scale"). Used to examine how scale format affects evaluative judgments.
+#' 
+#' \item 5. \code{rv_wait_time} A randomized (character) variable that indicates whether the participant waited 10 seconds ("short") or 30 seconds ("long") before continuing. This manipulation aims to examine whether a longer waiting period increases the perceived credibility or value of a following personality feedback, in line with mechanisms underlying the Barnum effect.
+#' 
+#' \item 6. \code{rv_political_orientation} A randomized (character) variable indicating the order in which the two political orientation scales ("left–right" and "liberal–conservative") were presented. Possible values include "left_right, lib_cons", "left_cons, lib_right", etc. This variable is used to control for potential order effects in political self-placement tasks.
+#' 
+#' \item 7. \code{rv_thinkingstyle} A randomized (character) variable that indicates the order in which pairs of thinking styles are to be presented ("deliberative vs. intuitive"; "reflective vs. spontaneous";" deliberative vs. spontaneous";"reflective vs. Intuitive"). The order is counterbalanced to reduce presentation bias in self-assessment tasks.
+#' 
+#' 
+#' \item 8. \code{c2_informed_consent} A logical variable indicating whether the participant provided informed consent before starting the study 
+#' (\code{TRUE} = consent provided, \code{FALSE} = no consent provided). 
+#' This variable is a pre-requisite for ethical compliance (i.e., should be \code{TRUE} for all participants).
+#' 
+#' 
+#' \item 9. \code{c2_img_sel_1} A numeric (double) variable that represents the participant's preferred choice between 2 images in choice Set 1. 
+#' The binary variable indicates the participant's image preference: 
+#' \itemize{
+#' \item \code{1} corresponds to the \emph{cubist} painting \emph{Les Baigneurs (the bathers), Roger de La Fresnaye, 1912} 
+#' \item \code{2} corresponds to the \emph{expressionist} painting \emph{Badende Mädchen (bathing girls), August Macke, 1913}
+#' }
+#' 
+#' \item 10. \code{c2_img_sel_2} A numeric (double) variable that represents the participant's preferred choice between 2 images in choice Set 2. 
+#' The binary variable indicates the participant's image preference: 
+#' \itemize{
+#' \item \code{1} corresponds to the \emph{cubist} painting \emph{Le Gouter (the taster, aka. tea time), Jean Metzinger, 1911} 
+#' \item \code{2} corresponds to the \emph{expressionist} painting \emph{La petite Jeanne, Amedeo Modigliani, 1909}
+#' }
+#' 
+#' \item 11. A numeric (double) variable that represents the participant's preferred choice between 2 images in choice Set 3. 
+#' The binary variable indicates the participant's image preference: 
+#' \itemize{
+#' \item \code{1} corresponds to the \emph{cubist} painting \emph{Edtaonisl Ecclesiastic (the 1st word being an acronym made by alternating the French words for 'star' and 'dance'), Francis Picabia, 1913} 
+#' \item \code{2} corresponds to the \emph{impressionist} painting \emph{Femme avec parasol dans un jardin (woman with parasol in a garden), Pierre-Auguste Renoir, 1875}
+#' }
+#' 
+#' \item 12. A numeric (double) variable that represents the participant's preferred choice between 2 images in choice Set 4. 
+#' The binary variable indicates the participant's image preference: 
+#' \itemize{
+#' \item \code{1} corresponds to the \emph{expressionist} painting \emph{Solitude, Alexej von Jawlensky, 1912} 
+#' \item \code{2} corresponds to the \emph{impressionist} painting \emph{Pont dans le Jardin de Monet (bridge in Monet’s garden), Claude Monet, 1895–96}
+#' }
+#' 
+#' 
+#' \item 13. \code{c7_eating_habits} A categorical (character) variable that indicates which dietary lifestyle an individual assigns to itself
+#' (\code{1} = "vegetarian"; \code{2} = "omnivore"; \code{3} = "vegan"; \code{4} = "pescetarian"; \code{5} = "flexitarian"; \code{6} = "carnivore"; \code{7} = "other"). 
+#' 
+#' \item 14. \code{t_eating_habits_other} A character variable intended to capture free-text input for other dietary descriptions; 
+#' usually \code{NA} unless "other" was selected. May appear as logical if no responses were entered.
+#' 
+#' \item 15. \code{c7_apple} A numeric (double) variable indicating how much a participant likes apples 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#' 
+#' \item 16. \code{c7_cherry} A numeric (double) variable indicating how much a participant likes cherries 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#' 
+#' \item 17. \code{c7_broccoli} A numeric (double) variable indicating how much a participant likes broccoli 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#' 
+#' \item 18. \code{c7_asparagus} A numeric (double) variable indicating how much a participant likes asparagus 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#' 
+#' \item 19. \code{c7_spinach} A numeric (double) variable indicating how much a participant likes spinach 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#'
+#' \item 20. \code{c7_mud} A numeric (double) variable indicating how much a participant likes mud 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#'
+#' \item 21. \code{c7_banana} A numeric (double) variable indicating how much a participant likes bananas 
+#' on a \code{1-7} scale (\code{1} = low preference, \code{7} = high preference).
+#'
+#' \strong{Note}: Variables \code{c7_apple} to \code{c7_banana} were derived from a sorting/ranking task in which each participant sorted/ranked food items by preference. 
+#' Each item was subsequently coded as a numeric value between \code{1} and \code{7}.
+#'
+#'
+#' \item 22. \code{c2_decsleep_instant} A categorical (character) variable indicating whether a participant prefers to sleep 
+#' before making important decisions ("sleep") or to make them instantly ("instant"). 
+#'
+#' \item 23. \code{c2_shopperson_online} A categorical (character) variable indicating whether a participant prefers shopping in person ("person") or online ("online").
+#' 
+#' \item 24. \code{c2_town_city} A categorical (character) variable indicating whether a participant prefers living in a town ("town") or in a city ("city"). 
+#' 
+#' \item 25. \code{c2_club_house} A categorical (character) variable indicating whether a participant prefers to party in a club ("club") or to attend an house party ("house").
+#' 
+#' \item 26. \code{c2_hotel_camping} A categorical (character) variable capturing a participant's preference for staying in a hotel ("hotel") versus going camping ("camping"). 
+#' 
+#' \item 27. \code{c2_photo_being} A categorical (character) variable indicating whether a participant prefers photographing ("photo") or being in a moment ("being"). 
+#' 
+#' \item 28. \code{c2_spring_fall} A categorical (character) variable indicating whether a participant prefers the spring season ("spring") or the fall/autumn season ("fall").
+#' 
+#' \item 29. \code{c2_beach_mount} A categorical (character) variable reflecting whether a participant prefers the beach ("beach") or the mountains ("mount"). 
+#' 
+#' \item 30. \code{c2_cats_dogs} A categorical (character) variable indicating preference for cats ("cats") versus dogs ("dogs").
+#' 
+#' \item 31. \code{c2_indiv_team} A categorical (character) variable indicating whether a participant prefers individual ("indiv") or team sports ("team").
+#' 
+#' \item 32. \code{c2_movies_books} A categorical (character) variable indicating a participant's preference for movies ("movies") or books ("books").
+#' 
+#' \item 33. \code{c2_board_video} A categorical (character) variable indicating whether a participant prefers board games ("board") or video games ("video").
+#' 
+#' \item 34. \code{c2_ios_android} A categorical (character) variable indicating whether a participant prefers iOS ("ios") or Android ("android") as a mobile operating system.
+#' 
+#' \item 35. \code{c2_text_voice} A categorical (character) variable indicating whether a participant prefers texting ("text") or sending voice messages ("voice").
+#' 
+#' \item 36. \code{c2_cook_bake} A categorical (character) variable indicating whether a participant prefers cooking ("cook") or baking ("bake").
+#' 
+#' \item 37. \code{c2_pinapple_no} A categorical (character) variable that records whether a participant likes pineapple on pizza ("yes") or not ("no").
+#' 
+#' \item 38. \code{c2_ketchup_mayo} A categorical (character) variable indicating whether a participant prefers ketchup ("ketchup") or mayonnaise ("mayo").
+#'
+#' \item 39. \code{c2_coffee_tea} A categorical (character) variable indicating whether a participant prefers coffee ("coffee") or tea ("tea").
+#'
+#' \item 40. \code{c2_math_lang} A categorical (character) variable indicating whether a participant prefers mathematics ("math") or language-related subjects ("lang"). 
+#'
+#' \item 41. \code{c2_odd_even} A categorical (character) variable indicating whether a participant prefers odd numbers ("odd") or even numbers ("even"). 
+#'
+#'
+#' \item 42. \code{c3_diff_bin} A categorical (character) variable indicating how difficult it was for a participant to make their previous preference decisions (items 22--41) . 
+#' Response options include "yes", "a little", and "no". 
+#' This item captures perceived decisional difficulty and may serve as an indicator of response certainty, thinking style, or task engagement.
+#' 
+#' 
+#' \item 43. \code{politics_left} A numeric (double) variable representing the participant’s self-placement on a left–right political spectrum. 
+#' Values range from \code{1} (left) to \code{6} (right).
+#' 
+#' \item 44. \code{politics_liberal} A numeric (double) variable representing self-placement on a liberal to conservative scale, ranging from \code{1} (liberal) to \code{6} (conservative). 
+#' 
+#' 
+#' \item 45. \code{tn_estimate_sun} A numeric (double) variable capturing the participant’s estimate of how many times larger the sun’s diameter is compared to that of the earth. 
+#' This item serves as a manipulation check for the anchoring effect, based on previously presented numeric anchors (e.g., \code{42} or \code{242}). 
+#' 
+#' \item 46. \code{t_att_check_1}  A character variable containing the participant’s open-text response to an attention check prompt ("Please type: 'I read the instructions'"). 
+#' This attention check allows detecting inattentive or automated responses.
+#' 
+#' \item 47. \code{c2_fly_invisible} A categorical (character) variable indicating whether the participant would prefer the superpower of flying ("fly") or becoming invisible ("invisible"). 
+#' 
+#' \item 48. \code{t_fly_invisible_explain} A character variable where participants explain their choice between flying and invisibility. 
+#' This free text answer allows for qualitative analysis of a participant's justifications and motivations.
+#' 
+#' 
+#' \item 49. \code{combined_c_ser_hum_self} A numeric (double) variable reflecting a participant’s self-assessment on a "serious vs. humorous" scale. 
+#' The score is based on a 4-point or 5-point Likert scale, depending on random assignment. 
+#' This variable is used to test how perspective (self vs. others) and scale format (presence vs. absence of a middle option) influences self-ratings.
+#' 
+#' \item 50. \code{combined_c_ser_hum_others} A combined numeric (double) variable reflecting how humorous or serious participants believe others to perceive them. 
+#' This score is derived from either a 4-point or 5-point scale and is used to examine the effect of perspective and scale design on perceived external ratings. 
+#'
+#'
+#' \item 51. \code{c4_chronotype}  A categorical (character) variable indicating whether the participant identifies as a 
+#' morning person ("morning"), evening person ("evening") mid-day person ("mid-day") or a never person ("never"). 
+#' 
+#' \item 52. \code{tn_sleep} A numeric (double) variable indicating the typical number of hours the participant typically sleeps per night. 
+#' 
+#' \item 53. \code{tn_bedtime} A character variable representing the participant’s usual bedtime, 
+#' to be entered in 24-hour format (e.g., "22:30", "00:00").
+#' 
+#' \item 54. \code{tn_anchor_recall_1} A numeric (double) variable recording the number (either \code{42} or \code{242}) that the participant was previously asked to memorize and later recall. 
+#' It is used to test memory for the anchor manipulation.
+#' 
+#' 
+#' \item 55. \code{combined_admired} A combined numeric (double) variable reflecting how much a participant wants to be admired by others, 
+#' rated on a \code{1–6} Likert scale (\code{1} = not at all, \code{6} = very much).
+#' 
+#' \item 56. \code{combined_feared} A combined numeric (double) variable reflecting how much a participant wants to be feared by others, 
+#' #' rated on a \code{1–6} Likert scale (\code{1} = not at all, \code{6} = very much).
+#' 
+#' \item 57. \code{combined_loved} A combined numeric (double) variable reflecting how much a participant wants to be loved by others, 
+#' #' rated on a \code{1–6} Likert scale (\code{1} = not at all, \code{6} = very much).
+#'
+#' \item 58. \code{combined_respected}  A combined numeric (double) variable reflecting how much a participant wants to be respected by others, 
+#' #' rated on a \code{1–6} Likert scale (\code{1} = not at all, \code{6} = very much).
+#'
+#'
+#' \item 59. \code{c7_pess_opti} A numeric (double) variable capturing a participant’s self-rated tendency toward pessimism versus optimism, 
+#' on a 7-point scale (\code{1} = very pessimistic, \code{7} = very optimistic). 
+#'
+#' \item 60. \code{c7_story_list} A numeric (double) variable indicating how much a participant enjoys listening to or reading stories, 
+#' rated from \code{1} (not at all) to \code{7} (very much). 
+#'
+#' \item 61. \code{c7_stab_adv} A numeric (double) variable indicating a participant’s self-assessed position on a stability versus adventurousness spectrum, 
+#' rated on a scale from \code{1} (very stable) to \code{7} (very adventurous). 
+#' This variable may indicate personality traits related to risk-taking.
+#' 
+#' 
+#' \item 62. \code{think_reflect} A numeric (double) variable representing a participant’s placement on a bipolar scale ranging from \code{1} ("reflective") to \code{6} (either "spontaneous" or " intuitive"). 
+#' The specific version of the 2nd scale anchor is randomly assigned. 
+#' 
+#' \item 63. \code{think_delib} A numeric (double) variable representing a participant’s placement on a bipolar scale ranging from \code{1} ("deliberative") to \code{6} (either "intuitive" or " spontaneous". 
+#' The specific version of the 2nd scale anchor is randomly assigned. 
+#' 
+#' 
+#' \item 64. \code{c4_intro_extrovert} A categorical (character) variable indicating a participant's self-rated social orientation: 
+#' "introverted", "extroverted", or mixed variants such as "extro-intro" or "intro-extro". 
+#' 
+#' \item 65. \code{tn_favorit_number} A numeric (double) variable capturing a participant’s favorite number, 
+#' in free answer format. 
+#' 
+#' 
+#' \item 66. \code{c3_cutlery} A categorical (character) variable indicating which piece of cutlery a participant most identifies with. 
+#' The 3 possible values include "knife", "fork", and "spoon". 
+#' 
+#' \item 67. \code{c3_rock_paper_scissors} A categorical (character) variable capturing a participant's selection in a rock–paper–scissors scenario. 
+#' The 3 possible values are "rock", "paper", or "scissors".
+#' 
+#' 
+#' \item 68. \code{c5_att_check_2} A numeric (double) variable used as an attention check. 
+#' Participants were asked to select the number that most resembles the shape of a circle. 
+#' The correct response is \code{0}, which corresponds to scale option 5. 
+#' Responses deviating from this may indicate inattentiveness.
+#' 
+#' 
+#' \item 69. \code{c6_barnum_accuracy} A numeric (double) variable indicating how accurately a participant rated a generic personality description (i.e., a Barnum statement), 
+#' on a scale from \code{1} (poor) to \code{6} (perfect). 
+#' This variable is used to assess susceptibility to the so-called \emph{Barnum effect} (i.e., the tendency to perceive vague and general statements as highly accurate). 
+#' 
+#' 
+#' \item 70. \code{t_anchor_recall_2} A numeric (double) variable recording whether a participant correctly remembered a previously presented number (either \code{42} or \code{242}). 
+#' This assesses memory and anchoring manipulation success (for a 2nd time).
+#'
+#'
+#' \item 71. \code{c4_gender} A categorical (character) variable indicating the participant’s gender identity, 
+#' with possible values including "female", "male", "non-binary" or "do not wish to respond". This variable is used for demographic analysis.
+#'
+#'
+#' \item 72. \code{tn_day} A numeric (double)variable indicating the day of birth provided by the participant (\code{1–31}). 
+#' Used for demographic purposes and potential exploratory analyses. 
+#'
+#' \item 73. \code{tn_month} A numeric (double) variable indicating the participant’s birth month (\code{1–12}). 
+#' This variable also supports demographic profiling. 
+#' 
+#' \item 74. \code{tn_year} A numeric (double) variable indicating the year of birth (e.g., \code{1999, 2000, 2001}, etc.). 
+#' Variables 72. to 74. can be used to calculate age and analyze age-related trends. 
+#' 
+#' 
+#' \item 75. \code{t_height} A character variable indicating a participant's self-described height, using various formats and units 
+#' (e.g., "1.80", "180 cm", "1,80m", or "5'11"). This variable requires pre-processing for analysis.
+#' 
+#' 
+#' \item 76. \code{c9_occupation} A categorical (character) variable indicating a participant’s current occupational status 
+#' (e.g., "student", "employed", "other"). This variable may be used for demographic segmentation. 
+#' 
+#' \item 77. \code{t_occupation_other} A logical variable for free-text input if a participant selected "other" for occupation. 
+#' This variable captures detailed occupational descriptions not covered by the pre-defined options.
+#' 
+#' \item 78. \code{c7_education} A categorical (character) variable indicating a participant’s highest completed education level 
+#' (e.g., "high school", "bachelor", "master"). This variable may be used for demographic segmentation.
+#' 
+#' \item 79. \code{t_education_other} A logical variable to allow participants to enter their education level in free text (if "other" was selected). 
+#' This variable enables open-format responses for less common education paths.
+#' 
+#' \item 80. \code{c3_current_degree} A categorical (character) variable indicating the type of academic degree a participant is currently pursuing (e.g, "bachelor", "master"). 
+#' This variable provides educational context for other academic measures.
+#' 
+#' \item 81. \code{tn_semester} A numeric (double) variable indicating the current semester of study reported by a participant (e.g., 1, 6, 10). 
+#' This variable helps contextualize course experience and academic progress.
+#'
+#' \item 82. \code{c14_studyfield} A categorical (character) variable indicating the participant’s field of study (e.g., "psychology", "data science"). 
+#' This variable is used to examine field-specific attitudes and skills.
+#'
+#' \item 83. \code{t_studyfield_other} A character variable capturing free-text responses if the participant selected "other" as their study field. 
+#' This variable allows classification of less common disciplines. 
+#'
+#'
+#' \item 84. \code{crs_i2ds_1} A logical variable indicating whether a participant is currently enrolled in the course \emph{Introduction to Data Science 1: Basics} (i2ds 1: \code{TRUE} = enrolled). 
+#'
+#' \item 85. \code{crs_i2ds_2} A logical variable indicating whether a participant is enrolled in the course \emph{Introduction to Data Science 2: Applications} (i2ds 2: \code{TRUE} = enrolled). 
+#' 
+#' \item 86. \code{crs_ds4psy} A logical variable indicating whether a participant is enrolled in the course \emph{Data Science for Psychology} (ds4psy: \code{TRUE} = enrolled).
+#' 
+#' \item 87. \code{crs_diff_kn} A logical variable indicating whether a participant is enrolled in a different course at the \emph{University of Konstanz} (\code{TRUE} = yes). 
+#' 
+#' \item 88. \code{crs_diff_else} A logical variable indicating whether a participant is enrolled in a course \emph{not} at the \emph{University of Konstanz} (\code{TRUE} = yes). 
+#' This variable helps identifying external learners.
+#' 
+#' \item 89. \code{crs_self_study} A logical variable indicating whether a participant is engaging with course materials without formal enrollment (\code{TRUE} = yes). 
+#' This variable reflects informal learning engagement.
+#' 
+#' \item 90. \code{crs_only_study} A logical variable indicating whether a participant is taking the survey only, without engaging with course materials (\code{TRUE} = yes). 
+#' This variable identifies non-learning participants.
+#'
+#' \item 91. \code{t_crs_other} A character variable capturing free-text input describing any other course a participant is taking. 
+#' 
+#' \item 92. \code{v_crs_other_dept} A character variable indicating the department of the other course(s) mentioned in \code{t_crs_other}. 
+#' This variable may facilitate grouping participants by academic discipline.
+#' 
+#' 
+#' \item 93. \code{c5_pref_stats} A numeric (double) variable indicating a participant’s interest in preparing data for statistical analysis, 
+#' rated on a scale from \code{1} (no interest) to \code{5} (absolutely essential).
+#'
+#' \item 94. \code{c5_pref_visualize} A numeric (double) variable indicating a participant's interest in data visualization in R, 
+#' rated on a scale from \code{1} (no interest) to \code{5} (absolutely essential).
+#'
+#' \item 95. \code{c5_pref_sims} A numeric (double) variable indicating a participant’s interest in using R for simulations and modeling, 
+#' rated on a scale from \code{1} (no interest) to \code{5} (absolutely essential).
+#'
+#' \item 96. \code{c5_pref_shiny} A numeric (double) variable capturing how essential a participant considers learning to build interactive web applications using R Shiny. 
+#' Responses range from \code{1} (no interest) to \code{5} (absolutely essential).
+#'
+#' \item 97. \code{c5_pref_scrape} A numeric (double) variable capturing how essential a participant considers learning web scraping with R. 
+#' Responses range from \code{1} (no interest) to \code{5} (absolutely essential).
+#' 
+#' \item 98. \code{c5_pref_arts} A numeric (double) variable capturing how essential a participant considers exploring artistic or creative aspects of data science (e.g., generative art in R). 
+#' Responses range from \code{1} (no interest) to \code{5} (absolutely essential).
+#' 
+#' 
+#' \item 99. \code{t_crs_expect_i2ds_1} A character variable containing free-text input describing a participant’s expectations and hopes for the course \emph{Introduction to Data Science 1: Basics} (i2ds 1). 
+#'
+#' \item 100. \code{t_crs_worry_i2ds_1} A character variable capturing free-text responses describing a participant’s worries and reservations related to the course \emph{Introduction to Data Science 1: Basics} (i2ds 1). 
+#' 
+#' \item 101. \code{t_crs_expect_i2ds_2} A character variable containing free-text input describing a participant’s expectations and hopes for the course \emph{Introduction to Data Science 2: Applications} (i2ds 2). 
+#' 
+#' \item 102. \code{t_crs_worry_i2ds_2} A character variable capturing free-text input describing a participant’s worries and reservations concerns related to the course \emph{Introduction to Data Science 2: Applications} (i2ds 2). 
+#' 
+#' \item 103. \code{t_crs_expect_ds4psy} A logical variable containing free-text input describing a participant’s expectations and hopes for the course \emph{Data Science for Psychology} (ds4psy). 
+#' 
+#' \item 104. \code{t_crs_worry_ds4psy} A logical variable describing a participant’s worries and reservations regarding the course \emph{Data Science for Psychology} (ds4psy), in free text format. 
+#' 
+#' 
+#' \item 105. \code{c6_exp_math} A numeric (double) variable indicating a participant’s self-assessed experience with mathematics, 
+#' rated on a scale from \code{1} (no experience) to \code{6} (extremely experienced). 
+#' 
+#' \item 106. \code{c6_exp_statistics} A numeric (double) variable measuring a participant’s self-assessed experience with statistics, 
+#' rated on a scale from \code{1} (no experience) to \code{6} (extremely experienced). 
+#' 
+#' \item 107. \code{c6_exp_program} A numeric (double) variable indicating a participant’s experience with programming (any programming language), 
+#' rated on a scale from \code{1} (no experience) to \code{6} (extremely experienced).
+#' 
+#' \item 108. \code{c6_exp_r} A numeric (double) variable indicating a participant’s experience with R programming, 
+#' rated on a scale from \code{1} (no experience) to \code{6} (extremely experienced).
+#' 
+#' \item 109. \code{c6_exp_datavisual} A numeric (double) variable capturing a participant’s prior experience with data visualization, 
+#' rated on a scale from \code{1} (no experience) to \code{6} (extremely experienced).
+#' 
+#' 
+#' \item 110. \code{c2_use_data_2} A logical variable indicating whether a participant still agrees to allow their data to be shared after having finished the survey 
+#' (\code{TRUE} = consent provided, \code{FALSE} = no consent provided). 
+#' This variable is a pre-requisite for data re-usability in research (and should be \code{TRUE} for all cases included here). 
+#' 
+#' 
+#' \item 111. \code{t_pid} An optional character variable capturing a participant ID, pseudonym, or other identifying entry. 
+#' This variable allows participants to recognize their own data without disclosing their identity.
+#' 
+#' 
+#' \item 112. \code{t_feedback} An optional character variable containing general feedback provided by the participant regarding the survey or course. 
+#' This is an open-ended text field for final comments, impressions, or suggestions.
+#' 
+#' }
+#' 
+#' See the \strong{codebook} and \strong{print version} for additional coding details.
+#' 
+#' \strong{Missing values} in the dataset are represented as \code{NA} values. 
+#' These indicate that a participant did not provide a response or that the question was not applicable. 
+#' 
+#' @family datasets
+#' 
+#' @source 
+#' See online survey at \url{https://ww3.unipark.de/uc/i2ds_survey/}. 
+
+
+"i2ds_survey"
+
+
+# +++ here now +++
+
+
 ## Check data: ------ 
 
 ## Check for "marked UTF-8 strings":
 
 # tools:::.check_package_datasets(".")
+
 
 
 ## ToDo: ----------

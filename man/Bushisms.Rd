@@ -3,7 +3,7 @@
 \docType{data}
 \name{Bushisms}
 \alias{Bushisms}
-\title{Data: Bushisms.}
+\title{Data: Bushisms}
 \format{
 A vector of type \code{character}  
 with \code{length(Bushisms) = 22}.
@@ -15,9 +15,9 @@ Data based on \url{https://en.wikipedia.org/wiki/Bushism}.
 Bushisms
 }
 \description{
-\code{Bushisms} contains phrases spoken by 
+\code{Bushisms} contains some phrases uttered by 
 or attributed to U.S. president George W. Bush 
-(the 43rd president of the United States, 
+(the 43rd president of the United States of America, 
 in office from January 2001 to January 2009).
 }
 \seealso{
@@ -26,9 +26,9 @@ Other datasets:
 \code{\link{countries}},
 \code{\link{data_1}},
 \code{\link{data_2}},
+\code{\link{data_t1}},
 \code{\link{data_t1_de}},
 \code{\link{data_t1_tab}},
-\code{\link{data_t1}},
 \code{\link{data_t2}},
 \code{\link{data_t3}},
 \code{\link{data_t4}},
@@ -39,6 +39,7 @@ Other datasets:
 \code{\link{fame}},
 \code{\link{flowery}},
 \code{\link{fruits}},
+\code{\link{i2ds_survey}},
 \code{\link{outliers}},
 \code{\link{pi_100k}},
 \code{\link{posPsy_AHI_CESD}},
