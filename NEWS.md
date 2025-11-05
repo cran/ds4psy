@@ -13,8 +13,13 @@ These books and corresponding courses introduce principles and methods of data s
 The R package **ds4psy** primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. 
 All functions included in **ds4psy** are designed to be explicit and instructive, rather than efficient or elegant. 
 
+<!-- ds4psy logo 1: -->
+<a href="https://bookdown.org/hneth/ds4psy/">
+<img src = "./inst/images/logo.png" alt = "ds4psy" width = "150px" align = "right" style = "width: 150px; float: right; border:11;"/>
+</a>
 
-### Overview {-}
+
+## Overview {-}
 
 The books and courses [Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/) include the following resources:
 
@@ -22,10 +27,79 @@ The books and courses [Data Science for Psychologists](https://bookdown.org/hnet
 
 - The textbook **Data Science for Psychologists** is hosted at <https://bookdown.org/hneth/ds4psy/>. 
 - The textbook **Introduction to Data Science** is hosted at <https://bookdown.org/hneth/i2ds/>. 
-- The most recent release of **ds4psy** (1.1.0) is available on CRAN: <https://CRAN.R-project.org/package=ds4psy>.
-- The current development version of **ds4psy** (1.1.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+- The most recent release of **ds4psy** (1.2.0) is available on CRAN: <https://CRAN.R-project.org/package=ds4psy>.
+- The current development version of **ds4psy** (1.2.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
 
 <!-- Current version:  --> 
+
+
+-------- 
+
+
+# ds4psy 1.2.0
+
+Release of **ds4psy** (1.2.0) [on CRAN](https://CRAN.R-project.org/package=ds4psy) 
+adds new data and fixes some bugs. [2025-11-05]
+
+<!-- This is the current development version of **ds4psy** hosted at <https://github.com/hneth/ds4psy/>. [2025-11-04] --> 
+
+<!-- Log of changes: --> 
+
+
+**Changes** since last release: 
+
+
+<!-- major: --> 
+
+## Major changes
+
+- Add new `i2ds_survey` data ($N=60$ participants, $116$ variables) 
+
+
+<!-- minor: --> 
+
+## Minor changes
+
+- Fix bugs in `i2ds_survey` data:
+    - Add variable names to art preference tasks
+    - Reverse scale in ranking of food items (e.g., apple, ..., mud)
+    - Add some session information (referrer, date, duration)
+
+
+<!-- details: --> 
+
+## Details
+
+- Bug fix: replace `size` by `linewidth` arguments in **ggplot2** functions
+
+- Improve documentation:
+  - Enumerate and re-arrange variables in `i2ds_survey` data 
+  - Update online documentation
+
+
+<!-- ## ToDo --> 
+
+<!-- Changes to be implemented prior to the next release: --> 
+
+<!-- - improve `base2dec()` and `dec2base()` functions (e.g., with recursive and vectorized versions). --> 
+
+<!-- - split the mixed functionality of `plot_text()` into 2 functions: --> 
+
+<!-- 1. Combine `count_chars_words()` with `map_text_coord()` or `map_text_regex()` 
+    to create a df with two color vectors (fg/bg) based on `char_freq` and/or `word_freq`. --> 
+    
+<!-- 2. `plot_charmap()` directly plots the resulting df. --> 
+
+
+<!-- Development version: --> 
+
+The current development version of **ds4psy** is available at <https://github.com/hneth/ds4psy/>. 
+
+
+
+<!-- Published versions: --> 
+
+<!-- Versions of **ds4psy** published on [on CRAN](https://CRAN.R-project.org/package=ds4psy): --> 
 
 
 -------- 
@@ -33,7 +107,7 @@ The books and courses [Data Science for Psychologists](https://bookdown.org/hnet
 # ds4psy 1.1.0
 
 Release of **ds4psy** (1.1.0) [on CRAN](https://CRAN.R-project.org/package=ds4psy) 
-adds functionality, provides new data, and fixes some bugs. [2025-09-12]
+adds functionality, provides new data, and fixes some bugs. [2025-09-13]
 
 <!-- Log of changes: --> 
 
@@ -55,25 +129,6 @@ adds functionality, provides new data, and fixes some bugs. [2025-09-12]
 ## Details
 
 - new logo
-
-
-<!-- ## ToDo --> 
-
-<!-- Changes to be implemented prior to the next release: --> 
-
-<!-- - improve `base2dec()` and `dec2base()` functions (e.g., with recursive and vectorized versions). --> 
-
-<!-- - split the mixed functionality of `plot_text()` into 2 functions: --> 
-
-<!-- 1. Combine `count_chars_words()` with `map_text_coord()` or `map_text_regex()` 
-    to create a df with two color vectors (fg/bg) based on `char_freq` and/or `word_freq`. --> 
-    
-<!-- 2. `plot_charmap()` directly plots the resulting df. --> 
-
-
-<!-- Development version: --> 
-
-The current development version of **ds4psy** is hosted at <https://github.com/hneth/ds4psy/>.
 
 
 -------- 
@@ -223,7 +278,7 @@ adds functionality, increases modularity, and fixes a bug in text data. [2021-05
 
 ## Details 
 
-- signal deprecation status in `plot_text()`   
+- signal deprecation status in `plot_text()`  
 - bug fix: remove marked UTF-8 strings from `Trumpisms` 
 
 <!-- Note:  --> 
@@ -455,7 +510,7 @@ Changes involving new functionality include:
 
 Initial release of **ds4psy** (0.1.0) [on CRAN](https://CRAN.R-project.org/package=ds4psy). [2019-08-10] 
 
-**Contents** in this release: 
+<!-- **Contents** in this release: --> 
 
 The initial functionality is limited, as the package is designed to support the emerging [ds4psy book](https://bookdown.org/hneth/ds4psy/): 
 
@@ -469,6 +524,6 @@ The initial functionality is limited, as the package is designed to support the 
 
 ---------- 
 
-[File `NEWS.md` updated on 2025-09-12.]
+[File `NEWS.md` updated on 2025-11-05.]
 
 <!-- eof. -->

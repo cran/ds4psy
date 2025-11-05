@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +61,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -392,14 +393,14 @@ explicit and instructive, rather than efficient or elegant.</p>
 <p><a href="https://bookdown.org/hneth/i2ds/">
 <img role="img" aria-label="i2ds" src="data:image/png;base64,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" alt="i2ds" width="160px" align="right" style="width: 160px; float: right; border:11;" />
 </a></p>
-<p>This package and the corresponding books and courses are still being
-developed and are updated as new materials become available.</p>
+<p>This R package and the corresponding books and courses are still
+being developed and are updated as new materials become available.</p>
 <!-- Current links: -->
 <ul>
-<li><p>The current version of <a href="https://bookdown.org/hneth/i2ds/">Introduction to Data Science</a>
-is available online at <a href="https://bookdown.org/hneth/i2ds/" class="uri">https://bookdown.org/hneth/i2ds/</a>.</p></li>
-<li><p>A version of <a href="https://bookdown.org/hneth/ds4psy/">Data
-science for psychologists</a> is available online at <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.</p></li>
+<li><p>The current version of <strong><a href="https://bookdown.org/hneth/i2ds/">Introduction to Data
+Science</a></strong> is available online at <a href="https://bookdown.org/hneth/i2ds/" class="uri">https://bookdown.org/hneth/i2ds/</a>.</p></li>
+<li><p>A version of the <strong><a href="https://bookdown.org/hneth/ds4psy/">Data science for
+psychologists</a></strong> book is available online at <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.</p></li>
 <li><p>The current R package <strong>ds4psy</strong> is available at <a href="https://CRAN.R-project.org/package=ds4psy" class="uri">https://CRAN.R-project.org/package=ds4psy</a>.</p></li>
 </ul>
 <!-- Background / origin: -->
@@ -414,8 +415,8 @@ Canada: O’Reilly Media, Inc. (available online at <a href="https://r4ds.had.c
 <p>but provide more <strong>base</strong> R and less
 <strong>tidyverse</strong> content.</p>
 <ul>
-<li><p>For <strong>ds4psy</strong> sources, there are two GitHub
-repositories to be distinguished:</p>
+<li><p>For <strong>ds4psy</strong> sources, there are two
+<strong>GitHub</strong> repositories to be distinguished:</p>
 <ul>
 <li><p>The repository for the <a href="https://bookdown.org/hneth/ds4psy/">ds4psy book</a> is <a href="https://github.com/hneth/ds4psy" class="uri">https://github.com/hneth/ds4psy</a> (with an additional
 suffix <code>_book</code>).</p></li>
@@ -436,7 +437,7 @@ please use:</p>
 <li>Neth, H. (2025). ds4psy: Data Science for Psychologists.<br />
 Social Psychology and Decision Sciences, University of Konstanz,
 Germany.<br />
-Textbook and R package (version 1.1.0, September 12, 2025).<br />
+Textbook and R package (version 1.2.0, November 5, 2025).<br />
 Retrieved from <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://bookdown.org/hneth/ds4psy/</a>.<br />
 <a href="https://doi.org/10.5281/zenodo.7229812">https://doi.org/10.5281/zenodo.7229812</a></li>
 </ul>
@@ -448,7 +449,7 @@ Retrieved from <a href="https://bookdown.org/hneth/ds4psy/" class="uri">https://
   year = {2025},
   organization = {Social Psychology and Decision Sciences, University of Konstanz},
   address = {Konstanz, Germany},
-  note = {R package (version 1.1.0, September 12, 2025); Textbook at &lt;https://bookdown.org/hneth/ds4psy/&gt;.},
+  note = {R package (version 1.2.0, November 5, 2025); Textbook at &lt;https://bookdown.org/hneth/ds4psy/&gt;.},
   url = {https://CRAN.R-project.org/package=ds4psy},
   doi = {10.5281/zenodo.7229812}
 }</code></pre>
@@ -468,7 +469,7 @@ Neth</a> is licensed under a
 Commons Attribution-NonCommercial-ShareAlike 4.0 International
 License</a>.</p>
 <!-- Update: -->
-<p>[Updated 2025-09-12 by <a href="https://neth.de">hn</a>.]</p>
+<p>[Updated 2025-11-05 by <a href="https://neth.de">hn</a>.]</p>
 <!-- eof. -->
 </div>
 </div>

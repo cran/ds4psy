@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 #   year = {2025},
 #   organization = {Social Psychology and Decision Sciences, University of Konstanz},
 #   address = {Konstanz, Germany},
-#   note = {R package (version 1.1.0, September 12, 2025); Textbook at <https://bookdown.org/hneth/ds4psy/>.},
+#   note = {R package (version 1.2.0, November 5, 2025); Textbook at <https://bookdown.org/hneth/ds4psy/>.},
 #   url = {https://CRAN.R-project.org/package=ds4psy},
 #   doi = {10.5281/zenodo.7229812}
 # }
