@@ -5,7 +5,7 @@
 \alias{i2ds_survey}
 \title{Data from the i2ds online survey}
 \format{
-On 2025-11-02, this data contains 60 participants (rows) and 116 variables (columns).
+On 2026-04-21, this data contains 101 participants (rows) and 119 variables (columns).
 }
 \source{
 See online survey at \url{https://ww3.unipark.de/uc/i2ds_survey/}.
@@ -85,6 +85,9 @@ This variable is a pre-requisite for data re-usability in research (and should b
 \item \code{crs_i2ds_2} A logical variable indicating whether a participant is enrolled in the course \emph{Introduction to Data Science 2: Applications} (i2ds 2: \code{TRUE} = enrolled). 
 
 \item \code{crs_ds4psy} A logical variable indicating whether a participant is enrolled in the course \emph{Data Science for Psychology} (ds4psy: \code{TRUE} = enrolled).
+
+\item \code{crs_viz} A logical variable indicating whether a participant is enrolled in the course \emph{Data visualization for psychology research} (vis4psy: \code{TRUE} = enrolled).
+
 
 \item \code{crs_diff_kn} A logical variable indicating whether a participant is enrolled in a different course at the \emph{University of Konstanz} (\code{TRUE} = yes). 
 
@@ -390,6 +393,9 @@ Responses range from \code{1} (no interest) to \code{5} (absolutely essential).
 
 \item \code{t_crs_worry_ds4psy} A logical variable describing a participant’s worries and reservations regarding the course \emph{Data Science for Psychology} (ds4psy), in free text format. 
 
+\item \code{t_crs_expect_viz} A logical variable containing free-text input describing a participant’s expectations and hopes for the course \emph{Data visualization for psychology research} (vis4psy). 
+
+\item \code{t_crs_worry_viz} A logical variable describing a participant’s worries and reservations regarding the course \emph{Data visualization for psychology research} (vis4psy), in free text format.
 
 \item Variables on prior experience:   
 \code{c6_exp_math} A numeric (double) variable indicating a participant’s self-assessed experience with mathematics, 

@@ -1,8 +1,23 @@
-## ----preamble_ds4psy, include = FALSE-----------------------------------------
+## ----preamble-ds4psy, include = FALSE-----------------------------------------
+# Default chunk options:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+# Some URLs (from ds4psy ebook): ----
+
+# Posit connect cloud hosting:
+url_posit_hneth <- "https://connect.posit.cloud/hneth/"
+
+# (1) ds4psy: ------ 
+url_ds4psy_book_old <- "https://bookdown.org/hneth/ds4psy/" # moved to:
+url_ds4psy_book     <- "https://hneth-ds4psy.share.connect.posit.cloud/"
+url_ds4psy_cran     <- "https://CRAN.R-project.org/package=ds4psy"
+
+# (2) i2ds: ------ 
+url_i2ds_book_old <- "https://bookdown.org/hneth/i2ds/" # moved to:
+url_i2ds_book     <- "https://hneth-i2ds.share.connect.posit.cloud/"
 
 ## ----install_CRAN, echo = TRUE, eval = FALSE----------------------------------
 # install.packages('ds4psy')  # install ds4psy from CRAN client
@@ -17,10 +32,10 @@ knitr::opts_chunk$set(
 # @Manual{ds4psy,
 #   title = {ds4psy: Data Science for Psychologists},
 #   author = {Hansjörg Neth},
-#   year = {2025},
+#   year = {2026},
 #   organization = {Social Psychology and Decision Sciences, University of Konstanz},
 #   address = {Konstanz, Germany},
-#   note = {R package (version 1.2.0, November 5, 2025); Textbook at <https://bookdown.org/hneth/ds4psy/>.},
+#   note = {R package (version 1.3.0, April 22, 2026); Textbook at <https://hneth-ds4psy.share.connect.posit.cloud/>.},
 #   url = {https://CRAN.R-project.org/package=ds4psy},
 #   doi = {10.5281/zenodo.7229812}
 # }

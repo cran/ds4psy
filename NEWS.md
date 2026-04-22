@@ -4,33 +4,100 @@
 <!-- Description: --> 
 
 All datasets and functions required for the examples and exercises of the books 
-[Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/) and 
-[Introduction to Data Science](https://bookdown.org/hneth/i2ds/) 
-(by Hansjoerg Neth, Konstanz University, 2025), 
-freely available at <https://bookdown.org/hneth/ds4psy/> and <https://bookdown.org/hneth/i2ds/>. 
+[Data Science for Psychologists](https://hneth-ds4psy.share.connect.posit.cloud/) and 
+[Introduction to Data Science](https://hneth-i2ds.share.connect.posit.cloud/) 
+(by Hansjoerg Neth, Konstanz University, 2026), 
+freely available at <https://hneth-ds4psy.share.connect.posit.cloud/> and <https://hneth-i2ds.share.connect.posit.cloud/>. 
 
 These books and corresponding courses introduce principles and methods of data science to students of psychology and other biological or social sciences. 
 The R package **ds4psy** primarily provides datasets, but also functions for data generation and manipulation (e.g., of text and time data) and graphics that are used in the book and its exercises. 
 All functions included in **ds4psy** are designed to be explicit and instructive, rather than efficient or elegant. 
 
 <!-- ds4psy logo 1: -->
-<a href="https://bookdown.org/hneth/ds4psy/">
+<a href="https://hneth-ds4psy.share.connect.posit.cloud/">
 <img src = "./inst/images/logo.png" alt = "ds4psy" width = "150px" align = "right" style = "width: 150px; float: right; border:11;"/>
 </a>
 
 
 ## Overview {-}
 
-The books and courses [Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/) include the following resources:
+The books and courses [Data Science for Psychologists](https://hneth-ds4psy.share.connect.posit.cloud/) include the following resources:
 
 <!-- Links: --> 
 
-- The textbook **Data Science for Psychologists** is hosted at <https://bookdown.org/hneth/ds4psy/>. 
-- The textbook **Introduction to Data Science** is hosted at <https://bookdown.org/hneth/i2ds/>. 
-- The most recent release of **ds4psy** (1.2.0) is available on CRAN: <https://CRAN.R-project.org/package=ds4psy>.
-- The current development version of **ds4psy** (1.2.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
+- The textbook **Data Science for Psychologists** is hosted at <https://hneth-ds4psy.share.connect.posit.cloud/>. 
+- The textbook **Introduction to Data Science** is hosted at <https://hneth-i2ds.share.connect.posit.cloud/>. 
+- The most recent release of **ds4psy** (1.3.0) is available on CRAN: <https://CRAN.R-project.org/package=ds4psy>.
+- The current development version of **ds4psy** (1.3.0.9001+) is hosted at <https://github.com/hneth/ds4psy/>. 
 
 <!-- Current version:  --> 
+
+<!-- This is the current development version of **ds4psy** hosted at <https://github.com/hneth/ds4psy/>. [2026-04-22] -->
+
+-------- 
+
+
+# ds4psy 1.3.0
+
+Release of **ds4psy** (1.3.0) [on CRAN](https://CRAN.R-project.org/package=ds4psy) 
+adds new data and updates links to online resources. [2026-04-22]  
+
+<!-- Log of changes: --> 
+
+
+**Changes** since last release: 
+
+
+<!-- major: --> 
+
+## Major changes
+
+- Add new `i2ds_survey` data ($N=101$ participants, $119$ variables) 
+
+
+<!-- minor: --> 
+
+## Minor changes
+
+- Change in hosting service of corresponding textbooks (from <https://bookdown.org> to <https://connect.posit.cloud/hneth/>):
+
+    - Textbooks were originally hosted at <https://bookdown.org> (up to 2026-01-15). 
+    Static versions are still available at <https://bookdown.org/hneth/ds4psy/> and <https://bookdown.org/hneth/i2ds/>, but these are no longer updated.
+    - Future versions are hosted at <https://connect.posit.cloud/hneth/>. Visit 
+    <https://hneth-ds4psy.share.connect.posit.cloud/> and 
+    <https://hneth-i2ds.share.connect.posit.cloud/> for the most recent versions.
+
+
+<!-- details: --> 
+
+## Details
+
+- Updated URLs (in description, citation, and README) to reflect change in book hosting service  
+
+
+<!-- ## ToDo --> 
+
+<!-- Changes to be implemented prior to the next release: --> 
+
+<!-- - improve `base2dec()` and `dec2base()` functions (e.g., with recursive and vectorized versions). --> 
+
+<!-- - split the mixed functionality of `plot_text()` into 2 functions: --> 
+
+<!-- 1. Combine `count_chars_words()` with `map_text_coord()` or `map_text_regex()` 
+    to create a df with two color vectors (fg/bg) based on `char_freq` and/or `word_freq`. --> 
+    
+<!-- 2. `plot_charmap()` directly plots the resulting df. --> 
+
+
+<!-- Development version: --> 
+
+The current development version of **ds4psy** is available at <https://github.com/hneth/ds4psy/>. 
+
+
+
+<!-- Published versions: --> 
+
+Versions of **ds4psy** published on [on CRAN](https://CRAN.R-project.org/package=ds4psy):
 
 
 -------- 
@@ -77,30 +144,7 @@ adds new data and fixes some bugs. [2025-11-05]
   - Update online documentation
 
 
-<!-- ## ToDo --> 
-
-<!-- Changes to be implemented prior to the next release: --> 
-
-<!-- - improve `base2dec()` and `dec2base()` functions (e.g., with recursive and vectorized versions). --> 
-
-<!-- - split the mixed functionality of `plot_text()` into 2 functions: --> 
-
-<!-- 1. Combine `count_chars_words()` with `map_text_coord()` or `map_text_regex()` 
-    to create a df with two color vectors (fg/bg) based on `char_freq` and/or `word_freq`. --> 
-    
-<!-- 2. `plot_charmap()` directly plots the resulting df. --> 
-
-
-<!-- Development version: --> 
-
-The current development version of **ds4psy** is available at <https://github.com/hneth/ds4psy/>. 
-
-
-
-<!-- Published versions: --> 
-
-<!-- Versions of **ds4psy** published on [on CRAN](https://CRAN.R-project.org/package=ds4psy): --> 
-
+<!-- next: --> 
 
 -------- 
 
@@ -130,6 +174,7 @@ adds functionality, provides new data, and fixes some bugs. [2025-09-13]
 
 - new logo
 
+<!-- next: --> 
 
 -------- 
 
@@ -512,7 +557,7 @@ Initial release of **ds4psy** (0.1.0) [on CRAN](https://CRAN.R-project.org/packa
 
 <!-- **Contents** in this release: --> 
 
-The initial functionality is limited, as the package is designed to support the emerging [ds4psy book](https://bookdown.org/hneth/ds4psy/): 
+The initial functionality is limited, as the package is designed to support the [ds4psy book](https://bookdown.org/hneth/ds4psy/): 
 
 - provide book code (from examples and exercises) as a package
 - provide all data sets currently used in the book (with documentation and references)
@@ -524,6 +569,6 @@ The initial functionality is limited, as the package is designed to support the 
 
 ---------- 
 
-[File `NEWS.md` updated on 2025-11-05.]
+[File `NEWS.md` updated on 2026-04-22.]
 
 <!-- eof. -->
